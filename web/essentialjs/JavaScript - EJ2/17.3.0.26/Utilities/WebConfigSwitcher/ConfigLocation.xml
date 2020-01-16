@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<Product>
+<EJMVC Path="Samples\web" />
+<EJMVC Path="Samples\mobile" />
+<EJMVC Path="Samples\IO" />
+<JavaScript Path="samples\web\scripts" />
+<JavaScript Path="samples\mobile\desktop\scripts" />
+<JavaScript Path="ng2 app"/>
+<JavaScript Path="aurelia app"/>
+<JavaScript Path="ionic1 app"/>
+<JavaScript Path="ng1 app"/>
+<JavaScript Path="reactjs app"/>
+<JavaScript Path="typescript app"/>
+<JavaScript Path="ionic2 app"/>
+<JavaScript Path="Utilities\Theme Studio"/>
+<EJWeb Path="Samples\Web" />
+<EJWeb Path="Samples\IO" />
+<ASPNETCore Path="Web\samplebrowser" />
+</Product>

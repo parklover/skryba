@@ -1,0 +1,368 @@
+{
+    "name": "TreeGrid",
+    "description": "TreeGrid Components",
+    "keywords": {
+        "common": ["ej2", "ej2-treegrid", "syncfusion", "web-components", "data-treegrid", "treegrid", "table", "typescript"],
+        "angular": ["angular", "ng-treegrid", "ej2-ng-treegrid"],
+        "react": ["react", "reactjs", "react-treegrid", "ej2-react-treegrid"],
+        "vue": ["vue", "vuejs", "vue-treegrid", "ej2-vue-treegrid"]
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/syncfusion/ej2-treegrids"
+    },
+    "eventInterfaces": ["RowExpandedEventArgs", "RowExpandingEventArgs", "RowCollapsedEventArgs", "RowCollapsingEventArgs"],
+    "components": [{
+            "baseClass": "TreeGrid",
+            "directoryName": "treegrid",
+            "blazorPlaceholder": "treegrid",
+            "type": "simple",
+            "defaultTag": "<treegrid id='sample'></treegrid>",
+            "twoWays": [
+                "dataSource"
+            ],
+            "isGenericClass": true,
+            "dynamicModules": [
+                "Filter",
+                "Page",
+                "Sort",
+                "Reorder",
+                "Toolbar",
+                "Aggregate",
+                "Resize",
+                "ColumnMenu",
+                "ExcelExport",
+                "PdfExport",                
+                "CommandColumn",
+                "ContextMenu",
+                "Edit",
+                "Selection",
+                "VirtualScroll",
+                "DetailRow",
+                "RowDD",
+                "Freeze"
+            ],
+            "diModuleFiles": [
+                { "fileName": "Filter" },
+                { "fileName": "Page" },
+                { "fileName": "Selection" },
+                { "fileName": "Sort" },
+                { "fileName": "Reorder" },
+                { "fileName": "toolbar" },
+                { "fileName": "summary" },
+                { "fileName": "resize" },
+                { "fileName": "column-menu" },
+                { "fileName": "excel-export" },
+                { "fileName": "pdf-export" },
+                { "fileName": "Command-Column" },
+                { "fileName": "Context-Menu" },
+                { "fileName": "edit" },
+                { "fileName": "virtual-scroll" },
+                { "fileName" : "detail-row"},
+                { "fileName" : "rowdragdrop"},
+                { "fileName": "freeze-column"}
+            ],
+            "comment": [
+                "/**",
+                " * `ejs-treegrid` represents the Angular TreeTreeGrid Component.",
+                " * ```html",
+                " * <ejs-treegrid [dataSource]='data' allowPaging='true' allowSorting='true'></ejs-treegrid>",
+                " * ```",
+                " */"
+            ],
+            "reactComment": [
+                "/**",
+                " * `TreeTreeGridComponent` represents the react TreeTreeGrid.",
+                " * ```tsx",
+                " * <TreeTreeGridComponent dataSource={data} allowPaging={true} allowSorting={true}/>",
+                " * ```",
+                " */"
+            ],
+            "vueComment": [
+                "/**",
+                " * `ejs-treegrid` represents the VueJS TreeGrid Component.",
+                " * ```vue",
+                " * <ejs-treegrid :dataSource='data' allowPaging='true' allowSorting='true'></ejs-treegrid>",
+                " * ```",
+                " */"
+            ],
+            "complexDirective": [{
+                    "propertyName": "filterSettings",
+                    "baseClass": "FilterSettings",
+                    "migratedTagDirective": [{
+                        "arrayDirectiveClassName": "filterColumns",
+                        "directiveClassName": "filterColumn",
+                        "propertyName": "columns",
+                        "directoryName": "treegrid",
+                        "baseClass": "Predicate"
+                    }]
+                },
+                {
+                    "propertyName": "sortSettings",
+                    "baseClass": "SortSettings",
+                    "migratedTagDirective": [{
+                        "arrayDirectiveClassName": "sortColumns",
+                        "directiveClassName": "sortColumn",
+                        "propertyName": "columns",
+                        "directoryName": "treegrid",
+                        "baseClass": "SortDescriptor"
+                    }]
+                },
+                {
+                    "propertyName": "pageSettings",
+                    "baseClass": "PageSettings",
+                    "blazorTemplates":["template"]
+                },
+                {
+                    "propertyName": "searchSettings",
+                    "baseClass": "SearchSettings"
+                },
+                {
+                    "propertyName": "rowDropSettings",
+                    "baseClass": "RowDropSettings"
+                },
+                {
+                    "propertyName": "selectionSettings",
+                    "baseClass": "SelectionSettings"
+                },
+                {
+                    "propertyName": "textWrapSettings",
+                    "baseClass": "TextWrapSettings"
+                },
+                {
+                    "propertyName": "editSettings",
+                    "baseClass": "EditSettings",
+                    "blazorTemplates":["template"]
+                }
+            ],
+            "tagDirective": [{
+                    "arrayDirectiveClassName": "columns",
+                    "directiveClassName": "column",
+                    "propertyName": "columns",
+                    "arrayDirectiveSelector": "ejs-treegrid>e-columns",
+                    "directiveSelector": "ejs-treegrid>e-columns>e-column",
+                    "directoryName": "treegrid",
+                    "baseClass": "Column",
+                    "comment": [
+                        "/**",
+                        " * `e-column` directive represent a column of the Angular TreeGrid. ",
+                        " * It must be contained in a TreeGrid component(`ejs-treegrid`). ",
+                        " * ```html",
+                        " * <ejs-treegrid [dataSource]='data' allowPaging='true' allowSorting='true'> ",
+                        " *   <e-columns>",
+                        " *    <e-column field='ID' width='100'></e-column>",
+                        " *    <e-column field='name' headerText='Name' width='100'></e-column>",
+                        " *   </e-columns>",
+                        " * </ejs-treegrid>",
+                        " * ```",
+                        " */"
+                    ],
+                    "reactComment": [
+                        "/**",
+                        " * `ColumnDirective` represent a column of the react TreeGrid. ",
+                        " * It must be contained in a TreeGrid component(`TreeGridComponent`). ",
+                        " * ```tsx",
+                        " * <TreeGridComponent dataSource={data} allowPaging={true} allowSorting={true}> ",
+                        " * <ColumnsDirective>",
+                        " * <ColumnDirective field='ID' width='100'></ColumnDirective>",
+                        " * <ColumnDirective field='name' headerText='Name' width='100'></ColumnDirective>",
+                        " * <ColumnsDirective>",
+                        " * </TreeGridComponent>",
+                        " * ```",
+                        " */"
+                    ],
+                    "vueComment": [
+                        "/**",
+                        " * `e-column` directive represent a column of the VueJS TreeGrid. ",
+                        " * It must be contained in a TreeGrid component(`ejs-treegrid`). ",
+                        " * ```vue",
+                        " * <ejs-treegrid :dataSource='data' allowPaging='true' allowSorting='true'> ",
+                        " *   <e-columns>",
+                        " *    <e-column field='ID' width='100'/>",
+                        " *    <e-column field='name' headerText='Name' width='100'/>",
+                        " *   </e-columns>",
+                        " * </ejs-treegrid>",
+                        " * ```",
+                        " */"
+                    ],
+                    "templateProperties": [
+                        "template",
+                        "headerTemplate",
+                        "filter.itemTemplate",
+                        "filterTemplate",
+                        "commandsTemplate",
+                        "editTemplate"
+                    ],
+                    "blazorTemplates":[
+                        "template",
+                        "headerTemplate",
+                        "editTemplate",
+                        "filterTemplate"
+                    ]
+                },
+                {
+                    "arrayDirectiveClassName": "aggregates",
+                    "directiveClassName": "aggregate",
+                    "arrayDirectiveSelector": "ejs-treegrid>e-aggregates",
+                    "directiveSelector": "ejs-treegrid>e-aggregates>e-aggregate",
+                    "directoryName": "treegrid",
+                    "propertyName": "aggregates",
+                    "baseClass": "AggregateRow",
+                    "comment": [
+                        "/**",
+                        " * `e-aggregate` directive represent a aggregate row of the Angular TreeGrid. ",
+                        " * It must be contained in a TreeGrid component(`ejs-treegrid`). ",
+                        " * ```html",
+                        " * <ejs-treegrid [dataSource]='data' allowPaging='true' allowSorting='true'> ",
+                        " *   <e-columns>",
+                        " *     <e-column field='ID' width='100'></e-column>",
+                        " *     <e-column field='name' headerText='Name' width='100'></e-column>",
+                        " *   </e-columns>",
+                        " *   <e-aggregates>",
+                        " *     <e-aggregate>",
+                        " *       <e-columns>",
+                        " *         <e-column field='ID' type='Min'></e-column>",
+                        " *       </e-columns>",
+                        " *      </e-aggregate>",
+                        " *    </e-aggregates>",
+                        " * </ejs-treegrid>",
+                        " * ```",
+                        " */"
+                    ],
+                    "reactComment": [
+                        "/**",
+                        " * `AggregateDirective` represent a aggregate row of the react TreeGrid. ",
+                        " * It must be contained in a TreeGrid component(`TreeGridComponent`). ",
+                        " * ```tsx",
+                        " * <TreeGridComponent dataSource={data} allowPaging={true} allowSorting={true}> ",
+                        " * <ColumnsDirective>",
+                        " * <ColumnDirective field='ID' width='100'></ColumnDirective>",
+                        " * <ColumnDirective field='name' headerText='Name' width='100'></ColumnDirective>",
+                        " * </ColumnsDirective>",
+                        " * <AggregatesDirective>",
+                        " * <AggregateDirective>",
+                        " * <AggregateColumnsDirective>",
+                        " * <AggregateColumnDirective field='ID' type='Min'></AggregateColumnsDirective>",
+                        " * </<AggregateColumnsDirective>",
+                        "* </AggregateDirective>",
+                        " * </AggregatesDirective>",
+                        " * </TreeGridComponent>",
+                        " * ```",
+                        " */"
+                    ],
+                    "vueComment": [
+                        "/**",
+                        " * `e-aggregate` directive represent a aggregate row of the VueJS TreeGrid. ",
+                        " * It must be contained in a TreeGrid component(`ejs-treegrid`). ",
+                        " * ```vue",
+                        " * <ejs-treegrid :dataSource]='data' allowPaging='true' allowSorting='true'>",
+                        " *   <e-columns>",
+                        " *     <e-column field='ID' width='100'/>",
+                        " *     <e-column field='name' headerText='Name' width='100'/>",
+                        " *   </e-columns>",
+                        " *   <e-aggregates>",
+                        " *     <e-aggregate>",
+                        " *       <e-columns>",
+                        " *         <e-column field='ID' type='Min'/>",
+                        " *       </e-columns>",
+                        " *      </e-aggregate>",
+                        " *    </e-aggregates>",
+                        " * </ejs-treegrid>",
+                        " * ```",
+                        " */"
+                    ],
+"tagDirective": [{
+                        "arrayDirectiveClassName": "AggregateColumns",
+                        "directiveClassName": "AggregateColumn",
+                        "arrayDirectiveSelector": "ejs-treegrid>e-aggregates>e-aggregate>e-columns",
+                        "directiveSelector": "ejs-treegrid>e-aggregates>e-aggregate>e-columns>e-column",
+                        "directoryName": "treegrid",
+                        "fileName": "aggregate-columns",
+                        "propertyName": "columns",
+                        "baseClass": "AggregateColumn",
+                        "aspDirectiveSelector": "e-treegrid-aggregate-column",
+                        "aspArrayDirectiveSelector": "e-treegrid-aggregate-columns",
+                        "templateProperties": [
+                            "footerTemplate"
+                        ],
+                        "blazorTemplates":[
+                            "footerTemplate"
+                        ],
+                        "comment": [
+                            "/**",
+                            " * `e-aggregate->e-column` directive represent a aggregate column of the Angular TreeGrid. ",
+                            " * ```html",
+                            " * <ejs-treegrid [dataSource]='data' allowPaging='true' allowSorting='true'> ",
+                            " *   <e-columns>",
+                            " *     <e-column field='ID' width='100'></e-column>",
+                            " *     <e-column field='name' headerText='Name' width='100'></e-column>",
+                            " *   </e-columns>",
+                            " *   <e-aggregates>",
+                            " *     <e-aggregate>",
+                            " *       <e-columns>",
+                            " *         <e-column field='ID' type='Min'></e-column>",
+                            " *       </e-columns>",
+                            " *      </e-aggregate>",
+                            " *    </e-aggregates>",
+                            " * </ejs-treegrid>",
+                            " * ```",
+                            " */"
+                        ],
+                        "reactComment": [
+                            "/**",
+                            " * `AggregateColumnDirective represent a aggregate column of the react TreeGrid. ",
+                            " * ```tsx",
+                            " * <TreeGridComponent dataSource={data} allowPaging={true} allowSorting={true}> ",
+                            " * <ColumnsDirective>",
+                            " * <ColumnDirective field='ID' width='100'></ColumnDirective>",
+                            " * <ColumnDirective field='name' headerText='Name' width='100'></ColumnDirective>",
+                            " * </ColumnsDirective>",
+                            " * <AggregatesDirective>",
+                            " * <AggregateDirective>",
+                            " * <AggregateColumnsDirective>",
+                            " * <AggregateColumnDirective field='ID' type='Min'></AggregateColumnsDirective>",
+                            " * </AggregateColumnsDirective>",
+                            " * </AggregateDirective>",
+                            " * </AggregatesDirective>",
+                            " * </TreeGridComponent>",
+                            " * ```",
+                            " */"
+                        ],
+                        "vueComment": [
+                                "/**",
+                                " * `e-aggregate->e-column` directive represent a aggregate column of the VueJS TreeGrid. ",
+                                " * ```vue",
+                                " * <ejs-treegrid :dataSource='data' allowPaging='true' allowSorting='true'> ",
+                                " *   <e-columns>",
+                                " *     <e-column field='ID' width='100'/>",
+                                " *     <e-column field='name' headerText='Name' width='100'/>",
+                                " *   </e-columns>",
+                                " *   <e-aggregates>",
+                                " *     <e-aggregate>",
+                                " *       <e-columns>",
+                                " *         <e-column field='ID' type='Min'/>",
+                                " *       </e-columns>",
+                                " *      </e-aggregate>",
+                                " *    </e-aggregates>",
+                                " * </ejs-treegrid>",
+                                " * ```",
+                                " */"
+                            ]
+                    }]
+                }
+            ],
+            "templateProperties": [
+                "toolbarTemplate",
+                "pagerTemplate",
+                "rowTemplate",
+                "detailTemplate",
+                "editSettings.template"
+            ],
+            "blazorTemplates":[
+                "rowTemplate",
+                "detailTemplate",
+                "toolbar:toolbarTemplate"
+            ]
+        }
+    ]
+}

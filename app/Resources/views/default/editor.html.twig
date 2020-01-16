@@ -1,0 +1,220 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id="wrapper">
+        <div id="container">
+            <div id="welcome">
+                <h1><span>Welcome to</span> INZYNIERKA </h1>
+            </div>
+            <div>
+                <textarea id="full-featured-non-premium">Next, use our Get Started docs to setup Tiny!</textarea>
+            </div>
+            {#{{ form_start(form) }}#}
+            {#{{ form_end(form) }}#}
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+
+        tinymce.PluginManager.add("yourPlugin", function() {
+            let test = document.getElementById("dupa");
+            // alert('D');
+            // alert(test);
+            $(document).on('mouseover','#dupa', function (event) {
+                $("#dupa").css("background-color", "yellow");
+            });
+            // test.addEventListener("mouseenter", function( event ) {
+            //     alert('D');
+            //     setTimeout(function() {
+            //         event.target.style.color = "";
+            //     }, 500);
+            // }, false);
+        });
+
+        // tinymce.DOM.bind('span', 'mouseover', function(e) {
+        //     alert('D');
+        //     console.log(e.target);
+        // });
+
+        tinymce.init({
+            selector: 'textarea#full-featured-non-premium',
+            plugins: 'print preview fullpage paste importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars emoticons yourPlugin',
+            imagetools_cors_hosts: ['picsum.photos'],
+            menubar: 'file edit view insert format tools table help',
+            toolbar: 'undo redo | bold italic underline strikethrough | fontselect fontsizeselect styleselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor backcolor removeformat | pagebreak | charmap emoticons | fullscreen  preview save print | insertfile image media template link anchor codesample | ltr rtl',
+            content_style: '' +
+                '.lineheight2px { line-height: 2px; }' +
+                '.lineheight4px { line-height: 4px; }' +
+                '.lineheight6px { line-height: 6px; }' +
+                '.lineheight8px { line-height: 8px; }' +
+                '.lineheight10px { line-height: 10px; }' +
+                '.lineheight12px { line-height: 12px; }' +
+                '.lineheight14px { line-height: 14px; }' +
+                '.lineheight16px { line-height: 16px; }' +
+                '.lineheight18px { line-height: 18px; }' +
+                '.lineheight20px { line-height: 20px; }' +
+                '.lineheight22px { line-height: 22px; }' +
+                '.lineheight24px { line-height: 24px; }' +
+                '.lineheight26px { line-height: 26px; }' +
+                '.lineheight28px { line-height: 28px; }' +
+                '.lineheight30px { line-height: 30px; }' +
+                '.lineheight32px { line-height: 32px; }' +
+                '.lineheight34px { line-height: 34px; }' +
+                '.lineheight36px { line-height: 36px; }' +
+                '.lineheight38px { line-height: 38px; }' +
+                '.lineheight40px { line-height: 40px; }' +
+                '.tablerow1 { background-color: #D3D3D3; }',
+            formats: {
+                '2px': { selector: 'span,p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img', classes: 'lineheight2px' },
+                '4px': { selector: 'span,p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img', classes: 'lineheight4px' },
+                '6px': { selector: 'span,p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img', classes: 'lineheight6px' },
+                '8px': { selector: 'span,p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img', classes: 'lineheight8px' },
+                '10px': { selector: 'span,p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img', classes: 'lineheight10px' },
+                '12px': { selector: 'span,p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img', classes: 'lineheight12px' },
+                '14px': { selector: 'span,p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img', classes: 'lineheight14px' },
+                '16px': { selector: 'span,p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img', classes: 'lineheight16px' },
+                '18px': { selector: 'span,p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img', classes: 'lineheight18px' },
+                '20px': { selector: 'span,p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img', classes: 'lineheight20px' },
+                '22px': { selector: 'span,p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img', classes: 'lineheight22px' },
+                '24px': { selector: 'span,p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img', classes: 'lineheight24px' },
+                '26px': { selector: 'span,p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img', classes: 'lineheight26px' },
+                '28px': { selector: 'span,p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img', classes: 'lineheight20px' },
+                '30px': { selector: 'span,p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img', classes: 'lineheight30px' },
+                '32px': { selector: 'span,p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img', classes: 'lineheight32px' },
+                '34px': { selector: 'span,p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img', classes: 'lineheight34px' },
+                '36px': { selector: 'span,p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img', classes: 'lineheight36px' },
+                '38px': { selector: 'span,p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img', classes: 'lineheight38px' },
+                '40px': { selector: 'span,p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img', classes: 'lineheight40px' }
+            },
+            style_formats: [
+                { title: '2px',format: '2px' },
+                { title: '4px', format: '4px' },
+                { title: '6px', format: '6px' },
+                { title: '8px', format: '8px' },
+                { title: 'l0px', format: '10px' },
+                { title: '12px', format: '12px' },
+                { title: '14px', format: '14px' },
+                { title: '16px', format: '16px' },
+                { title: '18px', format: '18px' },
+                { title: '20px', format: '20px' },
+                { title: '22px', format: '22px' },
+                { title: '24px', format: '24px' },
+                { title: '26px', format: '26px' },
+                { title: '28px', format: '28px' },
+                { title: '30px', format: '30px' },
+                { title: '32px', format: '32px' },
+                { title: '34px', format: '34px' },
+                { title: '36px', format: '36px' },
+                { title: '38px', format: '38px' },
+                { title: '40px', format: '40px' }
+            ],
+            toolbar_sticky: true,
+            autosave_ask_before_unload: true,
+            autosave_interval: "30s",
+            autosave_prefix: "{path}{query}-{id}-",
+            autosave_restore_when_empty: false,
+            autosave_retention: "2m",
+            image_advtab: true,
+            content_css: [
+                '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
+                '//www.tiny.cloud/css/codepen.min.css'
+            ],
+            link_list: [
+                { title: 'My page 1', value: 'http://www.tinymce.com' },
+                { title: 'My page 2', value: 'http://www.moxiecode.com' }
+            ],
+            image_list: [
+                { title: 'My page 1', value: 'http://www.tinymce.com' },
+                { title: 'My page 2', value: 'http://www.moxiecode.com' }
+            ],
+            image_class_list: [
+                { title: 'None', value: '' },
+                { title: 'Some class', value: 'class-name' }
+            ],
+            importcss_append: true,
+            // width : "640",
+            file_picker_callback: function (callback, value, meta) {
+                /* Provide file and text for the link dialog */
+                if (meta.filetype === 'file') {
+                    callback('https://www.google.com/logos/google.jpg', { text: 'My text' });
+                }
+
+                /* Provide image and alt text for the image dialog */
+                if (meta.filetype === 'image') {
+                    callback('https://www.google.com/logos/google.jpg', { alt: 'My alt text' });
+                }
+
+                /* Provide alternative source and posted for the media dialog */
+                if (meta.filetype === 'media') {
+                    callback('movie.mp4', { source2: 'alt.ogg', poster: 'https://www.google.com/logos/google.jpg' });
+                }
+            },
+            templates: [
+                { title: 'New Table', description: 'creates a new table', content: '<div class="mceTmpl"><table width="98%%"  border="0" cellspacing="0" cellpadding="0"><tr><th scope="col"> </th><th scope="col"> </th></tr><tr><td> </td><td> </td></tr></table></div>' },
+                { title: 'Starting my story', description: 'A cure for writers block', content: 'Once upon a time...' },
+                { title: 'New list with dates', description: 'New List with dates', content: '<div class="mceTmpl"><span class="cdate">cdate</span><br /><span class="mdate">mdate</span><h2>My List</h2><ul><li></li><li></li></ul></div>' }
+            ],
+
+            template_cdate_format: '[Date Created (CDATE): %m/%d/%Y : %H:%M:%S]',
+            template_mdate_format: '[Date Modified (MDATE): %m/%d/%Y : %H:%M:%S]',
+            height: 1400,
+            image_caption: true,
+            quickbars_selection_toolbar: 'bold italic | quicklink h2 h3 blockquote quickimage quicktable',
+            noneditable_noneditable_class: "mceNonEditable",
+            toolbar_drawer: 'sliding',
+            contextmenu: "link image imagetools table",
+            setup: function (editor) {
+                editor.on('init', function (e) {
+                    $('iframe').contents().find("head").append($("<style type='text/css'>*{background-color: #e7e7e7}body{width: 210mm; min-height: 297mm; background-color: #fff; padding: 5mm !important; margin: 0px auto; margin-top: 25px;}body *{ background-color: #fff;}.mce-content-body p{margin: 16px 0;}</style>"));
+                    // editor.setContent('<p><strong>EWA LUDWICZAK-WINTER</strong></p>' +
+                    //     'asdasdasd');
+                    editor.setContent('{{ wzor |raw  }}');
+                });
+            }
+        });
+
+        // $('iframe').load( function() {
+        //     $('iframe').contents().find("head")
+        //         .append($("<style type='text/css'>#tinymce{background-color: #b0b0b0; padding-top: 25px; width: 210mm; height: 297mm;}</style>"));
+        //
+        // });
+
+
+    </script>
+{% endblock %}
+
+{% block stylesheets %}
+<style>
+    body { background: #F5F5F5; font: 18px/1.5 sans-serif; }
+    h1, h2 { line-height: 1.2; margin: 0 0 .5em; }
+    h1 { font-size: 36px; }
+    h2 { font-size: 21px; margin-bottom: 1em; }
+    p { margin: 0 0 1em 0; }
+    a { color: #0000F0; }
+    a:hover { text-decoration: none; }
+    code { background: #F5F5F5; max-width: 100px; padding: 2px 6px; word-wrap: break-word; }
+    #wrapper { background: #FFF; margin: 1em auto; width: 95%; }
+    #container { padding: 2em; }
+    #welcome, #status { margin-bottom: 2em; }
+    #welcome h1 span { display: block; font-size: 75%; }
+    #icon-status, #icon-book { float: left; height: 64px; margin-right: 1em; margin-top: -4px; width: 64px; }
+    #icon-book { display: none; }
+    #tinymce{
+        background-color: #e7e7e7;
+    }
+
+
+    @media (min-width: 768px) {
+        #wrapper { width: 80%; margin: 2em auto; }
+        #icon-book { display: inline-block; }
+        #status a, #next a { display: block; }
+
+        @-webkit-keyframes fade-in { 0% { opacity: 0; } 100% { opacity: 1; } }
+        @keyframes fade-in { 0% { opacity: 0; } 100% { opacity: 1; } }
+        .sf-toolbar { opacity: 0; -webkit-animation: fade-in 1s .2s forwards; animation: fade-in 1s .2s forwards;}
+    }
+</style>
+{% endblock %}

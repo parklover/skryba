@@ -1,0 +1,30 @@
+/**
+ * Specifies Workbook internal events.
+ */
+export var workbookDestroyed = 'workbookDestroyed';
+export var updateSheetFromDataSource = 'updateSheetFromDataSource';
+export var dataSourceChanged = 'dataSourceChanged';
+export var workbookOpen = 'workbookOpen';
+export var beginSave = 'beginSave';
+export var saveCompleted = 'saveCompleted';
+export var applyNumberFormatting = 'applyNumber';
+export var getFormattedCellObject = 'getFormattedCell';
+export var refreshCellElement = 'refreshCellElem';
+export var setCellFormat = 'setCellFormat';
+export var textDecorationUpdate = 'textDecorationUpdate';
+export var applyCellFormat = 'applyCellFormat';
+export var updateUsedRange = 'updateUsedRange';
+export var workbookFormulaOperation = 'workbookFormulaOperation';
+export var workbookEditOperation = 'workbookEditOperation';
+export var checkDateFormat = 'checkDateFormat';
+export var getFormattedBarText = 'getFormattedBarText';
+export var activeCellChanged = 'activeCellChanged';
+export var openSuccess = 'openSuccess';
+export var openFailure = 'openFailure';
+export var sheetCreated = 'sheetCreated';
+export var sheetsDestroyed = 'sheetsDestroyed';
+export var aggregateComputation = 'aggregateComputation';
+export var beforeSort = 'beforeSort';
+export var initiateSort = 'initiateSort';
+export var sortComplete = 'sortComplete';
+export var sortRangeAlert = 'sortRangeAlert';

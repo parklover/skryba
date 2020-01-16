@@ -1,0 +1,60 @@
+{
+  "name": "@syncfusion/ej2-angular-base",
+  "version": "17.3.27",
+  "description": "A common package of Essential JS 2 base Angular libraries, methods and class definitions",
+  "author": "Syncfusion Inc.",
+  "license": "SEE LICENSE IN license",
+  "main": "./dist/ej2-angular-base.umd.min.js",
+  "module": "./index.js",
+  "schematics": "./schematics/collection.json",
+  "keywords": [
+    "ej2",
+    "syncfusion",
+    "web-components",
+    "ej2-angular-base",
+    "angular",
+    "ng"
+  ],
+  "peerDependencies": {
+    "@angular/common": "2.2.1 - 8.2.12",
+    "@angular/compiler": "2.2.1 - 8.2.12",
+    "@angular/core": "2.2.1 - 8.2.12",
+    "@angular/forms": "2.2.1 - 8.2.12",
+    "@angular/platform-browser": "2.2.1 - 8.2.12",
+    "@angular/platform-browser-dynamic": "2.2.1 - 8.2.12"
+  },
+  "dependencies": {
+    "@syncfusion/ej2-base": "^17.3.27",
+    "zone.js": "^0.7.2",
+    "core-js": "^2.4.1",
+    "reflect-metadata": "^0.1.9",
+    "rxjs": "^5.0.0"
+  },
+  "devDependencies": {
+    "@angular/common": "2.2.1 - 4.10.0",
+    "@angular/compiler": "2.2.1 - 4.10.0",
+    "@angular/core": "2.2.1 - 4.10.0",
+    "@angular/forms": "2.2.1 - 4.10.0",
+    "@angular/http": "2.2.1 - 4.10.0",
+    "@angular/platform-browser": "2.2.1 - 4.10.0",
+    "@angular/platform-browser-dynamic": "2.2.1 - 4.10.0",
+    "@angular/router": "2.2.1 - 4.10.0",
+    "@types/chai": "^3.4.28",
+    "@types/core-js": "0.9.39",
+    "@types/jasmine": "^2.2.29",
+    "@types/jasmine-ajax": "^3.1.27",
+    "@types/node": "^6.0.46",
+    "@types/requirejs": "^2.1.26",
+    "es6-module-loader": "^0.17.11",
+    "karma-systemjs": "^0.16.0",
+    "systemjs": "^0.19.40",
+    "systemjs-plugin-babel": "0.0.17",
+    "@angular-devkit/schematics": "0.7.2",
+    "@schematics/angular": "0.7.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/syncfusion/ej2-angular-ui-components"
+  },
+  "homepage": "https://www.syncfusion.com/angular-ui-components"
+}

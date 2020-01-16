@@ -1,0 +1,63 @@
+import { Workbook } from '../base/index';
+import { Calculate } from '../../calculate/index';
+/**
+
+ * The `WorkbookFormula` module is used to handle the formula operation in Workbook.
+ */
+export declare class WorkbookFormula {
+    private parent;
+    private calcID;
+    calculateInstance: Calculate;
+    private sheetInfo;
+    /**
+     * Constructor for formula module in Workbook.
+     * @private
+     */
+    constructor(workbook: Workbook);
+    private init;
+    /**
+     * To destroy the formula module.
+     * @return {void}
+
+     */
+    destroy(): void;
+    private addEventListener;
+    private removeEventListener;
+    /**
+     * Get the module name.
+     * @returns string
+     * @private
+     */
+    getModuleName(): string;
+    private initCalculate;
+    private performFormulaOperation;
+    private referenceError;
+    private getSheetInfo;
+    private sheetDeletion;
+    private removeSheetTokenIndex;
+    private renameUpdation;
+    private updateDataContainer;
+    private parseSheetRef;
+    private registerSheet;
+    private unRegisterSheet;
+    private refreshCalculate;
+    private autoCorrectFormula;
+    private initiateDefinedNames;
+    /**
+
+     * Used to add defined name to workbook.
+     * @param {DefineNameModel} name - Define named range.
+     */
+    private addDefinedName;
+    /**
+
+     * Used to remove defined name from workbook.
+     * @param {string} name - Specifies the defined name.
+     * @param {string} scope - Specifies the scope of the define name.
+     */
+    private removeDefinedName;
+    private checkIsNameExist;
+    private getIndexFromNameColl;
+    private toFixed;
+    private aggregateComputation;
+}

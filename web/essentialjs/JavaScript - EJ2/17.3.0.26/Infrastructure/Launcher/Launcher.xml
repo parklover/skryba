@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Launcher Name="JavaScript">
+  <Editions>
+    <Edition Name="WEB (Essential JS 2)">
+      <Platforms>
+        <Platform Name="JavaScript">
+          <OnlineSamples>
+            <Link DisplayName="Run Online Samples" Location="http://ej2.syncfusion.com/javascript/demos/" Argument="" ToolTip="Click to view online samples" CanSourceBtnVisible="0" CreateNoWindow="false" IsAdminAccess="false" />
+          </OnlineSamples>
+          <OnlineDocumentation>
+            <Link DisplayName="User Guide" Location="https://ej2.syncfusion.com/javascript/documentation" Argument="" ToolTip="Click to view online User Guide" CanSourceBtnVisible="0" CreateNoWindow="false" IsAdminAccess="false" />
+          </OnlineDocumentation>
+          <Title TitleName="JavaScript (Essential JS 2)" />
+          <Features>
+            <Feature FeatureContent="Lightweight, modular, and touch-friendly JavaScript UI toolkit built using TypeScript" />
+          </Features>
+          <Image FileName="\Images\JSEJ2.png" />
+          <ReadMe>
+            <Link DisplayName="Read Me" Location="http://files2.syncfusion.com/Installs/v17.3.0.26/ReadMe/essential-js2/JavaScript.html" Argument="" ToolTip="Click to view Read Me" CanSourceBtnVisible="0" CreateNoWindow="false" IsAdminAccess="false" />
+          </ReadMe>
+          <ReleaseNotes>
+            <Link DisplayName="Release Notes" Location="http://ej2.syncfusion.com/javascript/documentation/release-notes/17.3.26" Argument="" ToolTip="Click to view Release Notes" CanSourceBtnVisible="0" CreateNoWindow="false" IsAdminAccess="false" />
+          </ReleaseNotes>
+          <WhatsNew>
+            <Link Location="http://www.syncfusion.com/products/whatsnew/essential-js2" CanSourceBtnVisible="0" CreateNoWindow="false" IsAdminAccess="false" />
+          </WhatsNew>
+          <InformationIconVisibility>Collapsed</InformationIconVisibility>
+          <InformationToolTipText />
+          <OnlineCR>
+            <Link DisplayName="Class Reference" Location="https://ej2.syncfusion.com/documentation/?lang=es5" Argument="" ToolTip="Click to view online class reference" CanSourceBtnVisible="0" CreateNoWindow="false" IsAdminAccess="false" />
+          </OnlineCR>
+          <UserGuidePdf>
+            <Link DisplayName="User Guide PDF" Location="http://files2.syncfusion.com/Installs/v17.3.0.26/essentialstudiopdf.zip" Argument="" ToolTip="Click to download the offline PDF User Guide documentation" CanSourceBtnVisible="0" CreateNoWindow="false" IsAdminAccess="false" />
+          </UserGuidePdf>
+        </Platform>
+        <Platform Name="Angular">
+          <OnlineSamples>
+            <Link DisplayName="Run Online Samples" Location="http://ej2.syncfusion.com/angular/demos/" Argument="" ToolTip="Click to view online samples" CanSourceBtnVisible="0" CreateNoWindow="false" IsAdminAccess="false" />
+          </OnlineSamples>
+          <OnlineDocumentation>
+            <Link DisplayName="User Guide" Location="https://ej2.syncfusion.com/angular/documentation/" Argument="" ToolTip="Click to view online User Guide" CanSourceBtnVisible="0" CreateNoWindow="false" IsAdminAccess="false" />
+          </OnlineDocumentation>
+          <Title TitleName="Angular (Essential JS 2)" />
+          <Features>
+            <Feature FeatureContent="Complete suite of native Angular components built based on Essential JS 2 TypeScript libraries" />
+          </Features>
+          <Image FileName="\Images\JSEJ2.png" />
+          <ReadMe>
+            <Link DisplayName="Read Me" Location="http://files2.syncfusion.com/Installs/v17.3.0.26/ReadMe/essential-js2/Angular.html" Argument="" ToolTip="Click to view Read Me" CanSourceBtnVisible="0" CreateNoWindow="false" IsAdminAccess="false" />
+          </ReadMe>
+          <ReleaseNotes>
+            <Link DisplayName="Release Notes" Location="http://ej2.syncfusion.com/angular/documentation/release-notes/17.3.26" Argument="" ToolTip="Click to view Release Notes" CanSourceBtnVisible="0" CreateNoWindow="false" IsAdminAccess="false" />
+          </ReleaseNotes>
+          <WhatsNew>
+            <Link Location="http://www.syncfusion.com/products/whatsnew/angular-js2" CanSourceBtnVisible="0" CreateNoWindow="false" IsAdminAccess="false" />
+          </WhatsNew>
+          <InformationIconVisibility>Collapsed</InformationIconVisibility>
+          <InformationToolTipText />
+          <OnlineCR>
+            <Link DisplayName="Class Reference" Location="" Argument="" ToolTip="Click to view online class reference" CanSourceBtnVisible="0" CreateNoWindow="false" IsAdminAccess="false" />
+          </OnlineCR>
+          <UserGuidePdf>
+            <Link DisplayName="User Guide PDF" Location="http://files2.syncfusion.com/Installs/v17.3.0.26/essentialstudiopdf.zip" Argument="" ToolTip="Click to download the offline PDF User Guide documentation" CanSourceBtnVisible="0" CreateNoWindow="false" IsAdminAccess="false" />
+          </UserGuidePdf>
+        </Platform>
+        <Platform Name="React">
+          <OnlineSamples>
+            <Link DisplayName="Run Online Samples" Location="http://ej2.syncfusion.com/react/demos/" Argument="" ToolTip="Click to view online samples" CanSourceBtnVisible="0" CreateNoWindow="false" IsAdminAccess="false" />
+          </OnlineSamples>
+          <OnlineDocumentation>
+            <Link DisplayName="User Guide" Location="https://ej2.syncfusion.com/react/documentation/" Argument="" ToolTip="Click to view online User Guide" CanSourceBtnVisible="0" CreateNoWindow="false" IsAdminAccess="false" />
+          </OnlineDocumentation>
+          <Title TitleName="React (Essential JS 2)" />
+          <Features>
+            <Feature FeatureContent="Complete suite of native React components built based on Essential JS 2 TypeScript libraries" />
+          </Features>
+          <Image FileName="\Images\JSEJ2.png" />
+          <ReadMe>
+            <Link DisplayName="Read Me" Location="http://files2.syncfusion.com/Installs/v17.3.0.26/ReadMe/essential-js2/React.html" Argument="" ToolTip="Click to view Read Me" CanSourceBtnVisible="0" CreateNoWindow="false" IsAdminAccess="false" />
+          </ReadMe>
+          <ReleaseNotes>
+            <Link DisplayName="Release Notes" Location="http://ej2.syncfusion.com/react/documentation/release-notes/17.3.26" Argument="" ToolTip="Click to view Release Notes" CanSourceBtnVisible="0" CreateNoWindow="false" IsAdminAccess="false" />
+          </ReleaseNotes>
+          <WhatsNew>
+            <Link Location="http://www.syncfusion.com/products/whatsnew/react-js2" CanSourceBtnVisible="0" CreateNoWindow="false" IsAdminAccess="false" />
+          </WhatsNew>
+          <InformationIconVisibility>Collapsed</InformationIconVisibility>
+          <InformationToolTipText />
+          <OnlineCR>
+            <Link DisplayName="Class Reference" Location="" Argument="" ToolTip="Click to view online class reference" CanSourceBtnVisible="0" CreateNoWindow="false" IsAdminAccess="false" />
+          </OnlineCR>
+          <UserGuidePdf>
+            <Link DisplayName="User Guide PDF" Location="http://files2.syncfusion.com/Installs/v17.3.0.26/essentialstudiopdf.zip" Argument="" ToolTip="Click to download the offline PDF User Guide documentation" CanSourceBtnVisible="0" CreateNoWindow="false" IsAdminAccess="false" />
+          </UserGuidePdf>
+        </Platform>
+        <Platform Name="TypeScript">
+          <OnlineSamples>
+            <Link DisplayName="Run Online Samples" Location="http://ej2.syncfusion.com/demos/" Argument="" ToolTip="Click to view online samples" CanSourceBtnVisible="0" CreateNoWindow="false" IsAdminAccess="false" />
+          </OnlineSamples>
+          <OnlineDocumentation>
+            <Link DisplayName="User Guide" Location="https://ej2.syncfusion.com/documentation/" Argument="" ToolTip="Click to view online User Guide" CanSourceBtnVisible="0" CreateNoWindow="false" IsAdminAccess="false" />
+          </OnlineDocumentation>
+          <Title TitleName="TypeScript (Essential JS 2)" />
+          <Features>
+            <Feature FeatureContent="Lightweight, modular, and touch-friendly JavaScript UI toolkit built using TypeScript" />
+          </Features>
+          <Image FileName="\Images\JSEJ2.png" />
+          <ReadMe>
+            <Link DisplayName="Read Me" Location="http://files2.syncfusion.com/Installs/v17.3.0.26/ReadMe/essential-js2/TypeScript.html" Argument="" ToolTip="Click to view Read Me" CanSourceBtnVisible="0" CreateNoWindow="false" IsAdminAccess="false" />
+          </ReadMe>
+          <ReleaseNotes>
+            <Link DisplayName="Release Notes" Location="http://ej2.syncfusion.com/documentation/release-notes/17.3.26" Argument="" ToolTip="Click to view Release Notes" CanSourceBtnVisible="0" CreateNoWindow="false" IsAdminAccess="false" />
+          </ReleaseNotes>
+          <WhatsNew>
+            <Link Location="http://www.syncfusion.com/products/whatsnew/essential-js2" CanSourceBtnVisible="0" CreateNoWindow="false" IsAdminAccess="false" />
+          </WhatsNew>
+          <InformationIconVisibility>Collapsed</InformationIconVisibility>
+          <InformationToolTipText />
+          <OnlineCR>
+            <Link DisplayName="Class Reference" Location="" Argument="" ToolTip="Click to view online class reference" CanSourceBtnVisible="0" CreateNoWindow="false" IsAdminAccess="false" />
+          </OnlineCR>
+          <UserGuidePdf>
+            <Link DisplayName="User Guide PDF" Location="http://files2.syncfusion.com/Installs/v17.3.0.26/essentialstudiopdf.zip" Argument="" ToolTip="Click to download the offline PDF User Guide documentation" CanSourceBtnVisible="0" CreateNoWindow="false" IsAdminAccess="false" />
+          </UserGuidePdf>
+        </Platform>
+        <Platform Name="Vue">
+          <OnlineSamples>
+            <Link DisplayName="Run Online Samples" Location="http://ej2.syncfusion.com/vue/demos/" Argument="" ToolTip="Click to view online samples" CanSourceBtnVisible="0" CreateNoWindow="false" IsAdminAccess="false" />
+          </OnlineSamples>
+          <OnlineDocumentation>
+            <Link DisplayName="User Guide" Location="https://ej2.syncfusion.com/vue/documentation/" Argument="" ToolTip="Click to view online User Guide" CanSourceBtnVisible="0" CreateNoWindow="false" IsAdminAccess="false" />
+          </OnlineDocumentation>
+          <Title TitleName="Vue (Essential JS 2)" />
+          <Features>
+            <Feature FeatureContent="Lightweight, modular, and touch-friendly JavaScript UI toolkit built using Vue" />
+          </Features>
+          <Image FileName="\Images\JSEJ2.png" />
+          <ReadMe>
+            <Link DisplayName="Read Me" Location="http://files2.syncfusion.com/Installs/v17.3.0.26/ReadMe/essential-js2/Vue.html" Argument="" ToolTip="Click to view Read Me" CanSourceBtnVisible="0" CreateNoWindow="false" IsAdminAccess="false" />
+          </ReadMe>
+          <ReleaseNotes>
+            <Link DisplayName="Release Notes" Location="http://ej2.syncfusion.com/vue/documentation/release-notes/17.3.26" Argument="" ToolTip="Click to view Release Notes" CanSourceBtnVisible="0" CreateNoWindow="false" IsAdminAccess="false" />
+          </ReleaseNotes>
+          <WhatsNew>
+            <Link Location="http://www.syncfusion.com/products/whatsnew/vue" CanSourceBtnVisible="0" CreateNoWindow="false" IsAdminAccess="false" />
+          </WhatsNew>
+          <InformationIconVisibility>Collapsed</InformationIconVisibility>
+          <InformationToolTipText />
+          <OnlineCR>
+            <Link DisplayName="Class Reference" Location="" Argument="" ToolTip="Click to view online class reference" CanSourceBtnVisible="0" CreateNoWindow="false" IsAdminAccess="false" />
+          </OnlineCR>
+          <UserGuidePdf>
+            <Link DisplayName="User Guide PDF" Location="http://files2.syncfusion.com/Installs/v17.3.0.26/essentialstudiopdf.zip" Argument="" ToolTip="Click to download the offline PDF User Guide documentation" CanSourceBtnVisible="0" CreateNoWindow="false" IsAdminAccess="false" />
+          </UserGuidePdf>
+        </Platform>
+      </Platforms>
+      <GBInformationIconVisibility>Collapsed</GBInformationIconVisibility>
+      <GBInformationToolTipText />
+    </Edition>
+    <Edition Name="Utilities">
+      <Platforms>
+        <Platform Name="License Management">
+          <Links>
+            <Link DisplayName="License Manager" Content="License Manager helps you to manage the license key information such as the validity of the Syncfusion license key used on your system." Location="C:\wamp64\www\inzynierka\inzynierka\web\essentialjs\JavaScript - EJ2\17.3.0.26\Infrastructure\License Manager\LicenseManager.exe" Argument="" ToolTip="Unlock an evaluation or full version, or check status of currently installed keys." CanSourceBtnVisible="0" CreateNoWindow="false" IsAdminAccess="true" />
+            <Link DisplayName="License Agreement" Content="The license agreement gives you information on the terms and conditions you will need to be aware of, and agree to, when you are ready to use our products." Location="C:\wamp64\www\inzynierka\inzynierka\web\essentialjs\JavaScript - EJ2\17.3.0.26\Infrastructure\License Agreement\syncfusion_license.pdf" Argument="" ToolTip="The license agreement describes the details of your licensed product" CanSourceBtnVisible="0" CreateNoWindow="false" IsAdminAccess="false" />
+          </Links>
+          <InformationIconVisibility>Collapsed</InformationIconVisibility>
+          <InformationToolTipText />
+        </Platform>
+      </Platforms>
+      <GBInformationIconVisibility>Collapsed</GBInformationIconVisibility>
+      <GBInformationToolTipText />
+    </Edition>
+    <Edition Name="Documentation" SelectedBackground="#FF574176">
+      <Platforms>
+        <Platform Name="UserGuideDocumentation">
+          <Links>
+            <Link DisplayName="User Guide" Location="https://ej2.syncfusion.com/javascript/documentation" Argument="" ToolTip="Click to view online User Guide" CanSourceBtnVisible="0" CreateNoWindow="false" IsAdminAccess="false" />
+            <Link DisplayName="User Guide PDF" Location="https://ej2.syncfusion.com/download/documentation/pdf/javascript.zip" Argument="" ToolTip="Click to download the offline PDF User Guide documentation" CanSourceBtnVisible="0" CreateNoWindow="false" IsAdminAccess="false" />
+          </Links>
+          <InformationIconVisibility>Collapsed</InformationIconVisibility>
+          <InformationToolTipText />
+        </Platform>
+        <Platform Name="CRDocumentation">
+          <Links>
+            <Link DisplayName="Class Reference" Location="https://ej2.syncfusion.com/documentation/?lang=es5" Argument="" ToolTip="Click to view online class reference" CanSourceBtnVisible="0" CreateNoWindow="false" IsAdminAccess="false" />
+          </Links>
+          <InformationIconVisibility>Collapsed</InformationIconVisibility>
+          <InformationToolTipText />
+        </Platform>
+      </Platforms>
+      <GBInformationIconVisibility>Collapsed</GBInformationIconVisibility>
+      <GBInformationToolTipText />
+    </Edition>
+  </Editions>
+</Launcher>

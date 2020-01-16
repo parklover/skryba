@@ -1,0 +1,32 @@
+{
+  "name": "@syncfusion/ej2-filemanager",
+  "version": "17.3.27",
+  "description": "Essential JS 2 FileManager Component",
+  "author": "Syncfusion Inc.",
+  "license": "SEE LICENSE IN license",
+  "main": "./dist/ej2-filemanager.umd.min.js",
+  "module": "./index.js",
+  "es2015": "./dist/es6/ej2-filemanager.es2015.js",
+  "dependencies": {
+    "@syncfusion/ej2-grids": "^17.3.27",
+    "@syncfusion/ej2-layouts": "^17.3.27",
+    "selenium-webdriver": "^4.0.0-alpha.1"
+  },
+  "devDependencies": {
+    "@types/chai": "^3.4.28",
+    "@types/jasmine": "2.8.9",
+    "@types/jasmine-ajax": "^3.1.27",
+    "@types/requirejs": "^2.1.26",
+    "protractor": "5.3.2"
+  },
+  "keywords": [
+    "ej2",
+    "syncfusion",
+    "ej2-filemanager"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/syncfusion/ej2-filemanager.git"
+  },
+  "typings": "index.d.ts"
+}

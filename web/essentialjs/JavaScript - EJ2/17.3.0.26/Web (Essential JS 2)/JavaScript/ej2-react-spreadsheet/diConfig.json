@@ -1,0 +1,547 @@
+{
+    "name": "Spreadsheet",
+    "description": "Spreadsheet Component",
+    "keywords": {
+        "common": ["ej2", "ej2-spreadsheet", "syncfusion", "web-components", "typescript", "javascript", "spreadsheet", "excel like spreadsheet", "data"],
+        "angular": ["angular", "ng-spreadsheet", "ej2-ng-spreadsheet", "angular-spreadsheet", "ej2-angular-spreadsheet", "angular spreadsheet", "angular excel"],
+        "react": ["react", "reactjs", "react-spreadsheet", "ej2-react-spreadsheet", "react spreadsheet", "react excel"],
+        "vue": ["vue", "vuejs", "vue-spreadsheet", "ej2-vue-spreadsheet", "vue spreadsheet", "vue excel"]
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/syncfusion/ej2-spreadsheet"
+    },
+    "eventInterfaces": [
+        "CellRenderEventArgs",
+        "BeforeSelectEventArgs",
+        "SelectEventArgs",
+        "BeforeOpenCloseMenuEventArgs",
+        "BeforeOpenEventArgs",
+        "MenuSelectArgs",
+        "CellEditEventArgs",
+        "CellSaveEventArgs",
+        "BeforeSaveEventArgs",
+        "SaveCompleteEventArgs",
+        "BeforeCellFormatArgs",
+        "OpenFailureArgs",
+        "FailureEventArgs"
+    ],
+    "components": [
+        {
+            "baseClass": "Spreadsheet",
+            "directoryName": "spreadsheet",
+            "type": "simple",
+            "defaultTag": "<div id='spreadsheet'></div>",
+            "preferredTag": "div",
+            "twoWays": [],
+            "dynamicModules": [
+                "Clipboard",
+                "Edit",
+                "KeyboardNavigation",
+                "KeyboardShortcut",
+                "Scroll",
+                "Selection",
+                "ContextMenu",
+                "FormulaBar",
+                "Ribbon",
+                "Save",
+                "Open",
+                "SheetTabs",
+                "DataBind",
+                "AllModule",
+                "BasicModule",
+                "CellFormat",
+                "NumberFormat",
+                "Formula"
+            ],
+            "diModuleFiles": [
+                {
+                    "fileName": "clipboard"
+                },
+                {
+                    "fileName": "edit"
+                },
+                {
+                    "fileName": "keyboard-navigation"
+                },
+                {
+                    "fileName": "keyboard-shortcut"
+                },
+                {
+                    "fileName": "scroll"
+                },
+                {
+                    "fileName": "selection"
+                },
+                {
+                    "fileName": "context-menu"
+                },
+                {
+                    "fileName": "formula-bar"
+                },
+                {
+                    "fileName": "ribbon"
+                },
+                {
+                    "fileName": "save"
+                },
+                {
+                    "fileName": "open"
+                },
+                {
+                    "fileName": "sheet-tabs"
+                },
+                {
+                    "fileName": "data-binding"
+                },
+                {
+                    "fileName": "all-modules"
+                },
+                {
+                    "fileName": "basic-modules"
+                },
+                {
+                    "fileName": "cell-format"
+                },
+                {
+                    "fileName": "number-format"
+                },
+                {
+                    "fileName": "formula"
+                }
+            ],
+            "comment": [
+                "/**",
+                " * `ejs-spreadsheet` represents the Angular Spreadsheet Component.",
+                " * ```html",
+                " * <ejs-spreadsheet></ejs-spreadsheet>",
+                " * ```",
+                " */"
+            ],
+            "reactComment": [
+                "/**",
+                " * `SpreadsheetComponent` represents the react Spreadsheet.",
+                " * ```tsx",
+                " * <SpreadsheetComponent />",
+                " * ```",
+                " */"
+            ],
+            "vueComment": [
+                "/**",
+                " * `ejs-spreadsheet` represents the VueJS Spreadsheet Component.",
+                " * ```vue",
+                " * <ejs-spreadsheet></ejs-spreadsheet>",
+                " * ```",
+                " */"
+            ],
+            "tagDirective": [
+                {
+                    "baseClass": "Sheet",
+                    "propertyName": "sheets",
+                    "directoryName": "spreadsheet",
+                    "directiveClassName": "Sheet",
+                    "arrayDirectiveClassName": "Sheets",
+                    "aspArrayClassName": "Sheet",
+                    "aspCollectionClassName": "Sheets",
+                    "aspDirectiveSelector": "e-sheet",
+                    "aspArrayDirectiveSelector": "e-sheets",
+                    "comment": [
+                        "/**",
+                        " * `e-sheet` directive represent a sheet of the Angular Spreadsheet.",
+                        " * It must be contained in a Spreadsheet component(`ejs-spreadsheet`).",
+                        " * ```html",
+                        " * <ejs-spreadsheet>",
+                        " *   <e-sheets>",
+                        " *    <e-sheet></e-sheet>",
+                        " *    <e-sheet></e-sheet>",
+                        " *   </e-sheets>",
+                        " * </ejs-spreadsheet>",
+                        " * ```",
+                        " */"
+                    ],
+                    "reactComment": [
+                        "/**",
+                        " * `SheetDirective` represent a sheet of the React Spreadsheet.",
+                        " * It must be contained in a Spreadsheet component(`SpreadsheetComponent`).",
+                        " * ```tsx",
+                        " * <SpreadsheetComponent>",
+                        " *   <SheetsDirective>",
+                        " *    <SheetDirective></SheetDirective>",
+                        " *    <SheetDirective></SheetDirective>",
+                        " *   </SheetsDirective>",
+                        " * </SpreadsheetComponent>",
+                        " * ```",
+                        " */"
+                    ],
+                    "vueComment": [
+                        "/**",
+                        " * `e-sheet` directive represent a sheet of the VueJS Spreadsheet.",
+                        " * It must be contained in a Spreadsheet component(`ejs-spreadsheet`).",
+                        " * ```vue",
+                        " * <ejs-spreadsheet>",
+                        " *   <e-sheets>",
+                        " *    <e-sheet></e-sheet>",
+                        " *    <e-sheet></e-sheet>",
+                        " *   </e-sheets>",
+                        " * </ejs-spreadsheet>",
+                        " * ```",
+                        " */"
+                    ],
+                    "complexDirective": [
+                        {
+                            "baseClass": "UsedRange",
+                            "propertyName": "usedRange",
+                            "aspSelectorName": "e-usedrange"
+                        }
+                    ],
+                    "tagDirective": [
+                        {
+                            "baseClass": "Row",
+                            "propertyName": "rows",
+                            "directoryName": "spreadsheet",
+                            "directiveClassName": "Row",
+                            "arrayDirectiveClassName": "Rows",
+                            "aspArrayClassName": "Row",
+                            "aspCollectionClassName": "Rows",
+                            "aspDirectiveSelector": "e-row",
+                            "aspArrayDirectiveSelector": "e-rows",
+                            "comment": [
+                                "/**",
+                                " * `e-row` directive represent a row of the Angular Spreadsheet.",
+                                " * It must be contained in a `e-sheet` directive.",
+                                " * ```html",
+                                " * <ejs-spreadsheet>",
+                                " *   <e-sheets>",
+                                " *    <e-sheet>",
+                                " *    <e-rows>",
+                                " *    <e-row></e-row>",
+                                " *    </e-rows>",
+                                " *    </e-sheet>",
+                                " *   </e-sheets>",
+                                " * </ejs-spreadsheet>",
+                                " * ```",
+                                " */"
+                            ],
+                            "reactComment": [
+                                "/**",
+                                " * `RowDirective` represent a row of the React Spreadsheet.",
+                                " * It must be contained in a `SheetDirective`.",
+                                " * ```tsx",
+                                " * <SpreadsheetComponent>",
+                                " *   <SheetsDirective>",
+                                " *    <SheetDirective>",
+                                " *    <RowsDirective>",
+                                " *    <RowDirective></RowDirective>",
+                                " *    </RowsDirective>",
+                                " *    </SheetDirective>",
+                                " *   </SheetsDirective>",
+                                " * </SpreadsheetComponent>",
+                                " * ```",
+                                " */"
+                            ],
+                            "vueComment": [
+                                "/**",
+                                " * `e-row` directive represent a row of the VueJS Spreadsheet.",
+                                " * It must be contained in a `e-sheet` directive.",
+                                " * ```vue",
+                                " * <ejs-spreadsheet>",
+                                " *   <e-sheets>",
+                                " *    <e-sheet>",
+                                " *    <e-rows>",
+                                " *    <e-row></e-row>",
+                                " *    </e-rows>",
+                                " *    </e-sheet>",
+                                " *   </e-sheets>",
+                                " * </ejs-spreadsheet>",
+                                " * ```",
+                                " */"
+                            ],
+                            "tagDirective": [
+                                {
+                                    "baseClass": "Cell",
+                                    "propertyName": "cells",
+                                    "directoryName": "spreadsheet",
+                                    "directiveClassName": "Cell",
+                                    "arrayDirectiveClassName": "Cells",
+                                    "aspArrayClassName": "Cell",
+                                    "aspCollectionClassName": "Cells",
+                                    "aspDirectiveSelector": "e-cell",
+                                    "aspArrayDirectiveSelector": "e-cells",
+                                    "complexDirective": [
+                                        {
+                                            "baseClass": "CellStyle",
+                                            "propertyName": "style",
+                                            "aspSelectorName": "e-style"
+                                        }
+                                    ],
+                                    "comment": [
+                                        "/**",
+                                        " * `e-cell` directive represent a cell of the Angular Spreadsheet.",
+                                        " * It must be contained in a `e-row` directive.",
+                                        " * ```html",
+                                        " * <ejs-spreadsheet>",
+                                        " *   <e-sheets>",
+                                        " *    <e-sheet>",
+                                        " *    <e-rows>",
+                                        " *    <e-row>",
+                                        " *    <e-cells>",
+                                        " *    <e-cell value='A1'></e-cell>",
+                                        " *    </e-cells>",
+                                        " *    </e-row>",
+                                        " *    </e-rows>",
+                                        " *    </e-sheet>",
+                                        " *   </e-sheets>",
+                                        " * </ejs-spreadsheet>",
+                                        " * ```",
+                                        " */"
+                                    ],
+                                    "reactComment": [
+                                        "/**",
+                                        " * `CellDirective` represent a cell of the React Spreadsheet.",
+                                        " * It must be contained in a `RowDirective`.",
+                                        " * ```tsx",
+                                        " * <SpreadsheetComponent>",
+                                        " *   <SheetsDirective>",
+                                        " *    <SheetDirective>",
+                                        " *    <RowsDirective>",
+                                        " *    <RowDirective>",
+                                        " *    <CellsDirective>",
+                                        " *    <CellDirective value='A1'></CellDirective>",
+                                        " *    </CellsDirective>",
+                                        " *    </RowDirective>",
+                                        " *    </RowsDirective>",
+                                        " *    </SheetDirective>",
+                                        " *   </SheetsDirective>",
+                                        " * </SpreadsheetComponent>",
+                                        " * ```",
+                                        " */"
+                                    ],
+                                    "vueComment": [
+                                        "/**",
+                                        " * `e-cell` directive represent a cell of the VueJS Spreadsheet.",
+                                        " * It must be contained in a `e-row` directive.",
+                                        " * ```vue",
+                                        " * <ejs-spreadsheet>",
+                                        " *   <e-sheets>",
+                                        " *    <e-sheet>",
+                                        " *    <e-rows>",
+                                        " *    <e-row>",
+                                        " *    <e-cells>",
+                                        " *    <e-cell value='A1'></e-cell>",
+                                        " *    </e-cells>",
+                                        " *    </e-row>",
+                                        " *    </e-rows>",
+                                        " *    </e-sheet>",
+                                        " *   </e-sheets>",
+                                        " * </ejs-spreadsheet>",
+                                        " * ```",
+                                        " */"
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "baseClass": "Column",
+                            "propertyName": "columns",
+                            "directoryName": "spreadsheet",
+                            "directiveClassName": "Column",
+                            "arrayDirectiveClassName": "Columns",
+                            "aspArrayClassName": "Column",
+                            "aspCollectionClassName": "Columns",
+                            "aspDirectiveSelector": "e-column",
+                            "aspArrayDirectiveSelector": "e-columns",
+                            "comment": [
+                                "/**",
+                                " * `e-column` directive represent a column of the Angular Spreadsheet.",
+                                " * It must be contained in a `e-sheet` directive.",
+                                " * ```html",
+                                " * <ejs-spreadsheet>",
+                                " *   <e-sheets>",
+                                " *    <e-sheet>",
+                                " *    <e-columns>",
+                                " *    <e-column width='100'></e-column>",
+                                " *    </e-columns>",
+                                " *    </e-sheet>",
+                                " *   </e-sheets>",
+                                " * </ejs-spreadsheet>",
+                                " * ```",
+                                " */"
+                            ],
+                            "reactComment": [
+                                "/**",
+                                " * `ColumnDirective` represent a column of the React Spreadsheet.",
+                                " * It must be contained in a `SheetDirective`.",
+                                " * ```tsx",
+                                " * <SpreadsheetComponent>",
+                                " *   <SheetsDirective>",
+                                " *    <SheetDirective>",
+                                " *    <ColumnsDirective>",
+                                " *    <ColumnDirective width='100'></ColumnDirective>",
+                                " *    </ColumnsDirective>",
+                                " *    </SheetDirective>",
+                                " *   </SheetsDirective>",
+                                " * </SpreadsheetComponent>",
+                                " * ```",
+                                " */"
+                            ],
+                            "vueComment": [
+                                "/**",
+                                " * `e-column` directive represent a column of the VueJS Spreadsheet.",
+                                " * It must be contained in a `e-sheet` directive.",
+                                " * ```vue",
+                                " * <ejs-spreadsheet>",
+                                " *   <e-sheets>",
+                                " *    <e-sheet>",
+                                " *    <e-columns>",
+                                " *    <e-column></e-column>",
+                                " *    </e-columns>",
+                                " *    </e-sheet>",
+                                " *   </e-sheets>",
+                                " * </ejs-spreadsheet>",
+                                " * ```",
+                                " */"
+                            ]
+                        },
+                        {
+                            "baseClass": "RangeSetting",
+                            "propertyName": "rangeSettings",
+                            "directoryName": "spreadsheet",
+                            "directiveClassName": "RangeSetting",
+                            "arrayDirectiveClassName": "RangeSettings",
+                            "aspArrayClassName": "RangeSetting",
+                            "aspCollectionClassName": "RangeSettings",
+                            "aspDirectiveSelector": "e-rangesetting",
+                            "aspArrayDirectiveSelector": "e-rangesettings",
+                            "comment": [
+                                "/**",
+                                " * `e-rangesetting` directive represent a range setting of the Angular Spreadsheet.",
+                                " * It must be contained in a `e-sheet` directive.",
+                                " * ```html",
+                                " * <ejs-spreadsheet>",
+                                " *   <e-sheets>",
+                                " *    <e-sheet>",
+                                " *    <e-rangesettings>",
+                                " *    <e-rangesetting [dataSource]='data'></e-rangesetting>",
+                                " *    </e-rangesettings>",
+                                " *    </e-sheet>",
+                                " *   </e-sheets>",
+                                " * </ejs-spreadsheet>",
+                                " * ```",
+                                " */"
+                            ],
+                            "reactComment": [
+                                "/**",
+                                " * `RangeSettingDirective` represent a range setting of the React Spreadsheet.",
+                                " * It must be contained in a `SheetDirective`.",
+                                " * ```tsx",
+                                " * <SpreadsheetComponent>",
+                                " *   <SheetsDirective>",
+                                " *    <SheetDirective>",
+                                " *    <RangeSettingsDirective>",
+                                " *    <RangeSettingDirective dataSource={data}></RangeSettingDirective>",
+                                " *    </RangeSettingsDirective>",
+                                " *    </SheetDirective>",
+                                " *   </SheetsDirective>",
+                                " * </SpreadsheetComponent>",
+                                " * ```",
+                                " */"
+                            ],
+                            "vueComment": [
+                                "/**",
+                                " * `e-rangesetting` directive represent a range setting of the VueJS Spreadsheet.",
+                                " * It must be contained in a `e-sheet` directive.",
+                                " * ```vue",
+                                " * <ejs-spreadsheet>",
+                                " *   <e-sheets>",
+                                " *    <e-sheet>",
+                                " *    <e-rangesettings>",
+                                " *    <e-rangesetting :dataSource='data'></e-rangesetting>",
+                                " *    </e-rangesettings>",
+                                " *    </e-sheet>",
+                                " *   </e-sheets>",
+                                " * </ejs-spreadsheet>",
+                                " * ```",
+                                " */"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "baseClass": "DefineName",
+                    "propertyName": "definedNames",
+                    "directoryName": "spreadsheet",
+                    "directiveClassName": "DefinedName",
+                    "arrayDirectiveClassName": "DefinedNames",
+                    "aspArrayClassName": "DefinedName",
+                    "aspCollectionClassName": "DefinedNames",
+                    "aspDirectiveSelector": "e-definedname",
+                    "aspArrayDirectiveSelector": "e-definednames",
+                    "comment": [
+                        "/**",
+                        " * `e-definedname` directive represent a defined name of the Angular Spreadsheet.",
+                        " * It must be contained in a Spreadsheet component(`ejs-spreadsheet`).",
+                        " * ```html",
+                        " * <ejs-spreadsheet>",
+                        " *   <e-definednames>",
+                        " *    <e-definedname></e-definedname>",
+                        " *    <e-definedname></e-definedname>",
+                        " *   </e-definednames>",
+                        " * </ejs-spreadsheet>",
+                        " * ```",
+                        " */"
+                    ],
+                    "reactComment": [
+                        "/**",
+                        " * `DefinedNameDirective` represent a defined name of the React Spreadsheet.",
+                        " * It must be contained in a Spreadsheet component(`SpreadsheetComponent`).",
+                        " * ```tsx",
+                        " * <SpreadsheetComponent>",
+                        " *   <DefinedNamesDirective>",
+                        " *    <DefinedNameDirective></DefinedNameDirective>",
+                        " *    <DefinedNameDirective></DefinedNameDirective>",
+                        " *   </DefinedNamesDirective>",
+                        " * </SpreadsheetComponent>",
+                        " * ```",
+                        " */"
+                    ],
+                    "vueComment": [
+                        "/**",
+                        " * `e-definedname` directive represent a defined name of the VueJS Spreadsheet.",
+                        " * It must be contained in a Spreadsheet component(`ejs-spreadsheet`).",
+                        " * ```vue",
+                        " * <ejs-spreadsheet>",
+                        " *   <e-definednames>",
+                        " *    <e-definedname></e-definedname>",
+                        " *    <e-definedname></e-definedname>",
+                        " *   </e-definednames>",
+                        " * </ejs-spreadsheet>",
+                        " * ```",
+                        " */"
+                    ]
+                }
+            ],
+            "complexDirective": [
+                {
+                    "baseClass": "SelectionSettings",
+                    "propertyName": "selectionSettings",
+                    "aspSelectorName": "e-selectionsettings"
+                },
+                {
+                    "baseClass": "ScrollSettings",
+                    "propertyName": "scrollSettings",
+                    "aspSelectorName": "e-scrollsettings"
+                },
+                {
+                    "baseClass": "CellStyle",
+                    "propertyName": "cellStyle",
+                    "aspSelectorName": "e-cellstyle",
+                    "aspClassName": "SpreadsheetCommonCellStyle",
+                    "aspBuilderName": "SpreadsheetCellStyle"
+                }
+            ],
+            "templateProperties": [
+                "template"
+            ]
+        }
+    ]
+}

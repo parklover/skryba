@@ -1,0 +1,153 @@
+{% use "bootstrap_3_layout.html.twig" %}
+
+
+{% block form_widget_simple -%}
+    {% if (type is not defined or type not in ['file', 'hidden']) and simple is not defined %}
+        {%- set attr = attr|merge({class: (attr.class|default('') ~ ' form-control')|trim}) -%}
+    {% elseif simple is defined and simple %}
+        {%- set attr = attr|merge({class: ""}) -%}
+        {% if compound %}
+            {{- block('form_widget_compound') -}}
+        {% else %}
+            {%- set type = type|default('text') -%}
+            <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+        {% endif %}
+    {% endif %}
+    {% if simple is not defined %}
+        {{- parent() -}}
+    {% endif %}
+{%- endblock form_widget_simple %}
+
+{% block choice_widget_collapsed -%}
+    {% if simple is not defined %}
+        {% set attr = attr|merge({class: (attr.class|default('') ~ ' form-control')|trim}) %}
+        {{- parent() -}}
+    {% else %}
+        {%- if required and placeholder is none and not placeholder_in_choices and not multiple and (attr.size is not defined or attr.size <= 1) -%}
+            {% set required = false %}
+        {%- endif -%}
+        <select {{ block('widget_attributes') }}{% if multiple %} multiple="multiple"{% endif %}>
+            {%- if placeholder is not none -%}
+                <option value=""{% if required and value is empty %} selected="selected"{% endif %}>{{ placeholder != '' ? (translation_domain is same as(false) ? placeholder : placeholder|trans({}, translation_domain)) }}</option>
+            {%- endif -%}
+            {%- if preferred_choices|length > 0 -%}
+                {% set options = preferred_choices %}
+                {{- block('choice_widget_options') -}}
+                {%- if choices|length > 0 and separator is not none -%}
+                    <option disabled="disabled">{{ separator }}</option>
+                {%- endif -%}
+            {%- endif -%}
+            {%- set options = choices -%}
+            {{- block('choice_widget_options') -}}
+        </select>
+    {% endif %}
+{%- endblock %}
+
+{% block form_start -%}
+    {% set attr = attr|merge({class: (attr.class|default('') ~ ' form-horizontal')|trim}) %}
+    {{- parent() -}}
+{%- endblock form_start %}
+
+{# Labels #}
+
+{% block form_label -%}
+    {% spaceless %}
+        {% if label is same as(false) %}
+            <div class="{{ block('form_label_class') }}"></div>
+        {% else %}
+            {% set label_attr = label_attr|merge({class: (label_attr.class|default('') ~ ' ' ~ block('form_label_class'))|trim}) %}
+            {{- parent() -}}
+        {% endif %}
+    {% endspaceless %}
+{%- endblock form_label %}
+
+{% block form_label_class -%}
+    col-sm-2
+{%- endblock form_label_class %}
+
+{# Rows #}
+
+{% block form_row -%}
+    <div class="form-group row{% if (not compound or force_error|default(false)) and not valid %} has-error{% endif %}">
+        {{ form_label(form, null,{'label_attr':label_attr is defined and label_attr|length>0?label_attr:{'class':'col-xs-12 col-md-4 form-control-label form-control-sm'} }) }}
+        <div class="col-md-8 col-xs-12">
+            {{ form_widget(form, attr) }}
+            {{ form_errors(form) }}
+        </div>
+    </div>
+{%- endblock form_row %}
+
+{% block checkbox_row -%}
+    {{- block('checkbox_radio_row') -}}
+{%- endblock checkbox_row %}
+
+{% block radio_row -%}
+    {{- block('checkbox_radio_row') -}}
+{%- endblock radio_row %}
+
+{% block checkbox_widget -%}
+    <input type="checkbox" {{ block('widget_attributes') }}{% if value is defined %} value="{{ value }}"{% endif %}{% if checked %} checked="checked"{% endif %}/>
+{%- endblock checkbox_widget %}
+
+{% block checkbox_label -%}
+    {{ form_label(form) }}
+{%- endblock checkbox_label %}
+
+{% block checkbox_radio_row -%}
+    {% spaceless %}{% set colmd = colmd is defined?colmd:3 %}
+        <div class="form-group row{% if not valid %} has-error{% endif %}">
+            {{ form_label(form, null,{'label_attr':{'class':'col-xs-12 col-md-'~colmd~' form-control-label'} }) }}
+            <div class="col-md-{{ 12-colmd }} col-xs-12 text-left">
+                <div class="checkbox-custom checkbox-primary">
+                    {{ form_widget(form) }}
+                    <label></label>
+                </div>
+            </div>
+        </div>
+    {% endspaceless %}
+{%- endblock checkbox_radio_row %}
+
+
+{% block submit_row -%}
+    {% spaceless %}
+        <div class="form-group">
+            <div class="{{ block('form_label_class') }}"></div>
+            <div class="{{ block('form_group_class') }}">
+                {{ form_widget(form) }}
+            </div>
+        </div>
+    {% endspaceless %}
+{% endblock submit_row %}
+
+{% block reset_row -%}
+    {% spaceless %}
+        <div class="form-group">
+            <div class="{{ block('form_label_class') }}"></div>
+            <div class="{{ block('form_group_class') }}">
+                {{ form_widget(form) }}
+            </div>
+        </div>
+    {% endspaceless %}
+{% endblock reset_row %}
+
+{% block form_group_class -%}
+    col-sm-10
+{%- endblock form_group_class %}
+
+{% block file_widget %}
+    <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+{% endblock %}
+
+{% block file4_widget %}
+
+    {{ form_widget(form.file,{attr:{'data-default-file':form.vars.data?path('file_show_on',{hash:form.vars.data.hash,name:form.vars.data.originalname}):''}}) }}
+    {{ form_widget(form.usun) }}
+    {% if not (noscript is defined and noscript) %}<script type="text/javascript">$(function () {$('#{{ form.file.vars.id }}').on('dropify.afterClear', function(e, e2){$('#{{ form.usun.vars.id }}').val('DELETED');});});</script>{% endif %}
+{% endblock %}
+
+{%- block number_widget -%}
+    {%- set type = type|default('number') -%}
+    {%- set value = value matches '/^[-+]?[0-9]*\\,?[0-9]+$/'?value|replace({',':'.'}):value -%}
+
+    {{ block('form_widget_simple') }}
+{%- endblock number_widget -%}

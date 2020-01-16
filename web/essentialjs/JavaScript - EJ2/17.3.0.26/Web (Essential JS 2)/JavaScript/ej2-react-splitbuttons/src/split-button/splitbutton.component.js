@@ -1,0 +1,44 @@
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    }
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+import * as React from 'react';
+import { SplitButton } from '@syncfusion/ej2-splitbuttons';
+import { ComponentBase, applyMixins } from '@syncfusion/ej2-react-base';
+/**
+ * `SplitButtonComponent` represents the react SplitButton Component.
+ * ```ts
+ * <SplitButtonComponent content='Split Button'></SplitButtonComponent>
+ * ```
+ */
+var SplitButtonComponent = /** @class */ (function (_super) {
+    __extends(SplitButtonComponent, _super);
+    function SplitButtonComponent(props) {
+        var _this = _super.call(this, props) || this;
+        _this.initRenderCalled = false;
+        _this.checkInjectedModules = false;
+        _this.immediateRender = true;
+        return _this;
+    }
+    SplitButtonComponent.prototype.render = function () {
+        if ((this.element && !this.initRenderCalled) || this.refreshing) {
+            _super.prototype.render.call(this);
+            this.initRenderCalled = true;
+        }
+        else {
+            return React.createElement('button', this.getDefaultAttributes(), this.props.children);
+        }
+    };
+    return SplitButtonComponent;
+}(SplitButton));
+export { SplitButtonComponent };
+applyMixins(SplitButtonComponent, [ComponentBase, React.PureComponent]);
