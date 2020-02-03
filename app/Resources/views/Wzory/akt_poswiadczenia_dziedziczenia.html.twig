@@ -15,27 +15,50 @@
 </p><p><span style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"
              data-mce-style="font-family: arial, helvetica, sans-serif; font-size: 18pt;">
     {#Dnia <u>dwudziestego piątego stycznia dwa tysiące dziewiętnastego (25.I.2019)(data kiedy ma być dokonana czynność)</u>&nbsp;roku <strong>ja</strong>#}
-    Dnia <u>{{ dataCzynnosciSlownie }} ({{ form.dataCzynnosci | date('d.m.Y') }})</u>&nbsp;roku <strong>ja</strong>
+    Dnia <u>{{ form.dataCzynnosciSlownie }} ({{ form.dataCzynnosci | date('d.m.Y') }})</u>&nbsp;roku <strong>ja</strong>
     <strong>notariusz Ewa Ludwiczak-Winter </strong>prowadząca Kancelarię Notarialną w Szamotułach przy ulicy Plac Sienkiewicza numer 8 na podstawie art. 95a
     ustawy z dnia 14 lutego 1991 roku Prawo o notariacie po sporządzeniu w dniu dzisiejszym Protokołu &nbsp;dziedziczenia &nbsp;
-    repertorium &nbsp;A &nbsp;numer……/2019 &nbsp;tutejszej Kancelarii,--------------</span>
+    repertorium &nbsp;A &nbsp;numer …… {{ form.numerRepertorium }}  /2019 &nbsp;tutejszej Kancelarii,--------------</span>
 </p><p style="padding-left: 120px;" data-mce-style="padding-left: 120px;"><span
         style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"
         data-mce-style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"><strong>poświadczam, że:------------------------------------</strong></span>
 </p><p><span style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"
-             data-mce-style="font-family: arial, helvetica, sans-serif; font-size: 18pt;">spadek po Imię (imiona) nazwisko {{ form.zgoniarz.imie }} {{ form.zgoniarz.nazwisko }}
+             data-mce-style="font-family: arial, helvetica, sans-serif; font-size: 18pt;">spadek po Imię (imiona) nazwisko {{ form.zgoniarz.getImiona }} {{ form.zgoniarz.nazwisko }}
         spadkodawcy, {% if form.zgoniarz.plec == 1 %}córce{% else %}synu{% endif %} imię ojca {{ form.zgoniarz.imieOjca }} i matki {{ form.zgoniarz.imieMatki }}
     spadkodawcy(odmiana kogo?czego?), <u>{% if form.zgoniarz.plec == 1 %}zmarłej{% else %}zmarłym{% endif %}</u> dnia <u>dwudziestego trzeciego lutego dwa tysiące osiemnastego (23.II.2018)
-        roku w Szamotułach(data i miejsce zgonu</u>), ostatnio stale <u>zamieszkałym/zamieszkałej (odmiana ze względu na płeć</u>) w <u>Szamotułach przy ulicy Obornickiej
-        numer 5B/19, (64-500 Szamotuły)(ostatnie miejsce zamieszkania spadkodawcy)</u>
-    , (odpis skrócony aktu zgonu wydany Urząd Stanu Cywilnego w <u>miejsce wydania dokumentu(odmiana: gdzie? Np. w Szamotułach)</u> zgodny z treścią aktu zgonu o oznaczeniu
-    <u>3024073/00/AZ/2018/312123 (numer dokumentu)</u>) z mocy ustawy dziedziczą: jego <u>syn/córka/mąż/żona/brat/kuzyn/babcia/dziadek Imię (imiona) nazwisko kolejnego spadkobiercy,
-        syn imię ojca i matki kolejnego spadkodawcy, data i miejsce urodzenia kolejnego spadkobiercy,</u> jego </span><span
-        style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"
-        data-mce-style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"><u>syn/córka/mąż/żona/brat/kuzyn/babcia/dziadek Imię (imiona) nazwisko kolejnego spadkobiercy,
+        roku w Szamotułach(data i miejsce zgonu</u> {{ form.zgoniarz.dataSmierci.getDataSmierciSlownie }}), ostatnio stale <u>zamieszkałym/zamieszkałej (odmiana ze względu na płeć</u>)
+        {% if form.zgoniarz.plec == 1 %}zamieszkałej{% else %}zamieszkałym{% endif %} w <u>Szamotułach przy ulicy Obornickiej
+        numer 5B/19, (64-500 Szamotuły)(ostatnie miejsce zamieszkania spadkodawcy) {{ form.zgoniarz.miejsceZamieszkania }}</u>
+    , (odpis skrócony aktu zgonu wydany Urząd Stanu Cywilnego w <u>miejsce wydania dokumentu(odmiana: gdzie? Np. w Szamotułach)</u>{{ form.miejsceWydaniaAktuZgonu }}
+        zgodny z treścią aktu zgonu o oznaczeniu
+    <u>3024073/00/AZ/2018/312123 (numer dokumentu) {{ form.numerAktuZgonu }}</u>) z mocy ustawy {% if spadkobiercy|length == 1 %} dziedziczy {% else %} dziedziczą{% endif %}:
+
+        jego <u>syn/córka/mąż/żona/brat/kuzyn/babcia/dziadek Imię (imiona) nazwisko kolejnego spadkobiercy,
+        syn imię ojca i matki kolejnego spadkodawcy, data i miejsce urodzenia kolejnego spadkobiercy,
+
+        </u> jego </span><span style="font-family: arial, helvetica, sans-serif; font-size: 18pt;" data-mce-style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"><u>
+            syn/córka/mąż/żona/brat/kuzyn/babcia/dziadek Imię (imiona) nazwisko kolejnego spadkobiercy,
     syn imię ojca i matki kolejnego spadkodawcy, data i miejsce urodzenia kolejnego spadkobiercy, </u>oraz jego <u>syn/córka/mąż/żona/brat/kuzyn/babcia/dziadek Imię (imiona)
-    nazwisko kolejnego spadkobiercy, syn imię ojca i matki kolejnego spadkodawcy, data i miejsce urodzenia kolejnego spadkobiercy,</u> - po 1/3 (jednej / trzeciej)
-    (ile spadkobierców tyle części) części każde z nich/w całości (jeśli jest tylko jeden spadkobierca).---</span>
+    nazwisko kolejnego spadkobiercy, syn imię ojca i matki kolejnego spadkodawcy, data i miejsce urodzenia kolejnego spadkobiercy,</u>
+
+        {% foreach spadkobierca in form.spadkobiercy %}
+            {% if loop.last %} oraz {% endif %}
+                    jego {{ form.spadkobierca.stopienPokrewienstwa }} {{ form.spadkobierca.getImiona }} {{ form.spadkobierca.nazwisko }},
+                    {% if form.spadkobierca.plec == 1 %} córka {% else %} syn {% endif %}
+            {{ form.spadkobierca.imieOjca }} i matki {{ form.spadkobierca.imieMatki }} {% if form.spadkobierca.plec == 1 %} urodzona {% else %} urodzony {% endif %} {{ form.spadkobierca.getDataUrodzeniaSlownie }}
+                    w {{ form.spadkobierca.miejsceUrodzenia }}
+            {% if not loop.last %}, {% endif %}
+        {% endfor %}
+
+        - po 1/3 (jednej / trzeciej)
+    (ile spadkobierców tyle części) części każde z nich/w całości (jeśli jest tylko jeden spadkobierca).---
+
+        - {% if spadkobiercy|length == 1 %}
+            w całości
+          {% else %}
+            po 1 / {{ spadkobiercy|length }}
+
+    </span>
 </p>
 <ul>
     <li><span style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"
