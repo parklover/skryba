@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Form\AktDziedziczeniaType;
 use AppBundle\Form\DokumentType;
 use PhpOffice\PhpWord\IOFactory;
 use PhpOffice\PhpWord\TemplateProcessor;
@@ -17,24 +18,28 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/", name="homepage")
+     * @Route("/panel/", name="panel")
      */
     public function indexAction(Request $request)
     {
 
 //        $dokument = new
-        $form = $this->createForm(DokumentType::class);
+        $form = $this->createForm(AktDziedziczeniaType::class);
         $dupa = 'dupa123';
+        $numerSprawy = 1;
 
         $form->handleRequest($request);
         if($form->isValid()){
 
             $dataSlownie = $this->dataSlownie($form->getData()['dataCzynnosci']);
+            $dataZgonuSlownie = $this->dataSlownie($form->getData()['dataZgonu']);
 
             $html = $this->render('Wzory/akt_poswiadczenia_dziedziczenia.html.twig', [
                 'dupa' => $dupa,
                 'form' => $form->getData(),
-                'dataCzynnosciSlownie' => $dataSlownie
+                'dataCzynnosciSlownie' => $dataSlownie,
+                'dataZgonuSlownie' => $dataZgonuSlownie,
+                'numerSprawy' => $numerSprawy
             ]);
 
             dump($html);
@@ -55,7 +60,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/edit/", name="edit")
+     * @Route("/panel/edit/", name="edit")
      */
     public function editAction(Request $request)
     {
