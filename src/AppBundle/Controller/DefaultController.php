@@ -25,16 +25,20 @@ class DefaultController extends Controller
 //        $dokument = new
         $form = $this->createForm(DokumentType::class);
         $dupa = 'dupa123';
+        $numerSprawy = 1;
 
         $form->handleRequest($request);
         if($form->isValid()){
 
             $dataSlownie = $this->dataSlownie($form->getData()['dataCzynnosci']);
+            $dataZgonuSlownie = $this->dataSlownie($form->getData()['dataZgonu']);
 
             $html = $this->render('Wzory/akt_poswiadczenia_dziedziczenia.html.twig', [
                 'dupa' => $dupa,
                 'form' => $form->getData(),
-                'dataCzynnosciSlownie' => $dataSlownie
+                'dataCzynnosciSlownie' => $dataSlownie,
+                'dataZgonuSlownie' => $dataZgonuSlownie,
+                'numerSprawy' => $numerSprawy
             ]);
 
             dump($html);

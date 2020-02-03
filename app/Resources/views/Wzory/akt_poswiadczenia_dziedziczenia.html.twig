@@ -6,7 +6,7 @@
 <p>
     <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
 </p>
-<p><strong>Repertorium A numer &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ form.miejsceZgonu }}/2019&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
+<p><strong>Repertorium A numer &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ numerSprawy }}/2019&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
 </p>
 <p><br></p><h4 style="text-align: center;" data-mce-style="text-align: center;"><span
         style="font-family: arial, helvetica, sans-serif; font-size: 36pt;"
@@ -18,24 +18,40 @@
     Dnia <u>{{ dataCzynnosciSlownie }} ({{ form.dataCzynnosci | date('d.m.Y') }})</u>&nbsp;roku <strong>ja</strong>
     <strong>notariusz Ewa Ludwiczak-Winter </strong>prowadząca Kancelarię Notarialną w Szamotułach przy ulicy Plac Sienkiewicza numer 8 na podstawie art. 95a
     ustawy z dnia 14 lutego 1991 roku Prawo o notariacie po sporządzeniu w dniu dzisiejszym Protokołu &nbsp;dziedziczenia &nbsp;
-    repertorium &nbsp;A &nbsp;numer……/2019 &nbsp;tutejszej Kancelarii,--------------</span>
+    repertorium &nbsp;A &nbsp;numer {{ numerSprawy }}/2019 &nbsp;tutejszej Kancelarii, </span>
 </p><p style="padding-left: 120px;" data-mce-style="padding-left: 120px;"><span
         style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"
-        data-mce-style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"><strong>poświadczam, że:------------------------------------</strong></span>
+        data-mce-style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"><strong>poświadczam, że:</strong></span>
 </p><p><span style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"
              data-mce-style="font-family: arial, helvetica, sans-serif; font-size: 18pt;">spadek po Imię (imiona) nazwisko {{ form.zgoniarz.imie }} {{ form.zgoniarz.nazwisko }}
         spadkodawcy, {% if form.zgoniarz.plec == 1 %}córce{% else %}synu{% endif %} imię ojca {{ form.zgoniarz.imieOjca }} i matki {{ form.zgoniarz.imieMatki }}
-    spadkodawcy(odmiana kogo?czego?), <u>{% if form.zgoniarz.plec == 1 %}zmarłej{% else %}zmarłym{% endif %}</u> dnia <u>dwudziestego trzeciego lutego dwa tysiące osiemnastego (23.II.2018)
-        roku w Szamotułach(data i miejsce zgonu</u>), ostatnio stale <u>zamieszkałym/zamieszkałej (odmiana ze względu na płeć</u>) w <u>Szamotułach przy ulicy Obornickiej
+    spadkodawcy(odmiana kogo?czego?), <u>{% if form.zgoniarz.plec == 1 %}zmarłej{% else %}zmarłym{% endif %}</u> dnia <u>
+            dwudziestego trzeciego lutego dwa tysiące osiemnastego (23.II.2018) roku w Szamotułach(data i miejsce zgonu</u>),
+        {{ dataZgonuSlownie }}
+        ostatnio stale{% if form.zgoniarz.plec == 1 %}zamieszkałej{% else %}zamieszkałym{% endif %} w <u> ( {{ form.miejsceZamieszkania }} ) Szamotułach przy ulicy Obornickiej
         numer 5B/19, (64-500 Szamotuły)(ostatnie miejsce zamieszkania spadkodawcy)</u>
-    , (odpis skrócony aktu zgonu wydany Urząd Stanu Cywilnego w <u>miejsce wydania dokumentu(odmiana: gdzie? Np. w Szamotułach)</u> zgodny z treścią aktu zgonu o oznaczeniu
-    <u>3024073/00/AZ/2018/312123 (numer dokumentu)</u>) z mocy ustawy dziedziczą: jego <u>syn/córka/mąż/żona/brat/kuzyn/babcia/dziadek Imię (imiona) nazwisko kolejnego spadkobiercy,
-        syn imię ojca i matki kolejnego spadkodawcy, data i miejsce urodzenia kolejnego spadkobiercy,</u> jego </span><span
-        style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"
-        data-mce-style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"><u>syn/córka/mąż/żona/brat/kuzyn/babcia/dziadek Imię (imiona) nazwisko kolejnego spadkobiercy,
-    syn imię ojca i matki kolejnego spadkodawcy, data i miejsce urodzenia kolejnego spadkobiercy, </u>oraz jego <u>syn/córka/mąż/żona/brat/kuzyn/babcia/dziadek Imię (imiona)
-    nazwisko kolejnego spadkobiercy, syn imię ojca i matki kolejnego spadkodawcy, data i miejsce urodzenia kolejnego spadkobiercy,</u> - po 1/3 (jednej / trzeciej)
+    , (odpis skrócony aktu zgonu wydany Urząd Stanu Cywilnego w <u>miejsce wydania dokumentu(odmiana: gdzie? Np. w Szamotułach)</u> {{ form.miejsceWydaniaAktuZgonu }} zgodny z treścią aktu zgonu o oznaczeniu
+    <u>3024073/00/AZ/2018/312123 (numer dokumentu)</u>) {{ form.numerAktuZgonu }} z mocy ustawy dziedziczą:
+
+        jego <u>syn/córka/mąż/żona/brat/kuzyn/babcia/dziadek Imię (imiona) nazwisko kolejnego spadkobiercy,
+        syn imię ojca i matki kolejnego spadkodawcy, data i miejsce urodzenia kolejnego spadkobiercy,</u>
+
+        jego </span><span style="font-family: arial, helvetica, sans-serif; font-size: 18pt;" data-mce-style="font-family: arial, helvetica, sans-serif; font-size: 18pt;">
+        <u>syn/córka/mąż/żona/brat/kuzyn/babcia/dziadek Imię (imiona) nazwisko kolejnego spadkobiercy,
+        syn imię ojca i matki kolejnego spadkodawcy, data i miejsce urodzenia kolejnego spadkobiercy, </u>oraz
+
+        jego <u>syn/córka/mąż/żona/brat/kuzyn/babcia/dziadek Imię (imiona)
+    nazwisko kolejnego spadkobiercy, syn imię ojca i matki kolejnego spadkodawcy, data i miejsce urodzenia kolejnego spadkobiercy,</u>
+
+        {% foreach spadkobierca in form.spadkobiercy %}
+
+        jego
+
+        {% endfor %}
+
+        - po 1/3 (jednej / trzeciej)
     (ile spadkobierców tyle części) części każde z nich/w całości (jeśli jest tylko jeden spadkobierca).---</span>
+
 </p>
 <ul>
     <li><span style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"
