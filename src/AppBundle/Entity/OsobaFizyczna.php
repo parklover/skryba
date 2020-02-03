@@ -33,6 +33,11 @@ class OsobaFizyczna
     /**
      * @ORM\Column(type="text")
      */
+    protected $drugieImie = "";
+
+    /**
+     * @ORM\Column(type="text")
+     */
     protected $nazwisko;
 
     /**
@@ -61,9 +66,19 @@ class OsobaFizyczna
     protected $numerDowodu;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\Column(type="datetime")
      */
     protected $dataWaznosciDowodu;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    protected $dataUrodzenia;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    protected $miejsceUrodzenia;
 
     /**
      * @ORM\Column(type="text")
@@ -74,6 +89,26 @@ class OsobaFizyczna
      * @ORM\Column(type="integer")
      */
     protected $plec;
+
+    /**
+     * One Product has Many Features.
+     * @ORM\OneToMany(targetEntity="AktDziedziczenia", mappedBy="zgoniarz")
+     */
+    private $aktDziedziczenia;
+
+    /**
+     * Many Groups have Many Users.
+     * @ORM\ManyToMany(targetEntity="AktDziedziczenia", mappedBy="spadkobiercy")
+     */
+    private $aktyDziedziczeniaRodziny;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->aktyDziedziczeniaRodziny = new ArrayCollection();
+    }
 
     /**
      * @return mixed
@@ -105,6 +140,30 @@ class OsobaFizyczna
     public function setImie($imie)
     {
         $this->imie = $imie;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDrugieImie()
+    {
+        return $this->drugieImie;
+    }
+
+    /**
+     * @param mixed $drugieImie
+     */
+    public function setDrugieImie($drugieImie)
+    {
+        $this->drugieImie = $drugieImie;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImiona()
+    {
+        return $this->imie . " " . $this->drugieImie;
     }
 
     /**
@@ -257,6 +316,121 @@ class OsobaFizyczna
     public function getNazwiskoImie()
     {
         return $this->nazwisko." ".$this->imie;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDataWaznosciDowoduSlownie(){
+        return $this->dataSlownie($this->dataWaznosciDowodu);
+    }
+
+    function dataSlownie(\DateTime $data){
+        $dzien = $data->format('d');
+        $dzientygodnia = $data->format('l');
+        $miesiac = $data->format('n');
+        $rok = $data->format('Y');
+
+        $miesiac_PL = array(1 => 'stycznia', 2 => 'lutego', 3 => 'marca',
+            4 => 'kwietnia', 5 => 'maja', 6 => 'czerwca', 7 => 'lipca',
+            8 => 'sierpnia', 9 => 'września', 10=> 'października',
+            11 => 'listopada', 12 => 'grudnia');
+
+        $dzientygodnia_PL = array('Monday' => 'poniedziałek',
+            'Tuesday' => 'wtorek', 'Wednesday' => 'środę',
+            'Thursday' => 'czwartek', 'Friday' => 'piątek',
+            'Saturday' => 'sobotę', 'Sunday' => 'niedzielę');
+
+//        return "" . $dzientygodnia_PL[$dzientygodnia].", ".$dzien." ".$miesiac_PL[$miesiac]." ".$rok."";
+        return $dzien." ".$miesiac_PL[$miesiac]." ".$rok."";
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAktDziedziczenia()
+    {
+        return $this->aktDziedziczenia;
+    }
+
+    /**
+     * @param mixed $aktDziedziczenia
+     */
+    public function setAktDziedziczenia($aktDziedziczenia)
+    {
+        $this->aktDziedziczenia = $aktDziedziczenia;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAktyDziedziczeniaRodziny()
+    {
+        return $this->aktyDziedziczeniaRodziny;
+    }
+
+    /**
+     * Add aktyDziedziczeniaRodziny
+     *
+     * @param \AppBundle\Entity\AktDziedziczenia $aktDziedziczenia
+     *
+     * @return OsobaFizyczna
+     */
+    public function addAktyDziedziczeniaRodziny(\AppBundle\Entity\AktDziedziczenia $aktDziedziczenia)
+    {
+        $this->aktyDziedziczeniaRodziny[] = $aktDziedziczenia;
+
+        return $this;
+    }
+
+    /**
+     * Remove aktyDziedziczeniaRodziny
+     *
+     * @param \AppBundle\Entity\AktDziedziczenia $aktDziedziczenia
+     */
+    public function removeAktyDziedziczeniaRodziny(\AppBundle\Entity\AktDziedziczenia $aktDziedziczenia)
+    {
+        $this->aktyDziedziczeniaRodziny->removeElement($aktDziedziczenia);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDataUrodzenia()
+    {
+        return $this->dataUrodzenia;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDataUrodzeniaSlownie()
+    {
+        return $this->dataSlownie($this->dataUrodzenia);
+    }
+
+    /**
+     * @param mixed $dataUrodzenia
+     */
+    public function setDataUrodzenia($dataUrodzenia)
+    {
+        $this->dataUrodzenia = $dataUrodzenia;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMiejsceUrodzenia()
+    {
+        return $this->miejsceUrodzenia;
+    }
+
+    /**
+     * @param mixed $miejsceUrodzenia
+     */
+    public function setMiejsceUrodzenia($miejsceUrodzenia)
+    {
+        $this->miejsceUrodzenia = $miejsceUrodzenia;
     }
 
 

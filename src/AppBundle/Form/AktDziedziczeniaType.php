@@ -1,6 +1,7 @@
 <?php
 namespace AppBundle\Form;
 
+use AppBundle\Entity\AktDziedziczenia;
 use AppBundle\Entity\OsobaFizyczna;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityRepository;
@@ -17,7 +18,7 @@ use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class DokumentType extends AbstractType
+class AktDziedziczeniaType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -106,6 +107,7 @@ class DokumentType extends AbstractType
     {
         $resolver->setDefaults(array(
             'translation_domain' => 'form_label',
+            'data-class' => AktDziedziczenia::class
         ));
     }
 
