@@ -1,24 +1,45 @@
-# To get started with security, check out the documentation:
-# https://symfony.com/doc/current/security.html
+# app/config/security.yml
 security:
+    encoders:
+        FOS\UserBundle\Model\UserInterface: bcrypt
 
-    # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
+    role_hierarchy:
+        ROLE_PANEL:                                     ROLE_USER
+        ROLE_ADMIN:                                     [ROLE_ZAMOWIENIA_FALK, ROLE_DNI_SWIATECZNE, ROLE_OP_OPLACANIE, ROLE_ZAMOWIENIA_LSHOP_RECZNIE, ROLE_KOLORY, ROLE_ZMIANA_TERMINU_REALIZACJI, ROLE_DOSTAWY, ROLE_PRODUKCJA, ROLE_LOGISTYK, ROLE_KONTROLA_JAKOSCI, ROLE_KOORDYNATOR_JAKOSCI, ROLE_BOK, ROLE_AKCEPTACJA,ROLE_OP_AKCEPTACJA,ROLE_OG_AKCEPTACJA,ROLE_MAGAZYN_KIEROWNIK,ROLE_KONSULTANT_LSHOP,ROLE_ZAMOWIENIA,ROLE_KIEROWNIK_LSHOP,ROLE_KLIENCI,ROLE_LOGI,ROLE_KODY_RABATOWE,ROLE_DOKUMENTY,ROLE_STATYSTYKI, ROLE_OG_ADMIN, ROLE_KIEROWNIK_BOK]
+        ROLE_SUPER_ADMIN:                               [ROLE_ZAMOWIENIE_WEWNETRZNE, ROLE_ZAMOWIENIE_EDYCJA_4EVER, ROLE_UZYTKOWNICY, ROLE_ADMIN]
+
     providers:
-        in_memory:
-            memory: ~
+        fos_userbundle:
+            id: fos_user.user_provider.username
 
     firewalls:
-        # disables authentication for assets and the profiler, adapt it according to your needs
-        dev:
-            pattern: ^/(_(profiler|wdt)|css|images|js)/
-            security: false
-
-        main:
+        admin:
+            pattern: ^/panel
             anonymous: ~
-            # activate different ways to authenticate
+            form_login:
+                provider: fos_userbundle
+                csrf_token_generator: security.csrf.token_manager
+                check_path: /panel/login_check
+                login_path: /panel/login
+                # if you are using Symfony < 2.8, use the following config instead:
+                # csrf_provider: form.csrf_provider
 
-            # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
-            #http_basic: ~
+            logout:
+                path:   /panel/logout
+                target: panel
+                invalidate_session: false
+            remember_me:
+                secret:      "%secret%"
+                lifetime: 31536000
+                path:     /panel
+                name: ros_panel_rememberme
+    access_control:
+        - { path: ^/panel/login, role: IS_AUTHENTICATED_ANONYMOUSLY}
+        - { path: ^/panel, role: [ROLE_PANEL, ROLE_OG_PANEL]}
+        - { path: ^/profil/,  role: ROLE_USER }
+        - { path: ^/historia/,  role: ROLE_USER }
+        - { path: ^/,  role: IS_AUTHENTICATED_ANONYMOUSLY }
+#        - { path: ^/panel/login, role: IS_AUTHENTICATED_ANONYMOUSLY}
 
-            # https://symfony.com/doc/current/security/form_login_setup.html
-            #form_login: ~
+
+
