@@ -2,8 +2,12 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Kancelaria;
+use AppBundle\Entity\Sprawa;
+use AppBundle\Entity\User;
 use AppBundle\Form\AktDziedziczeniaType;
 use AppBundle\Form\DokumentType;
+use AppBundle\Form\KancelariaType;
 use PhpOffice\PhpWord\IOFactory;
 use PhpOffice\PhpWord\TemplateProcessor;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -15,48 +19,42 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
-class DefaultController extends Controller
+class PanelController extends Controller
 {
     /**
-     * @Route("/panel/", name="panel")
+     * @Route("/panel/", name="lista_spraw")
      */
-    public function indexAction(Request $request)
+    public function listaSprawAction(Request $request)
     {
 
-//        $dokument = new
-        $form = $this->createForm(AktDziedziczeniaType::class);
-        $dupa = 'dupa123';
-        $numerSprawy = 1;
+        // replace this example code with whatever you need
+        return $this->render('default/listaSpraw.html.twig', [
+            'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
+        ]);
+    }
 
-        $form->handleRequest($request);
-        if($form->isValid()){
+    /**
+     * @Route("/panel/ajax/lista_spraw/", name="lista_spraw_ajax")
+     */
+    public function listaSprawAjaxAction(Request $request)
+    {
+        $out = [];
+        $sprawy = $this->getUser()->getKancelaria()->getSprawy();
 
-            $dataSlownie = $this->dataSlownie($form->getData()['dataCzynnosci']);
-            $dataZgonuSlownie = $this->dataSlownie($form->getData()['dataZgonu']);
-
-            $html = $this->render('Wzory/akt_poswiadczenia_dziedziczenia.html.twig', [
-                'dupa' => $dupa,
-                'form' => $form->getData(),
-                'dataCzynnosciSlownie' => $dataSlownie,
-                'dataZgonuSlownie' => $dataZgonuSlownie,
-                'numerSprawy' => $numerSprawy
-            ]);
-
-            dump($html);
-            dump($form->getData());
-
-            $html_przetworzony = preg_replace("/\r|\n/", "", $html->getContent());
-            dump(nl2br($html_przetworzony));
-            file_put_contents('temp/test123.html', $html_przetworzony);
-
-            return $this->redirectToRoute('edit');
+        $k=0;
+        $rows=[];
+        /** @var Sprawa $sprawa */
+        foreach($sprawy as $sprawa){
+            $rows[$k][]=$sprawa->getId();
+            $rows[$k][]=$sprawa->getNazwa();
+            $rows[$k][]=$sprawa->getDataDodania()->format('Y-m-d');
+            $rows[$k][]=$sprawa->getKancelaria()->getNazwa();
+            $rows[$k][]="<a href='". $this->generateUrl('sprawa', ['id' => $sprawa->getId()])."'> asdasd </a>";
+            $k++;
         }
 
-        // replace this example code with whatever you need
-        return $this->render('default/index.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
-            'form' => $form->createView()
-        ]);
+        $out = ['data'=>$rows];
+        return new JsonResponse($out);
     }
 
     /**
@@ -66,28 +64,41 @@ class DefaultController extends Controller
     {
         $dupa = 'dupa';
 
-//        $html = $this->render('Wzory/akt_poswiadczenia_dziedziczenia.html.twig', [
-//            'dupa' => $dupa
-//        ]);
-//
-//        dump($html);
-//
-//
-//
-//
-//
-//        $html = preg_replace("/\r|\n/", "", $html->getContent());
-//        dump(nl2br($html));
-
-//        $path = __DIR__ . "/../../../../web";
         $html = file_get_contents("temp/test123.html");
-//        $html = "";
-//        $svg = $this->root_dir . str_replace('/', DIRECTORY_SEPARATOR, '/../web/temp/test123.html');
-
 
         return $this->render('default/editor.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
             'wzor'=> $html
+        ]);
+    }
+
+    /**
+     * @Route("/panel/ustawienia/", name="ustawienia")
+     */
+    public function ustawieniaAction(Request $request)
+    {
+
+        $user = $this->getUser();
+        /** @var User $user */
+        $kancelaria = $user->getKancelaria();
+
+        $form = $this->createForm(KancelariaType::class,$kancelaria,[ ]);
+
+        $em = $this->getDoctrine()->getManager();
+        $form->handleRequest($request);
+        if ($form->isValid()) {
+
+
+
+            $em->flush();
+        }
+
+
+
+        return $this->render('default/ustawienia.html.twig', [
+            'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
+            'kancelaria'=> $kancelaria,
+            'form' => $form->createView()
         ]);
     }
 

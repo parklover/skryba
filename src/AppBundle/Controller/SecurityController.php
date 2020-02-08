@@ -2,16 +2,26 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Form\RegisterType;
-use CoreBundle\Entity\Core\Log;
-use CoreBundle\Entity\OpenWear\Klient;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\Security\Core\Exception\AuthenticationException;
+use Symfony\Component\Security\Core\Security;
+use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 
 class SecurityController extends AppController
 {
+    private $tokenManager;
+
+    public function __construct(CsrfTokenManagerInterface $tokenManager = null)
+    {
+        $this->tokenManager = $tokenManager;
+    }
+
     public function loginAction(Request $request)
     {
         $authenticationUtils = $this->get('security.authentication_utils');
@@ -22,11 +32,14 @@ class SecurityController extends AppController
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
 
-
+        $csrfToken = $this->tokenManager
+            ? $this->tokenManager->getToken('authenticate')->getValue()
+            : null;
 
         return $this->render('FOSUserBundle:Security:login.html.twig', array(
             'last_username' => $lastUsername,
             'error' => $error,
+            'csrf_token' => $csrfToken
         ));
     }
 

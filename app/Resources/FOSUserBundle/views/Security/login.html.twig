@@ -10,7 +10,9 @@
     <form action="{{ path("fos_user_security_check") }}" method="post">
         <input style="display: none" type="text" name="fakeusernameremembered" class="fake-autofill-fields"/>
         <input style="display: none" type="password" name="fakepasswordremembered" class="fake-autofill-fields"/>
-        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+        {#<input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />#}
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"/>
         <div class="form-group form-material floating" data-plugin="formMaterial">
             <input type="text" class="form-control" name="_username" value="{{ last_username }}" required="required" autocomplete="off" />
             <label class="floating-label">E-mail</label>

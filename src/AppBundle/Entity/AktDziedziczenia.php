@@ -16,15 +16,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  * @ORM\Table(name="akt_dziedziczenia")
  */
-class AktDziedziczenia
+class AktDziedziczenia extends Dokument
 {
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    protected $id;
-
     /**
      * @ORM\Column(type="datetime")
      */
@@ -80,6 +73,12 @@ class AktDziedziczenia
      *      )
      */
     private $spadkobiercy;
+
+//    /**
+//     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Sprawa", inversedBy="aktyDziedziczenia",cascade={"persist"})
+//     * @ORM\JoinColumn(name="id_sprawy", referencedColumnName="id")
+//     */
+//    protected $sprawa;
 
 
 
@@ -302,9 +301,4 @@ class AktDziedziczenia
     {
         $this->numerSkroconegoAktuMalzenstwaPotomka = $numerSkroconegoAktuMalzenstwaPotomka;
     }
-
-
-
-
-
 }

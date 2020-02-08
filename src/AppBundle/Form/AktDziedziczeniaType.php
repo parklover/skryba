@@ -56,14 +56,14 @@ class AktDziedziczeniaType extends AbstractType
                 'entry_type'   => OsobaFizycznaType::class,
                 'allow_add' => true,
                 'allow_delete' => true,
-//                'entry_options'=>[
-//                    'label'=>false,
-//                ],
+                'entry_options'=>[
+                    'label'=>false,
+                ],
 //                'prototype' => true,
                 'required'=>false,
                 'prototype' => true,
                 'prototype_name' => '__name__',
-                'mapped' => false
+                'mapped' => true
             ])
             ->add('dataSmierci', DateType::class, [
                 'label' => 'Data śmierci: ',

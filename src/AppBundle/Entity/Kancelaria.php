@@ -33,12 +33,30 @@ class Kancelaria
     /**
      * @ORM\Column(type="text")
      */
+    protected $nazwa;
+
+    /**
+     * @ORM\Column(type="text")
+     */
     protected $miasto;
 
     /**
      * @ORM\Column(type="text")
      */
     protected $adres;
+
+    /**
+     * One Product has Many Features.
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\User", mappedBy="kancelaria",cascade={"persist"})
+     */
+    protected $uzytkownicy;
+
+    /**
+     * One Product has Many Features.
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Sprawa", mappedBy="kancelaria",cascade={"persist"})
+     */
+
+    protected $sprawy;
 
     /**
      * Constructor
@@ -56,210 +74,101 @@ class Kancelaria
         return $this->id;
     }
 
-    function dataSlownie(\DateTime $data){
-        $dzien = $data->format('d');
-        $dzientygodnia = $data->format('l');
-        $miesiac = $data->format('n');
-        $rok = $data->format('Y');
+    /**
+     * @return mixed
+     */
+    public function getDataDolaczenia()
+    {
+        return $this->dataDolaczenia;
+    }
 
-        $miesiac_PL = array(1 => 'stycznia', 2 => 'lutego', 3 => 'marca',
-            4 => 'kwietnia', 5 => 'maja', 6 => 'czerwca', 7 => 'lipca',
-            8 => 'sierpnia', 9 => 'września', 10=> 'października',
-            11 => 'listopada', 12 => 'grudnia');
-
-        $dzientygodnia_PL = array('Monday' => 'poniedziałek',
-            'Tuesday' => 'wtorek', 'Wednesday' => 'środę',
-            'Thursday' => 'czwartek', 'Friday' => 'piątek',
-            'Saturday' => 'sobotę', 'Sunday' => 'niedzielę');
-
-//        return "" . $dzientygodnia_PL[$dzientygodnia].", ".$dzien." ".$miesiac_PL[$miesiac]." ".$rok."";
-        return $dzien." ".$miesiac_PL[$miesiac]." ".$rok."";
+    /**
+     * @param mixed $dataDolaczenia
+     */
+    public function setDataDolaczenia($dataDolaczenia)
+    {
+        $this->dataDolaczenia = $dataDolaczenia;
     }
 
     /**
      * @return mixed
      */
-    public function getDataCzynnosci()
+    public function getMiasto()
     {
-        return $this->dataCzynnosci;
+        return $this->miasto;
+    }
+
+    /**
+     * @param mixed $miasto
+     */
+    public function setMiasto($miasto)
+    {
+        $this->miasto = $miasto;
     }
 
     /**
      * @return mixed
      */
-    public function getDataCzynnosciSlownie()
+    public function getAdres()
     {
-        return $this->dataSlownie($this->dataCzynnosci);
+        return $this->adres;
     }
 
     /**
-     * @param mixed $dataCzynnosci
+     * @param mixed $adres
      */
-    public function setDataCzynnosci($dataCzynnosci)
+    public function setAdres($adres)
     {
-        $this->dataCzynnosci = $dataCzynnosci;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getZgoniarz()
-    {
-        return $this->zgoniarz;
-    }
-
-    /**
-     * @param mixed $zgoniarz
-     */
-    public function setZgoniarz($zgoniarz)
-    {
-        $this->zgoniarz = $zgoniarz;
+        $this->adres = $adres;
     }
 
     /**
      * @return mixed
      */
-    public function getSpadkobiercy()
+    public function getUzytkownicy()
     {
-        return $this->spadkobiercy;
+        return $this->uzytkownicy;
     }
 
     /**
-     * @param mixed $spadkobiercy
+     * @param mixed $uzytkownicy
      */
-    public function setSpadkobiercy($spadkobiercy)
+    public function setUzytkownicy($uzytkownicy)
     {
-        $this->spadkobiercy = $spadkobiercy;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getDataSmierci()
-    {
-        return $this->dataSmierci;
+        $this->uzytkownicy = $uzytkownicy;
     }
 
     /**
      * @return mixed
      */
-    public function getDataSmierciSlownie()
+    public function getSprawy()
     {
-        return $this->dataSlownie($this->dataSmierci);
+        return $this->sprawy;
     }
 
     /**
-     * @param mixed $dataSmierci
+     * @param mixed $sprawy
      */
-    public function setDataSmierci($dataSmierci)
+    public function setSprawy($sprawy)
     {
-        $this->dataSmierci = $dataSmierci;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getDataWydaniaAktuZgonu()
-    {
-        return $this->dataWydaniaAktuZgonu;
+        $this->sprawy = $sprawy;
     }
 
     /**
      * @return mixed
      */
-    public function getDataWydaniaAktuZgonuSlownie()
+    public function getNazwa()
     {
-        return $this->dataSlownie($this->dataWydaniaAktuZgonu);
+        return $this->nazwa;
     }
 
     /**
-     * @param mixed $dataWydaniaAktuZgonu
+     * @param mixed $nazwa
      */
-    public function setDataWydaniaAktuZgonu($dataWydaniaAktuZgonu)
+    public function setNazwa($nazwa)
     {
-        $this->dataWydaniaAktuZgonu = $dataWydaniaAktuZgonu;
+        $this->nazwa = $nazwa;
     }
-
-    /**
-     * @return mixed
-     */
-    public function getMiejsceZgonu()
-    {
-        return $this->miejsceZgonu;
-    }
-
-    /**
-     * @param mixed $miejsceZgonu
-     */
-    public function setMiejsceZgonu($miejsceZgonu)
-    {
-        $this->miejsceZgonu = $miejsceZgonu;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getMiejsceWydaniaAktuZgonu()
-    {
-        return $this->miejsceWydaniaAktuZgonu;
-    }
-
-    /**
-     * @param mixed $miejsceWydaniaAktuZgonu
-     */
-    public function setMiejsceWydaniaAktuZgonu($miejsceWydaniaAktuZgonu)
-    {
-        $this->miejsceWydaniaAktuZgonu = $miejsceWydaniaAktuZgonu;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getNumerAktuZgonu()
-    {
-        return $this->numerAktuZgonu;
-    }
-
-    /**
-     * @param mixed $numerAktuZgonu
-     */
-    public function setNumerAktuZgonu($numerAktuZgonu)
-    {
-        $this->numerAktuZgonu = $numerAktuZgonu;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getNumerSkroconegoAktuMalzenstwaMalzonka()
-    {
-        return $this->numerSkroconegoAktuMalzenstwaMalzonka;
-    }
-
-    /**
-     * @param mixed $numerSkroconegoAktuMalzenstwaMalzonka
-     */
-    public function setNumerSkroconegoAktuMalzenstwaMalzonka($numerSkroconegoAktuMalzenstwaMalzonka)
-    {
-        $this->numerSkroconegoAktuMalzenstwaMalzonka = $numerSkroconegoAktuMalzenstwaMalzonka;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getNumerSkroconegoAktuMalzenstwaPotomka()
-    {
-        return $this->numerSkroconegoAktuMalzenstwaPotomka;
-    }
-
-    /**
-     * @param mixed $numerSkroconegoAktuMalzenstwaPotomka
-     */
-    public function setNumerSkroconegoAktuMalzenstwaPotomka($numerSkroconegoAktuMalzenstwaPotomka)
-    {
-        $this->numerSkroconegoAktuMalzenstwaPotomka = $numerSkroconegoAktuMalzenstwaPotomka;
-    }
-
 
 
 
