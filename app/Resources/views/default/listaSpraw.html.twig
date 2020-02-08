@@ -3,6 +3,13 @@
 {% block ListaSpraw %} active {% endblock %}
 
 {% block body %}
+    <div style="position: absolute; top:50px; right: 52px; color:#fff;" id="div-akcje">
+        <div class="btn-group" role="group">
+            <a href="{{ path('sprawaEdit', {id: 0}) }}" class="btn btn-animate btn-aimate-side btn-success">
+                <span><i class="icon wb-plus" aria-hidden="true"></i>Dodaj sprawe</span>
+            </a>
+        </div>
+    </div>
     <div id="wrapper">
         <div id="container">
             <div id="welcome">

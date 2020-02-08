@@ -57,20 +57,20 @@ class PanelController extends Controller
         return new JsonResponse($out);
     }
 
-    /**
-     * @Route("/panel/edit/", name="edit")
-     */
-    public function editAction(Request $request)
-    {
-        $dupa = 'dupa';
-
-        $html = file_get_contents("temp/test123.html");
-
-        return $this->render('default/editor.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
-            'wzor'=> $html
-        ]);
-    }
+//    /**
+//     * @Route("/panel/edit/", name="edit")
+//     */
+//    public function editAction(Request $request)
+//    {
+//        $dupa = 'dupa';
+//
+//        $html = file_get_contents("temp/test123.html");
+//
+//        return $this->render('default/editor.html.twig', [
+//            'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
+//            'wzor'=> $html
+//        ]);
+//    }
 
     /**
      * @Route("/panel/ustawienia/", name="ustawienia")

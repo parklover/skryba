@@ -9,6 +9,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -66,7 +67,9 @@ class AktDziedziczenia extends Dokument
     private $zgoniarz;
 
     /**
-     * @ORM\ManyToMany(targetEntity="OsobaFizyczna")
+     *
+     *
+     * @ORM\ManyToMany(targetEntity="OsobaFizyczna", inversedBy="aktyDziedziczeniaRodziny",cascade={"persist"})
      * @ORM\JoinTable(name="akt_dziedziczenia_spadkobiercy",
      *      joinColumns={@ORM\JoinColumn(name="akt_dziedziczenia_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="osoba_id", referencedColumnName="id")}
@@ -74,11 +77,11 @@ class AktDziedziczenia extends Dokument
      */
     private $spadkobiercy;
 
-//    /**
-//     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Sprawa", inversedBy="aktyDziedziczenia",cascade={"persist"})
-//     * @ORM\JoinColumn(name="id_sprawy", referencedColumnName="id")
-//     */
-//    protected $sprawa;
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Sprawa", inversedBy="akty",cascade={"persist"})
+     * @ORM\JoinColumn(name="id_sprawy", referencedColumnName="id")
+     */
+    protected $sprawa;
 
 
 
@@ -87,6 +90,7 @@ class AktDziedziczenia extends Dokument
      */
     public function __construct()
     {
+        parent::__construct();
         $this->spadkobiercy = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
@@ -172,6 +176,14 @@ class AktDziedziczenia extends Dokument
     public function setSpadkobiercy($spadkobiercy)
     {
         $this->spadkobiercy = $spadkobiercy;
+    }
+
+    /**
+     * @param mixed $spadkobiercy
+     */
+    public function addSpadkobiercy($spadkobiercy)
+    {
+        $this->spadkobiercy[] = $spadkobiercy;
     }
 
     /**

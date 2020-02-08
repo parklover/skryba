@@ -50,6 +50,7 @@ class AktDziedziczeniaType extends AbstractType
 //            ])
             ->add('zgoniarz', OsobaFizycznaType::class, [
                 'label'=>false,
+                'data_class' =>OsobaFizyczna::class,
             ])
             ->add('spadkobiercy', CollectionType::class, [
                 'label'=>false,
@@ -57,13 +58,14 @@ class AktDziedziczeniaType extends AbstractType
                 'allow_add' => true,
                 'allow_delete' => true,
                 'entry_options'=>[
+                    'by_reference'  => false,
                     'label'=>false,
                 ],
 //                'prototype' => true,
-                'required'=>false,
+                'required'=>true,
                 'prototype' => true,
                 'prototype_name' => '__name__',
-                'mapped' => true
+                'mapped' => false
             ])
             ->add('dataSmierci', DateType::class, [
                 'label' => 'Data śmierci: ',
@@ -83,9 +85,12 @@ class AktDziedziczeniaType extends AbstractType
                 'label'  => 'Miejsce wydania aktu zgonu: ',
                 'required'=>true
             ])
-            ->add('dataWydaniaAktuZgonu', TextType::class, [
+            ->add('dataWydaniaAktuZgonu', DateType::class, [
                 'label'  => 'Data wydania aktu zgonu: ',
                 'required'=>true,
+                'html5' => false,
+                'widget' => 'single_text',
+                'format' => 'yyyy-MM-dd',
                 'attr'=>[
                     'class'=>'form-date'
                 ],

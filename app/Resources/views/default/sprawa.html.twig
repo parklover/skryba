@@ -16,18 +16,18 @@
 </div>
     <div id="wrapper">
         <div id="container">
-            <div id="welcome">
+            <div id="welcome" class="col-md-12">
                 <h1><span>Welcome to</span> INZYNIERKA </h1>
             </div>
-            <div>
-                <div>
-                    {{ sprawa.id }}
+            <div class="col-md-12" style="padding: 30px;">
+                <div class="col-md-3">
+                    <b>ID: </b>{{ sprawa.id }}
                 </div>
-                <div>
-                    {{ sprawa.dataDodania | date('Y-m-d') }}
+                <div class="col-md-3">
+                    <b>Data dodania: </b>{{ sprawa.dataDodania | date('Y-m-d') }}
                 </div>
-                <div>
-                    {{ sprawa.nazwa }}
+                <div class="col-md-3">
+                    <b>Nazwa: </b>{{ sprawa.nazwa }}
                 </div>
                 {#<div>#}
                     {#<b>Dokumenty:</b><br/>#}
@@ -35,23 +35,23 @@
                         {#<a href="{{ path('edit') }}">{{ dokument.nazwa }}</a><br/>#}
                     {#{% endfor %}#}
                 {#</div>#}
-                <div>
-                    <b>Dokumenty:</b><br/>
-                    <table class="table table-hover dataTable table-striped w-full" id="lista">
-                        <thead>
-                        <tr>
-                            <th class="filters">ID</th>
-                            <th class="filters">Nazwa</th>
-                            <th class="filters">Data dodania</th>
-                            <th>AKCJE</th>
-                        </tr>
-                        </thead>
-                        <tbody>
+            </div>
+            <div class="col-md-12">
+                <b>Dokumenty:</b><br/>
+                <table class="table table-hover dataTable table-striped w-full" id="lista">
+                    <thead>
+                    <tr>
+                        <th class="filters">ID</th>
+                        <th class="filters">Nazwa</th>
+                        <th class="filters">Data dodania</th>
+                        <th>AKCJE</th>
+                    </tr>
+                    </thead>
+                    <tbody>
 
-                        </tbody>
-                        <tfoot><tr></tr></tfoot>
-                    </table>
-                </div>
+                    </tbody>
+                    <tfoot><tr></tr></tfoot>
+                </table>
             </div>
         </div>
     </div>

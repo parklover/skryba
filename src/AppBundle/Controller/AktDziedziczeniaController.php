@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\AktDziedziczenia;
+use AppBundle\Entity\OsobaFizyczna;
 use AppBundle\Entity\Sprawa;
 use AppBundle\Form\AktDziedziczeniaType;
 use AppBundle\Form\DokumentType;
@@ -33,10 +34,11 @@ class AktDziedziczeniaController extends Controller
         /** @var AktDziedziczenia $aktDziedziczenia */
         $aktDziedziczenia = new AktDziedziczenia();
 
-        $form = $this->createForm(AktDziedziczeniaType::class);
+        $form = $this->createForm(AktDziedziczeniaType::class, $aktDziedziczenia, []);
         $dupa = 'dupa123';
         $numerSprawy = 1;
 
+        $em = $this->getDoctrine()->getManager();
         $form->handleRequest($request);
         if($form->isValid()){
 
@@ -45,7 +47,8 @@ class AktDziedziczeniaController extends Controller
             $dataSlownie = "";
             $dataZgonuSlownie = "";
             $user = $this->getUser();
-
+            $fileName = bin2hex(mcrypt_create_iv(22, MCRYPT_DEV_URANDOM)).'.html';
+            $aktDziedziczenia->setFilename($fileName);
 
             $html = $this->render('Wzory/akt_poswiadczenia_dziedziczenia.html.twig', [
                 'dupa' => $dupa,
@@ -58,12 +61,59 @@ class AktDziedziczeniaController extends Controller
 
             dump($html);
             dump($form->getData());
+            dump($request->get('spadkobiercy'));
+            dump($form->get('spadkobiercy')->getData());
+
+//            $zgoniarzDane = $form->get('zgoniarz')->getData();
+//            $zgoniarz = $this->getDoctrine()->getRepository(OsobaFizyczna::class)->findOneBy(['pesel' => $zgoniarzDane['pesel']]);
+//            if(!$zgoniarz){
+//                $zgoniarz = new OsobaFizyczna();
+//                $zgoniarz->setImie($zgoniarzDane['imie']);
+//                $zgoniarz->setNazwisko($zgoniarzDane['nazwisko']);
+//                $zgoniarz->setImieOjca($zgoniarzDane['imieOjca']);
+//                $zgoniarz->setImieMatki($zgoniarzDane['imieMatki']);
+//                $zgoniarz->setPesel($zgoniarzDane['pesel']);
+//                $zgoniarz->setMiejsceUrodzenia($zgoniarzDane['miejsceUrodzenia']);
+//                $zgoniarz->setMiejsceZamieszkania($zgoniarzDane['miejsceZamieszkania']);
+//                $zgoniarz->setNumerDowodu($zgoniarzDane['numerDowodu']);
+//                $zgoniarz->setDataWaznosciDowodu($zgoniarzDane['dataWaznosciDowodu']);
+//                $zgoniarz->setStopienPokrewienstwa($zgoniarzDane['stopienPokrewienstwa']);
+//                $zgoniarz->setPlec($zgoniarzDane['plec']);
+//                $em->persist($zgoniarz);
+//            }
+//            $aktDziedziczenia->setZgoniarz($zgoniarz);
+//            $zgoniarz->setAktDziedziczenia($aktDziedziczenia);
+
+            $dane = $form->getData();
+            foreach($form->get('spadkobiercy')->getData() as $osoba){
+                $spadkobierca = $this->getDoctrine()->getRepository(OsobaFizyczna::class)->findOneBy(['pesel' => $osoba['pesel']]);
+                if(!$spadkobierca){
+                    $spadkobierca = new OsobaFizyczna();
+                    $spadkobierca->setImie($osoba['imie']);
+                    $spadkobierca->setNazwisko($osoba['nazwisko']);
+                    $spadkobierca->setImieOjca($osoba['imieOjca']);
+                    $spadkobierca->setImieMatki($osoba['imieMatki']);
+                    $spadkobierca->setPesel($osoba['pesel']);
+                    $spadkobierca->setMiejsceUrodzenia($osoba['miejsceUrodzenia']);
+                    $spadkobierca->setMiejsceZamieszkania($osoba['miejsceZamieszkania']);
+                    $spadkobierca->setNumerDowodu($osoba['numerDowodu']);
+                    $spadkobierca->setDataWaznosciDowodu($osoba['dataWaznosciDowodu']);
+                    $spadkobierca->setStopienPokrewienstwa($osoba['stopienPokrewienstwa']);
+                    $spadkobierca->setPlec($osoba['plec']);
+                    $em->persist($spadkobierca);
+                }
+                $aktDziedziczenia->addSpadkobiercy($spadkobierca);
+                $spadkobierca->addAktDziedziczenia($aktDziedziczenia);
+            }
 
             $html_przetworzony = preg_replace("/\r|\n/", "", $html->getContent());
             dump(nl2br($html_przetworzony));
-            file_put_contents('temp/test123.html', $html_przetworzony);
+            file_put_contents("temp/".$fileName, $html_przetworzony);
 
-            return $this->redirectToRoute('edit');
+            $em->persist($aktDziedziczenia);
+            $em->flush();
+
+            return $this->redirectToRoute('edit', ['hash' => $aktDziedziczenia->getHash(), 'id' => $aktDziedziczenia->getId()]);
         }
 
         // replace this example code with whatever you need
@@ -74,31 +124,28 @@ class AktDziedziczeniaController extends Controller
         ]);
     }
 
+
+
     /**
-     * @Route("/panel/edit/", name="edit")
+     * @Route("/panel/edit/{id}/{hash}/", name="edit")
      */
-    public function editAction(Request $request)
+    public function editAction(Request $request, $id = 0, $hash = 0)
     {
-        $dupa = 'dupa';
+//        if($id = 0 || $hash = 0){
+//            return $this->redirectToRoute('lista_spraw');
+//        }
 
-//        $html = $this->render('Wzory/akt_poswiadczenia_dziedziczenia.html.twig', [
-//            'dupa' => $dupa
-//        ]);
-//
-//        dump($html);
-//
-//
-//
-//
-//
-//        $html = preg_replace("/\r|\n/", "", $html->getContent());
-//        dump(nl2br($html));
+        /** @var AktDziedziczenia $dokument */
+        $dokument = $this->getDoctrine()->getRepository(AktDziedziczenia::class)->findOneBy(['id' => $id, 'hash' => $hash]);
+        dump($dokument);
 
-//        $path = __DIR__ . "/../../../../web";
-        $html = file_get_contents("temp/test123.html");
-//        $html = "";
-//        $svg = $this->root_dir . str_replace('/', DIRECTORY_SEPARATOR, '/../web/temp/test123.html');
+        if(!$dokument){
+//            die;
+            return $this->redirectToRoute('lista_spraw');
+        }
 
+        $html = file_get_contents("temp/".$dokument->getFilename());
+        dump($html);
 
         return $this->render('default/editor.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,

@@ -14,6 +14,7 @@
         <td>{{ form_widget(form.imieMatki,{attr:{class:'form-control form-control-sm licz'}}) }}</td>
         <td>{{ form_widget(form.pesel,{attr:{class:'form-control form-control-sm'}}) }}</td>
         <td>{{ form_widget(form.miejsceZamieszkania,{attr:{class:'form-control form-control-sm licz'}}) }}</td>
+        <td>{{ form_widget(form.miejsceUrodzenia,{attr:{class:'form-control form-control-sm licz'}}) }}</td>
         <td>{{ form_widget(form.numerDowodu,{attr:{class:'form-control form-control-sm licz'}}) }}</td>
         <td>{{ form_widget(form.dataWaznosciDowodu) }}</td>
         <td>{{ form_widget(form.stopienPokrewienstwa,{attr:{class:'form-control form-control-sm licz'}}) }}</td>
@@ -49,6 +50,7 @@
                     <th width="150">Imię matki</th>
                     <th width="150">Pesel</th>
                     <th width="200">Miejsce zamieszkania</th>
+                    <th width="200">Miejsce urodzenia</th>
                     <th width="100">Numer dowodu osobistego</th>
                     <th width="125">Data ważności dowodu osobistego</th>
                     {#<th	width="100" >Pokrewieństwo</th>#}
@@ -64,8 +66,10 @@
                     <td>{{ form_widget(form.zgoniarz.imieMatki,{attr:{class:'form-control form-control-sm licz'}}) }}</td>
                     <td>{{ form_widget(form.zgoniarz.pesel,{attr:{class:'form-control form-control-sm'}}) }}</td>
                     <td>{{ form_widget(form.zgoniarz.miejsceZamieszkania,{attr:{class:'form-control form-control-sm licz'}}) }}</td>
+                    <td>{{ form_widget(form.zgoniarz.miejsceUrodzenia,{attr:{class:'form-control form-control-sm licz'}}) }}</td>
                     <td>{{ form_widget(form.zgoniarz.numerDowodu,{attr:{class:'form-control form-control-sm licz'}}) }}</td>
                     <td>{{ form_widget(form.zgoniarz.dataWaznosciDowodu) }}</td>
+                    {#<td>{{ form_widget(form.zgoniarz.dataUrodzenia) }}</td>#}
                     {#<td>{{ form_widget(form.zgoniarz.stopienPokrewienstwa,{attr:{class:'form-control form-control-sm licz'}}) }}</td>#}
                     <td>{{ form_widget(form.zgoniarz.plec,{attr:{class:'form-control form-control-sm licz'}}) }}</td>
                 </tr>
@@ -81,6 +85,7 @@
                         <th width="150">Imię matki</th>
                         <th width="150">Pesel</th>
                         <th width="200">Miejsce zamieszkania</th>
+                        <th width="200">Miejsce urodzenia</th>
                         <th width="100">Numer dowodu osobistego</th>
                         <th width="125">Data ważności dowodu osobistego</th>
                         <th	width="100" >Pokrewieństwo</th>

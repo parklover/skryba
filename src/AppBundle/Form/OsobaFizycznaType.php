@@ -1,6 +1,7 @@
 <?php
 namespace AppBundle\Form;
 
+use AppBundle\Entity\OsobaFizyczna;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -36,6 +37,9 @@ class OsobaFizycznaType extends AbstractType
             ])
             ->add('pesel', TextType::class, [
                 'label'  => 'Pesel: '
+            ])
+            ->add('miejsceUrodzenia', TextType::class, [
+                'label'  => 'Miejsce urodzenia: '
             ])
             ->add('miejsceZamieszkania', TextType::class, [
                 'label'  => 'Miejsce zamieszkania: '
@@ -77,6 +81,7 @@ class OsobaFizycznaType extends AbstractType
     {
         $resolver->setDefaults(array(
             'translation_domain' => 'form_label',
+            'data-class' => OsobaFizyczna::class
         ));
     }
 

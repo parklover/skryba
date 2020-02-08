@@ -43,11 +43,11 @@
     nazwisko kolejnego spadkobiercy, syn imię ojca i matki kolejnego spadkodawcy, data i miejsce urodzenia kolejnego spadkobiercy,</u>
 
         {% for spadkobierca in form.spadkobiercy %}
-            {% if loop.last %} oraz {% endif %}
-                    jego {{ form.spadkobierca.stopienPokrewienstwa }} {{ form.spadkobierca.getImiona }} {{ form.spadkobierca.nazwisko }},
-                    {% if form.spadkobierca.plec == 1 %} córka {% else %} syn {% endif %}
-            {{ form.spadkobierca.imieOjca }} i matki {{ form.spadkobierca.imieMatki }} {% if form.spadkobierca.plec == 1 %} urodzona {% else %} urodzony {% endif %} {{ form.spadkobierca.getDataUrodzeniaSlownie }}
-                    w {{ form.spadkobierca.miejsceUrodzenia }}
+            {% if loop.last %}{% if form.spadkobiercy|length != 1 %} oraz {% endif %}{% endif %}
+                    jego {{ spadkobierca.stopienPokrewienstwa }} {{ spadkobierca.imie }} {{ spadkobierca.nazwisko }},
+                    {% if spadkobierca.plec == 1 %} córka {% else %} syn {% endif %}
+            {{ spadkobierca.imieOjca }} i matki {{ spadkobierca.imieMatki }} {% if spadkobierca.plec == 1 %} urodzona {% else %} urodzony {% endif %} {{ spadkobierca.pesel }}
+                    w {{ spadkobierca.miejsceUrodzenia }}
             {% if not loop.last %}, {% endif %}
         {% endfor %}
 

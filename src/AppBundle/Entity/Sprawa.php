@@ -35,11 +35,17 @@ class Sprawa
      */
     protected $nazwa;
 
+//    /**
+//     * One Product has Many Features.
+//     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Dokument", mappedBy="sprawa",cascade={"persist"})
+//     */
+//    protected $dokumenty;
+
     /**
      * One Product has Many Features.
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Dokument", mappedBy="sprawa",cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\AktDziedziczenia", mappedBy="sprawa",cascade={"persist"})
      */
-    protected $dokumenty;
+    protected $akty;
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Kancelaria", inversedBy="sprawy",cascade={"persist"})
@@ -143,4 +149,22 @@ class Sprawa
     {
         $this->dokumenty = $dokumenty;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getAkty()
+    {
+        return $this->akty;
+    }
+
+    /**
+     * @param mixed $akty
+     */
+    public function setAkty($akty)
+    {
+        $this->akty = $akty;
+    }
+
+
 }

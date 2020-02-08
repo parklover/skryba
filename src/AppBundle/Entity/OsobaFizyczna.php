@@ -51,7 +51,7 @@ class OsobaFizyczna
     protected $imieMatki;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="string", length=32, unique=true, nullable=false)
      */
     protected $pesel;
 
@@ -71,11 +71,6 @@ class OsobaFizyczna
     protected $dataWaznosciDowodu;
 
     /**
-     * @ORM\Column(type="datetime")
-     */
-    protected $dataUrodzenia;
-
-    /**
      * @ORM\Column(type="text")
      */
     protected $miejsceUrodzenia;
@@ -92,7 +87,7 @@ class OsobaFizyczna
 
     /**
      * One Product has Many Features.
-     * @ORM\OneToMany(targetEntity="AktDziedziczenia", mappedBy="zgoniarz")
+     * @ORM\OneToMany(targetEntity="AktDziedziczenia", mappedBy="zgoniarz", cascade={"persist"})
      */
     private $aktDziedziczenia;
 
@@ -362,12 +357,22 @@ class OsobaFizyczna
     }
 
     /**
+     * @param mixed $aktDziedziczenia
+     */
+    public function addAktDziedziczenia($aktDziedziczenia)
+    {
+        $this->aktDziedziczenia[] = $aktDziedziczenia;
+    }
+
+    /**
      * @return mixed
      */
     public function getAktyDziedziczeniaRodziny()
     {
         return $this->aktyDziedziczeniaRodziny;
     }
+
+
 
     /**
      * Add aktyDziedziczeniaRodziny
