@@ -49,7 +49,7 @@ class PanelController extends Controller
             $rows[$k][]=$sprawa->getNazwa();
             $rows[$k][]=$sprawa->getDataDodania()->format('Y-m-d');
             $rows[$k][]=$sprawa->getKancelaria()->getNazwa();
-            $rows[$k][]="<a href='". $this->generateUrl('sprawa', ['id' => $sprawa->getId()])."'> asdasd </a>";
+            $rows[$k][]="<a href='". $this->generateUrl('sprawa', ['id' => $sprawa->getId()]) . "' ><i class='icon fa-edit'></i></a>";
             $k++;
         }
 
