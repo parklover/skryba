@@ -1,0 +1,113 @@
+{% extends 'layout.html.twig' %}
+
+{% block ListaSpraw %} active {% endblock %}
+
+{% block body %}
+    <div id="wrapper">
+        <div id="container">
+            <div id="welcome">
+                <h1><span>Welcome to</span> INZYNIERKA </h1>
+            </div>
+            <table class="table table-hover dataTable table-striped w-full" id="lista">
+                <thead>
+                <tr>
+                    <th class="filters">ID</th>
+                    <th class="filters">Nazwa</th>
+                    <th class="filters">Data dodania</th>
+                    <th class="filters">Kancelaria</th>
+                    <th>AKCJE</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+                <tfoot><tr></tr></tfoot>
+            </table>
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('assets/panel/global/vendor/datatables/jquery.dataTables.js') }}"></script>
+    <script src="{{ asset('assets/panel/global/vendor/datatables-fixedheader/dataTables.fixedHeader.js') }}"></script>
+    <script src="{{ asset('assets/panel/global/vendor/datatables-bootstrap/dataTables.bootstrap.js') }}"></script>
+    <script src="{{ asset('assets/panel/global/vendor/datatables-responsive/dataTables.responsive.js') }}"></script>
+    <script src="{{ asset('assets/panel/global/vendor/datatables-tabletools/dataTables.tableTools.js') }}"></script>
+    <script type="text/javascript">
+        var switches = [];
+        var rozwiniete=false;
+        var table;
+        $(document).ready(function () {
+            table = $('#lista').DataTable({
+                ajax: "{{ path('lista_spraw_ajax') }}",
+                language: {
+                    "processing": "Przetwarzanie...",
+                    "search": "Szukaj:",
+                    "lengthMenu": "_MENU_",
+                    "info": "Pozycje od _START_ do _END_ z _TOTAL_ łącznie",
+                    "infoEmpty": "Pozycji 0 z 0 dostępnych",
+                    "infoFiltered": "(filtrowanie spośród _MAX_ dostępnych pozycji)",
+                    "infoPostFix": "",
+                    "loadingRecords": "Wczytywanie...",
+                    "zeroRecords": "Nie znaleziono pasujących pozycji",
+                    "emptyTable": "Brak dokumentu w katalogu",
+                    "paginate": {
+                        "first": "Pierwsza",
+                        "previous": "Poprzednia",
+                        "next": "Następna",
+                        "last": "Ostatnia"
+                    },
+                    "aria": {
+                        "sortAscending": ": aktywuj, by posortować kolumnę rosnąco",
+                        "sortDescending": ": aktywuj, by posortować kolumnę malejąco"
+                    }
+                },
+                "aLengthMenu": [
+                    [50, 100, 200, 500],
+                    [50, 100, 200, 500]
+                ],
+                "iDisplayLength": 50,
+                responsive: true
+            });
+
+        });
+    </script>
+{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('assets/panel/global/vendor/datatables-bootstrap/dataTables.bootstrap.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/panel/global/vendor/datatables-fixedheader/dataTables.fixedHeader.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/panel/global/vendor/datatables-responsive/dataTables.responsive.css') }}">
+
+<link rel="stylesheet" href="{{ asset('assets/panel/base/examples/css/tables/datatable.css') }}">
+<style>
+    body { background: #F5F5F5; font: 18px/1.5 sans-serif; }
+    h1, h2 { line-height: 1.2; margin: 0 0 .5em; }
+    h1 { font-size: 36px; }
+    h2 { font-size: 21px; margin-bottom: 1em; }
+    p { margin: 0 0 1em 0; }
+    a { color: #0000F0; }
+    a:hover { text-decoration: none; }
+    code { background: #F5F5F5; max-width: 100px; padding: 2px 6px; word-wrap: break-word; }
+    #wrapper { background: #FFF; margin: 1em auto; width: 95%; }
+    #container { padding: 2em; }
+    #welcome, #status { margin-bottom: 2em; }
+    #welcome h1 span { display: block; font-size: 75%; }
+    #icon-status, #icon-book { float: left; height: 64px; margin-right: 1em; margin-top: -4px; width: 64px; }
+    #icon-book { display: none; }
+    .page-content {
+        padding: 10px 30px !important;
+    }
+
+    @media (min-width: 768px) {
+        #wrapper { width: 97%; margin: 2em auto; }
+        #icon-book { display: inline-block; }
+        #status a, #next a { display: block; }
+
+        @-webkit-keyframes fade-in { 0% { opacity: 0; } 100% { opacity: 1; } }
+        @keyframes fade-in { 0% { opacity: 0; } 100% { opacity: 1; } }
+        .sf-toolbar { opacity: 0; -webkit-animation: fade-in 1s .2s forwards; animation: fade-in 1s .2s forwards;}
+    }
+</style>
+{% endblock %}

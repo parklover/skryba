@@ -1,0 +1,189 @@
+{% extends 'layout.html.twig' %}
+
+{#{% form_theme form _self %}#}
+
+{% form_theme form 'form_theme_2.html.twig' _self %}
+
+{% block _akt_dziedziczenia_spadkobiercy_entry_widget %}
+
+    <tr class="collection-element">
+        <td class="c-lp valgin-middle">1.</td>
+        <td>{{ form_widget(form.imie,{attr:{class:'form-control form-control-sm set-rodzaj'}}) }}</td>
+        <td>{{ form_widget(form.nazwisko,{attr:{class:'form-control form-control-sm'}}) }}</td>
+        <td>{{ form_widget(form.imieOjca,{attr:{class:'form-control form-control-sm'}}) }}</td>
+        <td>{{ form_widget(form.imieMatki,{attr:{class:'form-control form-control-sm licz'}}) }}</td>
+        <td>{{ form_widget(form.pesel,{attr:{class:'form-control form-control-sm'}}) }}</td>
+        <td>{{ form_widget(form.miejsceZamieszkania,{attr:{class:'form-control form-control-sm licz'}}) }}</td>
+        <td>{{ form_widget(form.numerDowodu,{attr:{class:'form-control form-control-sm licz'}}) }}</td>
+        <td>{{ form_widget(form.dataWaznosciDowodu) }}</td>
+        <td>{{ form_widget(form.stopienPokrewienstwa,{attr:{class:'form-control form-control-sm licz'}}) }}</td>
+        <td>{{ form_widget(form.plec,{attr:{class:'form-control form-control-sm licz'}}) }}</td>
+        <td>
+            <a href="#" class="btn btn-danger usun"><i class=" md-close"></i></a>
+        </td>
+    </tr>
+
+{% endblock %}
+
+{% block body %}
+    <div id="wrapper">
+        <div id="container">
+            <div id="welcome">
+                <h1><span>Welcome to</span> INZYNIERKA </h1>
+            </div>
+
+            {{ form_start(form) }}
+                {{ form_row(form.dataCzynnosci) }}
+                {{ form_row(form.dataSmierci) }}
+                {{ form_row(form.miejsceZgonu) }}
+                {{ form_row(form.miejsceWydaniaAktuZgonu) }}
+                {{ form_row(form.dataWydaniaAktuZgonu) }}
+                {{ form_row(form.numerAktuZgonu) }}
+            <table class="table table-bordered">
+                <thead>
+                <tr class="collection-add text-center">
+                    {#<th width="10"></th>#}
+                    <th width="150">Imię</th>
+                    <th width="150">Nazwisko</th>
+                    <th width="150">Imię ojca</th>
+                    <th width="150">Imię matki</th>
+                    <th width="150">Pesel</th>
+                    <th width="200">Miejsce zamieszkania</th>
+                    <th width="100">Numer dowodu osobistego</th>
+                    <th width="125">Data ważności dowodu osobistego</th>
+                    {#<th	width="100" >Pokrewieństwo</th>#}
+                    <th	width="100" >Płeć</th>
+                    {#<th width="30">Usuń</th>#}
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="collection-element">
+                    <td>{{ form_widget(form.zgoniarz.imie,{attr:{class:'form-control form-control-sm set-rodzaj'}}) }}</td>
+                    <td>{{ form_widget(form.zgoniarz.nazwisko,{attr:{class:'form-control form-control-sm'}}) }}</td>
+                    <td>{{ form_widget(form.zgoniarz.imieOjca,{attr:{class:'form-control form-control-sm'}}) }}</td>
+                    <td>{{ form_widget(form.zgoniarz.imieMatki,{attr:{class:'form-control form-control-sm licz'}}) }}</td>
+                    <td>{{ form_widget(form.zgoniarz.pesel,{attr:{class:'form-control form-control-sm'}}) }}</td>
+                    <td>{{ form_widget(form.zgoniarz.miejsceZamieszkania,{attr:{class:'form-control form-control-sm licz'}}) }}</td>
+                    <td>{{ form_widget(form.zgoniarz.numerDowodu,{attr:{class:'form-control form-control-sm licz'}}) }}</td>
+                    <td>{{ form_widget(form.zgoniarz.dataWaznosciDowodu) }}</td>
+                    {#<td>{{ form_widget(form.zgoniarz.stopienPokrewienstwa,{attr:{class:'form-control form-control-sm licz'}}) }}</td>#}
+                    <td>{{ form_widget(form.zgoniarz.plec,{attr:{class:'form-control form-control-sm licz'}}) }}</td>
+                </tr>
+                </tbody>
+            </table>
+                <table class="table table-bordered">
+                    <thead>
+                    <tr class="collection-add text-center">
+                        <th width="10"></th>
+                        <th width="150">Imię</th>
+                        <th width="150">Nazwisko</th>
+                        <th width="150">Imię ojca</th>
+                        <th width="150">Imię matki</th>
+                        <th width="150">Pesel</th>
+                        <th width="200">Miejsce zamieszkania</th>
+                        <th width="100">Numer dowodu osobistego</th>
+                        <th width="125">Data ważności dowodu osobistego</th>
+                        <th	width="100" >Pokrewieństwo</th>
+                        <th	width="100" >Płeć</th>
+                        <th width="30">Usuń</th>
+                    </tr>
+                    </thead>
+                    <tbody class="collection" data-prototype="{{ form_widget(form.spadkobiercy.vars.prototype)|e }}" data-prototype-name="__name__">
+                    {% for pozycja in form.spadkobiercy %}
+                        {{ form_widget(pozycja) }}
+                    {% endfor %}
+                    <tr class="collection-add">
+                        <td colspan="12"><a class="dodaj-element btn btn-default btn-sm"><i class="icon md-plus " aria-hidden="true"></i>Dodaj pozycję</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+                {#{{ form_row(form.spadkobiercy) }}#}
+                {#{{ form_row(form.stawajacy) }}#}
+
+                {{ form_row(form.numerSkroconegoAktuMalzenstwaMalzonka) }}
+                {{ form_row(form.numerSkroconegoAktuMalzenstwaPotomka) }}
+                {#{{ form_row(form.spadkobiercy) }}#}
+
+            <button class="btn btn-primary pull-right" style="float: right;" type="submit">Generuj</button>
+            {{ form_end(form) }}
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {#<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>#}
+    <script>
+
+        $(document).ready(function() {
+            $('.form-date').datepicker({
+                format: "yyyy-mm-dd",
+                language: "pl",
+                orientation: "bottom auto",
+                autoclose: true
+            });
+            if($('.collection-element').length==0) {
+                addTagForm($('.collection'));
+                // addTagForm($('.collection'));
+            }
+            $(document).on('click','.dodaj-element',function (e) {
+                e.preventDefault();
+                addTagForm($(this).parents('.collection').eq(0));
+            });
+            $(document).on('click',".usun",function(e){
+                e.preventDefault();
+                var $obj = $(this).parents('.collection-element').eq(0);
+                if(!$obj.next().hasClass('collection-element') && !$obj.next().hasClass('collection-add')){
+                    $obj.next().remove();
+                }
+                $obj.remove();
+            });
+        });
+
+        function addTagForm($collectionHolder) {
+            var prototype = $collectionHolder.data('prototype');
+            var index =($collectionHolder.data('index'))?$collectionHolder.data('index'):$collectionHolder.children('.collection-element').length;
+            var newForm = prototype.split($collectionHolder.attr('data-prototype-name')).join(index);
+            $collectionHolder.data('index', index + 1);
+            $collectionHolder.find('.collection-add').last().before(newForm);
+            $('.form-date').datepicker({
+                format: "yyyy-mm-dd",
+                language: "pl",
+                orientation: "bottom auto",
+                autoclose: true
+            });
+        }
+    </script>
+{% endblock %}
+
+{% block stylesheets %}
+<style>
+    body { background: #F5F5F5; font: 18px/1.5 sans-serif; }
+    h1, h2 { line-height: 1.2; margin: 0 0 .5em; }
+    h1 { font-size: 36px; }
+    h2 { font-size: 21px; margin-bottom: 1em; }
+    p { margin: 0 0 1em 0; }
+    a { color: #0000F0; }
+    a:hover { text-decoration: none; }
+    code { background: #F5F5F5; max-width: 100px; padding: 2px 6px; word-wrap: break-word; }
+    #wrapper { background: #FFF; margin: 1em auto; width: 95%; }
+    #container { padding: 2em; }
+    #welcome, #status { margin-bottom: 2em; }
+    #welcome h1 span { display: block; font-size: 75%; }
+    #icon-status, #icon-book { float: left; height: 64px; margin-right: 1em; margin-top: -4px; width: 64px; }
+    #icon-book { display: none; }
+    .page-content {
+        padding: 10px 30px !important;
+    }
+
+    @media (min-width: 768px) {
+        #wrapper { width: 97%; margin: 2em auto; }
+        #icon-book { display: inline-block; }
+        #status a, #next a { display: block; }
+
+        @-webkit-keyframes fade-in { 0% { opacity: 0; } 100% { opacity: 1; } }
+        @keyframes fade-in { 0% { opacity: 0; } 100% { opacity: 1; } }
+        .sf-toolbar { opacity: 0; -webkit-animation: fade-in 1s .2s forwards; animation: fade-in 1s .2s forwards;}
+    }
+</style>
+{% endblock %}
