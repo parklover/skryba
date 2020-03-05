@@ -41,8 +41,15 @@ class OsobaFizycznaType extends AbstractType
             ->add('miejsceUrodzenia', TextType::class, [
                 'label'  => 'Miejsce urodzenia: '
             ])
-            ->add('miejsceZamieszkania', TextType::class, [
-                'label'  => 'Miejsce zamieszkania: '
+            ->add('miastoZamieszkania', HiddenType::class, [
+            ])
+            ->add('numerDomuZamieszkania', HiddenType::class, [
+            ])
+            ->add('numerMieszkaniaZamieszkania', HiddenType::class, [
+            ])
+            ->add('typObiektuZamieszkania', HiddenType::class, [
+            ])
+            ->add('nazwaObiektuZamieszkania', HiddenType::class, [
             ])
             ->add('numerDowodu', TextType::class, [
                 'label'  => 'Numer dowodu osobistego: '
@@ -67,13 +74,13 @@ class OsobaFizycznaType extends AbstractType
                     'Siostra' => 5,
                 ]
             ])
-            ->add('plec',ChoiceType::class,[
-                'label' => 'Płeć:',
-                'choices' => [
-                    'Kobieta' => 1,
-                    'Mężczyzna' => 2
-                ]
-            ])
+//            ->add('plec',ChoiceType::class,[
+//                'label' => 'Płeć:',
+//                'choices' => [
+//                    'Kobieta' => 1,
+//                    'Mężczyzna' => 2
+//                ]
+//            ])
         ;
     }
 

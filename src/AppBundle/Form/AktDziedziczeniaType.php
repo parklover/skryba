@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -23,10 +24,7 @@ class AktDziedziczeniaType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-//            ->add('opis', TextareaType::class, [
-//                'label'  => 'Opis: ',
-//                'required' => false
-//            ])
+
             ->add('dataCzynnosci', DateType::class, [
                 'label' => 'Data czynności: ',
                 'required'=>true,
@@ -37,20 +35,10 @@ class AktDziedziczeniaType extends AbstractType
                     'class'=>'form-date'
                 ],
             ])
-//            ->add('stawajacy',EntityType::class,[
-//                'class' => OsobaFizyczna::class,
-//                'choice_label' => 'getNazwiskoImie',
-//                'query_builder' => function (EntityRepository $er) {
-//                    return $er->createQueryBuilder('c');
-//                },
-////                'attr'=>[
-////                    'class'=>'display-none'
-////                ],
-//                'required'=>true
-//            ])
             ->add('zgoniarz', OsobaFizycznaType::class, [
                 'label'=>false,
                 'data_class' =>OsobaFizyczna::class,
+                'mapped' => false
             ])
             ->add('spadkobiercy', CollectionType::class, [
                 'label'=>false,
@@ -104,6 +92,18 @@ class AktDziedziczeniaType extends AbstractType
             ])
             ->add('numerSkroconegoAktuMalzenstwaPotomka', TextType::class, [
                 'label'  => 'Numer skróconego aktu małżeństwa potomka: '
+            ])
+            ->add('zmianaWlascicielaNieruchomosci',CheckboxType::class, [
+                'label'=>'Czy zachodzi zmiana właściciela nieruchomości? ',
+                'required'=>false
+            ])
+            ->add('miastoNieruchomosci', TextType::class, [
+                'label'  => 'Miasto nieruchomości: ',
+                'required'=>false
+            ])
+            ->add('ksiegaWieczystaNieruchomosci', TextType::class, [
+                'label'  => 'Księga wieczysta nieruchomości: ',
+                'required'=>false
             ])
         ;
     }

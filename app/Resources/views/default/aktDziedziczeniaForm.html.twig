@@ -13,15 +13,21 @@
         <td>{{ form_widget(form.imieOjca,{attr:{class:'form-control form-control-sm'}}) }}</td>
         <td>{{ form_widget(form.imieMatki,{attr:{class:'form-control form-control-sm licz'}}) }}</td>
         <td>{{ form_widget(form.pesel,{attr:{class:'form-control form-control-sm'}}) }}</td>
-        <td>{{ form_widget(form.miejsceZamieszkania,{attr:{class:'form-control form-control-sm licz'}}) }}</td>
+        <td><button type="button" class="adres form-control btn-edit btn btn-animate-vertical">Wprowadź adres</button></td>
         <td>{{ form_widget(form.miejsceUrodzenia,{attr:{class:'form-control form-control-sm licz'}}) }}</td>
         <td>{{ form_widget(form.numerDowodu,{attr:{class:'form-control form-control-sm licz'}}) }}</td>
         <td>{{ form_widget(form.dataWaznosciDowodu) }}</td>
         <td>{{ form_widget(form.stopienPokrewienstwa,{attr:{class:'form-control form-control-sm licz'}}) }}</td>
-        <td>{{ form_widget(form.plec,{attr:{class:'form-control form-control-sm licz'}}) }}</td>
+        {#<td>{{ form_widget(form.plec,{attr:{class:'form-control form-control-sm licz'}}) }}</td>#}
         <td>
             <a href="#" class="btn btn-danger usun"><i class=" md-close"></i></a>
         </td>
+        {{ form_widget(form.miastoZamieszkania) }}
+        {{ form_widget(form.numerDomuZamieszkania) }}
+        {{ form_widget(form.numerMieszkaniaZamieszkania) }}
+        {{ form_widget(form.typObiektuZamieszkania) }}
+        {{ form_widget(form.nazwaObiektuZamieszkania) }}
+
     </tr>
 
 {% endblock %}
@@ -49,12 +55,12 @@
                     <th width="150">Imię ojca</th>
                     <th width="150">Imię matki</th>
                     <th width="150">Pesel</th>
-                    <th width="200">Miejsce zamieszkania</th>
+                    <th width="200">Adres zamieszkania</th>
                     <th width="200">Miejsce urodzenia</th>
                     <th width="100">Numer dowodu osobistego</th>
                     <th width="125">Data ważności dowodu osobistego</th>
                     {#<th	width="100" >Pokrewieństwo</th>#}
-                    <th	width="100" >Płeć</th>
+                    {#<th	width="100" >Płeć</th>#}
                     {#<th width="30">Usuń</th>#}
                 </tr>
                 </thead>
@@ -65,13 +71,13 @@
                     <td>{{ form_widget(form.zgoniarz.imieOjca,{attr:{class:'form-control form-control-sm'}}) }}</td>
                     <td>{{ form_widget(form.zgoniarz.imieMatki,{attr:{class:'form-control form-control-sm licz'}}) }}</td>
                     <td>{{ form_widget(form.zgoniarz.pesel,{attr:{class:'form-control form-control-sm'}}) }}</td>
-                    <td>{{ form_widget(form.zgoniarz.miejsceZamieszkania,{attr:{class:'form-control form-control-sm licz'}}) }}</td>
+                    <td><button type="button" class="adres form-control btn-edit btn btn-animate-vertical">Wprowadź adres</button></td>
                     <td>{{ form_widget(form.zgoniarz.miejsceUrodzenia,{attr:{class:'form-control form-control-sm licz'}}) }}</td>
                     <td>{{ form_widget(form.zgoniarz.numerDowodu,{attr:{class:'form-control form-control-sm licz'}}) }}</td>
                     <td>{{ form_widget(form.zgoniarz.dataWaznosciDowodu) }}</td>
                     {#<td>{{ form_widget(form.zgoniarz.dataUrodzenia) }}</td>#}
                     {#<td>{{ form_widget(form.zgoniarz.stopienPokrewienstwa,{attr:{class:'form-control form-control-sm licz'}}) }}</td>#}
-                    <td>{{ form_widget(form.zgoniarz.plec,{attr:{class:'form-control form-control-sm licz'}}) }}</td>
+                    {#<td>{{ form_widget(form.zgoniarz.plec,{attr:{class:'form-control form-control-sm licz'}}) }}</td>#}
                 </tr>
                 </tbody>
             </table>
@@ -84,12 +90,12 @@
                         <th width="150">Imię ojca</th>
                         <th width="150">Imię matki</th>
                         <th width="150">Pesel</th>
-                        <th width="200">Miejsce zamieszkania</th>
+                        <th width="200">Adres zamieszkania</th>
                         <th width="200">Miejsce urodzenia</th>
                         <th width="100">Numer dowodu osobistego</th>
                         <th width="125">Data ważności dowodu osobistego</th>
                         <th	width="100" >Pokrewieństwo</th>
-                        <th	width="100" >Płeć</th>
+                        {#<th	width="100" >Płeć</th>#}
                         <th width="30">Usuń</th>
                     </tr>
                     </thead>
@@ -114,6 +120,73 @@
 
         </div>
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="adresModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="exampleModalLongTitle">Wprowadź adres</h2>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group row">
+                        <label class="col-xs-12 col-md-2 form-control-label form-control-sm col-sm-2 control-label">
+                            Miasto
+                        </label>
+                        <div class="col-md-10">
+                            <input type="text" class="adresMiasto form-control">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-xs-12 col-md-2 form-control-label form-control-sm col-sm-2 control-label">
+                            Typ
+                        </label>
+                        <div class="form-group col-md-10">
+                            <select class="adresTypObiektu form-control">
+                                <option value="0">Brak</option>
+                                <option value="1">Ulica</option>
+                                <option value="2">Osiedle</option>
+                                <option value="3">Aleja</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-xs-12 col-md-2 form-control-label form-control-sm col-sm-2 control-label">
+                            Nazwa
+                        </label>
+                        <div class="col-md-10">
+                            <input type="text" class="adresNazwaObiektu form-control">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-xs-12 col-md-2 form-control-label form-control-sm col-sm-2 control-label">
+                            Numer domu
+                        </label>
+                        <div class="col-md-10">
+                            <input type="text" class="adresNumerDomu form-control">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-xs-12 col-md-2 form-control-label form-control-sm col-sm-2 control-label">
+                            Numer mieszkania
+                        </label>
+                        <div class="col-md-10">
+                            <input type="text" class="adresNumerMieszkania form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 {% endblock %}
 
 {% block javascripts %}
@@ -121,6 +194,26 @@
     <script>
 
         $(document).ready(function() {
+
+            $('.adres').click(function(){
+                $('#adresModal').modal('show');
+                var $tr = $(this).parents('tr');
+            })
+
+            $('#akt_dziedziczenia_miastoNieruchomosci').parent('.col-md-8').parent('.form-group').hide();
+            $('#akt_dziedziczenia_ksiegaWieczystaNieruchomosci').parent('.col-md-8').parent('.form-group').hide();
+
+            $('#akt_dziedziczenia_zmianaWlascicielaNieruchomosci').click(function() {
+                if ($(this).is(":checked")) {
+                    $('#akt_dziedziczenia_miastoNieruchomosci').parent('.col-md-8').parent('.form-group').show();
+                    $('#akt_dziedziczenia_ksiegaWieczystaNieruchomosci').parent('.col-md-8').parent('.form-group').show();
+                } else if ($(this).is(":not(:checked)")) {
+                    $('#akt_dziedziczenia_miastoNieruchomosci').parent('.col-md-8').parent('.form-group').hide();
+                    $('#akt_dziedziczenia_ksiegaWieczystaNieruchomosci').parent('.col-md-8').parent('.form-group').hide();
+                }
+            });
+
+
             $('.form-date').datepicker({
                 format: "yyyy-mm-dd",
                 language: "pl",
@@ -179,6 +272,17 @@
     #icon-book { display: none; }
     .page-content {
         padding: 10px 30px !important;
+    }
+    .modal-content{
+        padding: 30px;
+    }
+    .modal-dialog {
+        width: 1000px !important;
+        max-width: initial !important;
+    }
+    .form-group .form-control-label{
+        font-size: 15px !important;
+        font-weight: 500 !important;
     }
 
     @media (min-width: 768px) {

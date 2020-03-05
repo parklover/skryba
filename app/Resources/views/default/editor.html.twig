@@ -87,7 +87,10 @@
                 '34px': { selector: 'span,p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img', classes: 'lineheight34px' },
                 '36px': { selector: 'span,p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img', classes: 'lineheight36px' },
                 '38px': { selector: 'span,p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img', classes: 'lineheight38px' },
-                '40px': { selector: 'span,p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img', classes: 'lineheight40px' }
+                '40px': { selector: 'span,p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img', classes: 'lineheight40px' },
+                '44px': { selector: 'span,p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img', classes: 'lineheight44px' },
+                '48px': { selector: 'span,p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img', classes: 'lineheight48px' },
+                '56px': { selector: 'span,p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img', classes: 'lineheight56px' }
             },
             style_formats: [
                 { title: '2px',format: '2px' },
@@ -109,7 +112,10 @@
                 { title: '34px', format: '34px' },
                 { title: '36px', format: '36px' },
                 { title: '38px', format: '38px' },
-                { title: '40px', format: '40px' }
+                { title: '40px', format: '40px' },
+                { title: '44px', format: '44px' },
+                { title: '48px', format: '48px' },
+                { title: '56px', format: '56px' }
             ],
             toolbar_sticky: true,
             autosave_ask_before_unload: true,
@@ -165,7 +171,7 @@
             quickbars_selection_toolbar: 'bold italic | quicklink h2 h3 blockquote quickimage quicktable',
             noneditable_noneditable_class: "mceNonEditable",
             toolbar_drawer: 'sliding',
-            contextmenu: "link image imagetools table",
+            contextmenu: "link image imagetools table spellchecker",
             setup: function (editor) {
                 editor.on('init', function (e) {
                     $('iframe').contents().find("head").append($("<style type='text/css'>*{background-color: #e7e7e7}body{width: 210mm; min-height: 297mm; background-color: #fff; padding: 5mm !important; margin: 0px auto; margin-top: 25px;}body *{ background-color: #fff;}.mce-content-body p{margin: 16px 0;}</style>"));

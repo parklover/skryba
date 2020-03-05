@@ -46,6 +46,11 @@ class Kancelaria
     protected $adres;
 
     /**
+     * @ORM\Column(type="text")
+     */
+    protected $kodPocztowy;
+
+    /**
      * One Product has Many Features.
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\User", mappedBy="kancelaria",cascade={"persist"})
      */
@@ -55,7 +60,6 @@ class Kancelaria
      * One Product has Many Features.
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Sprawa", mappedBy="kancelaria",cascade={"persist"})
      */
-
     protected $sprawy;
 
     /**
@@ -168,6 +172,22 @@ class Kancelaria
     public function setNazwa($nazwa)
     {
         $this->nazwa = $nazwa;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getKodPocztowy()
+    {
+        return $this->kodPocztowy;
+    }
+
+    /**
+     * @param mixed $kodPocztowy
+     */
+    public function setKodPocztowy($kodPocztowy)
+    {
+        $this->kodPocztowy = $kodPocztowy;
     }
 
 

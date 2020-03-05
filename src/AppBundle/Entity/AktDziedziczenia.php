@@ -83,6 +83,21 @@ class AktDziedziczenia extends Dokument
      */
     protected $sprawa;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    protected $zmianaWlascicielaNieruchomosci=false;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    protected $miastoNieruchomosci;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    protected $ksiegaWieczystaNieruchomosci;
+
 
 
     /**
@@ -313,4 +328,57 @@ class AktDziedziczenia extends Dokument
     {
         $this->numerSkroconegoAktuMalzenstwaPotomka = $numerSkroconegoAktuMalzenstwaPotomka;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getZmianaWlascicielaNieruchomosci()
+    {
+        return $this->zmianaWlascicielaNieruchomosci;
+    }
+
+    /**
+     * @param mixed $zmianaWlascicielaNieruchomosci
+     */
+    public function setZmianaWlascicielaNieruchomosci($zmianaWlascicielaNieruchomosci)
+    {
+        $this->zmianaWlascicielaNieruchomosci = $zmianaWlascicielaNieruchomosci;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMiastoNieruchomosci()
+    {
+        return $this->miastoNieruchomosci;
+    }
+
+    /**
+     * @param mixed $miastoNieruchomosci
+     */
+    public function setMiastoNieruchomosci($miastoNieruchomosci)
+    {
+        $this->miastoNieruchomosci = $miastoNieruchomosci;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getKsiegaWieczystaNieruchomosci()
+    {
+        return $this->ksiegaWieczystaNieruchomosci;
+    }
+
+    /**
+     * @param mixed $ksiegaWieczystaNieruchomosci
+     */
+    public function setKsiegaWieczystaNieruchomosci($ksiegaWieczystaNieruchomosci)
+    {
+        $this->ksiegaWieczystaNieruchomosci = $ksiegaWieczystaNieruchomosci;
+    }
+
+
+
+
+
 }

@@ -36,6 +36,10 @@ class KancelariaType extends AbstractType
                 'label'  => 'Adres: ',
                 'required'=>true
             ])
+            ->add('kodPocztowy', TextType::class, [
+                'label'  => 'Kod pocztowy: ',
+                'required'=>true
+            ])
         ;
     }
 

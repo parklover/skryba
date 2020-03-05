@@ -7,6 +7,7 @@ use AppBundle\Entity\OsobaFizyczna;
 use AppBundle\Entity\Sprawa;
 use AppBundle\Form\AktDziedziczeniaType;
 use AppBundle\Form\DokumentType;
+use Doctrine\Common\Collections\ArrayCollection;
 use PhpOffice\PhpWord\IOFactory;
 use PhpOffice\PhpWord\TemplateProcessor;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -50,19 +51,12 @@ class AktDziedziczeniaController extends Controller
             $fileName = bin2hex(mcrypt_create_iv(22, MCRYPT_DEV_URANDOM)).'.html';
             $aktDziedziczenia->setFilename($fileName);
 
-            $html = $this->render('Wzory/akt_poswiadczenia_dziedziczenia.html.twig', [
-                'dupa' => $dupa,
-                'form' => $form->getData(),
-                'dataCzynnosciSlownie' => $dataSlownie,
-                'dataZgonuSlownie' => $dataZgonuSlownie,
-                'numerSprawy' => $numerSprawy,
-                'user' => $user
-            ]);
 
-            dump($html);
-            dump($form->getData());
-            dump($request->get('spadkobiercy'));
-            dump($form->get('spadkobiercy')->getData());
+
+//            dump($html);
+//            dump($form->getData());
+//            dump($request->get('spadkobiercy'));
+//            dump($form->get('spadkobiercy')->getData());
 
 //            $zgoniarzDane = $form->get('zgoniarz')->getData();
 //            $zgoniarz = $this->getDoctrine()->getRepository(OsobaFizyczna::class)->findOneBy(['pesel' => $zgoniarzDane['pesel']]);
@@ -85,6 +79,21 @@ class AktDziedziczeniaController extends Controller
 //            $zgoniarz->setAktDziedziczenia($aktDziedziczenia);
 
             $dane = $form->getData();
+            $zgoniarzForm = $form->get('zgoniarz')->getData();
+            $zgoniarz = $this->getDoctrine()->getRepository(OsobaFizyczna::class)->findOneBy(['pesel' => $zgoniarzForm->getPesel()]);
+            if(!$zgoniarz){
+                $zgoniarz = $zgoniarzForm;
+                $em->persist($zgoniarzForm);
+            }
+            $zgoniarz->setPlec($zgoniarz->getPesel()[10]%2==0?2:1);
+
+//            $form->get('zgoniarz')->setData($zgoniarz);
+//            dump($zgoniarz);
+//            dump($zgoniarzForm);
+//            dump($form->getData());
+//            die;
+
+            $spadkobiercy = new ArrayCollection();
             foreach($form->get('spadkobiercy')->getData() as $osoba){
                 $spadkobierca = $this->getDoctrine()->getRepository(OsobaFizyczna::class)->findOneBy(['pesel' => $osoba['pesel']]);
                 if(!$spadkobierca){
@@ -99,12 +108,29 @@ class AktDziedziczeniaController extends Controller
                     $spadkobierca->setNumerDowodu($osoba['numerDowodu']);
                     $spadkobierca->setDataWaznosciDowodu($osoba['dataWaznosciDowodu']);
                     $spadkobierca->setStopienPokrewienstwa($osoba['stopienPokrewienstwa']);
-                    $spadkobierca->setPlec($osoba['plec']);
+                    $spadkobierca->setPlec($osoba['pesel'][10]%2==0?2:1);
                     $em->persist($spadkobierca);
                 }
+                $spadkobiercy->add($spadkobierca);
                 $aktDziedziczenia->addSpadkobiercy($spadkobierca);
                 $spadkobierca->addAktDziedziczenia($aktDziedziczenia);
             }
+
+//            dump($spadkobiercy);
+
+            $html = $this->render('Wzory/akt_poswiadczenia_dziedziczenia.html.twig', [
+                'dupa' => $dupa,
+                'form' => $form->getData(),
+                'dataCzynnosciSlownie' => $dataSlownie,
+                'dataZgonuSlownie' => $dataZgonuSlownie,
+                'numerSprawy' => $numerSprawy,
+                'user' => $user,
+                'spadkobiorcy' => $spadkobiercy,
+                'zgoniarz' => $zgoniarz
+            ]);
+
+
+
 
             $html_przetworzony = preg_replace("/\r|\n/", "", $html->getContent());
             dump(nl2br($html_przetworzony));

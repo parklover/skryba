@@ -58,7 +58,27 @@ class OsobaFizyczna
     /**
      * @ORM\Column(type="text")
      */
-    protected $miejsceZamieszkania;
+    protected $miastoZamieszkania;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    protected $numerDomuZamieszkania;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    protected $numerMieszkaniaZamieszkania;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    protected $typObiektuZamieszkania;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    protected $nazwaObiektuZamieszkania;
 
     /**
      * @ORM\Column(type="text")
@@ -228,18 +248,84 @@ class OsobaFizyczna
     /**
      * @return mixed
      */
-    public function getMiejsceZamieszkania()
+    public function getMiastoZamieszkania()
     {
-        return $this->miejsceZamieszkania;
+        return $this->miastoZamieszkania;
     }
 
     /**
-     * @param mixed $miejsceZamieszkania
+     * @param mixed $miastoZamieszkania
      */
-    public function setMiejsceZamieszkania($miejsceZamieszkania)
+    public function setMiastoZamieszkania($miastoZamieszkania)
     {
-        $this->miejsceZamieszkania = $miejsceZamieszkania;
+        $this->miastoZamieszkania = $miastoZamieszkania;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getNumerDomuZamieszkania()
+    {
+        return $this->numerDomuZamieszkania;
+    }
+
+    /**
+     * @param mixed $numerDomuZamieszkania
+     */
+    public function setNumerDomuZamieszkania($numerDomuZamieszkania)
+    {
+        $this->numerDomuZamieszkania = $numerDomuZamieszkania;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNumerMieszkaniaZamieszkania()
+    {
+        return $this->numerMieszkaniaZamieszkania;
+    }
+
+    /**
+     * @param mixed $numerMieszkaniaZamieszkania
+     */
+    public function setNumerMieszkaniaZamieszkania($numerMieszkaniaZamieszkania)
+    {
+        $this->numerMieszkaniaZamieszkania = $numerMieszkaniaZamieszkania;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTypObiektuZamieszkania()
+    {
+        return $this->typObiektuZamieszkania;
+    }
+
+    /**
+     * @param mixed $typObiektuZamieszkania
+     */
+    public function setTypObiektuZamieszkania($typObiektuZamieszkania)
+    {
+        $this->typObiektuZamieszkania = $typObiektuZamieszkania;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNazwaObiektuZamieszkania()
+    {
+        return $this->nazwaObiektuZamieszkania;
+    }
+
+    /**
+     * @param mixed $nazwaObiektuZamieszkania
+     */
+    public function setNazwaObiektuZamieszkania($nazwaObiektuZamieszkania)
+    {
+        $this->nazwaObiektuZamieszkania = $nazwaObiektuZamieszkania;
+    }
+
+
 
     /**
      * @return mixed
@@ -398,29 +484,29 @@ class OsobaFizyczna
         $this->aktyDziedziczeniaRodziny->removeElement($aktDziedziczenia);
     }
 
-    /**
-     * @return mixed
-     */
-    public function getDataUrodzenia()
-    {
-        return $this->dataUrodzenia;
-    }
+//    /**
+//     * @return mixed
+//     */
+//    public function getDataUrodzenia()
+//    {
+//        return $this->dataUrodzenia;
+//    }
+//
+//    /**
+//     * @return mixed
+//     */
+//    public function getDataUrodzeniaSlownie()
+//    {
+//        return $this->dataSlownie($this->dataUrodzenia);
+//    }
 
-    /**
-     * @return mixed
-     */
-    public function getDataUrodzeniaSlownie()
-    {
-        return $this->dataSlownie($this->dataUrodzenia);
-    }
-
-    /**
-     * @param mixed $dataUrodzenia
-     */
-    public function setDataUrodzenia($dataUrodzenia)
-    {
-        $this->dataUrodzenia = $dataUrodzenia;
-    }
+//    /**
+//     * @param mixed $dataUrodzenia
+//     */
+//    public function setDataUrodzenia($dataUrodzenia)
+//    {
+//        $this->dataUrodzenia = $dataUrodzenia;
+//    }
 
     /**
      * @return mixed
