@@ -146,7 +146,7 @@ class AktDziedziczeniaController extends Controller
             ]);
 
             $html_przetworzony = preg_replace("/\r|\n/", "", $html->getContent());
-            dump(nl2br($html_przetworzony));
+//            dump(nl2br($html_przetworzony));
             file_put_contents("temp/".$fileName, $html_przetworzony);
 
             $em->persist($aktDziedziczenia);
@@ -226,7 +226,7 @@ class AktDziedziczeniaController extends Controller
 
         /** @var AktDziedziczenia $dokument */
         $dokument = $this->getDoctrine()->getRepository(AktDziedziczenia::class)->findOneBy(['id' => $id, 'hash' => $hash]);
-        dump($dokument);
+//        dump($dokument);
 
         if(!$dokument){
 //            die;
@@ -234,7 +234,7 @@ class AktDziedziczeniaController extends Controller
         }
 
         $html = file_get_contents("temp/".$dokument->getFilename());
-        dump($html);
+//        dump($html);
 
         $form = $this->createForm(EditorType::class);
         $form->handleRequest($request);
@@ -243,9 +243,9 @@ class AktDziedziczeniaController extends Controller
 //            dump($form);
 //            dump($form->getData());
             $htmlEdit = $form->getData()['content'];
-            dump($htmlEdit);
+//            dump($htmlEdit);
             $html_przetworzony = preg_replace("/\r|\n/", "", $htmlEdit);
-            dump(nl2br($html_przetworzony));
+//            dump(nl2br($html_przetworzony));
             file_put_contents("temp/zapis123.html", $html_przetworzony);
 
             return $this->render('default/editor.html.twig', [
