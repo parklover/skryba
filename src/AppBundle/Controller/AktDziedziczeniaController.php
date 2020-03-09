@@ -49,7 +49,7 @@ class AktDziedziczeniaController extends Controller
             $dataSlownie = "";
             $dataZgonuSlownie = "";
             $user = $this->getUser();
-            $fileName = $sprawa->getNazwa().'-'.bin2hex(mcrypt_create_iv(5, MCRYPT_DEV_URANDOM)).'.html';
+            $fileName = $sprawa->getNazwa().'-'.time().'.html';
             $aktDziedziczenia->setFilename($fileName);
 
 //            dump($html);
