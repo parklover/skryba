@@ -90,9 +90,20 @@ class AppExtension extends AbstractExtension
         switch($stopienPokrewienstwa){
             case 1:  return 'Matka'; break;
             case 2:  return 'Ojciec'; break;
-            case 3:  return 'Kuzyn'; break;
-            case 4:  return 'Brat'; break;
-            case 5:  return 'Siostra'; break;
+            case 3:  return 'Mąż'; break;
+            case 4:  return 'Żona'; break;
+            case 5:  return 'Córka'; break;
+            case 6:  return 'Syn'; break;
+            case 7:  return 'Dziadek'; break;
+            case 8:  return 'Babcia'; break;
+            case 9:  return 'Wnuk'; break;
+            case 10:  return 'Wnuczka'; break;
+            case 11:  return 'Pasierb'; break;
+            case 12:  return 'Pasierbica'; break;
+            case 13:  return 'Siostrzeniec'; break;
+            case 14:  return 'Siostrzenica'; break;
+            case 15:  return 'Bratanek'; break;
+            case 16:  return 'Bratanica'; break;
             default: return ""; break;
         }
     }

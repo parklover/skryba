@@ -44,13 +44,12 @@ class AktDziedziczeniaController extends Controller
         $em = $this->getDoctrine()->getManager();
         $form->handleRequest($request);
         if($form->isValid()){
-
             $aktDziedziczenia->setSprawa($sprawa);
             $numerSprawy = $sprawa->getRepertorium();
             $dataSlownie = "";
             $dataZgonuSlownie = "";
             $user = $this->getUser();
-            $fileName = bin2hex(mcrypt_create_iv(22, MCRYPT_DEV_URANDOM)).'.html';
+            $fileName = $sprawa->getNazwa().'-'.bin2hex(mcrypt_create_iv(5, MCRYPT_DEV_URANDOM)).'.html';
             $aktDziedziczenia->setFilename($fileName);
 
 //            dump($html);

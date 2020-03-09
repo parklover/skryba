@@ -15,7 +15,7 @@
         <td>{{ form_widget(form.imieMatki,{attr:{class:'form-control form-control-sm licz'}}) }}</td>
         <td class="adresTd"><button type="button" class="adres form-control btn-edit btn btn-animate-vertical">Wprowadź adres</button></td>
         <td>{{ form_widget(form.miejsceUrodzenia,{attr:{class:'form-control form-control-sm licz'}}) }}</td>
-        <td>{{ form_widget(form.numerDowodu,{attr:{class:'form-control form-control-sm licz'}}) }}</td>
+        <td>{{ form_widget(form.numerDowodu,{attr:{class:'form-control form-control-sm licz id-validate'}}) }}</td>
         <td>{{ form_widget(form.dataWaznosciDowodu) }}</td>
         <td>{{ form_widget(form.stopienPokrewienstwa,{attr:{class:'form-control form-control-sm licz'}}) }}</td>
         {#<td>{{ form_widget(form.plec,{attr:{class:'form-control form-control-sm licz'}}) }}</td>#}
@@ -46,50 +46,11 @@
                 {{ form_row(form.miejsceWydaniaAktuZgonu) }}
                 {{ form_row(form.dataWydaniaAktuZgonu) }}
                 {{ form_row(form.numerAktuZgonu) }}
-            <table class="table table-bordered">
-                <thead>
-                <tr class="collection-add text-center">
-                    {#<th width="10"></th>#}
-                    <th width="150">Pesel</th>
-                    <th width="150">Imię</th>
-                    <th width="150">Nazwisko</th>
-                    <th width="150">Imię ojca</th>
-                    <th width="150">Imię matki</th>
-                    <th width="200">Adres zamieszkania</th>
-                    <th width="200">Miejsce urodzenia</th>
-                    <th width="100">Numer dowodu osobistego</th>
-                    <th width="125">Data ważności dowodu osobistego</th>
-                    {#<th	width="100" >Pokrewieństwo</th>#}
-                    {#<th	width="100" >Płeć</th>#}
-                    {#<th width="30">Usuń</th>#}
-                </tr>
-                </thead>
-                <tbody>
-                <tr class="collection-element" data-id="0">
-                    <td class="pesel">{{ form_widget(form.zgoniarz.pesel,{attr:{class:'form-control form-control-sm pesel-validate'}}) }}</td>
-                    <td>{{ form_widget(form.zgoniarz.imie,{attr:{class:'form-control form-control-sm set-rodzaj'}}) }}</td>
-                    <td>{{ form_widget(form.zgoniarz.nazwisko,{attr:{class:'form-control form-control-sm'}}) }}</td>
-                    <td>{{ form_widget(form.zgoniarz.imieOjca,{attr:{class:'form-control form-control-sm'}}) }}</td>
-                    <td>{{ form_widget(form.zgoniarz.imieMatki,{attr:{class:'form-control form-control-sm licz'}}) }}</td>
-                    <td class="adresTd"><button type="button" class="adres form-control btn-edit btn btn-animate-vertical">Wprowadź adres</button></td>
-                    <td>{{ form_widget(form.zgoniarz.miejsceUrodzenia,{attr:{class:'form-control form-control-sm licz'}}) }}</td>
-                    <td>{{ form_widget(form.zgoniarz.numerDowodu,{attr:{class:'form-control form-control-sm licz'}}) }}</td>
-                    <td>{{ form_widget(form.zgoniarz.dataWaznosciDowodu) }}</td>
-                    {{ form_widget(form.zgoniarz.miastoZamieszkania) }}
-                    {{ form_widget(form.zgoniarz.numerDomuZamieszkania) }}
-                    {{ form_widget(form.zgoniarz.numerMieszkaniaZamieszkania) }}
-                    {{ form_widget(form.zgoniarz.typObiektuZamieszkania) }}
-                    {{ form_widget(form.zgoniarz.nazwaObiektuZamieszkania) }}
-                    {#<td>{{ form_widget(form.zgoniarz.dataUrodzenia) }}</td>#}
-                    {#<td>{{ form_widget(form.zgoniarz.stopienPokrewienstwa,{attr:{class:'form-control form-control-sm licz'}}) }}</td>#}
-                    {#<td>{{ form_widget(form.zgoniarz.plec,{attr:{class:'form-control form-control-sm licz'}}) }}</td>#}
-                </tr>
-                </tbody>
-            </table>
+            <div class="form-group row">
+                <label class="col-xs-12 col-md-4 form-control-label form-control-sm col-sm-2 control-label">Spadkodawca: </label>
                 <table class="table table-bordered">
                     <thead>
                     <tr class="collection-add text-center">
-                        <th width="10"></th>
                         <th width="150">Pesel</th>
                         <th width="150">Imię</th>
                         <th width="150">Nazwisko</th>
@@ -99,20 +60,61 @@
                         <th width="200">Miejsce urodzenia</th>
                         <th width="100">Numer dowodu osobistego</th>
                         <th width="125">Data ważności dowodu osobistego</th>
-                        <th	width="100" >Pokrewieństwo</th>
-                        {#<th	width="100" >Płeć</th>#}
-                        <th width="30">Usuń</th>
                     </tr>
                     </thead>
-                    <tbody class="collection" data-prototype="{{ form_widget(form.spadkobiercy.vars.prototype)|e }}" data-prototype-name="__name__">
-                    {% for pozycja in form.spadkobiercy %}
-                        {{ form_widget(pozycja) }}
-                    {% endfor %}
-                    <tr class="collection-add">
-                        <td colspan="12"><a class="dodaj-element btn btn-default btn-sm"><i class="icon md-plus " aria-hidden="true"></i>Dodaj pozycję</a></td>
+                    <tbody>
+                    <tr class="collection-element" data-id="0">
+                        <td class="pesel">{{ form_widget(form.zgoniarz.pesel,{attr:{class:'form-control form-control-sm pesel-validate'}}) }}</td>
+                        <td>{{ form_widget(form.zgoniarz.imie,{attr:{class:'form-control form-control-sm set-rodzaj'}}) }}</td>
+                        <td>{{ form_widget(form.zgoniarz.nazwisko,{attr:{class:'form-control form-control-sm'}}) }}</td>
+                        <td>{{ form_widget(form.zgoniarz.imieOjca,{attr:{class:'form-control form-control-sm'}}) }}</td>
+                        <td>{{ form_widget(form.zgoniarz.imieMatki,{attr:{class:'form-control form-control-sm licz'}}) }}</td>
+                        <td class="adresTd"><button type="button" class="adres form-control btn-edit btn btn-animate-vertical">Wprowadź adres</button></td>
+                        <td>{{ form_widget(form.zgoniarz.miejsceUrodzenia,{attr:{class:'form-control form-control-sm licz'}}) }}</td>
+                        <td>{{ form_widget(form.zgoniarz.numerDowodu,{attr:{class:'form-control form-control-sm licz id-validate'}}) }}</td>
+                        <td>{{ form_widget(form.zgoniarz.dataWaznosciDowodu) }}</td>
+                        {{ form_widget(form.zgoniarz.miastoZamieszkania) }}
+                        {{ form_widget(form.zgoniarz.numerDomuZamieszkania) }}
+                        {{ form_widget(form.zgoniarz.numerMieszkaniaZamieszkania) }}
+                        {{ form_widget(form.zgoniarz.typObiektuZamieszkania) }}
+                        {{ form_widget(form.zgoniarz.nazwaObiektuZamieszkania) }}
+                        {#<td>{{ form_widget(form.zgoniarz.dataUrodzenia) }}</td>#}
+                       {{ form_widget(form.zgoniarz.stopienPokrewienstwa,{attr:{class:'form-control form-control-sm zgoniarzUkryj'}}) }}
+                        {#<td>{{ form_widget(form.zgoniarz.plec,{attr:{class:'form-control form-control-sm licz'}}) }}</td>#}
                     </tr>
                     </tbody>
                 </table>
+            </div>
+            <div class="form-group row">
+                <label class="col-xs-12 col-md-4 form-control-label form-control-sm col-sm-2 control-label">Spadkobiercy: </label>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr class="collection-add text-center">
+                            <th width="10"></th>
+                            <th width="150">Pesel</th>
+                            <th width="150">Imię</th>
+                            <th width="150">Nazwisko</th>
+                            <th width="150">Imię ojca</th>
+                            <th width="150">Imię matki</th>
+                            <th width="200">Adres zamieszkania</th>
+                            <th width="200">Miejsce urodzenia</th>
+                            <th width="100">Numer dowodu osobistego</th>
+                            <th width="125">Data ważności dowodu osobistego</th>
+                            <th	width="100" >Pokrewieństwo</th>
+                            {#<th	width="100" >Płeć</th>#}
+                            <th width="30">Usuń</th>
+                        </tr>
+                    </thead>
+                    <tbody class="collection" data-prototype="{{ form_widget(form.spadkobiercy.vars.prototype)|e }}" data-prototype-name="__name__">
+                        {% for pozycja in form.spadkobiercy %}
+                            {{ form_widget(pozycja) }}
+                        {% endfor %}
+                        <tr class="collection-add">
+                            <td colspan="12"><a class="dodaj-element btn btn-default btn-sm"><i class="icon md-plus " aria-hidden="true"></i>Dodaj pozycję</a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+            </div>
                 {#{{ form_row(form.spadkobiercy) }}#}
                 {#{{ form_row(form.stawajacy) }}#}
 
@@ -201,7 +203,7 @@
     <script>
 
         $(document).ready(function() {
-
+            addTagForm($('.collection'));
             $(document).on('click', '.adres', function(){
                 $('#adresModal').modal('show');
                 var id = $(this).parents('tr').attr('data-id');
@@ -228,7 +230,50 @@
                 // var adresNumerMieszkania = $('.adresNumerMieszkania').val();
             });
 
+            function validateDO(numer)
+            {
+                //Check length
+                if (numer == null || numer.length != 9)
+                    return false;
 
+                numer = numer.toUpperCase();
+                letterValues = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                function getLetterValue(letter){
+                    return letterValues.indexOf(letter)
+                }
+
+                //Check seria
+                for (i=0; i<3; i++)
+                    if (getLetterValue(numer[i]) < 10 || numer[i] == 'O' || numer == 'Q')
+                        return false;
+                //Check numbers
+                for (i=3; i<9; i++)
+                    if (getLetterValue(numer[i]) < 0 || getLetterValue(numer[i]) > 9)
+                        return false;
+
+                //sprawdz cyfre kontrolna
+                sum = 7 * getLetterValue(numer[0]) +
+                    3 * getLetterValue(numer[1]) +
+                    1 * getLetterValue(numer[2]) +
+                    7 * getLetterValue(numer[4]) +
+                    3 * getLetterValue(numer[5]) +
+                    1 * getLetterValue(numer[6]) +
+                    7 * getLetterValue(numer[7]) +
+                    3 * getLetterValue(numer[8]);
+                sum %= 10;
+                if (sum != getLetterValue(numer[3]))
+                    return false;
+
+                return true;
+            }
+
+            $(document).on('focusout', '.id-validate', function(){
+                var numerDowodu = $(this).val();
+                if(!validateDO(numerDowodu)){
+                    $(this).val('');
+                    swal('Uwaga!', 'Podany numer dowodu jest niepoprawny!', 'warning');
+                }
+            });
 
             $(document).on('focusout', '.pesel-validate', function(){
                 var pesel = $(this).val();
@@ -395,6 +440,9 @@
     .form-group .form-control-label{
         font-size: 15px !important;
         font-weight: 500 !important;
+    }
+    .zgoniarzUkryj{
+        display: none !important;
     }
 
     @media (min-width: 768px) {

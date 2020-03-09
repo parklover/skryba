@@ -72,9 +72,20 @@ class OsobaFizycznaType extends AbstractType
                 'choices' => [
                     'Matka' => 1,
                     'Ojciec' => 2,
-                    'Kuzyn' => 3,
-                    'Brat' => 4,
-                    'Siostra' => 5,
+                    'Mąż' => 3,
+                    'Żona' => 4,
+                    'Córka' => 5,
+                    'Syn' => 6,
+                    'Dziadek' => 7,
+                    'Babcia' => 8,
+                    'Wnuk' => 9,
+                    'Wnuczka' => 10,
+                    'Pasierb' => 11,
+                    'Pasierbica' => 12,
+                    'Siostrzeniec' => 13,
+                    'Siostrzenica' => 14,
+                    'Bratanek' => 15,
+                    'Bratanica' => 16,
                 ]
             ])
 //            ->add('plec',ChoiceType::class,[
