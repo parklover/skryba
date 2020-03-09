@@ -41,6 +41,8 @@ abstract class Dokument
      */
     protected $hash;
 
+
+
 //    /**
 //     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Sprawa", inversedBy="dokumenty",cascade={"persist"})
 //     * @ORM\JoinColumn(name="id_sprawy", referencedColumnName="id")

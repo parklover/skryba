@@ -35,6 +35,11 @@ class Sprawa
      */
     protected $nazwa;
 
+    /**
+     * @ORM\Column(type="text")
+     */
+    protected $repertorium;
+
 //    /**
 //     * One Product has Many Features.
 //     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Dokument", mappedBy="sprawa",cascade={"persist"})
@@ -164,6 +169,22 @@ class Sprawa
     public function setAkty($akty)
     {
         $this->akty = $akty;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRepertorium()
+    {
+        return $this->repertorium;
+    }
+
+    /**
+     * @param mixed $repertorium
+     */
+    public function setRepertorium($repertorium)
+    {
+        $this->repertorium = $repertorium;
     }
 
 

@@ -73,7 +73,7 @@ class OsobaFizyczna
     /**
      * @ORM\Column(type="text")
      */
-    protected $typObiektuZamieszkania;
+    protected $typObiektuZamieszkania = 0;
 
     /**
      * @ORM\Column(type="text", nullable=true)

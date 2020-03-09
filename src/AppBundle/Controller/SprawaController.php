@@ -58,6 +58,8 @@ class SprawaController extends Controller
         $form->handleRequest($request);
         if ($form->isValid()) {
             $sprawa->setKancelaria($this->getUser()->getKancelaria());
+            $now = new \DateTime('now');
+            $sprawa->setRepertorium($this->getUser()->getKancelaria()->getSprawy()->count()."/".$now->format('Y'));
             $em->persist($sprawa);
             $em->flush();
             return $this->redirectToRoute('sprawa', ['id' => $sprawa->getId()]);

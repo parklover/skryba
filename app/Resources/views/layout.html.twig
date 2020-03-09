@@ -23,6 +23,28 @@
     [aria-live='polite'] {
       position: relative !important;
     }
+    #ow-loading {
+      display: none;
+      position: fixed;
+      background: rgba(0,0,0,0.3);
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      z-index: 99999;
+    }
+    #ow-loading div {
+      z-index: 999999;
+      left: 50%;
+      top: 50%;
+      position: absolute;
+      transform: translate(-50%, -50%);
+      background: white;
+      border: 1px solid #60c6e8;
+      padding: 32px 52px 32px 52px;
+      text-align: center;
+      font-size: 20px;
+    }
   </style>
   {% block stylesheets %}{% endblock %}
 
@@ -40,6 +62,7 @@
   <link rel="stylesheet" href="{{ asset('assets/panel/global/vendor/chartist/chartist.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/panel/global/vendor/jvectormap/jquery-jvectormap.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/panel/global/vendor/chartist-plugin-tooltip/chartist-plugin-tooltip.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/panel/global/vendor/bootstrap-sweetalert/sweetalert.css') }}">
 {#  <link rel="stylesheet" href="{{ asset('assets/panel/base/examples/css/dashboard/v1.css') }}">#}
 
   <!-- Fonts -->
@@ -68,6 +91,16 @@
   </script>
 </head>
 <body class="animsition dashboard">
+<div id="ow-loading">
+  <div>
+    <img src="{{ asset('img/ajax_load.gif') }}" alt="loading" />
+    <br/>
+    <br/>
+    <br/>
+    Trwa ładowanie, proszę
+    <br/>czekać...
+  </div>
+</div>
   <!--[if lt IE 8]>
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -2060,6 +2093,7 @@
   <script src="{{ asset('assets/panel/global/vendor/jvectormap/maps/jquery-jvectormap-world-mill-en.js') }}"></script>
   <script src="{{ asset('assets/panel/global/vendor/matchheight/jquery.matchHeight-min.js') }}"></script>
   <script src="{{ asset('assets/panel/global/vendor/peity/jquery.peity.min.js') }}"></script>
+  <script src="{{ asset('assets/panel/global/vendor/bootstrap-sweetalert/sweetalert.js') }}"></script>
   <!-- Scripts -->
   <script src="{{ asset('assets/panel/global/js/State.js') }}"></script>
   <script src="{{ asset('assets/panel/global/js/Component.js') }}"></script>
@@ -2110,6 +2144,14 @@
       loadingParentElement: 'html',
       loadingInner: '\n      <div class="loader-content">\n        <div class="loader-index">\n          <div></div>\n          <div></div>\n          <div></div>\n          <div></div>\n          <div></div>\n          <div></div>\n        </div>\n      </div>',
       onLoadEvent: true
+    });
+
+    $( document ).ajaxStart(function() {
+      $('#ow-loading').show();
+    });
+
+    $( document ).ajaxStop(function() {
+      $('#ow-loading').hide();
     });
   </script>
 

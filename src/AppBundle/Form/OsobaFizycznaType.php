@@ -36,7 +36,10 @@ class OsobaFizycznaType extends AbstractType
                 'label'  => 'Imię matki: '
             ])
             ->add('pesel', TextType::class, [
-                'label'  => 'Pesel: '
+                'label'  => 'Pesel: ',
+                'attr'=>[
+                    'class'=>'pesel-validate'
+                ],
             ])
             ->add('miejsceUrodzenia', TextType::class, [
                 'label'  => 'Miejsce urodzenia: '
