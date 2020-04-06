@@ -14,9 +14,12 @@
     .table thead:first-child th {
       background: #3f51b5 !important;
     }
-    .site-menubar {
+    .site-menubar-hide {
       z-index: 0 !important;
     }
+    /*site-menubar-open{*/
+    /*  z-index: 9999 !important;*/
+    /*}*/
     #container{
       min-height: 70vh;
     }
@@ -44,6 +47,65 @@
       padding: 32px 52px 32px 52px;
       text-align: center;
       font-size: 20px;
+    }
+    .page-hide {
+      padding-left: 0px;
+      margin-left: 0px !important;
+    }
+    .checkbox-div-custom{
+      display: flex;
+      justify-content: center;
+      padding-bottom: 3px;
+    }
+    .navbar-container-hide {
+      margin-left: 0px !important;
+    }
+    .navbar-header-hide {
+      width: 0px !important;
+    }
+    .site-menubar-footer.site-menubar-footer-hide > a{
+      height: 60px !important;
+    }
+    .zakladka{
+      position: absolute;
+      left: -320px;
+      width: fit-content;
+      display: flex;
+      align-items: self-start;
+      top: 32px;
+      z-index: 1;
+    }
+    .zakladka.open{
+      left: 0px !important;
+      z-index: 9999;
+    }
+    .zakladka .zakladka-header{
+      padding: .75rem 1.25rem;
+      background-color: #3a96c7;
+      color: white;
+      font-weight: 500;
+      text-align: center;
+      height: 45px;
+    }
+    .zakladka .zakladka-icon {
+      display: inline-block;
+      text-align: center;
+      border: 1px solid #3a96c7;
+      padding: 4px 14px;
+      margin-left: -1px;
+      border-top-right-radius: 8px;
+      font-size: 23px;
+      border-bottom-right-radius: 8px;
+      background: #3a96c7;
+      color: white;
+      cursor: pointer;
+    }
+    .zakladka .zakladka-content {
+      width: 320px;
+      display: inline-block;
+      border: 1px solid #3a96c7;
+      background: white;
+      overflow: hidden;
     }
   </style>
   {% block stylesheets %}{% endblock %}
@@ -131,7 +193,7 @@
         <!-- Navbar Toolbar -->
         <ul class="nav navbar-toolbar">
           <li class="nav-item hidden-float" id="toggleMenubar">
-            <a class="nav-link" data-toggle="menubar" href="#" role="button">
+            <a class="nav-link toggle-menubar" data-toggle="menubar" href="#" role="button">
               <i class="icon hamburger hamburger-arrow-left">
                   <span class="sr-only">Toggle menubar</span>
                   <span class="hamburger-bar"></span>
@@ -2153,6 +2215,26 @@
     $( document ).ajaxStop(function() {
       $('#ow-loading').hide();
     });
+
+    function toggleMenubar(){
+      $('.page').toggleClass('page-hide');
+      $('.navbar-container').toggleClass('navbar-container-hide');
+      $('.navbar-header').toggleClass('navbar-header-hide');
+      $('.site-menubar-footer').toggleClass('site-menubar-footer-hide');
+      $('.site-menubar').toggleClass('site-menubar-hide');
+      if($('.icon.hamburger').hasClass('hamburger-arrow-left')){
+          $('.icon.hamburger').removeClass('hamburger-arrow-left');
+          $('.icon.hamburger').addClass('hamburger-arrow-right');
+      }else{
+        $('.icon.hamburger').removeClass('hamburger-arrow-right');
+        $('.icon.hamburger').addClass('hamburger-arrow-left');
+      }
+    }
+
+    $('.toggle-menubar').click(function(){
+      toggleMenubar();
+    });
+
   </script>
 
   {% block javascripts %}{% endblock %}

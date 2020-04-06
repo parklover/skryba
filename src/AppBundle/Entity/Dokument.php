@@ -13,11 +13,10 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Dokument
- *
- * @ORM\MappedSuperclass()
+ * @ORM\Entity
+ * @ORM\Table(name="dokument")
  */
-abstract class Dokument
+class Dokument
 {
     /**
      * @ORM\Id
@@ -32,7 +31,7 @@ abstract class Dokument
     protected $dataDodania;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(type="string", length=200)
      */
     protected $filename;
 
@@ -41,13 +40,21 @@ abstract class Dokument
      */
     protected $hash;
 
+    /**
+     * @ORM\Column(type="string", length=200)
+     */
+    protected $nazwaDokumentu;
 
+    /**
+     * @ORM\Column(name="status", type="integer")
+     */
+    protected $status=1;
 
-//    /**
-//     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Sprawa", inversedBy="dokumenty",cascade={"persist"})
-//     * @ORM\JoinColumn(name="id_sprawy", referencedColumnName="id")
-//     */
-//    protected $sprawa;
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\PostepowanieSpadkowe", inversedBy="dokumenty",cascade={"persist"})
+     * @ORM\JoinColumn(name="id_postepowania", referencedColumnName="id")
+     */
+    protected $postepowanieSpadkowe;
 
     /**
      * Constructor
@@ -160,18 +167,51 @@ abstract class Dokument
     /**
      * @return mixed
      */
-    public function getSprawa()
+    public function getNazwaDokumentu()
     {
-        return $this->sprawa;
+        return $this->nazwaDokumentu;
     }
 
     /**
-     * @param mixed $sprawa
+     * @param mixed $nazwaDokumentu
      */
-    public function setSprawa($sprawa)
+    public function setNazwaDokumentu($nazwaDokumentu)
     {
-        $this->sprawa = $sprawa;
+        $this->nazwaDokumentu = $nazwaDokumentu;
     }
+
+    /**
+     * @return int
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param int $status
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPostepowanieSpadkowe()
+    {
+        return $this->postepowanieSpadkowe;
+    }
+
+    /**
+     * @param mixed $postepowanieSpadkowe
+     */
+    public function setPostepowanieSpadkowe($postepowanieSpadkowe)
+    {
+        $this->postepowanieSpadkowe = $postepowanieSpadkowe;
+    }
+
 
 
 

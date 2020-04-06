@@ -4,7 +4,7 @@
 
 {% form_theme form 'form_theme_2.html.twig' _self %}
 
-{% block _akt_dziedziczenia_spadkobiercy_entry_widget %}
+{% block _postepowanie_spadkowe_spadkobiercy_entry_widget %}
 
     <tr class="collection-element">
         <td class="c-lp valgin-middle">1.</td>
@@ -18,7 +18,16 @@
         <td>{{ form_widget(form.numerDowodu,{attr:{class:'form-control form-control-sm licz id-validate'}}) }}</td>
         <td>{{ form_widget(form.dataWaznosciDowodu) }}</td>
         <td>{{ form_widget(form.stopienPokrewienstwa,{attr:{class:'form-control form-control-sm licz'}}) }}</td>
-        {#<td>{{ form_widget(form.plec,{attr:{class:'form-control form-control-sm licz'}}) }}</td>#}
+        <td>{{ form_widget(form.typDziedziczenia,{attr:{class:'form-control form-control-sm licz'}}) }}</td>
+        <td>{{ form_widget(form.udzialSpadku,{attr:{class:'form-control form-control-sm'}}) }}</td>
+        <td>
+            <div class="checkbox-div-custom">
+                <div class="checkbox-custom checkbox-primary">
+                    {{ form_widget(form.stawajacy,{attr:{class:'form-control form-control-sm'}}) }}
+                    <label></label>
+                </div>
+            </div>
+        </td>
         <td>
             <a href="#" class="btn btn-danger usun"><i class=" md-close"></i></a>
         </td>
@@ -35,9 +44,9 @@
 {% block body %}
     <div id="wrapper">
         <div id="container">
-            <div id="welcome">
-                <h1><span>Welcome to</span> INZYNIERKA </h1>
-            </div>
+{#            <div id="welcome">#}
+{#                <h1><span>Welcome to</span> INZYNIERKA </h1>#}
+{#            </div>#}
 
             {{ form_start(form) }}
                 {{ form_row(form.dataCzynnosci) }}
@@ -79,8 +88,10 @@
                         {{ form_widget(form.zgoniarz.typObiektuZamieszkania) }}
                         {{ form_widget(form.zgoniarz.nazwaObiektuZamieszkania) }}
                         {#<td>{{ form_widget(form.zgoniarz.dataUrodzenia) }}</td>#}
-                       {{ form_widget(form.zgoniarz.stopienPokrewienstwa,{attr:{class:'form-control form-control-sm zgoniarzUkryj'}}) }}
-                        {#<td>{{ form_widget(form.zgoniarz.plec,{attr:{class:'form-control form-control-sm licz'}}) }}</td>#}
+                        {{ form_widget(form.zgoniarz.stopienPokrewienstwa,{attr:{class:'form-control form-control-sm zgoniarzUkryj'}}) }}
+                        {{ form_widget(form.zgoniarz.typDziedziczenia,{attr:{class:'form-control form-control-sm zgoniarzUkryj'}}) }}
+                        {{ form_widget(form.zgoniarz.stawajacy,{attr:{class:'form-control form-control-sm zgoniarzUkryj'}}) }}
+                        {{ form_widget(form.zgoniarz.udzialSpadku,{attr:{class:'form-control form-control-sm zgoniarzUkryj'}}) }}
                     </tr>
                     </tbody>
                 </table>
@@ -101,6 +112,9 @@
                             <th width="100">Numer dowodu osobistego</th>
                             <th width="125">Data ważności dowodu osobistego</th>
                             <th	width="100" >Pokrewieństwo</th>
+                            <th	width="100" >Typ</th>
+                            <th	width="100" >Udział</th>
+                            <th	width="100" >Stawający</th>
                             {#<th	width="100" >Płeć</th>#}
                             <th width="30">Usuń</th>
                         </tr>
@@ -110,11 +124,42 @@
                             {{ form_widget(pozycja) }}
                         {% endfor %}
                         <tr class="collection-add">
-                            <td colspan="12"><a class="dodaj-element btn btn-default btn-sm"><i class="icon md-plus " aria-hidden="true"></i>Dodaj pozycję</a></td>
+                            <td colspan="15"><a class="dodaj-element btn btn-default btn-sm"><i class="icon md-plus" aria-hidden="true"></i>Dodaj pozycję</a></td>
                         </tr>
-                        </tbody>
-                    </table>
+                    </tbody>
+                </table>
+                <button id="generujDrzewo" class="btn btn-primary" type="button">Generuj drzewo</button>
             </div>
+{#            <div id="myDiagramDiv" style="background-color: #696969; border: solid 1px black; height: 500px"></div>#}
+{#            <div>#}
+{#                <div id="myInspector">#}
+
+{#                </div>#}
+{#            </div>#}
+{#            <textarea id="mySavedModel" style="width:100%;height:250px">#}
+{#{ "class": "go.TreeModel",#}
+{#  "nodeDataArray": [#}
+{#{"key":1, "name":"Stella Payne Diaz", "title":"CEO"},#}
+{#{"key":2, "name":"Luke Warm", "title":"VP Marketing/Sales", "parent":1},#}
+{#{"key":3, "name":"Meg Meehan Hoffa", "title":"Sales", "parent":2},#}
+{#{"key":4, "name":"Peggy Flaming", "title":"VP Engineering", "parent":1},#}
+{#{"key":5, "name":"Saul Wellingood", "title":"Manufacturing", "parent":4},#}
+{#{"key":6, "name":"Al Ligori", "title":"Marketing", "parent":2},#}
+{#{"key":7, "name":"Dot Stubadd", "title":"Sales Rep", "parent":3},#}
+{#{"key":8, "name":"Les Ismore", "title":"Project Mgr", "parent":5},#}
+{#{"key":9, "name":"April Lynn Parris", "title":"Events Mgr", "parent":6},#}
+{#{"key":10, "name":"Xavier Breath", "title":"Engineering", "parent":4},#}
+{#{"key":11, "name":"Anita Hammer", "title":"Process", "parent":5},#}
+{#{"key":12, "name":"Billy Aiken", "title":"Software", "parent":10},#}
+{#{"key":13, "name":"Stan Wellback", "title":"Testing", "parent":10},#}
+{#{"key":14, "name":"Marge Innovera", "title":"Hardware", "parent":10},#}
+{#{"key":15, "name":"Evan Elpus", "title":"Quality", "parent":5},#}
+{#{"key":16, "name":"Lotta B. Essen", "title":"Sales Rep", "parent":3},#}
+{#{"key":17, "name":"Joaquin Closet", "title":"Wardrobe Assistant", "isAssistant":true, "parent":1},#}
+{#{"key":18, "name":"Hannah Twomey", "title":"Engineering Assistant", "parent":10, "isAssistant":true}#}
+{# ]#}
+{#}#}
+{#    </textarea>#}
                 {#{{ form_row(form.spadkobiercy) }}#}
                 {#{{ form_row(form.stawajacy) }}#}
 
@@ -199,215 +244,17 @@
 {% block javascripts %}
     {#<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>#}
     <script src="{{ asset('bundles/fosjsrouting/js/router.min.js') }}"></script>
+    <script src="{{ asset('bundles/gojs/go.js') }}"></script>
+    <script src="{{ asset('assets/js/custom/familyDiagram.js') }}"></script>
+    <script src="{{ asset('assets/js/custom/postepowanieSpadkowe.js') }}"></script>
     <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
     <script>
-
         $(document).ready(function() {
             addTagForm($('.collection'));
-            $(document).on('click', '.adres', function(){
-                $('#adresModal').modal('show');
-                var id = $(this).parents('tr').attr('data-id');
-                $('.zapiszAdres').attr('data-id', id);
-                var $tr = $('.collection-element[data-id='+id+']');
 
-                $('.adresMiasto').val($tr.children('input[name*=miastoZamieszkania]').val());
-                $('.adresTypObiektu').val($tr.children('input[name*=numerDomuZamieszkania]').val());
-                $('.adresNazwaObiektu').val($tr.children('input[name*=numerMieszkaniaZamieszkania]').val());
-                $('.adresNumerDomu').val($tr.children('input[name*=typObiektuZamieszkania]').val());
-                $('.adresNumerMieszkania').val($tr.children('input[name*=nazwaObiektuZamieszkania]').val());
+            // initDiagram();
 
-
-                // $tr.children('input[name=*miastoZamieszkania]').val(adresMiasto);
-                // $tr.children('input[name=*numerDomuZamieszkania]').val(adresTypObiektu);
-                // $tr.children('input[name=*akt_dziedziczenia[spadkobiercy][0][numerMieszkaniaZamieszkania]]').val(adresNazwaObiektu);
-                // $tr.children('input[name=*typObiektuZamieszkania]').val(adresNumerDomu);
-                // $tr.children('input[name=*nazwaObiektuZamieszkania]').val(adresNumerMieszkania);
-                //
-                // var adresMiasto = $('.adresMiasto').val();
-                // var adresTypObiektu = $('.adresTypObiektu').val();
-                // var adresNazwaObiektu = $('.adresNazwaObiektu').val();
-                // var adresNumerDomu = $('.adresNumerDomu').val();
-                // var adresNumerMieszkania = $('.adresNumerMieszkania').val();
-            });
-
-            function validateDO(numer)
-            {
-                //Check length
-                if (numer == null || numer.length != 9)
-                    return false;
-
-                numer = numer.toUpperCase();
-                letterValues = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-                function getLetterValue(letter){
-                    return letterValues.indexOf(letter)
-                }
-
-                //Check seria
-                for (i=0; i<3; i++)
-                    if (getLetterValue(numer[i]) < 10 || numer[i] == 'O' || numer == 'Q')
-                        return false;
-                //Check numbers
-                for (i=3; i<9; i++)
-                    if (getLetterValue(numer[i]) < 0 || getLetterValue(numer[i]) > 9)
-                        return false;
-
-                //sprawdz cyfre kontrolna
-                sum = 7 * getLetterValue(numer[0]) +
-                    3 * getLetterValue(numer[1]) +
-                    1 * getLetterValue(numer[2]) +
-                    7 * getLetterValue(numer[4]) +
-                    3 * getLetterValue(numer[5]) +
-                    1 * getLetterValue(numer[6]) +
-                    7 * getLetterValue(numer[7]) +
-                    3 * getLetterValue(numer[8]);
-                sum %= 10;
-                if (sum != getLetterValue(numer[3]))
-                    return false;
-
-                return true;
-            }
-
-            $(document).on('focusout', '.id-validate', function(){
-                var numerDowodu = $(this).val();
-                if(!validateDO(numerDowodu)){
-                    $(this).val('');
-                    swal('Uwaga!', 'Podany numer dowodu jest niepoprawny!', 'warning');
-                }
-            });
-
-            $(document).on('focusout', '.pesel-validate', function(){
-                var pesel = $(this).val();
-                // var wiersz = $(this).parents('tr').attr('data-id');
-                var $tr= $(this).parents('tr');
-                if(pesel !== "") {
-                    console.log(pesel);
-                    // if (pesel.match(/^[0-9]{11}$/)) {
-
-                        $.ajax({
-                            type: "POST",
-                            dataType: 'json',
-                            data: {
-                                'pesel': pesel,
-                            },
-                            url: Routing.generate('sprawdz_pesel'),
-                        }).done(function (response) {
-                            if (response['status']) {
-                                if (response['osoba'] !== null) {
-                                    console.log(response['osoba']);
-                                    $tr.find('input[name*=imie]').val(response['osoba']['imie']);
-                                    $tr.find('input[name*=nazwisko]').val(response['osoba']['nazwisko']);
-                                    $tr.find('input[name*=imieOjca]').val(response['osoba']['imieOjca']);
-                                    $tr.find('input[name*=imieMatki]').val(response['osoba']['imieMatki']);
-                                    $tr.find('input[name*=miejsceUrodzenia]').val(response['osoba']['miejsceUrodzenia']);
-                                    $tr.find('input[name*=miastoZamieszkania]').val(response['osoba']['miastoZamieszkania']);
-                                    $tr.find('input[name*=numerDomuZamieszkania]').val(response['osoba']['numerDomuZamieszkania']);
-                                    $tr.find('input[name*=numerMieszkaniaZamieszkania]').val(response['osoba']['numerMieszkaniaZamieszkania']);
-                                    $tr.find('input[name*=typObiektuZamieszkania]').val(response['osoba']['typObiektuZamieszkania']);
-                                    $tr.find('input[name*=nazwaObiektuZamieszkania]').val(response['osoba']['nazwaObiektuZamieszkania']);
-                                    $tr.find('input[name*=numerDowodu]').val(response['osoba']['numerDowodu']);
-                                    // $tr.find('input[name*=dataWaznosciDowodu]').val(response['osoba']['dataWaznosciDowodu']);
-                                    $tr.find('input[name*=dataWaznosciDowodu]').datepicker("setDate", new Date(response['osoba']['dataWaznosciDowodu']) );
-                                }
-                            } else {
-                                swal('Uwaga!', 'Podany pesel jest niepoprawny!', 'warning');
-                                $tr.children('.pesel').children('input[name*=pesel]').val('');
-                            }
-                        });
-                    // } else {
-                    //     swal('Uwaga!', 'Podany pesel jest niepoprawny!', 'warning');
-                    //     $tr.children('.pesel').children('input[name*=pesel]').val('');
-                    // }
-                }
-            });
-
-            $('.zapiszAdres').click(function(){
-                var id = $(this).attr('data-id');
-                var adresMiasto = $('.adresMiasto').val();
-                var adresTypObiektu = $('.adresTypObiektu').val();
-                var adresNazwaObiektu = $('.adresNazwaObiektu').val();
-                var adresNumerDomu = $('.adresNumerDomu').val();
-                var adresNumerMieszkania = $('.adresNumerMieszkania').val();
-                var $tr = $('.collection-element[data-id='+id+']');
-                $tr.children('input[name*=miastoZamieszkania]').val(adresMiasto);
-                $tr.children('input[name*=numerDomuZamieszkania]').val(adresTypObiektu);
-                $tr.children('input[name*=numerMieszkaniaZamieszkania]').val(adresNazwaObiektu);
-                $tr.children('input[name*=typObiektuZamieszkania]').val(adresNumerDomu);
-                $tr.children('input[name*=nazwaObiektuZamieszkania]').val(adresNumerMieszkania);
-
-                if(adresMiasto !== "" && adresNumerDomu !== "" ){
-                    $tr.children('.adresTd').children('.adres').html("Edytuj adres");
-                    // $tr.children('.adresTd').children('.adres').val("Edytuj adres");
-                    // $tr.children('.adresTd').children('.adres').attr('label', "Edytuj adres");
-                    $('#adresModal').modal('hide');
-                }else{
-                    swal('Uwaga!', 'Uzupełnij rodzaje odzieży!', 'warning');
-                }
-            });
-
-
-            $('#akt_dziedziczenia_miastoNieruchomosci').parent('.col-md-8').parent('.form-group').hide();
-            $('#akt_dziedziczenia_ksiegaWieczystaNieruchomosci').parent('.col-md-8').parent('.form-group').hide();
-
-            $('#akt_dziedziczenia_zmianaWlascicielaNieruchomosci').click(function() {
-                if ($(this).is(":checked")) {
-                    $('#akt_dziedziczenia_miastoNieruchomosci').parent('.col-md-8').parent('.form-group').show();
-                    $('#akt_dziedziczenia_ksiegaWieczystaNieruchomosci').parent('.col-md-8').parent('.form-group').show();
-                } else if ($(this).is(":not(:checked)")) {
-                    $('#akt_dziedziczenia_miastoNieruchomosci').parent('.col-md-8').parent('.form-group').hide();
-                    $('#akt_dziedziczenia_ksiegaWieczystaNieruchomosci').parent('.col-md-8').parent('.form-group').hide();
-                }
-            });
-
-
-            $('.form-date').datepicker({
-                format: "yyyy-mm-dd",
-                language: "pl",
-                orientation: "bottom auto",
-                autoclose: true
-            });
-            if($('.collection-element').length==0) {
-                addTagForm($('.collection'));
-                // addTagForm($('.collection'));
-            }
-            $(document).on('click','.dodaj-element',function (e) {
-                e.preventDefault();
-                addTagForm($(this).parents('.collection').eq(0));
-            });
-            $(document).on('click',".usun",function(e){
-                e.preventDefault();
-                var $obj = $(this).parents('.collection-element').eq(0);
-                if(!$obj.next().hasClass('collection-element') && !$obj.next().hasClass('collection-add')){
-                    $obj.next().remove();
-                }
-                $obj.remove();
-                przeliczRow();
-            });
         });
-
-        function przeliczRow(){
-            var $collectionHolder = $('.collection');
-            var index = 1;
-            $collectionHolder.children('.collection-element').each(function(){
-                $(this).attr('data-id', index);
-                $(this).children('.c-lp').html(index);
-                index++;
-            });
-        }
-
-        function addTagForm($collectionHolder) {
-            var prototype = $collectionHolder.data('prototype');
-            var index =($collectionHolder.data('index'))?$collectionHolder.data('index'):$collectionHolder.children('.collection-element').length;
-            var newForm = prototype.split($collectionHolder.attr('data-prototype-name')).join(index);
-            $collectionHolder.data('index', index + 1);
-            $collectionHolder.find('.collection-add').last().before(newForm);
-            $('.form-date').datepicker({
-                format: "yyyy-mm-dd",
-                language: "pl",
-                orientation: "bottom auto",
-                autoclose: true
-            });
-            przeliczRow();
-        }
     </script>
 {% endblock %}
 

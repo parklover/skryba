@@ -1,7 +1,7 @@
 <?php
 namespace AppBundle\Form;
 
-use AppBundle\Entity\AktDziedziczenia;
+use AppBundle\Entity\PostepowanieSpadkowe;
 use AppBundle\Entity\Kancelaria;
 use AppBundle\Entity\OsobaFizyczna;
 use AppBundle\Entity\Sprawa;

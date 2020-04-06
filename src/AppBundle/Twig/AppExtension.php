@@ -41,7 +41,14 @@ class AppExtension extends AbstractExtension
 
     public function imieZenskie($imieZenskie){
 
-        return substr($imieZenskie, 0 , -1)."y";
+        $koncowkaLeksykalna = substr($imieZenskie, -2);
+        if($koncowkaLeksykalna == "ga"){
+            return substr($imieZenskie, 0,-1)."i";
+        }
+        else{
+            return substr($imieZenskie, 0 , -1)."y";
+        }
+
     }
 
     public function imieMeskie($imieMeskie){

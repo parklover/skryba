@@ -2,10 +2,12 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\AktDziedziczenia;
+use AppBundle\Entity\Dokument;
+use AppBundle\Entity\Kancelaria;
+use AppBundle\Entity\PostepowanieSpadkowe;
 use AppBundle\Entity\OsobaFizyczna;
 use AppBundle\Entity\Sprawa;
-use AppBundle\Form\AktDziedziczeniaType;
+use AppBundle\Form\PostepowanieSpadkoweType;
 //use AppBundle\Form\DokumentType;
 use AppBundle\Form\EditorType;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -21,61 +23,38 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
-class AktDziedziczeniaController extends Controller
+class PostepowanieSpadkoweController extends Controller
 {
     /**
-     * @Route("/panel/dodaj/{idSprawy}/akt_dziedziczenia/", name="akt_dziedziczenia_form")
+     * @Route("/panel/dodaj/postepowanie_spadkowe/", name="postepowanie_spadkowe_form")
      */
-    public function formAction(Request $request, $idSprawy = 0)
+    public function formAction(Request $request)
     {
-        /** @var Sprawa $sprawa */
-        $sprawa = $this->getDoctrine()->getRepository(Sprawa::class)->find($idSprawy);
-        if(!$sprawa){
+        /** @var Kancelaria $kancelaria */
+        $kancelaria = $this->getUser()->getKancelaria();
+        if(!$kancelaria){
             return $this->redirectToRoute('lista_spraw');
         }
+        $now = new \DateTime('now');
 
-        /** @var AktDziedziczenia $aktDziedziczenia */
-        $aktDziedziczenia = new AktDziedziczenia();
 
-        $form = $this->createForm(AktDziedziczeniaType::class, $aktDziedziczenia, []);
+        /** @var PostepowanieSpadkowe $postepowanieSpadkowe */
+        $postepowanieSpadkowe = new PostepowanieSpadkowe();
+        $postepowanieSpadkowe->setRepertorium("12/".$now->format('Y'));
+        $postepowanieSpadkowe->setKancelaria($kancelaria);
+        $postepowanieSpadkowe->setDataDodania($now);
+
+        $form = $this->createForm(PostepowanieSpadkoweType::class, $postepowanieSpadkowe, []);
         $dupa = 'dupa123';
 //        $numerSprawy = 1;
 
         $em = $this->getDoctrine()->getManager();
         $form->handleRequest($request);
         if($form->isValid()){
-            $aktDziedziczenia->setSprawa($sprawa);
-            $numerSprawy = $sprawa->getRepertorium();
+            $numerSprawy = $postepowanieSpadkowe->getRepertorium();
             $dataSlownie = "";
             $dataZgonuSlownie = "";
             $user = $this->getUser();
-            $fileName = $sprawa->getNazwa().'-'.time().'.html';
-            $aktDziedziczenia->setFilename($fileName);
-
-//            dump($html);
-//            dump($form->getData());
-//            dump($request->get('spadkobiercy'));
-//            dump($form->get('spadkobiercy')->getData());
-
-//            $zgoniarzDane = $form->get('zgoniarz')->getData();
-//            $zgoniarz = $this->getDoctrine()->getRepository(OsobaFizyczna::class)->findOneBy(['pesel' => $zgoniarzDane['pesel']]);
-//            if(!$zgoniarz){
-//                $zgoniarz = new OsobaFizyczna();
-//                $zgoniarz->setImie($zgoniarzDane['imie']);
-//                $zgoniarz->setNazwisko($zgoniarzDane['nazwisko']);
-//                $zgoniarz->setImieOjca($zgoniarzDane['imieOjca']);
-//                $zgoniarz->setImieMatki($zgoniarzDane['imieMatki']);
-//                $zgoniarz->setPesel($zgoniarzDane['pesel']);
-//                $zgoniarz->setMiejsceUrodzenia($zgoniarzDane['miejsceUrodzenia']);
-//                $zgoniarz->setMiejsceZamieszkania($zgoniarzDane['miejsceZamieszkania']);
-//                $zgoniarz->setNumerDowodu($zgoniarzDane['numerDowodu']);
-//                $zgoniarz->setDataWaznosciDowodu($zgoniarzDane['dataWaznosciDowodu']);
-//                $zgoniarz->setStopienPokrewienstwa($zgoniarzDane['stopienPokrewienstwa']);
-//                $zgoniarz->setPlec($zgoniarzDane['plec']);
-//                $em->persist($zgoniarz);
-//            }
-//            $aktDziedziczenia->setZgoniarz($zgoniarz);
-//            $zgoniarz->setAktDziedziczenia($aktDziedziczenia);
 
             $dane = $form->getData();
             /** @var OsobaFizyczna $zgoniarzForm */
@@ -95,15 +74,13 @@ class AktDziedziczeniaController extends Controller
                 $zgoniarz->setNumerDowodu($zgoniarzForm->getNumerDowodu());
                 $zgoniarz->setDataWaznosciDowodu($zgoniarzForm->getDataWaznosciDowodu());
             }
+            $zgoniarz->addPostepowanieSpadkowe($postepowanieSpadkowe);
+            $postepowanieSpadkowe->setZgoniarz($zgoniarz);
+            $postepowanieSpadkowe->setNazwa('Postępowanie spadkowe - '.$zgoniarz->getNazwiskoImie());
 
-
-//            $form->get('zgoniarz')->setData($zgoniarz);
-//            dump($zgoniarz);
-//            dump($zgoniarzForm);
-//            dump($form->getData());
-//            die;
 
             $spadkobiercy = new ArrayCollection();
+            $stawajacy = new ArrayCollection();
             foreach($form->get('spadkobiercy')->getData() as $osoba){
                 $spadkobierca = $this->getDoctrine()->getRepository(OsobaFizyczna::class)->findOneBy(['pesel' => $osoba['pesel']]);
                 if(!$spadkobierca){
@@ -117,7 +94,6 @@ class AktDziedziczeniaController extends Controller
                     $spadkobierca->setStopienPokrewienstwa($osoba['stopienPokrewienstwa']);
                     $spadkobierca->setPlec($osoba['pesel'][10]%2==0?2:1);
                 }
-
                 $spadkobierca->setMiastoZamieszkania($osoba['miastoZamieszkania']);
                 $spadkobierca->setNumerDomuZamieszkania($osoba['numerDomuZamieszkania']);
                 $spadkobierca->setNumerMieszkaniaZamieszkania($osoba['numerMieszkaniaZamieszkania']);
@@ -126,15 +102,29 @@ class AktDziedziczeniaController extends Controller
                 $spadkobierca->setNumerDowodu($osoba['numerDowodu']);
                 $spadkobierca->setDataWaznosciDowodu($osoba['dataWaznosciDowodu']);
                 $em->persist($spadkobierca);
-
+                dump($spadkobierca);
+                dump($spadkobierca->getStawajacy());
+                dump($osoba['stawajacy']);
+                if($osoba['stawajacy'])$stawajacy->add($spadkobierca);
                 $spadkobiercy->add($spadkobierca);
-                $aktDziedziczenia->addSpadkobiercy($spadkobierca);
-                $spadkobierca->addAktDziedziczenia($aktDziedziczenia);
+                $postepowanieSpadkowe->addSpadkobiercy($spadkobierca);
+                $spadkobierca->addPostepowanieSpadkoweRodziny($postepowanieSpadkowe);
             }
 
-//            dump($spadkobiercy);
+            $this->liczUdzialSpadku($spadkobiercy);
 
-            $html = $this->render('Wzory/akt_poswiadczenia_dziedziczenia.html.twig', [
+            dump($stawajacy);
+            dump($stawajacy);
+
+            //Akt dziedziczenia
+            $fileNameAktDziedziczenia = $postepowanieSpadkowe->getNazwa().'-akt_poswiadczenia_dziedziczenia-'.time().'.html';
+            $aktDziedziczenia = new Dokument();
+            $aktDziedziczenia->setNazwaDokumentu($postepowanieSpadkowe->getNazwa()." - Akt poświadczenia dziedziczenia");
+            $aktDziedziczenia->setFilename($fileNameAktDziedziczenia);
+            $aktDziedziczenia->setPostepowanieSpadkowe($postepowanieSpadkowe);
+            $aktDziedziczenia->setDataDodania(new \DateTime('now'));
+            $em->persist($aktDziedziczenia);
+            $htmlAktDziedziczenia = $this->render('Wzory/akt_poswiadczenia_dziedziczenia.html.twig', [
                 'dupa' => $dupa,
                 'form' => $form->getData(),
                 'dataCzynnosciSlownie' => $dataSlownie,
@@ -142,24 +132,74 @@ class AktDziedziczeniaController extends Controller
                 'numerSprawy' => $numerSprawy,
                 'user' => $user,
                 'spadkobiorcy' => $spadkobiercy,
-                'zgoniarz' => $zgoniarz
+                'zgoniarz' => $zgoniarz,
+                'stawajacy' => $stawajacy
             ]);
 
-            $html_przetworzony = preg_replace("/\r|\n/", "", $html->getContent());
+            $html_przetworzonyAktDziedziczenia = preg_replace("/\r|\n/", "", $htmlAktDziedziczenia->getContent());
 //            dump(nl2br($html_przetworzony));
-            file_put_contents("temp/".$fileName, $html_przetworzony);
+            file_put_contents("temp/".$fileNameAktDziedziczenia, $html_przetworzonyAktDziedziczenia);
 
-            $em->persist($aktDziedziczenia);
+            //PROTKOKÓL DZIEDZICZENIA
+            $fileNameProtokolDziedziczenia = $postepowanieSpadkowe->getNazwa().'-protokol_dziedziczenia-'.time().'.html';
+            $protokolDziedziczenia = new Dokument();
+            $protokolDziedziczenia->setNazwaDokumentu($postepowanieSpadkowe->getNazwa()." - Protokół dziedziczenia");
+            $protokolDziedziczenia->setFilename($fileNameProtokolDziedziczenia);
+            $protokolDziedziczenia->setPostepowanieSpadkowe($postepowanieSpadkowe);
+            $em->persist($protokolDziedziczenia);
+            $htmlProtokolDziedziczenia = $this->render('Wzory/protokol_dziedziczenia.html.twig', [
+                'dupa' => $dupa,
+                'form' => $form->getData(),
+                'dataCzynnosciSlownie' => $dataSlownie,
+                'dataZgonuSlownie' => $dataZgonuSlownie,
+                'numerSprawy' => $numerSprawy,
+                'user' => $user,
+                'spadkobiorcy' => $spadkobiercy,
+                'zgoniarz' => $zgoniarz,
+                'stawajacy' => $stawajacy
+            ]);
+
+            foreach($stawajacy as $spadkobierca){
+
+                //Oswiadczenie o przyjęciu spadku
+                $fileNameOswiadczenieOPrzyjeciuSpadku = $postepowanieSpadkowe->getNazwa().'-oswiadczenie_o_przyjeciu_spadku-'.$spadkobierca->getImie().'-'.$spadkobierca->getNazwisko().time().'.html';
+                $oswiadczenieOPrzyjeciuSpadku = new Dokument();
+                $oswiadczenieOPrzyjeciuSpadku->setNazwaDokumentu("Oświadczenie o przyjęciu spadku - ".$spadkobierca->getImie().' '.$spadkobierca->getNazwisko());
+                $oswiadczenieOPrzyjeciuSpadku->setFilename($fileNameOswiadczenieOPrzyjeciuSpadku);
+                $oswiadczenieOPrzyjeciuSpadku->setPostepowanieSpadkowe($postepowanieSpadkowe);
+                $em->persist($oswiadczenieOPrzyjeciuSpadku);
+                $htmlOswiadczenieOPrzyjeciuSpadku = $this->render('Wzory/oswiadczenie_o_przyjeciu_spadku.html.twig', [
+                    'dupa' => $dupa,
+                    'form' => $form->getData(),
+                    'dataCzynnosciSlownie' => $dataSlownie,
+                    'dataZgonuSlownie' => $dataZgonuSlownie,
+                    'numerSprawy' => $numerSprawy,
+                    'user' => $user,
+                    'spadkobierca' => $spadkobierca,
+                    'spadkobiorcy' => $spadkobiercy,
+                    'zgoniarz' => $zgoniarz,
+                    'stawajacy' => $stawajacy
+                ]);
+
+                $html_przetworzonyOswiadczenieOPrzyjeciuSpadku = preg_replace("/\r|\n/", "", $htmlOswiadczenieOPrzyjeciuSpadku->getContent());
+//            dump(nl2br($html_przetworzony));
+                file_put_contents("temp/".$fileNameOswiadczenieOPrzyjeciuSpadku, $html_przetworzonyOswiadczenieOPrzyjeciuSpadku);
+            }
+
+            $html_przetworzonyProtokolDziedziczenia = preg_replace("/\r|\n/", "", $htmlProtokolDziedziczenia->getContent());
+//            dump(nl2br($html_przetworzony));
+            file_put_contents("temp/".$fileNameProtokolDziedziczenia, $html_przetworzonyProtokolDziedziczenia);
+
+//            $em->persist($aktDziedziczenia);
             $em->flush();
 
             return $this->redirectToRoute('edit', ['hash' => $aktDziedziczenia->getHash(), 'id' => $aktDziedziczenia->getId()]);
         }
 
         // replace this example code with whatever you need
-        return $this->render('default/aktDziedziczeniaForm.html.twig', [
+        return $this->render('default/postepowanieSpadkoweForm.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
-            'form' => $form->createView(),
-            'sprawa' => $sprawa
+            'form' => $form->createView()
         ]);
     }
 
@@ -224,9 +264,13 @@ class AktDziedziczeniaController extends Controller
     public function editAction(Request $request, $id = 0, $hash = 0)
     {
 
-        /** @var AktDziedziczenia $dokument */
-        $dokument = $this->getDoctrine()->getRepository(AktDziedziczenia::class)->findOneBy(['id' => $id, 'hash' => $hash]);
+        /** @var Dokument $dokument */
+        $dokument = $this->getDoctrine()->getRepository(Dokument::class)->findOneBy(['id' => $id, 'hash' => $hash]);
 //        dump($dokument);
+
+        /** @var PostepowanieSpadkowe $postepowanieSpadkowe */
+        $postepowanieSpadkowe = $dokument->getPostepowanieSpadkowe();
+        $inneDokumenty = $postepowanieSpadkowe->getDokumenty();
 
         if(!$dokument){
 //            die;
@@ -251,7 +295,9 @@ class AktDziedziczeniaController extends Controller
             return $this->render('default/editor.html.twig', [
                 'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
                 'wzor'=> $html_przetworzony,
-                'form'=>$form->createView()
+                'form'=>$form->createView(),
+                'inneDokumenty' => $inneDokumenty,
+                'dokument' => $dokument
             ]);
 //            die;
         }
@@ -259,8 +305,52 @@ class AktDziedziczeniaController extends Controller
         return $this->render('default/editor.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
             'wzor'=> $html,
-            'form'=>$form->createView()
+            'form'=>$form->createView(),
+            'inneDokumenty' => $inneDokumenty,
+            'dokument' => $dokument
         ]);
+    }
+
+    public function liczUdzialSpadku($spadkobiercy){
+        $czyMalzonek = false;
+        $malzonek = null;
+        $czyDzieci = false;
+        $dzieci = [];
+        $liczbaDzieci = 0;
+        $liczbaWnoczat = 0;
+
+
+        /** @var OsobaFizyczna $spadkobierca */
+        foreach($spadkobiercy as $spadkobierca){
+            if($spadkobierca->getStopienPokrewienstwa() == 3 && $spadkobierca->getStopienPokrewienstwa() == 4){
+                $czyMalzonek = true;
+                $malzonek = $spadkobierca;
+            }
+            if($spadkobierca->getStopienPokrewienstwa() == 5 && $spadkobierca->getStopienPokrewienstwa() == 6){
+                $czyDzieci = true;
+                $liczbaDzieci++;
+                $dzieci[] = $spadkobierca;
+            }
+        }
+
+        if($czyMalzonek && $czyDzieci && $liczbaDzieci < 4){
+            $udzialSpadku = "1/".($liczbaDzieci + 1);
+            $malzonek->setUdzialSpadku($udzialSpadku);
+            foreach($dzieci as $dziecko){
+                $dziecko->setUdzialSpadku($udzialSpadku);
+            }
+        }
+        elseif($czyMalzonek && $czyDzieci && $liczbaDzieci >= 4){
+            $udzialSpadkuMalzonka = "1/4";
+            $udzialSpadkuDzieci = "3/".($liczbaDzieci*4);
+            $malzonek->setUdzialSpadku($udzialSpadkuMalzonka);
+            foreach($dzieci as $dziecko){
+                $dziecko->setUdzialSpadku($udzialSpadkuDzieci);
+            }
+        }
+
+
+        $czyDzieciZyja = false;
     }
 
     public function dataSlownie(\DateTime $data){

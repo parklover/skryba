@@ -1,0 +1,282 @@
+<p class="lineheight8px"><strong>{{ user.kancelaria.nazwa |upper }}</strong></p>
+<p class="lineheight8px"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NOTARIUSZ</strong></p>
+<p class="lineheight8px"><strong>{{ user.kancelaria.kodPocztowy |upper }} {{ user.kancelaria.miasto |upper }}</strong></p>
+<p class="lineheight8px"><strong>{{ user.kancelaria.adres |upper }}</strong></p>
+<p class="lineheight8px"><strong>TEL. {{ user.telefon |upper }}</strong></p>
+<p>
+    <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
+</p>
+<p><strong>Repertorium A numer {{ numerSprawy }}</strong>
+</p>
+<p><br></p><h4 style="text-align: center;" data-mce-style="text-align: center;"><span
+            style="font-family: arial, helvetica, sans-serif; font-size: 36pt;"
+            data-mce-style="font-family: arial, helvetica, sans-serif; font-size: 36pt;"><strong><span
+                    class="lineheight56px">AKT&nbsp;NOTARIALNY</span></strong></span></h4><p><br>
+<p>&nbsp;</p>
+<p>Dnia <u>{{ form.dataCzynnosci | dataSlownie }} ({{ form.dataCzynnosci | date('d.m.Y') }})</u>&nbsp;roku, w Kancelarii Notarialnej w <span class="niepewne" >mieście {{ user.kancelaria.miasto }}</span> przy ulicy <span class="niepewne" >{{ user.kancelaria.adres | ulica }}</span>
+    przed <strong>notariusz {{  user.kancelaria.nazwa }} </strong><u>{% if stawajacy | length > 1 %}stawili{% else %}{% if stawajacy[0].plec == 1 %}stawiła{% else %}stawił{% endif %}{% endif %} się</u>:</p>
+
+{% for spadkobierca in spadkobiorcy %}
+    {% if spadkobierca.stawajacy == 1 %}
+    <ol>
+        <li>
+            <strong><u>{{ spadkobierca.imie }} {{ spadkobierca.nazwisko }}</u></strong><strong><u>, {% if spadkobierca.plec == 1 %} córka {% else %} syn {% endif %}
+                    {{ spadkobierca.imieOjca | imieMeskie }} i {{ spadkobierca.imieMatki | imieZenskie}}, o numerze pesel {{ spadkobierca.pesel }},
+                </u></strong><strong>urodzony w  <span class="niepewne" >{{ spadkobierca.miejsceUrodzenia }}</span></strong>
+            {% if spadkobierca.plec == 1 %} zamieszkała {% else %} zamieszkały {% endif %} według oświadczenia w mieście
+            {{ spadkobierca.miastoZamieszkania }}
+            {% if spadkobierca.typObiektuZamieszkania == 0 %}{{ spadkobierca.numerDomuZamieszkania }}{% if spadkobierca.numerMieszkaniaZamieszkania is not null and spadkobierca.numerMieszkaniaZamieszkania != "" %} / {{ spadkobierca.numerMieszkaniaZamieszkania }}{% endif %}
+        {% elseif spadkobierca.typObiektuZamieszkania == 1 %} przy ulicy {{ spadkobierca.nazwaObiektuZamieszkania }} {{ spadkobierca.numerDomuZamieszkania }} {% if spadkobierca.numerMieszkaniaZamieszkania is not null and spadkobierca.numerMieszkaniaZamieszkania == "" %} / {{ spadkobierca.numerMieszkaniaZamieszkania }}{% endif %}
+        {% elseif spadkobierca.typObiektuZamieszkania == 2 %} os. {{ spadkobierca.nazwaObiektuZamieszkania }} {{ spadkobierca.numerDomuZamieszkania }} {% if spadkobierca.numerMieszkaniaZamieszkania is not null and spadkobierca.numerMieszkaniaZamieszkania == "" %} / {{ spadkobierca.numerMieszkaniaZamieszkania }}{% endif %}
+        {% elseif spadkobierca.typObiektuZamieszkania == 3 %} przy alei {{ spadkobierca.nazwaObiektuZamieszkania }} {{ spadkobierca.numerDomuZamieszkania }} {% if spadkobierca.numerMieszkaniaZamieszkania is not null and spadkobierca.numerMieszkaniaZamieszkania == "" %} / {{ spadkobierca.numerMieszkaniaZamieszkania }}{% endif %}
+            {% endif %},
+            {% if spadkobierca.plec == 1 %} legitymującej {% else %} legitymującego {% endif %} się dowodem osobistym wydanym za numerem {{ spadkobierca.numerDowodu }} z datą ważności do dnia
+            {{ spadkobierca.dataWaznosciDowodu | dataSlownie }} ({{ spadkobierca.dataWaznosciDowodu | date('Y-m-d') }}) roku
+            {% if not loop.last %}, {% else %}{% if spadkobiorcy|length != 1 %} oraz {% endif %}{% endif %}
+        </li>
+    </ol>
+    {% endif %}
+{% endfor %}
+
+{#<ol start="2">#}
+{#    <li><strong><u>Imię (imiona) nazwisko</u></strong><strong><u>, syn/c&oacute;rka (imię ojca i imię matki), PESEL&hellip;&hellip;&hellip;.., </u></strong><strong>urodzony w Polsce,----------------------------------</strong></li>#}
+{#</ol>#}
+{#<p><strong><u>(adres) </u></strong><strong><u>zamieszkały/zamieszkała</u></strong><u>(odmiana ze względu na płeć)</u> <strong>&nbsp;według oświadczenia w<u> Szamotułach przy ulicy Obornickiej numer 12 (64-500 Szamotuły).------------------------------------------</u></strong></p>#}
+{#<ol start="3">#}
+{#    <li><strong><u>Imię (imiona) nazwisko</u></strong><strong><u>, syn/c&oacute;rka (imię ojca i imię matki), PESEL&hellip;&hellip;&hellip;.., </u></strong><strong>urodzony w Polsce,----------------------------------</strong></li>#}
+{#</ol>#}
+{#<p><strong><u>(adres) </u></strong><strong><u>zamieszkały/zamieszkała</u></strong><u>(odmiana ze względu na płeć)</u> <strong>&nbsp;według oświadczenia w<u> Szamotułach przy ulicy Obornickiej numer 12 (64-500 Szamotuły).------------------------------------------</u></strong></p>#}
+
+<p>Tożsamość <span class="niepewne" >{% if stawajacy | length > 1 %}stawających{% else %}{% if stawajacy[0].plec == 1 %}stawającej{% else %}stawającego{% endif %}{% endif %}</span>
+     ustaliła notariusz na podstawie {% if stawajacy | length > 1 %}okazanych dowodow osobistych wydanych za numerami{% else %}okazanego dowodu osobistego wydanego za numerem{% endif %}:</p>
+    {% for osoba in stawajacy %}
+    <p>ad{{ loop.index }}/ <u>AZH000000{{ osoba.numerDowodu }} z datą ważności do dnia {{ osoba.dataWaznosciDowodu | dataSlownie }} ({{ osoba.dataWaznosciDowodu | date('Y-m-d') }}) roku</u>
+    {% if loop.revindex == 1 %} i {% endif %}
+    {% if loop.last %}.{% endif %}
+    </p>
+    {% endfor %}
+
+{#    ad2/ <u>AZH000000 z datą ważności do dnia pierwszego stycznia dwa tysiące dwudziestego (1.I.2020) roku / nieoznaczonym terminem ważności</u> i#}
+{#    ad3/ <u>AZH000000 z datą ważności do dnia pierwszego stycznia dwa tysiące dwudziestego (1.I.2020) roku / nieoznaczonym terminem ważności</u>.#}
+
+<h4>PROTOKÓŁ DZIEDZICZENIA</h4>
+<p>&nbsp;</p>
+<ul>
+        .1 {% if stawajacy | length > 1 %}Stawający{% else %}{% if stawajacy[0].plec == 1 %}Stawająca{% else %}Stawający{% endif %}{% endif %}
+        {% for osoba in stawajacy %}
+        <u>{{ osoba.nazwiskoImie }}</u>
+            {% if loop.revindex == 1 %} oraz {% endif %}
+            {% if not loop.last %},{% endif %}
+        {% endfor %}
+        stosownie do art. 95 c &sect;. 2 pkt 1/ ustawy z dnia 14 lutego 1991 roku Prawo o notariacie zgodnie
+        {% if stawajacy | length > 1 %}żądają{% else %}żąda{% endif %}
+        dokonania poświadczenia dziedziczenia, że spadek po
+        <u>{% if zgoniarz.plec == 1 %}zmarłej{% else %}zmarłym{% endif %}</u>
+        dnia {{ form.dataSmierci | dataSlownie }} ({{ form.dataSmierci | date('d.m.Y') }}) roku w mieście <span class="niepewne" >{{ form.miejsceZgonu }}</span>
+
+        <span class="niepewne" >{{ zgoniarz.imie }} {{ zgoniarz.nazwisko }}</span> o numerze pesel {{ zgoniarz.pesel }}, {% if zgoniarz.plec == 1 %}córce{% else %}synu{% endif %} {{ zgoniarz.imieOjca | imieMeskie }} i {{ zgoniarz.imieMatki | imieZenskie }},
+        {% if zgoniarz.plec == 1 %}zamieszkałej{% else %}zamieszkałym{% endif %} w mieście <span class="niepewne" >{{ zgoniarz.miastoZamieszkania }}</span>
+        {% if zgoniarz.typObiektuZamieszkania == 0 %}{{ zgoniarz.numerDomuZamieszkania }}{% if zgoniarz.numerMieszkaniaZamieszkania is not null and zgoniarz.numerMieszkaniaZamieszkania != "" %} / {{ zgoniarz.numerMieszkaniaZamieszkania }}{% endif %}
+        {% elseif zgoniarz.typObiektuZamieszkania == 1 %} przy ulicy {{ zgoniarz.nazwaObiektuZamieszkania }} {{ zgoniarz.numerDomuZamieszkania }} {% if zgoniarz.numerMieszkaniaZamieszkania is not null and zgoniarz.numerMieszkaniaZamieszkania != "" %} / {{ zgoniarz.numerDomuZamieszkania }}{% endif %}
+        {% elseif zgoniarz.typObiektuZamieszkania == 2 %} os. {{ zgoniarz.nazwaObiektuZamieszkania }} {{ zgoniarz.numerDomuZamieszkania }} {% if zgoniarz.numerMieszkaniaZamieszkania is not null and zgoniarz.numerMieszkaniaZamieszkania != "" %} / {{ zgoniarz.numerDomuZamieszkania }}{% endif %}
+        {% elseif zgoniarz.typObiektuZamieszkania == 3 %} przy alei {{ zgoniarz.nazwaObiektuZamieszkania }} {{ zgoniarz.numerDomuZamieszkania }} {% if zgoniarz.numerMieszkaniaZamieszkania is not null and zgoniarz.numerMieszkaniaZamieszkania != "" %} / {{ zgoniarz.numerDomuZamieszkania }}{% endif %}
+        {% endif %}
+        z mocy ustawy dziedziczą:
+        <ul>
+            {% for spadkobierca in spadkobiorcy %}
+                <li><span style="font-family: arial, helvetica, sans-serif; font-size: 18pt;" data-mce-style="font-family: arial, helvetica, sans-serif; font-size: 18pt;">
+                            jego {{ spadkobierca.stopienPokrewienstwa | pokrewienstwoSlownie }} {{ spadkobierca.imie }} {{ spadkobierca.nazwisko }},
+                            {% if spadkobierca.plec == 1 %} córka {% else %} syn {% endif %}
+                        {{ spadkobierca.imieOjca | imieMeskie }} i {{ spadkobierca.imieMatki | imieZenskie}} {% if spadkobierca.plec == 1 %} urodzona {% else %} urodzony {% endif %} {{ spadkobierca.pesel | dataZPeselu | dataSlownie }}
+                    ({{ spadkobierca.pesel | dataZPeselu | date('Y-m-d') }}) roku
+                    w <span class="niepewne" >{{ spadkobierca.miejsceUrodzenia }}</span>
+                    {% if spadkobiorcy|length > 1 %}
+                        w wysokości <span class="niepewne" >{{ spadkobierca.udzialSpadku }}</span> spadku
+                    {% endif %}
+                        {% if not loop.last %}, {% else %}{% if spadkobiorcy|length != 1 %} oraz {% endif %}{% endif %}
+                    </span></li>
+            {% endfor %}
+        </ul>
+
+    <p>Nadto {% if stawajacy | length > 1 %}Stawający oświadczają{% else %}{% if stawajacy[0].plec == 1 %}Stawająca oświadcza{% else %}Stawający oświadcza{% endif %}{% endif %},
+        że nie ma żadnych przeszkod do sporządzenia poświadczenia dziedziczenia oraz {% if stawajacy | length > 1 %}przedkładają{% else %}przedkłada{% endif %} odpis skr&oacute;cony aktu zgonu
+        <span class="niepewne" >{{ zgoniarz.imie }} {{ zgoniarz.nazwisko }}</span> wydany przez Urząd Stanu Cywilnego w
+        <span class="niepewne" >{{ form.miejsceWydaniaAktuZgonu }}</span> dnia <u>{{ form.dataWydaniaAktuZgonu | dataSlownie }} ({{ form.dataWydaniaAktuZgonu | date('Y-m-d') }})
+        </u> roku zgodny z treścią aktu zgonu o oznaczeniu: <u>{{ form.numerAktuZgonu }}</u>.</p>
+</ul>
+
+
+<ul>
+    <li>.2 {% if stawajacy | length > 1 %}Stawający{% else %}{% if stawajacy[0].plec == 1 %}Stawająca{% else %}Stawający{% endif %}{% endif %}
+        {% for osoba in stawajacy %}
+        <u>{{ osoba.nazwiskoImie }}</u>
+        {% if loop.revindex == 1 %} oraz {% endif %}
+        {% if not loop.last %},{% endif %}
+        {% endfor %}
+        oświadczają, że:</li>
+</ul>
+<p>- {% if zgoniarz.plec == 1 %}zmarła{% else %}zmarły{% endif %} przez ostatnie lata swojego życia do chwili śmierci stale
+    {% if zgoniarz.plec == 1 %}mieszkała{% else %}mieszkał{% endif %} w
+        mieście <span class="niepewne" >{{ zgoniarz.miastoZamieszkania }}</span>
+        {% if zgoniarz.typObiektuZamieszkania == 0 %}{{ zgoniarz.numerDomuZamieszkania }}{% if zgoniarz.numerMieszkaniaZamieszkania is not null and zgoniarz.numerMieszkaniaZamieszkania != "" %} / {{ zgoniarz.numerMieszkaniaZamieszkania }}{% endif %}
+        {% elseif zgoniarz.typObiektuZamieszkania == 1 %} przy ulicy {{ zgoniarz.nazwaObiektuZamieszkania }} {{ zgoniarz.numerDomuZamieszkania }} {% if zgoniarz.numerMieszkaniaZamieszkania is not null and zgoniarz.numerMieszkaniaZamieszkania != "" %} / {{ zgoniarz.numerDomuZamieszkania }}{% endif %}
+        {% elseif zgoniarz.typObiektuZamieszkania == 2 %} os. {{ zgoniarz.nazwaObiektuZamieszkania }} {{ zgoniarz.numerDomuZamieszkania }} {% if zgoniarz.numerMieszkaniaZamieszkania is not null and zgoniarz.numerMieszkaniaZamieszkania != "" %} / {{ zgoniarz.numerDomuZamieszkania }}{% endif %}
+        {% elseif zgoniarz.typObiektuZamieszkania == 3 %} przy alei {{ zgoniarz.nazwaObiektuZamieszkania }} {{ zgoniarz.numerDomuZamieszkania }} {% if zgoniarz.numerMieszkaniaZamieszkania is not null and zgoniarz.numerMieszkaniaZamieszkania != "" %} / {{ zgoniarz.numerDomuZamieszkania }}{% endif %}
+        {% endif %}
+    a zatem ostatnie miejsce zwykłego pobytu w chwili {% if zgoniarz.plec == 1 %}jej{% else %}jego{% endif %} śmierci znajdowało się pod wskazanym wyżej adresem.
+</p>
+<p>- {% if zgoniarz.plec == 1 %}zmarła{% else %}zmarły{% endif %} nie {% if zgoniarz.plec == 1 %}dokonała{% else %}dokonał{% endif %} przed śmiercią wyboru prawa właściwego zgodnie z art. 22</p>
+<p>rozporządzenia Parlamentu Europejskiego i Rady (UE) numer 650/2012 z dnia 4 lipca 2012 roku w sprawie jurysdykcji, prawa właściwego, uznawania i
+    wykonywania orzeczeń, przyjmowania i wykonywania dokument&oacute;w urzędo-wych dotyczących dziedziczenia oraz w sprawie ustanowienia&nbsp; europejskiego
+    poświadczenia spadkowego (Dz. Urz. UE nr L 201/107 z 27.07.2012), zwanego
+    dalej także: "Rozporządzeniem".</p>
+<p>W związku z powyższym i na podstawie powyższych oświadczeń notariusz stwierdziła, że w niniejszej sprawie występuje jurysdykcja sąd&oacute;w polskich w rozumieniu art. 4 rozporządzenia, to jest jurysdykcja krajowa w rozumieniu art. 95e &sect;.1 ustawy Prawo o notariacie.</p>
+<ul>
+    <li>.3 Notariusz pouczyła {% if stawajacy | length > 1 %}Stawających{% else %}{% if stawajacy[0].plec == 1 %}Stawającą{% else %}Stawającego{% endif %}{% endif %}
+        o obowiązku ujawnienia wszelkich okoliczności objętych treścią niniejszego protokołu oraz o odpowiedzialności karnej za złożenie fałszywych oświadczeń.</li>
+</ul>
+<p>Stawający oświadczyli, że do kręgu spadkobierc&oacute;w ustawowych po {% if zgoniarz.plec == 1 %}zmarłej{% else %}zmarłym{% endif %}
+    <span class="niepewne" >{{ zgoniarz.imie }} {{ zgoniarz.nazwisko }}</span> {% if spadkobiorcy | length > 1 %}należą{% else %}należy{% endif %}:
+    {% for spadkobierca in spadkobiorcy %}
+        {% if zgoniarz.plec == 1 %}jej{% else %}jego{% endif %} {{ spadkobierca.stopienPokrewienstwa | pokrewienstwoSlownie }} {{ spadkobierca.imie }} {{ spadkobierca.nazwisko }},
+        {% if spadkobierca.plec == 1 %} córka {% else %} syn {% endif %}{{ spadkobierca.imieOjca | imieMeskie }} i {{ spadkobierca.imieMatki | imieZenskie}},
+        {% if not loop.last %}, {% else %}{% if spadkobiorcy|length != 1 %} oraz {% endif %}{% endif %}
+    {% endfor %}
+{#    <u>jej/jego</u> <u>syn/c&oacute;rka/mąż/żona/brat/kuzyn/babcia/dziadek</u> <u>Imię (imiona) nazwisko kolejnego spadkobiercy</u>, syn imię <u>ojca i matki kolejnego spadkodawcy</u>, &nbsp;#}
+{#    oraz <u>jej/jego</u> <u>syn/c&oacute;rka/mąż/żona/brat/kuzyn/babcia/dziadek</u> <u>Imię (imiona) nazwisko kolejnego spadkobiercy</u>, syn imię <u>ojca i matki kolejnego spadkodawcy</u>, #}
+    co wynika z przedłożonych przez <u>{% if stawajacy | length > 1 %}nich{% else %}{% if stawajacy[0].plec == 1 %}nią{% else %}niego{% endif %}{% endif %}:
+
+    {% if form.numerSkroconegoAktuMalzenstwaMalzonka and form.numerSkroconegoAktuMalzenstwaMalzonka != '' %}
+    <p>- odpisu skroconego aktu małżeństwa <u>Imię i nazwisko zmarłego i Imię i nazwisko rodowe żony zmarłego(odmiana Kogo?Czego?)</u>
+    wydanego przez Urząd Stanu Cywilnego w <u>miejsce wydania dokumentu(odmiana: gdzie? Np. w Szamotułach)</u> dnia
+    <u>dwudziestego czwartego grudnia dwa tysiące osiemnastego (24.XII.2018)(data wydania dokumentu)</u> roku zgodny z treścią aktu zgonu o oznaczeniu:
+    <u>3024073/00/AZ/2018/312123 (numer dokumentu)(-ten dokument jest powoływany, jeśli dziedziczy żona)</u>.</p>
+    {% endif %}
+
+    {% if form.numerSkroconegoAktuMalzenstwaPotomka and form.numerSkroconegoAktuMalzenstwaPotomka != '' %}
+    <p>- odpisu skróconego aktu urodzenia <u>Imię (imiona) i Nazwisko kolejnego </u><u>spadkobiercy</u> wydanego przez Urząd Stanu Cywilnego w <u>miejsce wydania dokumentu(odmiana: gdzie?
+        Np. w Szamotułach)</u> dnia <u>dwudziestego czwartego grudnia dwa tysiące osiemnastego (24.XII.2018)(data wydania dokumentu)</u>
+    roku zgodny z treścią aktu zgonu o oznaczeniu: <u>3024073/00/AZ/2018/312123 (numer dokumentu)(- ten dokument jest powoływany, jeśli dziedziczy syn/c&oacute;rka)</u>.</p>
+    {% endif %}
+
+    <p>- odpisu skr&oacute;conego aktu małżeństwa Imię (imiona) i nazwisko męża c&oacute;rki i Imię i Nazwisko panieńskie c&oacute;rki spadkodawcy) wydanego przez Urząd Stanu Cywilnego w
+    <u>miejsce wydania dokumentu(odmiana: gdzie? Np. w Szamotułach)</u> dnia <u>dwudziestego czwartego grudnia dwa tysiące osiemnastego (24.XII.2018)(data wydania dokumentu)</u>
+    roku zgodny z treścią aktu zgonu o oznaczeniu: <u>3024073/00/AZ/2018/312123 (numer dokumentu)(ten dokument jest powoływany jeśli dziedziczy c&oacute;rka,
+        kt&oacute;ra zmieniła nazwisko w wyniku ślubu) </u>.</p>
+
+<ul>
+    <li>.4 {% if stawajacy | length > 1 %}Stawający{% else %}{% if stawajacy[0].plec == 1 %}Stawająca{% else %}Stawający{% endif %}{% endif %}
+        {% for osoba in stawajacy %}
+        <u>{{ osoba.nazwiskoImie }}</u>
+        {% if loop.revindex == 1 %} oraz {% endif %}
+        {% if not loop.last %},{% endif %}
+        {% endfor %}
+        {% if stawajacy | length > 1 %}oświadczają{% else %}oświadcza{% endif %}, że:
+    </li>
+</ul>
+
+<p> nie jest {% if stawajacy | length > 1 %}im{% else %}{% if stawajacy[0].plec == 1 %}jej{% else %}jemu{% endif %}{% endif %} nic wiadome o istnieniu lub nieistnieniu os&oacute;b,
+    kt&oacute;re wyłączałyby znanych i wymienionych w niniejszym protokole
+    {% if stawajacy | length > 1 %}spadkobierców{% else %}spadkobiercę{% endif %} od dziedziczenia lub dziedziczyły wraz z nimi,</p>
+
+<p>- {{ zgoniarz.imie }} {{ zgoniarz.nazwisko }} nie {% if zgoniarz.plec == 1 %}pozostawiła{% else %}pozostawił{% endif %} dzieci pozamałżeńskich lub przysposobionych,</p>
+
+<p>- nie jest {% if stawajacy | length > 1 %}im{% else %}{% if stawajacy[0].plec == 1 %}jej{% else %}jemu{% endif %}{% endif %} nic wiadome o tym,
+    że {{ zgoniarz.imie }} {{ zgoniarz.nazwisko }} {% if zgoniarz.plec == 1 %}sporządziła{% else %}sporządził{% endif %} testament wobec czego dziedziczenie
+    po {% if zgoniarz.plec == 1 %}niej{% else %}nim{% endif %} następuje&nbsp;na podstawie ustawy,</p>
+
+<p>- nie zostało wydane postanowienie o stwierdzenie nabycia spadku po Imię (imiona) i Nazwisko spadkodawcy(w odmianie Kim?Czym?), ani nie toczy się postępowanie o
+    stwierdzenia nabycia spadku po nim/niej(odmiana ze względu na płeć),</p>
+<p>- nie został sporządzony akt poświadczenia dziedziczenia po <span class="niepewne" >{{ zgoniarz.imie }} {{ zgoniarz.nazwisko }}</span></p>
+
+<p>- {{ zgoniarz.imie }} {{ zgoniarz.nazwisko }} w chwili śmierci {% if zgoniarz.plec == 1 %}była obywatelką{% else %}był obywatelem{% endif %} Rzeczypospolitej Polskiej i nie
+    {% if zgoniarz.plec == 1 %}posiadała{% else %}posiadał{% endif %} żadnego innego obywatelstwa,</p>
+
+<p>- w skład spadku po {{ zgoniarz.imie }} {{ zgoniarz.nazwisko }} nie wchodzi prawo własności nieruchomości położonej poza granicami Rzeczypospolitej Polskiej
+    ani inne prawa rzeczowe lub posiadanie nieruchomości położonej za granicą,</p>
+
+<p>- w skład spadku nie wchodzi przedsiębiorstwo objęte zarządem sukcesyjnym.</p>
+
+{% for osoba in stawajacy %}
+<p>- {{ osoba.nazwiskoImie }} {% if osoba.plec == 1 %}złożyła{% else %}złożył{% endif %} oświadczenie o przyjęciu spadku
+    {% if osoba.typDziedziczenia == 1 %}wprost{% else %}z dobrodziejstwem inwentarza{% endif %}
+    zgodnie z Protokołem przyjęcia oświadczenia o przyjęciu spadku
+    {% if osoba.typDziedziczenia == 1 %}wprost{% else %}z dobrodziejstwem inwentarza{% endif %}
+    z dnia dzisiejszego repertorium A&nbsp; numer {{ numerSprawy }} tutejszej Kancelarii,</p>
+{% endfor %}
+
+{#<p>- <u>Imię (imiona) i Nazwisko kolejnego </u><u>spadkobiercy</u> <u>złożyła/złożył(odmiana ze względu na płeć)</u> oświadczenie o przyjęciu spadku wprost/z dobrodziejstwem#}
+{#    inwentarza zgodnie z Protokołem przyjęcia oświadczenia o przyjęciu spadku wprost/z dobrodziejstwem inwentarza z dnia dzisiejszego repertorium A&nbsp; numer &hellip;&hellip;/2019 tutejszej Kancelarii,-----------------------------------------------------------</p>#}
+{#<p><u>- Imię (imiona) i Nazwisko kolejnego </u><u>spadkobiercy</u> <u>złożyła/złożył(odmiana ze względu na płeć)</u> oświadczenie o przyjęciu spadku wprost/z dobrodziejstwem#}
+{#    inwentarza zgodnie z Protokołem przyjęcia oświadczenia o przyjęciu spadku wprost/z dobrodziejstwem inwentarza z dnia dzisiejszego repertorium A&nbsp; numer &hellip;&hellip;/2019 tutejszej Kancelarii,-----------------------------------------------------------</p>#}
+
+<p>- nie zostało wydane orzeczenie dotyczące niegodności dziedziczenia,-------------</p>
+
+<p>- {% if spadkobiorcy | length > 1 %}żaden ze spadkobierc&oacute;w{% else %}spadkobierca{% endif %} nie zawarł umowy z przyszłym spadkodawcą w przedmiocie zrzeczenia się po
+    {% if zgoniarz.plec == 1 %}niej{% else %}nim{% endif %} dziedziczenia,</p>
+
+<p>- w skład spadku po {% if zgoniarz.plec == 1 %}zmarłej{% else %}zmarłym{% endif %} nie wchodzi gospodarstwo rolne,</p>
+
+<p>- w skład spadku po {% if zgoniarz.plec == 1 %}zmarłej{% else %}zmarłym{% endif %}
+    {% if form.zmianaWlascicielaNieruchomosci %}
+    wchodzi sp&oacute;łdzielcze własnościowe prawo do lokalu położonego w {{ form.miastoNieruchomosci }} oraz udział w prawie wieczystego użytkowania działki
+    numer 2419/5 zabudowanej garażem objętej księgą wieczystą Kw nr {{ form.ksiegaWieczystaNieruchomosci }}
+    {% else %}
+    nie wchodzi żadna nieruchomość.</p>
+    {% endif %}
+<ul>
+    <li>.5 Do protokołu niniejszego {% if stawajacy | length > 1 %} przedłożyli{% else %}{% if stawajacy[0].plec == 1 %}Stawająca przedłożyła{% else %}Stawający przedłożył{% endif %}{% endif %}:</li>
+</ul>
+<p>a/ odpis skr&oacute;cony aktu zgonu spadkodawcy,</p>
+
+{% if form.numerSkroconegoAktuMalzenstwaMalzonka %}<p>b/ odpis skr&oacute;cony aktu małżeństwa <u>Imię i nazwisko spadkodawcy oraz imię i nazwisko jego żony &ndash; jeśli dziedziczy żona</u>.</p>{% endif %}
+
+{% if form.numerSkroconegoAktuMalzenstwaPotomka %}<p>c/ odpis skr&oacute;cony aktu urodzenia <u>Imię i nazwisko kolejnego syna albo c&oacute;rki, kt&oacute;ra ma takie samo nazwisko jak spadkodawca spadkobiercy
+        jeśli dziedziczy</u>.</p>{% endif %}
+
+<p>d/ odpis skr&oacute;cony aktu małżeństwa <u>Imię i nazwisko męża c&oacute;rki spadkodawcy &ndash; imię i aktualne nazwisko c&oacute;rki spadkodawcy &ndash; jeśli dziedziczy</u>.</p>
+
+<ul>
+    <li>.6 {% if stawajacy | length > 1 %}
+        Stawający zapewniają swych oświadczeniach podali{% else %}{% if stawajacy[0].plec == 1 %}
+        Stająca zapewnia, że w swoim oświadczeniu podała{% else %}
+        Stawający zapewnia, że w swoim oświadczeniu podał{% endif %}{% endif %}
+        szczerą prawdę, niczego nie ukrywając, natomiast notariusz poinformowała ich o treści art. 95c &sect;.1 pkt 8/
+        Prawa o notariacie, tj. o odpowiedzialności karnej z art. 233 kodeksu karnego za złożenie fałszywych oświadczeń, a także zwr&oacute;ciła
+        {% if stawajacy | length > 1 %}stawającym{% else %}{% if stawajacy[0].plec == 1 %}stawającej{% else %}stawającemu{% endif %}{% endif %}
+        uwagę o treści art. 4a, art. 6 ust. 1 pkt 8, art. 8, art. 9 ust. 1 pkt 1 i art. 17a ustawy z dnia 28 lipca 1983 roku
+        o podatku od spadk&oacute;w i darowizn (t.j. Dz. U. z 2018 r. poz. 644), w związku z art. 95p ustawy Prawo o notariacie, w tym zwłaszcza na fakt, że nabycie praw do
+        spadku podlega opodatkowaniu podatkiem od spadk&oacute;w i darowizn, że obowiązek ten ciąży na nabywcy własności rzeczy i praw majątkowych i zwr&oacute;ciła uwagę na obowiązek
+        złożenia przez podatnika zeznania podatkowego.
+    </li>
+</ul>
+<ul>
+    <li>.7 Koszty aktu ponoszą {% if stawajacy | length > 1 %}Stawający{% else %}{% if stawajacy[0].plec == 1 %}Stawająca{% else %}Stawający{% endif %}{% endif %} got&oacute;wką.</li>
+    <li>.8 Wypisy i odpis tego aktu należy wydawać {% if stawajacy | length > 1 %}stawającym{% else %}{% if stawajacy[0].plec == 1 %}stawającej{% else %}stawającemu{% endif %}{% endif %}
+        i Urzędom Skarbowym w dowolnej ilości.</li>
+    <li>.9.1. W związku z dokonaniem czynności pobrano:<span class="niepewne" >...</span>
+        a/ <strong>wynagrodzenie notariusza </strong>w myśl &sect;.10a ust. 2 rozporządzenia Ministra Sprawiedliwości z dnia 28 czerwca 2004 roku w sprawie maksymalnych stawek</li>
+</ul>
+<p>taksy notarialnej (tj. Dz.U. z 2018 r. poz. 272) w kwocie <span class="niepewne" >100,- zł</span></p>
+<p>b/ podatek od towar&oacute;w i usług według stawki 23%</p>
+<p>od kwoty podanej pod a/ <span class="niepewne" >23,- zł</span></p>
+<p>razem <span class="niepewne" >123,-</span> zł</p>
+<ol start="2">
+    <li>Podane w ust. 1 kwoty nie obejmują koszt&oacute;w 3 wypis&oacute;w i 1 odpisu wraz z należnym podatkiem VAT (w łącznej kwocie <strong><span class="niepewne" >177,12</span> zł</strong>),
+        kt&oacute;ra to kwota wraz z</li>
+</ol>
+<p>podstawą prawną ich pobrania zostanie podana na każdym z wypis&oacute;w. 3. Kwota do zapłaty og&oacute;łem: ..................&hellip;&hellip;&hellip;&hellip;&hellip;..&hellip;&hellip;&hellip;&hellip;&hellip;..&hellip;.<span class="niepewne">300,12</span> zł</p>
+<p>słownie: <span class="niepewne">trzysta złotych dwanaście groszy</span>.</p>
+<p>Podatek od towar&oacute;w i usług pobrano na podstawie ustawy z dnia 11 marca 2004 roku o podatku od towar&oacute;w i usług (tj. Dz.U. z 2018r., poz. 62 ze zm.).-</p>
+<p><strong>Akt ten odczytano, przyjęto i podpisano: </strong></p>
+<p>Na oryginale podpisy stawających i notariusza.</p>
+<p>Repertorium A numer {{ numerSprawy }}</p>
+<p>Wypis ten w dacie aktu wydano &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;.</p>
+<p>Pobrano:</p>
+<p>a/ wynagrodzenie notariusza w myśl &sect;.12 Rozporządzenia Ministra Sprawiedliwości z dnia 28 czerwca 2004 roku w sprawie maksymalnych stawek taksy notarialnej (tj. Dz. U. z 2018 r., poz. 272) w kwocie &hellip;&hellip;&hellip;&hellip;..&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..&hellip;.36,- zł</p>
+<p>b/ podatek od towar&oacute;w i usług stawka 23% od kwoty podanej pod a/ zgodnie z ustawą z dnia 11 marca 2004 roku o podatku od towar&oacute;w i usług (tj. Dz.U. z 2018 r. poz. 62 ze zm.)</p>
+<p>w kwocie ... <span class="niepewne">8,28</span> zł</p>
+<p>razem ... <span class="niepewne">44,28</span> zł</p>
+<p>słownie: <span class="niepewne">czterdzieści cztery złote dwadzieścia osiem groszy</span>.</p>
+<p>{{user.kancelaria.nazwa}}</p>
+<p>notariusz</p>

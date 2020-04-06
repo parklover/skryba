@@ -1,7 +1,7 @@
 <?php
 namespace AppBundle\Form;
 
-use AppBundle\Entity\AktDziedziczenia;
+use AppBundle\Entity\PostepowanieSpadkowe;
 use AppBundle\Entity\Kancelaria;
 use AppBundle\Entity\OsobaFizyczna;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -39,6 +40,30 @@ class KancelariaType extends AbstractType
             ->add('kodPocztowy', TextType::class, [
                 'label'  => 'Kod pocztowy: ',
                 'required'=>true
+            ])
+            ->add('wynagrodzenieNotariusza', NumberType::class, [
+                'label'  => 'Wynagrodzenie notariusza: ',
+                'required' => false,
+                'scale'=>2,
+                'attr' => [
+                    'step'=>'0.01'
+                ]
+            ])
+            ->add('oplataZaWpisDoRejestruSpadkowego', NumberType::class, [
+                'label'  => 'Opłata za wpis do RS: ',
+                'required' => false,
+                'scale'=>2,
+                'attr' => [
+                    'step'=>'0.01'
+                ]
+            ])
+            ->add('kosztStrony', NumberType::class, [
+                'label'  => 'Koszt strony: ',
+                'required' => false,
+                'scale'=>2,
+                'attr' => [
+                    'step'=>'0.01'
+                ]
             ])
         ;
     }

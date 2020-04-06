@@ -5,9 +5,15 @@
 {% block body %}
     <div style="position: absolute; top:50px; right: 52px; color:#fff;" id="div-akcje">
         <div class="btn-group" role="group">
-            <a href="{{ path('sprawaEdit', {id: 0}) }}" class="btn btn-animate btn-aimate-side btn-success">
-                <span><i class="icon wb-plus" aria-hidden="true"></i>Dodaj sprawe</span>
-            </a>
+            <button type="button" class="btn btn-warning dropdown-toggle btn-yellow" id="exampleIconDropdown2"
+                    data-toggle="dropdown" aria-expanded="false">
+                <i class="icon wb-plus" aria-hidden="true"></i>
+                Dodaj sprawę
+            </button>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="exampleIconDropdown2" role="menu">
+                <a class="dropdown-item" href="{{ path('postepowanie_spadkowe_form') }}" role="menuitem">Postępowanie spadkowe</a>
+                <a class="dropdown-item"  role="menuitem">Plik PDF</a>
+            </div>
         </div>
     </div>
     <div id="wrapper">

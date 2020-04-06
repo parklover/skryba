@@ -51,16 +51,32 @@ class Kancelaria
     protected $kodPocztowy;
 
     /**
+     * @ORM\Column(name="wynagrodzenieNotariusza", type="decimal", precision=6, scale=2, nullable=false)
+     */
+    protected $wynagrodzenieNotariusza;
+
+    /**
+     * @ORM\Column(name="oplataZaWpisDoRejestruSpadkowego", type="decimal", precision=6, scale=2, nullable=false)
+     */
+    protected $oplataZaWpisDoRejestruSpadkowego;
+
+    /**
+     * @ORM\Column(name="kosztStrony", type="decimal", precision=6, scale=2, nullable=false)
+     */
+    protected $kosztStrony;
+
+
+    /**
      * One Product has Many Features.
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\User", mappedBy="kancelaria",cascade={"persist"})
      */
     protected $uzytkownicy;
 
-    /**
-     * One Product has Many Features.
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Sprawa", mappedBy="kancelaria",cascade={"persist"})
-     */
-    protected $sprawy;
+//    /**
+//     * One Product has Many Features.
+//     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Sprawa", mappedBy="kancelaria",cascade={"persist"})
+//     */
+//    protected $sprawy;
 
     /**
      * Constructor
@@ -142,21 +158,21 @@ class Kancelaria
         $this->uzytkownicy = $uzytkownicy;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getSprawy()
-    {
-        return $this->sprawy;
-    }
-
-    /**
-     * @param mixed $sprawy
-     */
-    public function setSprawy($sprawy)
-    {
-        $this->sprawy = $sprawy;
-    }
+//    /**
+//     * @return mixed
+//     */
+//    public function getSprawy()
+//    {
+//        return $this->sprawy;
+//    }
+//
+//    /**
+//     * @param mixed $sprawy
+//     */
+//    public function setSprawy($sprawy)
+//    {
+//        $this->sprawy = $sprawy;
+//    }
 
     /**
      * @return mixed
@@ -190,7 +206,52 @@ class Kancelaria
         $this->kodPocztowy = $kodPocztowy;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getWynagrodzenieNotariusza()
+    {
+        return $this->wynagrodzenieNotariusza;
+    }
 
+    /**
+     * @param mixed $wynagrodzenieNotariusza
+     */
+    public function setWynagrodzenieNotariusza($wynagrodzenieNotariusza)
+    {
+        $this->wynagrodzenieNotariusza = $wynagrodzenieNotariusza;
+    }
 
+    /**
+     * @return mixed
+     */
+    public function getOplataZaWpisDoRejestruSpadkowego()
+    {
+        return $this->oplataZaWpisDoRejestruSpadkowego;
+    }
+
+    /**
+     * @param mixed $oplataZaWpisDoRejestruSpadkowego
+     */
+    public function setOplataZaWpisDoRejestruSpadkowego($oplataZaWpisDoRejestruSpadkowego)
+    {
+        $this->oplataZaWpisDoRejestruSpadkowego = $oplataZaWpisDoRejestruSpadkowego;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getKosztStrony()
+    {
+        return $this->kosztStrony;
+    }
+
+    /**
+     * @param mixed $kosztStrony
+     */
+    public function setKosztStrony($kosztStrony)
+    {
+        $this->kosztStrony = $kosztStrony;
+    }
 
 }

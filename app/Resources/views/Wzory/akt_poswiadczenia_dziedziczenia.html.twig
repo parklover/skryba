@@ -37,25 +37,23 @@
     , (odpis skrócony aktu zgonu wydany Urząd Stanu Cywilnego w mieście {{ form.miejsceWydaniaAktuZgonu }}
         zgodny z treścią aktu zgonu o oznaczeniu
     <u>{{ form.numerAktuZgonu }}</u>) z mocy ustawy {% if spadkobiorcy|length == 1 %} dziedziczy {% else %} dziedziczą{% endif %}:
-
-
         <ul>
             {% for spadkobierca in spadkobiorcy %}
                 <li><span style="font-family: arial, helvetica, sans-serif; font-size: 18pt;" data-mce-style="font-family: arial, helvetica, sans-serif; font-size: 18pt;">
-                        jego {{ spadkobierca.stopienPokrewienstwa | pokrewienstwoSlownie }} {{ spadkobierca.imie }} {{ spadkobierca.nazwisko }},
+                        {% if zgoniarz.plec == 1 %}jej{% else %}jego{% endif %} {{ spadkobierca.stopienPokrewienstwa | pokrewienstwoSlownie }} {{ spadkobierca.imie }} {{ spadkobierca.nazwisko }},
                         {% if spadkobierca.plec == 1 %} córka {% else %} syn {% endif %}
                 {{ spadkobierca.imieOjca | imieMeskie }} i {{ spadkobierca.imieMatki | imieZenskie}} {% if spadkobierca.plec == 1 %} urodzona {% else %} urodzony {% endif %} {{ spadkobierca.pesel | dataZPeselu | dataSlownie }}
                 ({{ spadkobierca.pesel | dataZPeselu | date('Y-m-d') }}) roku
                 w <span class="niepewne" >{{ spadkobierca.miejsceUrodzenia }}</span>
+                {% if spadkobiorcy|length > 1 %}
+                    w wysokości <span class="niepewne" >{{ spadkobierca.udzialSpadku }}</span> spadku
+                {% endif %}
                 {% if not loop.last %}, {% else %}{% if spadkobiorcy|length != 1 %} oraz {% endif %}{% endif %}
                 </span></li>
             {% endfor %}
         </ul>
-
-        - {% if spadkobiorcy|length == 1 %}
-            w całości
-          {% else %}
-            po 1 / {{ spadkobiorcy|length }}
+        {% if spadkobiorcy|length == 1 %}
+         - w całości
         {% endif %}
     </span>
 </p>
@@ -83,7 +81,7 @@
               data-mce-style="font-family: arial, helvetica, sans-serif; font-size: 18pt;">a/ <strong>wynagrodzenie notariusza </strong>w myśl §.10a rozporządzenia
     Ministra Sprawiedliwości z dnia 28 czerwca 2004 roku w sprawie maksymalnych stawek taksy notarialnej (tj. Dz.U. z 2018 r. poz. 272) w kwocie
         <span class="niepewne" >
-            50,- zł
+            50,- {{ user.kancelaria.wynagrodzenieNotariusza | number_format(2, '.', ',') }} zł
         </span>
     </span>
 </p><p><span style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"
@@ -91,7 +89,7 @@
 </p><p><span style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"
              data-mce-style="font-family: arial, helvetica, sans-serif; font-size: 18pt;">od kwoty podanej pod a/
             <span class="niepewne" >
-                11,50 zł
+                11,50 {{ (user.kancelaria.wynagrodzenieNotariusza * 0.23) | number_format(2, '.', ',') }} zł
             </span>
     </span>
 </p><p><span style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"
@@ -100,13 +98,13 @@
     §.1 rozporządzenia Ministra Sprawiedliwości z dnia 7 września 2016 r. w sprawie sposobu uiszczania i wysokości opłaty za wpisy dokonywane w Rejestrze Spadkowym
     przez notariusza albo Sąd (Dz.U.2016, poz. 1420) w kwocie
         <span class="niepewne" >
-            5,- zł
+            5,- {{ (user.kancelaria.oplataZaWpisDoRejestruSpadkowego) | number_format(2, '.', ',') }} zł
         </span>
     </span>
 </p><p><span style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"
              data-mce-style="font-family: arial, helvetica, sans-serif; font-size: 18pt;">razem
         <span class="niepewne" >
-        66,50 zł
+        66,50 {{ (user.kancelaria.wynagrodzenieNotariusza + (user.kancelaria.wynagrodzenieNotariusza * 0.23) + user.kancelaria.oplataZaWpisDoRejestruSpadkowego) | number_format(2, '.', ',') }} zł
         </span>
     </span>
 </p><p><span style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"
@@ -150,24 +148,26 @@
         <p>
             <ul>
                 {% for spadkobierca in spadkobiorcy %}
-                <li><span style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"
-                      data-mce-style="font-family: arial, helvetica, sans-serif; font-size: 18pt;">
-                     {{ spadkobierca.imie }} {{ spadkobierca.nazwisko }},
-                    {% if spadkobierca.plec == 1 %} córka {% else %} syn {% endif %}
-                    {{ spadkobierca.imieOjca | imieMeskie }} i {{ spadkobierca.imieMatki | imieZenskie }} {% if spadkobierca.plec == 1 %} zamieszkała {% else %} zamieszkały {% endif %} w mieście
-                    {#<span class="niepewne" >#}
-                        {{ spadkobierca.miastoZamieszkania }}
-                    {#</span>#}
-                    {% if spadkobierca.typObiektuZamieszkania == 0 %}{{ spadkobierca.numerDomuZamieszkania }}{% if spadkobierca.numerMieszkaniaZamieszkania is not null and spadkobierca.numerMieszkaniaZamieszkania != "" %} / {{ spadkobierca.numerMieszkaniaZamieszkania }}{% endif %}
-                    {% elseif spadkobierca.typObiektuZamieszkania == 1 %} przy ulicy {{ spadkobierca.nazwaObiektuZamieszkania }} {{ spadkobierca.numerDomuZamieszkania }} {% if spadkobierca.numerMieszkaniaZamieszkania is not null and spadkobierca.numerMieszkaniaZamieszkania == "" %} / {{ spadkobierca.numerMieszkaniaZamieszkania }}{% endif %}
-                    {% elseif spadkobierca.typObiektuZamieszkania == 2 %} os. {{ spadkobierca.nazwaObiektuZamieszkania }} {{ spadkobierca.numerDomuZamieszkania }} {% if spadkobierca.numerMieszkaniaZamieszkania is not null and spadkobierca.numerMieszkaniaZamieszkania == "" %} / {{ spadkobierca.numerMieszkaniaZamieszkania }}{% endif %}
-                    {% elseif spadkobierca.typObiektuZamieszkania == 2 %} przy alei {{ spadkobierca.nazwaObiektuZamieszkania }} {{ spadkobierca.numerDomuZamieszkania }} {% if spadkobierca.numerMieszkaniaZamieszkania is not null and spadkobierca.numerMieszkaniaZamieszkania == "" %} / {{ spadkobierca.numerMieszkaniaZamieszkania }}{% endif %}
-                    {% endif %},
-                    {% if spadkobierca.plec == 1 %} legitymującej {% else %} legitymującego {% endif %} się dowodem osobistym wydanym za numerem {{ spadkobierca.numerDowodu }} z datą ważności do dnia
-                    {{ spadkobierca.dataWaznosciDowodu | dataSlownie }} ({{ spadkobierca.dataWaznosciDowodu | date('Y-m-d') }}) roku
-                    {% if not loop.last %}, {% else %}{% if spadkobiorcy|length != 1 %} oraz {% endif %}{% endif %}
-                    </span>
-                    </li>
+                    {% if spadkobierca.stawajacy == 1 %}
+                        <li><span style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"
+                          data-mce-style="font-family: arial, helvetica, sans-serif; font-size: 18pt;">
+                         {{ spadkobierca.imie }} {{ spadkobierca.nazwisko }},
+                        {% if spadkobierca.plec == 1 %} córka {% else %} syn {% endif %}
+                        {{ spadkobierca.imieOjca | imieMeskie }} i {{ spadkobierca.imieMatki | imieZenskie }} {% if spadkobierca.plec == 1 %} zamieszkała {% else %} zamieszkały {% endif %} w mieście
+                        {#<span class="niepewne" >#}
+                            {{ spadkobierca.miastoZamieszkania }}
+                        {#</span>#}
+                        {% if spadkobierca.typObiektuZamieszkania == 0 %}{{ spadkobierca.numerDomuZamieszkania }}{% if spadkobierca.numerMieszkaniaZamieszkania is not null and spadkobierca.numerMieszkaniaZamieszkania != "" %} / {{ spadkobierca.numerMieszkaniaZamieszkania }}{% endif %}
+                        {% elseif spadkobierca.typObiektuZamieszkania == 1 %} przy ulicy {{ spadkobierca.nazwaObiektuZamieszkania }} {{ spadkobierca.numerDomuZamieszkania }} {% if spadkobierca.numerMieszkaniaZamieszkania is not null and spadkobierca.numerMieszkaniaZamieszkania == "" %} / {{ spadkobierca.numerMieszkaniaZamieszkania }}{% endif %}
+                        {% elseif spadkobierca.typObiektuZamieszkania == 2 %} os. {{ spadkobierca.nazwaObiektuZamieszkania }} {{ spadkobierca.numerDomuZamieszkania }} {% if spadkobierca.numerMieszkaniaZamieszkania is not null and spadkobierca.numerMieszkaniaZamieszkania == "" %} / {{ spadkobierca.numerMieszkaniaZamieszkania }}{% endif %}
+                        {% elseif spadkobierca.typObiektuZamieszkania == 3 %} przy alei {{ spadkobierca.nazwaObiektuZamieszkania }} {{ spadkobierca.numerDomuZamieszkania }} {% if spadkobierca.numerMieszkaniaZamieszkania is not null and spadkobierca.numerMieszkaniaZamieszkania == "" %} / {{ spadkobierca.numerMieszkaniaZamieszkania }}{% endif %}
+                        {% endif %},
+                        {% if spadkobierca.plec == 1 %} legitymującej {% else %} legitymującego {% endif %} się dowodem osobistym wydanym za numerem {{ spadkobierca.numerDowodu }} z datą ważności do dnia
+                        {{ spadkobierca.dataWaznosciDowodu | dataSlownie }} ({{ spadkobierca.dataWaznosciDowodu | date('Y-m-d') }}) roku
+                        {% if not loop.last %}, {% else %}{% if spadkobiorcy|length != 1 %} oraz {% endif %}{% endif %}
+                        </span>
+                        </li>
+                    {% endif %}
                 {% endfor %}
             </ul>
         </p>

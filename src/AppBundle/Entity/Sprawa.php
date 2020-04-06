@@ -13,10 +13,11 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
- * @ORM\Table(name="sprawa")
+ * Dokument
+ *
+ * @ORM\MappedSuperclass()
  */
-class Sprawa
+abstract class Sprawa
 {
     /**
      * @ORM\Id
@@ -40,17 +41,13 @@ class Sprawa
      */
     protected $repertorium;
 
+
+
 //    /**
 //     * One Product has Many Features.
-//     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Dokument", mappedBy="sprawa",cascade={"persist"})
+//     * @ORM\OneToMany(targetEntity="AppBundle\Entity\AktDziedziczenia", mappedBy="sprawa",cascade={"persist"})
 //     */
-//    protected $dokumenty;
-
-    /**
-     * One Product has Many Features.
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\AktDziedziczenia", mappedBy="sprawa",cascade={"persist"})
-     */
-    protected $akty;
+//    protected $akty;
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Kancelaria", inversedBy="sprawy",cascade={"persist"})
@@ -59,12 +56,19 @@ class Sprawa
     protected $kancelaria;
 
     /**
+     * @ORM\Column(name="status", type="integer")
+     */
+    protected $status=1;
+
+
+
+    /**
      * Constructor
      */
     public function __construct()
     {
         $this->dataDodania = new \DateTime('now');
-        $this->dokumenty = new ArrayCollection();
+//        $this->dokumenty = new ArrayCollection();
     }
 
     /**
@@ -139,37 +143,37 @@ class Sprawa
         $this->kancelaria = $kancelaria;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getDokumenty()
-    {
-        return $this->dokumenty;
-    }
-
-    /**
-     * @param mixed $dokumenty
-     */
-    public function setDokumenty($dokumenty)
-    {
-        $this->dokumenty = $dokumenty;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getAkty()
-    {
-        return $this->akty;
-    }
-
-    /**
-     * @param mixed $akty
-     */
-    public function setAkty($akty)
-    {
-        $this->akty = $akty;
-    }
+//    /**
+//     * @return mixed
+//     */
+//    public function getDokumenty()
+//    {
+//        return $this->dokumenty;
+//    }
+//
+//    /**
+//     * @param mixed $dokumenty
+//     */
+//    public function setDokumenty($dokumenty)
+//    {
+//        $this->dokumenty = $dokumenty;
+//    }
+//
+//    /**
+//     * @return mixed
+//     */
+//    public function getAkty()
+//    {
+//        return $this->akty;
+//    }
+//
+//    /**
+//     * @param mixed $akty
+//     */
+//    public function setAkty($akty)
+//    {
+//        $this->akty = $akty;
+//    }
 
     /**
      * @return mixed

@@ -107,22 +107,37 @@ class OsobaFizyczna
 
     /**
      * One Product has Many Features.
-     * @ORM\OneToMany(targetEntity="AktDziedziczenia", mappedBy="zgoniarz", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="PostepowanieSpadkowe", mappedBy="zgoniarz", cascade={"persist"})
      */
-    private $aktDziedziczenia;
+    private $postepowanieSpadkowe;
 
     /**
      * Many Groups have Many Users.
-     * @ORM\ManyToMany(targetEntity="AktDziedziczenia", mappedBy="spadkobiercy")
+     * @ORM\ManyToMany(targetEntity="PostepowanieSpadkowe", mappedBy="spadkobiercy")
      */
-    private $aktyDziedziczeniaRodziny;
+    private $postepowanieSpadkoweRodziny;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    protected $udzialSpadku;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    protected $typDziedziczenia = 1;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    protected $stawajacy = 0;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->aktyDziedziczeniaRodziny = new ArrayCollection();
+        $this->postepowanieSpadkoweRodziny = new ArrayCollection();
     }
 
     /**
@@ -429,84 +444,60 @@ class OsobaFizyczna
     /**
      * @return mixed
      */
-    public function getAktDziedziczenia()
+    public function getPostepowanieSpadkowe()
     {
-        return $this->aktDziedziczenia;
+        return $this->postepowanieSpadkowe;
     }
 
     /**
-     * @param mixed $aktDziedziczenia
+     * @param mixed $postepowanieSpadkowe
      */
-    public function setAktDziedziczenia($aktDziedziczenia)
+    public function setPostepowanieSpadkowe($postepowanieSpadkowe)
     {
-        $this->aktDziedziczenia = $aktDziedziczenia;
+        $this->postepowanieSpadkowe = $postepowanieSpadkowe;
     }
 
     /**
-     * @param mixed $aktDziedziczenia
+     * @param mixed $postepowanieSpadkowe
      */
-    public function addAktDziedziczenia($aktDziedziczenia)
+    public function addPostepowanieSpadkowe($postepowanieSpadkowe)
     {
-        $this->aktDziedziczenia[] = $aktDziedziczenia;
+        $this->postepowanieSpadkowe[] = $postepowanieSpadkowe;
     }
 
     /**
      * @return mixed
      */
-    public function getAktyDziedziczeniaRodziny()
+    public function getPostepowanieSpadkoweRodziny()
     {
-        return $this->aktyDziedziczeniaRodziny;
+        return $this->postepowanieSpadkoweRodziny;
     }
 
 
 
     /**
-     * Add aktyDziedziczeniaRodziny
+     * Add postepowanieSpadkoweRodziny
      *
-     * @param \AppBundle\Entity\AktDziedziczenia $aktDziedziczenia
+     * @param \AppBundle\Entity\PostepowanieSpadkowe $postepowanieSpadkoweRodziny
      *
      * @return OsobaFizyczna
      */
-    public function addAktyDziedziczeniaRodziny(\AppBundle\Entity\AktDziedziczenia $aktDziedziczenia)
+    public function addPostepowanieSpadkoweRodziny(\AppBundle\Entity\PostepowanieSpadkowe $postepowanieSpadkoweRodziny)
     {
-        $this->aktyDziedziczeniaRodziny[] = $aktDziedziczenia;
+        $this->postepowanieSpadkoweRodziny[] = $postepowanieSpadkoweRodziny;
 
         return $this;
     }
 
     /**
-     * Remove aktyDziedziczeniaRodziny
+     * Remove postepowanieSpadkoweRodziny
      *
-     * @param \AppBundle\Entity\AktDziedziczenia $aktDziedziczenia
+     * @param \AppBundle\Entity\PostepowanieSpadkowe $postepowanieSpadkoweRodziny
      */
-    public function removeAktyDziedziczeniaRodziny(\AppBundle\Entity\AktDziedziczenia $aktDziedziczenia)
+    public function removePostepowanieSpadkoweRodziny(\AppBundle\Entity\PostepowanieSpadkowe $postepowanieSpadkoweRodziny)
     {
-        $this->aktyDziedziczeniaRodziny->removeElement($aktDziedziczenia);
+        $this->postepowanieSpadkoweRodziny->removeElement($postepowanieSpadkoweRodziny);
     }
-
-//    /**
-//     * @return mixed
-//     */
-//    public function getDataUrodzenia()
-//    {
-//        return $this->dataUrodzenia;
-//    }
-//
-//    /**
-//     * @return mixed
-//     */
-//    public function getDataUrodzeniaSlownie()
-//    {
-//        return $this->dataSlownie($this->dataUrodzenia);
-//    }
-
-//    /**
-//     * @param mixed $dataUrodzenia
-//     */
-//    public function setDataUrodzenia($dataUrodzenia)
-//    {
-//        $this->dataUrodzenia = $dataUrodzenia;
-//    }
 
     /**
      * @return mixed
@@ -522,6 +513,54 @@ class OsobaFizyczna
     public function setMiejsceUrodzenia($miejsceUrodzenia)
     {
         $this->miejsceUrodzenia = $miejsceUrodzenia;
+    }
+
+    /**
+     * @return int
+     */
+    public function getTypDziedziczenia()
+    {
+        return $this->typDziedziczenia;
+    }
+
+    /**
+     * @param int $typDziedziczenia
+     */
+    public function setTypDziedziczenia($typDziedziczenia)
+    {
+        $this->typDziedziczenia = $typDziedziczenia;
+    }
+
+    /**
+     * @return int
+     */
+    public function getStawajacy()
+    {
+        return $this->stawajacy;
+    }
+
+    /**
+     * @param int $stawajacy
+     */
+    public function setStawajacy($stawajacy)
+    {
+        $this->stawajacy = $stawajacy;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUdzialSpadku()
+    {
+        return $this->udzialSpadku;
+    }
+
+    /**
+     * @param mixed $udzialSpadku
+     */
+    public function setUdzialSpadku($udzialSpadku)
+    {
+        $this->udzialSpadku = $udzialSpadku;
     }
 
 

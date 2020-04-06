@@ -15,9 +15,9 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="akt_dziedziczenia")
+ * @ORM\Table(name="postepowanie_spadkowe")
  */
-class AktDziedziczenia extends Dokument
+class PostepowanieSpadkowe extends Sprawa
 {
     /**
      * @ORM\Column(type="datetime")
@@ -69,19 +69,25 @@ class AktDziedziczenia extends Dokument
     /**
      *
      *
-     * @ORM\ManyToMany(targetEntity="OsobaFizyczna", inversedBy="aktyDziedziczeniaRodziny",cascade={"persist"})
-     * @ORM\JoinTable(name="akt_dziedziczenia_spadkobiercy",
-     *      joinColumns={@ORM\JoinColumn(name="akt_dziedziczenia_id", referencedColumnName="id")},
+     * @ORM\ManyToMany(targetEntity="OsobaFizyczna", inversedBy="postepowanieSpadkoweRodziny",cascade={"persist"})
+     * @ORM\JoinTable(name="postepowanie_spadkowe_spadkobiercy",
+     *      joinColumns={@ORM\JoinColumn(name="postepowanie_spadkowe_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="osoba_id", referencedColumnName="id")}
      *      )
      */
     private $spadkobiercy;
 
+//    /**
+//     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Sprawa", inversedBy="akty",cascade={"persist"})
+//     * @ORM\JoinColumn(name="id_sprawy", referencedColumnName="id")
+//     */
+//    protected $sprawa;
+
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Sprawa", inversedBy="akty",cascade={"persist"})
-     * @ORM\JoinColumn(name="id_sprawy", referencedColumnName="id")
+     * One Product has Many Features.
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Dokument", mappedBy="postepowanieSpadkowe",cascade={"persist"})
      */
-    protected $sprawa;
+    protected $dokumenty;
 
     /**
      * @ORM\Column(type="boolean")
@@ -97,7 +103,6 @@ class AktDziedziczenia extends Dokument
      * @ORM\Column(type="text", nullable=true)
      */
     protected $ksiegaWieczystaNieruchomosci;
-
 
 
     /**
@@ -377,7 +382,21 @@ class AktDziedziczenia extends Dokument
         $this->ksiegaWieczystaNieruchomosci = $ksiegaWieczystaNieruchomosci;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getDokumenty()
+    {
+        return $this->dokumenty;
+    }
 
+    /**
+     * @param mixed $dokumenty
+     */
+    public function setDokumenty($dokumenty)
+    {
+        $this->dokumenty = $dokumenty;
+    }
 
 
 

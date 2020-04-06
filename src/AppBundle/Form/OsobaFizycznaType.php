@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -43,6 +44,9 @@ class OsobaFizycznaType extends AbstractType
             ])
             ->add('miejsceUrodzenia', TextType::class, [
                 'label'  => 'Miejsce urodzenia: '
+            ])
+            ->add('udzialSpadku', TextType::class, [
+                'label'  => 'Udział: '
             ])
             ->add('miastoZamieszkania', HiddenType::class, [
             ])
@@ -88,6 +92,13 @@ class OsobaFizycznaType extends AbstractType
                     'Bratanica' => 16,
                 ]
             ])
+            ->add('typDziedziczenia',ChoiceType::class,[
+                'label' => 'Typ:',
+                'choices' => [
+                    'Wprost' => 1,
+                    'Z dobrodziejstwem inwentaża' => 2
+                ]
+            ])
 //            ->add('plec',ChoiceType::class,[
 //                'label' => 'Płeć:',
 //                'choices' => [
@@ -95,6 +106,11 @@ class OsobaFizycznaType extends AbstractType
 //                    'Mężczyzna' => 2
 //                ]
 //            ])
+            ->add('stawajacy', CheckboxType::class, [
+                'label'  => 'Stawający: ',
+                'required' => false,
+//                'value' => 1
+            ])
         ;
     }
 

@@ -2,18 +2,30 @@
 
 {% block body %}
     <div id="wrapper">
-        <div id="container">
-            <div id="welcome">
-                <h1><span>Welcome to</span> INZYNIERKA </h1>
+        <div class="row">
+            <div class="zakladka">
+                <div class="zakladka-content">
+                    <div class="zakladka-header">Dokumenty</div>
+                    <div class="list-group lista-krokow" data-id="2537">
+                        {% for dok in inneDokumenty %}
+                            <a class="list-group-item clickable {% if dok.id == dokument.id  %}disabled{% endif %}" href="{{ path('edit', {'id': dok.id, 'hash': dok.hash }) }}" data-id="{{ dok.id }}" data-hash="{{ dok.hash }}"  data-typ="akt">
+                                {{ dok.nazwaDokumentu }}
+                            </a>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="zakladka-icon open">
+                    <i class="fa fa-tasks"></i>
+                </div>
             </div>
+        </div>
+        <div id="container">
             <div>
                 {{ form_start(form, {'attr': {'class': 'editorForm', 'novalidate': 'novalidate'} }) }}
                     {#<textarea class="full-featured-non-premium"></textarea>#}
                     <button name="submitbtn"></button>
                 {{ form_end(form) }}
             </div>
-            {#{{ form_start(form) }}#}
-            {#{{ form_end(form) }}#}
         </div>
     </div>
 {% endblock %}
@@ -22,8 +34,14 @@
     <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     <script>
     $( document ).ready(function() {
+        toggleMenubar();
         $(document).on('click', '.niepewne', function (event) {
             console.log("KLIK");
+            // $(this).css("background-color", "white");
+        });
+
+        $(document).on('click', '.zakladka-icon', function (event) {
+                $('.zakladka').toggleClass('open');
             // $(this).css("background-color", "white");
         });
 
@@ -196,7 +214,7 @@
 
             template_cdate_format: '[Date Created (CDATE): %m/%d/%Y : %H:%M:%S]',
             template_mdate_format: '[Date Modified (MDATE): %m/%d/%Y : %H:%M:%S]',
-            height: 1400,
+            height: 723,
             image_caption: true,
             quickbars_selection_toolbar: 'bold italic | quicklink h2 h3 blockquote quickimage quicktable',
             noneditable_noneditable_class: "mceNonEditable",
@@ -275,6 +293,12 @@
     #icon-book { display: none; }
     #tinymce{
         background-color: #e7e7e7;
+    }
+    .page-content {
+        padding: 1px 30px !important;
+    }
+    .page-content .container {
+        padding: 0em 2em !important;
     }
 
 

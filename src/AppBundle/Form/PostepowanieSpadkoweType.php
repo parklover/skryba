@@ -1,7 +1,7 @@
 <?php
 namespace AppBundle\Form;
 
-use AppBundle\Entity\AktDziedziczenia;
+use AppBundle\Entity\PostepowanieSpadkowe;
 use AppBundle\Entity\OsobaFizyczna;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityRepository;
@@ -19,7 +19,7 @@ use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class AktDziedziczeniaType extends AbstractType
+class PostepowanieSpadkoweType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -88,10 +88,12 @@ class AktDziedziczeniaType extends AbstractType
                 'required'=>true
             ])
             ->add('numerSkroconegoAktuMalzenstwaMalzonka', TextType::class, [
-                'label'  => 'Numer skróconego aktu małżeństwa małżonka: '
+                'label'  => 'Numer skróconego aktu małżeństwa małżonka: ',
+                'required'=>false
             ])
             ->add('numerSkroconegoAktuMalzenstwaPotomka', TextType::class, [
-                'label'  => 'Numer skróconego aktu małżeństwa potomka: '
+                'label'  => 'Numer skróconego aktu małżeństwa potomka: ',
+                'required'=>false
             ])
             ->add('zmianaWlascicielaNieruchomosci',CheckboxType::class, [
                 'label'=>'Czy zachodzi zmiana właściciela nieruchomości? ',
@@ -112,7 +114,7 @@ class AktDziedziczeniaType extends AbstractType
     {
         $resolver->setDefaults(array(
             'translation_domain' => 'form_label',
-            'data-class' => AktDziedziczenia::class
+            'data-class' => PostepowanieSpadkowe::class
         ));
     }
 

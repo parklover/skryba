@@ -3,9 +3,10 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Kancelaria;
+use AppBundle\Entity\PostepowanieSpadkowe;
 use AppBundle\Entity\Sprawa;
 use AppBundle\Entity\User;
-use AppBundle\Form\AktDziedziczeniaType;
+use AppBundle\Form\PostepowanieSpadkoweType;
 use AppBundle\Form\DokumentType;
 use AppBundle\Form\KancelariaType;
 use PhpOffice\PhpWord\IOFactory;
@@ -39,7 +40,7 @@ class PanelController extends Controller
     public function listaSprawAjaxAction(Request $request)
     {
         $out = [];
-        $sprawy = $this->getUser()->getKancelaria()->getSprawy();
+        $sprawy = $this->getDoctrine()->getRepository(PostepowanieSpadkowe::class)->findBy(['kancelaria' => $this->getUser()->getKancelaria()]);
 
         $k=0;
         $rows=[];
@@ -49,7 +50,8 @@ class PanelController extends Controller
             $rows[$k][]=$sprawa->getNazwa();
             $rows[$k][]=$sprawa->getDataDodania()->format('Y-m-d');
             $rows[$k][]=$sprawa->getKancelaria()->getNazwa();
-            $rows[$k][]="<a href='". $this->generateUrl('sprawa', ['id' => $sprawa->getId()]) . "' ><i class='icon fa-edit'></i></a>";
+//            $rows[$k][]="";
+            $rows[$k][]=$sprawa->getDokumenty()->count() > 0 ? "<a href='". $this->generateUrl('edit', ['id' => $sprawa->getDokumenty()[0]->getId(), 'hash' => $sprawa->getDokumenty()[0]->getHash()]) . "' ><i class='icon fa-edit'></i></a>":"";
             $k++;
         }
 
