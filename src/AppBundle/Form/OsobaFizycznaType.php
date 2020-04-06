@@ -46,7 +46,8 @@ class OsobaFizycznaType extends AbstractType
                 'label'  => 'Miejsce urodzenia: '
             ])
             ->add('udzialSpadku', TextType::class, [
-                'label'  => 'Udział: '
+                'label'  => 'Udział: ',
+                'required' => false
             ])
             ->add('miastoZamieszkania', HiddenType::class, [
             ])

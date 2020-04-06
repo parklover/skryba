@@ -102,9 +102,9 @@ class PostepowanieSpadkoweController extends Controller
                 $spadkobierca->setNumerDowodu($osoba['numerDowodu']);
                 $spadkobierca->setDataWaznosciDowodu($osoba['dataWaznosciDowodu']);
                 $em->persist($spadkobierca);
-                dump($spadkobierca);
-                dump($spadkobierca->getStawajacy());
-                dump($osoba['stawajacy']);
+//                dump($spadkobierca);
+//                dump($spadkobierca->getStawajacy());
+//                dump($osoba['stawajacy']);
                 if($osoba['stawajacy'])$stawajacy->add($spadkobierca);
                 $spadkobiercy->add($spadkobierca);
                 $postepowanieSpadkowe->addSpadkobiercy($spadkobierca);
@@ -112,9 +112,9 @@ class PostepowanieSpadkoweController extends Controller
             }
 
             $this->liczUdzialSpadku($spadkobiercy);
-
-            dump($stawajacy);
-            dump($stawajacy);
+//
+//            dump($stawajacy);
+//            dump($stawajacy);
 
             //Akt dziedziczenia
             $fileNameAktDziedziczenia = $postepowanieSpadkowe->getNazwa().'-akt_poswiadczenia_dziedziczenia-'.time().'.html';
