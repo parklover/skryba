@@ -7,7 +7,7 @@
 {% block _postepowanie_spadkowe_spadkobiercy_entry_widget %}
 
     <tr class="collection-element">
-        <td class="c-lp valgin-middle">1.</td>
+        <td class="c-lp valgin-middle" style="display: none;">1.</td>
         <td class="pesel">{{ form_widget(form.pesel,{attr:{class:'form-control form-control-sm pesel-validate'}}) }}</td>
         <td>{{ form_widget(form.imie,{attr:{class:'form-control form-control-sm set-rodzaj'}}) }}</td>
         <td>{{ form_widget(form.nazwisko,{attr:{class:'form-control form-control-sm'}}) }}</td>
@@ -17,7 +17,8 @@
         <td>{{ form_widget(form.miejsceUrodzenia,{attr:{class:'form-control form-control-sm licz'}}) }}</td>
         <td>{{ form_widget(form.numerDowodu,{attr:{class:'form-control form-control-sm licz id-validate'}}) }}</td>
         <td>{{ form_widget(form.dataWaznosciDowodu) }}</td>
-        <td>{{ form_widget(form.stopienPokrewienstwa,{attr:{class:'form-control form-control-sm licz'}}) }}</td>
+        <td>{{ form_widget(form.stopienPokrewienstwa,{attr:{class:'form-control form-control-sm licz sprawdzCzyZona'}}) }}</td>
+        <td class="numerAktuUrodzenia">{{ form_widget(form.numerSkroconegoAktuUrodzeniaPotomka,{attr:{class:'form-control form-control-sm licz'}}) }}</td>
         <td>{{ form_widget(form.typDziedziczenia,{attr:{class:'form-control form-control-sm licz'}}) }}</td>
         <td>{{ form_widget(form.udzialSpadku,{attr:{class:'form-control form-control-sm'}}) }}</td>
         <td>
@@ -44,9 +45,6 @@
 {% block body %}
     <div id="wrapper">
         <div id="container">
-{#            <div id="welcome">#}
-{#                <h1><span>Welcome to</span> INZYNIERKA </h1>#}
-{#            </div>#}
 
             {{ form_start(form) }}
                 {{ form_row(form.dataCzynnosci) }}
@@ -87,11 +85,11 @@
                         {{ form_widget(form.zgoniarz.numerMieszkaniaZamieszkania) }}
                         {{ form_widget(form.zgoniarz.typObiektuZamieszkania) }}
                         {{ form_widget(form.zgoniarz.nazwaObiektuZamieszkania) }}
-                        {#<td>{{ form_widget(form.zgoniarz.dataUrodzenia) }}</td>#}
                         {{ form_widget(form.zgoniarz.stopienPokrewienstwa,{attr:{class:'form-control form-control-sm zgoniarzUkryj'}}) }}
                         {{ form_widget(form.zgoniarz.typDziedziczenia,{attr:{class:'form-control form-control-sm zgoniarzUkryj'}}) }}
                         {{ form_widget(form.zgoniarz.stawajacy,{attr:{class:'form-control form-control-sm zgoniarzUkryj'}}) }}
                         {{ form_widget(form.zgoniarz.udzialSpadku,{attr:{class:'form-control form-control-sm zgoniarzUkryj'}}) }}
+                        {{ form_widget(form.zgoniarz.numerSkroconegoAktuUrodzeniaPotomka,{attr:{class:'form-control form-control-sm zgoniarzUkryj'}}) }}
                     </tr>
                     </tbody>
                 </table>
@@ -101,7 +99,7 @@
                 <table class="table table-bordered">
                     <thead>
                         <tr class="collection-add text-center">
-                            <th width="10"></th>
+                            <th width="10" style="display:none;"></th>
                             <th width="150">Pesel</th>
                             <th width="150">Imię</th>
                             <th width="150">Nazwisko</th>
@@ -112,10 +110,10 @@
                             <th width="100">Numer dowodu osobistego</th>
                             <th width="125">Data ważności dowodu osobistego</th>
                             <th	width="100" >Pokrewieństwo</th>
+                            <th	width="100" class="numerAktuUrodzeniaTd">Numer skróconego aktu urodzenia</th>
                             <th	width="100" >Typ</th>
                             <th	width="100" >Udział</th>
                             <th	width="100" >Stawający</th>
-                            {#<th	width="100" >Płeć</th>#}
                             <th width="30">Usuń</th>
                         </tr>
                     </thead>
@@ -163,11 +161,15 @@
                 {#{{ form_row(form.spadkobiercy) }}#}
                 {#{{ form_row(form.stawajacy) }}#}
 
-                {{ form_row(form.numerSkroconegoAktuMalzenstwaMalzonka) }}
-                {{ form_row(form.numerSkroconegoAktuMalzenstwaPotomka) }}
+                <div class="akt_malzenstwa" style="display: none;">
+                    {{ form_row(form.numerSkroconegoAktuMalzenstwaMalzonka) }}
+                </div>
+
+{#                {{ form_row(form.numerSkroconegoAktuMalzenstwaPotomka) }}#}
                 {#{{ form_row(form.spadkobiercy) }}#}
 
-            <button class="btn btn-primary pull-right" style="float: right;" type="submit">Generuj</button>
+            <button class="btn btn-primary pull-right" style="float: right; margin-left: 25px;" type="submit">Generuj</button>
+            <button class="btn btn-primary pull-right uzupelnijTestowo" style="float: right;" type="button">Uzupełnij danymi</button>
             {{ form_end(form) }}
 
         </div>
@@ -290,6 +292,12 @@
     }
     .zgoniarzUkryj{
         display: none !important;
+    }
+    .numerAktuUrodzenia{
+        display: none;
+    }
+    .numerAktuUrodzeniaTd{
+        display: none;
     }
 
     @media (min-width: 768px) {

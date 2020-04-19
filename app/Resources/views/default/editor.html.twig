@@ -21,6 +21,7 @@
         </div>
         <div id="container">
             <div>
+                <a href="{{ path('saveToDocx', {'id': dokument.id, 'hash': dokument.hash}) }}">Zapisz jako docx</a>
                 {{ form_start(form, {'attr': {'class': 'editorForm', 'novalidate': 'novalidate'} }) }}
                     {#<textarea class="full-featured-non-premium"></textarea>#}
                     <button name="submitbtn"></button>
@@ -238,10 +239,10 @@
             },
             setup: function (editor) {
                 editor.on('init', function (e) {
-                    $('iframe').contents().find("head").append($("<style type='text/css'>*{background-color: #e7e7e7}body{width: 210mm; min-height: 297mm; background-color: #fff; padding: 5mm !important; margin: 0px auto; margin-top: 25px;}body *{ background-color: #fff;}.mce-content-body p{margin: 16px 0;}.niepewne{ background-color: #faffb4; padding: 2px 10px; border-radius: 5px;}</style>"));
+                    $('iframe').contents().find("head").append($("<style type='text/css'>*{background-color: #e7e7e7}body{width: 210mm; min-height: 297mm; background-color: #fff; padding: 25mm !important; margin: 0px auto; margin-top: 25px;}body *{ background-color: #fff;}.mce-content-body p{margin: 16px 0;}.niepewne{ background-color: #faffb4; padding: 2px 10px; border-radius: 5px;}</style>"));
                     // editor.setContent('<p><strong>EWA LUDWICZAK-WINTER</strong></p>' +
                     //     'asdasdasd');
-                    editor.setContent('{{ wzor |raw }}');
+                    editor.setContent(`{{ wzor |raw }}`);
                     $doc = editor.getDoc();
                     $body = $($doc).find('body');
                     console.log($body.find('.niepewne'));

@@ -91,10 +91,10 @@ class PostepowanieSpadkoweType extends AbstractType
                 'label'  => 'Numer skróconego aktu małżeństwa małżonka: ',
                 'required'=>false
             ])
-            ->add('numerSkroconegoAktuMalzenstwaPotomka', TextType::class, [
-                'label'  => 'Numer skróconego aktu małżeństwa potomka: ',
-                'required'=>false
-            ])
+//            ->add('numerSkroconegoAktuMalzenstwaPotomka', TextType::class, [
+//                'label'  => 'Numer skróconego aktu małżeństwa potomka: ',
+//                'required'=>false
+//            ])
             ->add('zmianaWlascicielaNieruchomosci',CheckboxType::class, [
                 'label'=>'Czy zachodzi zmiana właściciela nieruchomości? ',
                 'required'=>false

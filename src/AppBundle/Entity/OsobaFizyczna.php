@@ -133,6 +133,11 @@ class OsobaFizyczna
     protected $stawajacy = 0;
 
     /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    protected $numerSkroconegoAktuUrodzeniaPotomka;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -563,6 +568,20 @@ class OsobaFizyczna
         $this->udzialSpadku = $udzialSpadku;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getNumerSkroconegoAktuUrodzeniaPotomka()
+    {
+        return $this->numerSkroconegoAktuUrodzeniaPotomka;
+    }
 
+    /**
+     * @param mixed $numerSkroconegoAktuUrodzeniaPotomka
+     */
+    public function setNumerSkroconegoAktuUrodzeniaPotomka($numerSkroconegoAktuUrodzeniaPotomka)
+    {
+        $this->numerSkroconegoAktuUrodzeniaPotomka = $numerSkroconegoAktuUrodzeniaPotomka;
+    }
 
 }

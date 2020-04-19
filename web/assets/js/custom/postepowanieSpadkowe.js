@@ -57,6 +57,44 @@ $(document).on('focusout', '.id-validate', function(){
     }
 });
 
+$(document).on('change', '.sprawdzCzyZona', function(){
+    console.log("Zmiana pokrewieństwa");
+    var czyMalzonek = false;
+    var czyDzieci = false;
+    var $spadkobiercy = $('.collection').find('.collection-element');
+    var $input = $(this);
+
+    $spadkobiercy.each(function() {
+        var pokrewienstwo = $(this).find('select[name*=stopienPokrewienstwa]').val();
+        console.log($(this));
+        console.log($(this).find('select[name*=stopienPokrewienstwa]'));
+        console.log(pokrewienstwo);
+        if (pokrewienstwo == 4 || pokrewienstwo == 3) {
+            czyMalzonek = true;
+        }
+        if (pokrewienstwo == 5 || pokrewienstwo == 6) {
+            czyDzieci = true;
+            $(this).children('td.numerAktuUrodzenia').children('input').removeAttr('disabled');
+        }
+    });
+
+    if(czyMalzonek){
+        $('.akt_malzenstwa').show();
+    }
+    else{
+        $('.akt_malzenstwa').hide();
+    }
+
+    if (czyDzieci) {
+        $('.numerAktuUrodzeniaTd').show();
+        $(document).find('.numerAktuUrodzenia').each(function(){ $(this).show(); });
+    }
+    else{
+        $('.numerAktuUrodzeniaTd').hide();
+        $(document).find('.numerAktuUrodzenia').each(function(){ $(this).hide(); });
+    }
+});
+
 $(document).on('focusout', '.pesel-validate', function(){
     var pesel = $(this).val();
     // var wiersz = $(this).parents('tr').attr('data-id');
@@ -94,6 +132,63 @@ $(document).on('focusout', '.pesel-validate', function(){
             }
         });
     }
+});
+
+Date.prototype.yyyymmdd = function() {
+    var yyyy = this.getFullYear().toString();
+    var mm = (this.getMonth()+1).toString(); // getMonth() is zero-based
+    var dd  = this.getDate().toString();
+    return yyyy + "-" + (mm[1]?mm:"0"+mm[0]) + "-" + (dd[1]?dd:"0"+dd[0]); // padding
+};
+
+$('.uzupelnijTestowo').click(function(){
+    console.log("dzisiejszaData");
+    var dzisiejszaData = new Date();
+    var dataSmierci = new Date();
+    var dataAktuZgonu = new Date();
+    dataSmierci.setDate(dataSmierci.getDate() - 4);
+    dataAktuZgonu.setDate(dataAktuZgonu.getDate() - 2);
+    console.log(dzisiejszaData);
+    console.log(dzisiejszaData.yyyymmdd());
+    console.log(dataAktuZgonu);
+    console.log(dataAktuZgonu.yyyymmdd());
+    console.log(dataSmierci);
+    console.log(dataSmierci.yyyymmdd());
+    $('#postepowanie_spadkowe_dataCzynnosci').datepicker("setDate", dzisiejszaData );
+    $('#postepowanie_spadkowe_dataSmierci').datepicker("setDate", dataSmierci );
+    $('#postepowanie_spadkowe_miejsceZgonu').val("Poznań");
+    $('#postepowanie_spadkowe_miejsceWydaniaAktuZgonu').val("Poznań");
+    $('#postepowanie_spadkowe_dataWydaniaAktuZgonu').datepicker("setDate", dataAktuZgonu );
+    $('#postepowanie_spadkowe_numerAktuZgonu').val("USC/UZ/23");
+
+    addTagForm($('.collection'));
+    addTagForm($('.collection'));
+
+    $('.collection-element[data-id="0"]').find('input[name*=pesel]').val("61081814070").trigger('focusout');
+    $('.collection-element[data-id="0"]').children('.adresTd').children('.adres').html("Edytuj adres");
+
+    $('.collection-element[data-id="1"]').find('input[name*=pesel]').val("86012533451").trigger('focusout');
+    $('.collection-element[data-id="1"]').find('select[name*=stopienPokrewienstwa]').val(6).trigger('change');
+    $('.collection-element[data-id="1"]').find('input[type*=checkbox]').trigger('click');
+    $('.collection-element[data-id="1"]').find('input[name*=udzial]').val("1 / 4").trigger('change');
+    $('.collection-element[data-id="1"]').find('input[name*=numerSkroconegoAktuUrodzeniaPotomka]').val("USZ/UC/3").trigger('change');
+    $('.collection-element[data-id="1"]').children('.adresTd').children('.adres').html("Edytuj adres");
+
+    $('.collection-element[data-id="2"]').find('input[name*=pesel]').val("93041343476").trigger('focusout');
+    $('.collection-element[data-id="2"]').find('select[name*=stopienPokrewienstwa]').val(5).trigger('change');
+    $('.collection-element[data-id="2"]').find('input[type*=checkbox]').trigger('click');
+    $('.collection-element[data-id="2"]').find('input[name*=udzial]').val("1 / 4").trigger('change');
+    $('.collection-element[data-id="2"]').find('input[name*=numerSkroconegoAktuUrodzeniaPotomka]').val("USZ/UC/34").trigger('change');
+    $('.collection-element[data-id="2"]').children('.adresTd').children('.adres').html("Edytuj adres");
+
+    $('.collection-element[data-id="3"]').find('input[name*=pesel]').val("66072289343").trigger('focusout');
+    $('.collection-element[data-id="3"]').find('select[name*=stopienPokrewienstwa]').val(4).trigger('change');
+    $('.collection-element[data-id="3"]').find('input[type*=checkbox]').trigger('click');
+    $('.collection-element[data-id="3"]').find('input[name*=udzial]').val("1 / 2").trigger('change');
+    $('.collection-element[data-id="3"]').children('.adresTd').children('.adres').html("Edytuj adres");
+
+    $('#postepowanie_spadkowe_numerSkroconegoAktuMalzenstwaMalzonka').val(" 32/2462").trigger('change');
+
 });
 
 $('.zapiszAdres').click(function(){
@@ -160,6 +255,7 @@ $(document).on('click',".usun",function(e){
 });
 
 function przeliczRow(){
+    $('.collection-element[data-id="1"]').find('select[name*=stopienPokrewienstwa]').trigger('change');
     var $collectionHolder = $('.collection');
     var index = 1;
     $collectionHolder.children('.collection-element').each(function(){

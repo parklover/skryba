@@ -54,11 +54,6 @@ class PostepowanieSpadkowe extends Sprawa
      */
     protected $numerSkroconegoAktuMalzenstwaMalzonka;
 
-    /**
-     * @ORM\Column(type="text")
-     */
-    protected $numerSkroconegoAktuMalzenstwaPotomka;
-
 
     /**
      * @ORM\ManyToOne(targetEntity="OsobaFizyczna", inversedBy="aktDziedziczenia",cascade={"persist"})
@@ -318,21 +313,21 @@ class PostepowanieSpadkowe extends Sprawa
         $this->numerSkroconegoAktuMalzenstwaMalzonka = $numerSkroconegoAktuMalzenstwaMalzonka;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getNumerSkroconegoAktuMalzenstwaPotomka()
-    {
-        return $this->numerSkroconegoAktuMalzenstwaPotomka;
-    }
-
-    /**
-     * @param mixed $numerSkroconegoAktuMalzenstwaPotomka
-     */
-    public function setNumerSkroconegoAktuMalzenstwaPotomka($numerSkroconegoAktuMalzenstwaPotomka)
-    {
-        $this->numerSkroconegoAktuMalzenstwaPotomka = $numerSkroconegoAktuMalzenstwaPotomka;
-    }
+//    /**
+//     * @return mixed
+//     */
+//    public function getNumerSkroconegoAktuMalzenstwaPotomka()
+//    {
+//        return $this->numerSkroconegoAktuMalzenstwaPotomka;
+//    }
+//
+//    /**
+//     * @param mixed $numerSkroconegoAktuMalzenstwaPotomka
+//     */
+//    public function setNumerSkroconegoAktuMalzenstwaPotomka($numerSkroconegoAktuMalzenstwaPotomka)
+//    {
+//        $this->numerSkroconegoAktuMalzenstwaPotomka = $numerSkroconegoAktuMalzenstwaPotomka;
+//    }
 
     /**
      * @return mixed

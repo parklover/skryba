@@ -49,6 +49,13 @@ class OsobaFizycznaType extends AbstractType
                 'label'  => 'Udział: ',
                 'required' => false
             ])
+            ->add('numerSkroconegoAktuUrodzeniaPotomka', TextType::class, [
+                'label'  => 'Numer skróconego aktu urodzenia: ',
+                'required' => false,
+                'attr' => [
+                    'disabled' => 'disabled'
+                ]
+            ])
             ->add('miastoZamieszkania', HiddenType::class, [
             ])
             ->add('numerDomuZamieszkania', HiddenType::class, [

@@ -1,33 +1,39 @@
-<p class="lineheight8px"><strong>{{ user.kancelaria.nazwa |upper }}</strong></p>
-<p class="lineheight8px"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NOTARIUSZ</strong></p>
-<p class="lineheight8px"><strong>{{ user.kancelaria.kodPocztowy |upper }} {{ user.kancelaria.miasto |upper }}</strong></p>
-<p class="lineheight8px"><strong>{{ user.kancelaria.adres |upper }}</strong></p>
-<p class="lineheight8px"><strong>TEL. {{ user.telefon |upper }}</strong></p>
+<p class="lineheight6px"><strong>NOTARIUSZ {{ user.kancelaria.nazwa |upper }}</strong></p>
+<p class="lineheight6px"><strong>{{ user.kancelaria.adres |upper }} {{ user.kancelaria.kodPocztowy |upper }} {{ user.kancelaria.miasto |upper }}</strong></p>
+<p class="lineheight6px"><strong>TEL. {{ user.telefon |upper }}</strong></p>
 <p>
-    <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
+    <strong></strong>
 </p>
-<p><strong>Repertorium A numer {{ numerSprawy }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
-</p>
-<p><br></p><h4 style="text-align: center;" data-mce-style="text-align: center;"><span
-        style="font-family: arial, helvetica, sans-serif; font-size: 36pt;"
-        data-mce-style="font-family: arial, helvetica, sans-serif; font-size: 36pt;"><strong><span
-        class="lineheight56px">AKT&nbsp;POŚWIADCZENIA DZIEDZICZENIA</span></strong></span></h4><p><br>
-</p><p><span style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"
-             data-mce-style="font-family: arial, helvetica, sans-serif; font-size: 18pt;">
-    {#Dnia <u>dwudziestego piątego stycznia dwa tysiące dziewiętnastego (25.I.2019)(data kiedy ma być dokonana czynność)</u>&nbsp;roku <strong>ja</strong>#}
-    Dnia <u>{{ form.dataCzynnosci | dataSlownie }} ({{ form.dataCzynnosci | date('d.m.Y') }})</u>&nbsp;roku, <strong>ja</strong>
+<p><strong>Repertorium A numer {{ numerSprawy }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong></p>
+<p><br></p>
+<h4 style="text-align: center;" data-mce-style="text-align: center;"><span
+        style="font-family: arial, helvetica, sans-serif; font-size: 24pt;"
+        data-mce-style="font-family: arial, helvetica, sans-serif; font-size: 24pt;"><strong><span
+        class="lineheight32px">AKT&nbsp;POŚWIADCZENIA<br />DZIEDZICZENIA</span></strong></span>
+</h4>
+<p><br></p>
+<p><br></p>
+<p style="text-align: justify;" data-mce-style="text-align: justify;">
+    <span style="font-family: 'times new roman', times, serif; font-size: 12pt;"
+             data-mce-style="font-family: 'times new roman', times, serif; font-size: 12pt;">
+    Dnia {{ form.dataCzynnosci | dataSlownie }} ({{ form.dataCzynnosci | date('d.m.Y') }})&nbsp;roku, <strong>ja</strong>
     <strong>notariusz {{ user.kancelaria.nazwa }} </strong>prowadząca Kancelarię Notarialną w <span class="niepewne" >{{ user.kancelaria.miasto }}</span>
         przy ulicy <span class="niepewne" >{{ user.kancelaria.adres | ulica }}</span> na podstawie art. 95a
     ustawy z dnia 14 lutego 1991 roku Prawo o notariacie po sporządzeniu w dniu dzisiejszym Protokołu &nbsp;dziedziczenia &nbsp;
-    repertorium &nbsp;A &nbsp;numer {{ numerSprawy }}&nbsp;tutejszej Kancelarii,</span>
-</p><p style="padding-left: 120px;" data-mce-style="padding-left: 120px;"><span
-        style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"
-        data-mce-style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"><strong>poświadczam, że:</strong></span>
-</p><p><span style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"
-             data-mce-style="font-family: arial, helvetica, sans-serif; font-size: 18pt;">spadek po <span class="niepewne" >{{ zgoniarz.imie }} {{ zgoniarz.nazwisko }}</span>,
+    repertorium &nbsp;A &nbsp;numer {{ numerSprawy }}&nbsp;tutejszej Kancelarii,
+    </span>
+</p>
+<p style="padding-left: 120px;" data-mce-style="padding-left: 120px;"><span
+        style="font-family: 'times new roman', times, serif; font-size: 12pt;"
+        data-mce-style="font-family: 'times new roman', times, serif; font-size: 12pt;"><strong>poświadczam, że:</strong>
+    </span>
+</p>
+<p style="text-align: justify;" data-mce-style="text-align: justify;">
+    <span style="font-family: 'times new roman', times, serif; font-size: 12pt;"
+             data-mce-style="font-family: 'times new roman', times, serif; font-size: 12pt;">spadek po <span class="niepewne" >{{ zgoniarz.imie }} {{ zgoniarz.nazwisko }}</span>,
         {% if zgoniarz.plec == 1 %}córce{% else %}synu{% endif %} {{ zgoniarz.imieOjca | imieMeskie }} i {{ zgoniarz.imieMatki | imieZenskie }},
-        <u>{% if zgoniarz.plec == 1 %}zmarłej{% else %}zmarłym{% endif %}</u> dnia <u>
-       </u>{{ form.dataSmierci | dataSlownie }} ({{ form.dataSmierci | date('d.m.Y') }}) roku,
+        {% if zgoniarz.plec == 1 %}zmarłej{% else %}zmarłym{% endif %} dnia
+       {{ form.dataSmierci | dataSlownie }} ({{ form.dataSmierci | date('d.m.Y') }}) roku,
         {% if zgoniarz.plec == 1 %}zamieszkałej{% else %}zamieszkałym{% endif %} w mieście <span class="niepewne" >{{ zgoniarz.miastoZamieszkania }}</span>
         {% if zgoniarz.typObiektuZamieszkania == 0 %}{{ zgoniarz.numerDomuZamieszkania }}{% if zgoniarz.numerMieszkaniaZamieszkania is not null and zgoniarz.numerMieszkaniaZamieszkania != "" %} / {{ zgoniarz.numerMieszkaniaZamieszkania }}{% endif %}
         {% elseif zgoniarz.typObiektuZamieszkania == 1 %} przy ulicy {{ zgoniarz.nazwaObiektuZamieszkania }} {{ zgoniarz.numerDomuZamieszkania }} {% if zgoniarz.numerMieszkaniaZamieszkania is not null and zgoniarz.numerMieszkaniaZamieszkania != "" %} / {{ zgoniarz.numerDomuZamieszkania }}{% endif %}
@@ -39,16 +45,15 @@
     <u>{{ form.numerAktuZgonu }}</u>) z mocy ustawy {% if spadkobiorcy|length == 1 %} dziedziczy {% else %} dziedziczą{% endif %}:
         <ul>
             {% for spadkobierca in spadkobiorcy %}
-                <li><span style="font-family: arial, helvetica, sans-serif; font-size: 18pt;" data-mce-style="font-family: arial, helvetica, sans-serif; font-size: 18pt;">
+                <li><span style="font-family: 'times new roman', times, serif; font-size: 12pt;" data-mce-style="font-family: 'times new roman', times, serif; font-size: 12pt;">
                         {% if zgoniarz.plec == 1 %}jej{% else %}jego{% endif %} {{ spadkobierca.stopienPokrewienstwa | pokrewienstwoSlownie }} {{ spadkobierca.imie }} {{ spadkobierca.nazwisko }},
                         {% if spadkobierca.plec == 1 %} córka {% else %} syn {% endif %}
                 {{ spadkobierca.imieOjca | imieMeskie }} i {{ spadkobierca.imieMatki | imieZenskie}} {% if spadkobierca.plec == 1 %} urodzona {% else %} urodzony {% endif %} {{ spadkobierca.pesel | dataZPeselu | dataSlownie }}
-                ({{ spadkobierca.pesel | dataZPeselu | date('Y-m-d') }}) roku
+                ({{ spadkobierca.pesel | dataZPeselu | date('d.m.Y') }}) roku
                 w <span class="niepewne" >{{ spadkobierca.miejsceUrodzenia }}</span>
                 {% if spadkobiorcy|length > 1 %}
-                    w wysokości <span class="niepewne" >{{ spadkobierca.udzialSpadku }}</span> spadku
+                    w wysokości <span class="niepewne" >{{ spadkobierca.udzialSpadku }}</span> spadku{% if loop.revindex == 2 %} oraz{% else %}{% if not loop.last %},{% else %}.{% endif %}{% endif %}
                 {% endif %}
-                {% if not loop.last %}, {% else %}{% if spadkobiorcy|length != 1 %} oraz {% endif %}{% endif %}
                 </span></li>
             {% endfor %}
         </ul>
@@ -57,12 +62,15 @@
         {% endif %}
     </span>
 </p>
-<ul>
-    <li><span style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"
-              data-mce-style="font-family: arial, helvetica, sans-serif; font-size: 18pt;">1 Koszty aktu ponosi {% if spadkobiorcy|length == 1 and spadkobiorcy[0].plec == 2 %} Stawająca {% else %} Stawający {% endif %} gotówką.</span>
-    </li>
-    <li><span style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"
-              data-mce-style="font-family: arial, helvetica, sans-serif; font-size: 18pt;">2 Wypisy i odpis tego aktu należy wydawać
+<p style="text-align: justify;" data-mce-style="text-align: justify;">
+    <span style="font-family: 'times new roman', times, serif; font-size: 12pt;"
+              data-mce-style="font-family: 'times new roman', times, serif; font-size: 12pt;">
+        1. Koszty aktu ponosi {% if spadkobiorcy|length == 1 and spadkobiorcy[0].plec == 2 %} Stawająca {% else %} Stawający {% endif %} gotówką.
+    </span>
+</p>
+<p style="text-align: justify;" data-mce-style="text-align: justify;">
+    <span style="font-family: 'times new roman', times, serif; font-size: 12pt;"
+              data-mce-style="font-family: 'times new roman', times, serif; font-size: 12pt;">2. Wypisy i odpis tego aktu należy wydawać
             {% if spadkobiorcy|length == 1 %}
                 {% if spadkobiorcy[0].plec == 2 %}
                     stawającej
@@ -72,181 +80,210 @@
             {% else %}
                 stawającym
             {% endif %}
-            i Urzędom Skarbowym w dowolnej ilości.</span>
-    </li>
-    <li><span style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"
-              data-mce-style="font-family: arial, helvetica, sans-serif; font-size: 18pt;">3.1. W związku z dokonaniem czynności pobrano: <span class="niepewne" >  ....  </span></span>
-    </li>
-</ul><p><span style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"
-              data-mce-style="font-family: arial, helvetica, sans-serif; font-size: 18pt;">a/ <strong>wynagrodzenie notariusza </strong>w myśl §.10a rozporządzenia
+            i Urzędom Skarbowym w dowolnej ilości.
+    </span>
+</p>
+<p style="text-align: justify;" data-mce-style="text-align: justify;">
+    <span style="font-family: 'times new roman', times, serif; font-size: 12pt;"
+              data-mce-style="font-family: 'times new roman', times, serif; font-size: 12pt;">
+        3.1. W związku z dokonaniem czynności pobrano: <span class="niepewne" >  ....  </span>
+    </span>
+</p>
+<p style="padding-left: 40px; text-align: justify;" data-mce-style="padding-left: 40px; text-align: justify;">
+    <span style="font-family: 'times new roman', times, serif; font-size: 12pt;"
+              data-mce-style="font-family: 'times new roman', times, serif; font-size: 12pt;">
+        a/ <strong>wynagrodzenie notariusza </strong>w myśl §.10a rozporządzenia
     Ministra Sprawiedliwości z dnia 28 czerwca 2004 roku w sprawie maksymalnych stawek taksy notarialnej (tj. Dz.U. z 2018 r. poz. 272) w kwocie
         <span class="niepewne" >
-            50,- {{ user.kancelaria.wynagrodzenieNotariusza | number_format(2, '.', ',') }} zł
+            {{ user.kancelaria.wynagrodzenieNotariusza | number_format(2, '.', ',') }} zł
         </span>
     </span>
-</p><p><span style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"
-             data-mce-style="font-family: arial, helvetica, sans-serif; font-size: 18pt;">b/ podatek od towarów i usług według stawki 23%</span>
-</p><p><span style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"
-             data-mce-style="font-family: arial, helvetica, sans-serif; font-size: 18pt;">od kwoty podanej pod a/
+</p>
+<p style="padding-left: 40px; text-align: justify;" data-mce-style="padding-left: 40px; text-align: justify;">
+    <span style="font-family: 'times new roman', times, serif; font-size: 12pt;"
+             data-mce-style="font-family: 'times new roman', times, serif; font-size: 12pt;">b/ podatek od towarów i usług według stawki 23% od kwoty podanej pod a/
             <span class="niepewne" >
-                11,50 {{ (user.kancelaria.wynagrodzenieNotariusza * 0.23) | number_format(2, '.', ',') }} zł
+               {{ (user.kancelaria.wynagrodzenieNotariusza * 0.23) | number_format(2, '.', ',') }} zł
             </span>
     </span>
-</p><p><span style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"
-             data-mce-style="font-family: arial, helvetica, sans-serif; font-size: 18pt;">c/ <strong>opłatę za wpis do rejestru&nbsp; spadkowego </strong>
+</p>
+<p style="padding-left: 40px; text-align: justify;" data-mce-style="padding-left: 40px; text-align: justify;">
+    <span style="font-family: 'times new roman', times, serif; font-size: 12pt;"
+             data-mce-style="font-family: 'times new roman', times, serif; font-size: 12pt;">c/ <strong>opłatę za wpis do rejestru&nbsp; spadkowego </strong>
     w myśl art. 95 i §.3 ustawy z dnia 14 lutego 1991 r. – Prawo o notariacie (tj. Dz. U. z 2018 r. poz. 398) w wysokości określonej w
     §.1 rozporządzenia Ministra Sprawiedliwości z dnia 7 września 2016 r. w sprawie sposobu uiszczania i wysokości opłaty za wpisy dokonywane w Rejestrze Spadkowym
     przez notariusza albo Sąd (Dz.U.2016, poz. 1420) w kwocie
         <span class="niepewne" >
-            5,- {{ (user.kancelaria.oplataZaWpisDoRejestruSpadkowego) | number_format(2, '.', ',') }} zł
+            {{ (user.kancelaria.oplataZaWpisDoRejestruSpadkowego) | number_format(2, '.', ',') }} zł
         </span>
     </span>
-</p><p><span style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"
-             data-mce-style="font-family: arial, helvetica, sans-serif; font-size: 18pt;">razem
+</p>
+<p style="padding-left: 40px; text-align: justify;" data-mce-style="padding-left: 40px; text-align: justify;">
+    <span style="font-family: 'times new roman', times, serif; font-size: 12pt;"
+             data-mce-style="font-family: 'times new roman', times, serif; font-size: 12pt;">razem
         <span class="niepewne" >
-        66,50 {{ (user.kancelaria.wynagrodzenieNotariusza + (user.kancelaria.wynagrodzenieNotariusza * 0.23) + user.kancelaria.oplataZaWpisDoRejestruSpadkowego) | number_format(2, '.', ',') }} zł
+            {{ (user.kancelaria.wynagrodzenieNotariusza + (user.kancelaria.wynagrodzenieNotariusza * 0.23) + user.kancelaria.oplataZaWpisDoRejestruSpadkowego) | number_format(2, '.', ',') }} zł
         </span>
     </span>
-</p><p><span style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"
-             data-mce-style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"><span
-        style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"
-        data-mce-style="font-family: arial, helvetica, sans-serif; font-size: 18pt;">Podane w ust. 1 kwoty nie obejmują kosztów 5 wypisów i 1 odpisu wraz z należnym podatkiem VAT
-    (w łącznej kwocie <strong><span class="niepewne" >132,84 zł</span></strong>), która to kwota wraz z podstawą prawną ich pobrania zostanie podana na każdym z wypisów.
-            <br></span></span><span
-        style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"
-        data-mce-style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"><span
-        style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"
-        data-mce-style="font-family: arial, helvetica, sans-serif; font-size: 18pt;">3. Kwota do zapłaty ogółem: <span class="niepewne" >199,34 zł </span></span>
-    słownie: <span class="niepewne" >sto dziewięćdziesiąt dziewięć złotych trzydzieści cztery grosze.</span></span>
-</p><p></p><p><span style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"
-                    data-mce-style="font-family: arial, helvetica, sans-serif; font-size: 18pt;">Podatek od towarów i usług pobrano na podstawie ustawy z dnia 11 marca 2004 roku
-    o podatku od towarów i usług (tj. Dz.U. z 2019r., poz. 675 ze zm.).</span>
-</p><p>
-    <span style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"
-             data-mce-style="font-family: arial, helvetica, sans-serif; font-size: 18pt;">Niniejszy akt poświadczenia dziedziczenia został sporządzony w obecności
+</p>
+<p style="padding-left: 40px; text-align: justify;" data-mce-style="padding-left: 40px; text-align: justify;">
+    <span style="font-family: 'times new roman', times, serif; font-size: 12pt;"
+             data-mce-style="font-family: 'times new roman', times, serif; font-size: 12pt;">
+        <span style="font-family: 'times new roman', times, serif; font-size: 12pt;"
+        data-mce-style="font-family: 'times new roman', times, serif; font-size: 12pt;">
+            Podane w ust. 1 kwoty nie obejmują kosztów 5 wypisów i 1 odpisu wraz z należnym podatkiem VAT
+            (w łącznej kwocie <strong><span class="niepewne" >132,84 zł</span></strong>), która to kwota wraz z podstawą prawną ich pobrania zostanie podana na każdym z wypisów.
+            <br>
+        </span>
+    </span>
+
+</p>
+<p style="text-align: justify;" data-mce-style="text-align: justify;">
+    <span style="font-family: 'times new roman', times, serif; font-size: 12pt;"
+          data-mce-style="font-family: 'times new roman', times, serif; font-size: 12pt;"><span
+                style="font-family: 'times new roman', times, serif; font-size: 12pt;"
+                data-mce-style="font-family: 'times new roman', times, serif; font-size: 12pt;">3. Kwota do zapłaty ogółem: <span class="niepewne" >199,34 zł </span></span>
+        słownie: <span class="niepewne" >sto dziewięćdziesiąt dziewięć złotych trzydzieści cztery grosze.</span>
+    </span>
+</p>
+<p style="text-align: justify;" data-mce-style="text-align: justify;">
+    <span style="font-family: 'times new roman', times, serif; font-size: 12pt;"
+                    data-mce-style="font-family: 'times new roman', times, serif; font-size: 12pt;">Podatek od towarów i usług pobrano na podstawie ustawy z dnia 11 marca 2004 roku
+    o podatku od towarów i usług (tj. Dz.U. z 2019r., poz. 675 ze zm.).
+    </span>
+</p>
+<p style="text-align: justify;" data-mce-style="text-align: justify;">
+    <span style="font-family: 'times new roman', times, serif; font-size: 12pt;"
+             data-mce-style="font-family: 'times new roman', times, serif; font-size: 12pt;">Niniejszy akt poświadczenia dziedziczenia został sporządzony w obecności
     <u></u> {% if spadkobiorcy|length == 1 %} osoby biorącej {% else %} osób biorących {% endif %}
-        udział w spisywaniu powołanego Protokołu dziedziczenia z dnia dzisiejszego repertorium A numer {{ numerSprawy }}, to jest:</span>
+        udział w spisywaniu powołanego Protokołu dziedziczenia z dnia dzisiejszego repertorium A numer {{ numerSprawy }}, to jest:
+    </span>
 </p>
 
-            {#<li><span style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"#}
-                      {#data-mce-style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"><u>Imię (imiona) nazwisko kolejnego spadkobiercy</u>, syn imię#}
+            {#<li><span style="font-family: 'times new roman', times, serif; font-size: 12pt;"#}
+                      {#data-mce-style="font-family: 'times new roman', times, serif; font-size: 12pt;"><u>Imię (imiona) nazwisko kolejnego spadkobiercy</u>, syn imię#}
                 {#<u>ojca i matki kolejnego spadkodawcy</u>, zamieszkały w <u>Szamotułach przy ulicy Obornickiej numer 5B/20, (64-500 Szamotuły)(adres kolejnego spadkodawcy)</u>#}
                 {#<u>(odmiana Kogo?Czego?)</u>, legitymującej/legitymującego się dowodem osobistym wydanym za numerem <u>AZH000000 z datą ważności do dnia pierwszego stycznia#}
                     {#dwa tysiące dwudziestego (1.I.2020) roku / nieoznaczonym terminem ważności</u>,---------------------------------------------</span>#}
             {#</li>#}
-            {#<li><span style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"#}
-                      {#data-mce-style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"><u>Imię (imiona) nazwisko kolejnego spadkobiercy</u>, syn imię#}
+            {#<li><span style="font-family: 'times new roman', times, serif; font-size: 12pt;"#}
+                      {#data-mce-style="font-family: 'times new roman', times, serif; font-size: 12pt;"><u>Imię (imiona) nazwisko kolejnego spadkobiercy</u>, syn imię#}
                 {#<u>ojca i matki kolejnego spadkodawcy</u>, zamieszkały w <u>Szamotułach przy ulicy Obornickiej numer 5B/20, (64-500 Szamotuły)(adres kolejnego spadkodawcy)#}
                     {#(odmiana Kogo?Czego?)</u>, legitymującego/legitymującej się dowodem osobistym wydanym za numerem <u>AZH000000 z datą ważności do dnia pierwszego stycznia#}
                     {#dwa tysiące dwudziestego (1.I.2020) roku / nieoznaczonym terminem ważności,</u> --------------------------------------------</span>#}
             {#</li>#}
-            {#<li><span style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"#}
-                      {#data-mce-style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"><u>Imię (imiona) nazwisko kolejnego spadkobiercy</u>, syn imię#}
+            {#<li><span style="font-family: 'times new roman', times, serif; font-size: 12pt;"#}
+                      {#data-mce-style="font-family: 'times new roman', times, serif; font-size: 12pt;"><u>Imię (imiona) nazwisko kolejnego spadkobiercy</u>, syn imię#}
                 {#<u>ojca i matki kolejnego spadkodawcy</u>, zamieszkały w <u>Szamotułach przy ulicy Obornickiej numer 5B/20, (64-500 Szamotuły)(adres kolejnego spadkodawcy)#}
                     {#(odmiana Kogo?Czego?)</u>, <u>legitymującej/legitymującego</u> się dowodem osobistym wydanym za numerem <u>AZH000000 z datą ważności do dnia pierwszego stycznia#}
                     {#dwa tysiące dwudziestego (1.I.2020) roku / nieoznaczonym terminem ważności</u>,---------------------------------------------<br></span>#}
-        <p>
-            <ul>
-                {% for spadkobierca in spadkobiorcy %}
-                    {% if spadkobierca.stawajacy == 1 %}
-                        <li><span style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"
-                          data-mce-style="font-family: arial, helvetica, sans-serif; font-size: 18pt;">
-                         {{ spadkobierca.imie }} {{ spadkobierca.nazwisko }},
-                        {% if spadkobierca.plec == 1 %} córka {% else %} syn {% endif %}
-                        {{ spadkobierca.imieOjca | imieMeskie }} i {{ spadkobierca.imieMatki | imieZenskie }} {% if spadkobierca.plec == 1 %} zamieszkała {% else %} zamieszkały {% endif %} w mieście
-                        {#<span class="niepewne" >#}
-                            {{ spadkobierca.miastoZamieszkania }}
-                        {#</span>#}
-                        {% if spadkobierca.typObiektuZamieszkania == 0 %}{{ spadkobierca.numerDomuZamieszkania }}{% if spadkobierca.numerMieszkaniaZamieszkania is not null and spadkobierca.numerMieszkaniaZamieszkania != "" %} / {{ spadkobierca.numerMieszkaniaZamieszkania }}{% endif %}
-                        {% elseif spadkobierca.typObiektuZamieszkania == 1 %} przy ulicy {{ spadkobierca.nazwaObiektuZamieszkania }} {{ spadkobierca.numerDomuZamieszkania }} {% if spadkobierca.numerMieszkaniaZamieszkania is not null and spadkobierca.numerMieszkaniaZamieszkania == "" %} / {{ spadkobierca.numerMieszkaniaZamieszkania }}{% endif %}
-                        {% elseif spadkobierca.typObiektuZamieszkania == 2 %} os. {{ spadkobierca.nazwaObiektuZamieszkania }} {{ spadkobierca.numerDomuZamieszkania }} {% if spadkobierca.numerMieszkaniaZamieszkania is not null and spadkobierca.numerMieszkaniaZamieszkania == "" %} / {{ spadkobierca.numerMieszkaniaZamieszkania }}{% endif %}
-                        {% elseif spadkobierca.typObiektuZamieszkania == 3 %} przy alei {{ spadkobierca.nazwaObiektuZamieszkania }} {{ spadkobierca.numerDomuZamieszkania }} {% if spadkobierca.numerMieszkaniaZamieszkania is not null and spadkobierca.numerMieszkaniaZamieszkania == "" %} / {{ spadkobierca.numerMieszkaniaZamieszkania }}{% endif %}
-                        {% endif %},
-                        {% if spadkobierca.plec == 1 %} legitymującej {% else %} legitymującego {% endif %} się dowodem osobistym wydanym za numerem {{ spadkobierca.numerDowodu }} z datą ważności do dnia
-                        {{ spadkobierca.dataWaznosciDowodu | dataSlownie }} ({{ spadkobierca.dataWaznosciDowodu | date('Y-m-d') }}) roku
-                        {% if not loop.last %}, {% else %}{% if spadkobiorcy|length != 1 %} oraz {% endif %}{% endif %}
-                        </span>
-                        </li>
-                    {% endif %}
-                {% endfor %}
-            </ul>
-        </p>
-
-                <p><span style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"
-                         data-mce-style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"><strong>Niniejszy akt poświadczenia dziedziczenia został odczytany,
-                    przyjęty i podpisany.</strong><strong></strong></span>
-                </p>
-                <p><span style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"
-                         data-mce-style="font-family: arial, helvetica, sans-serif; font-size: 18pt;">{{ user.kancelaria.nazwa |upper }}</span>
-                </p>
-                <p><span style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"
-                         data-mce-style="font-family: arial, helvetica, sans-serif; font-size: 18pt;">NOTARIUSZ</span>
-                </p>
-                <p><span style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"
-                         data-mce-style="font-family: arial, helvetica, sans-serif; font-size: 18pt;">{{ user.kancelaria.kodPocztowy |upper }} {{ user.kancelaria.miasto |upper }}</span>
-                </p>
-                <p><span style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"
-                         data-mce-style="font-family: arial, helvetica, sans-serif; font-size: 18pt;">{{ user.kancelaria.adres |upper }}</span>
-                </p>
-                <p><span style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"
-                         data-mce-style="font-family: arial, helvetica, sans-serif; font-size: 18pt;">tel. {{ user.telefon |upper }}</span>
-                </p>
-                <p><br></p>
-                <p><span style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"
-                         data-mce-style="font-family: arial, helvetica, sans-serif; font-size: 18pt;">Na oryginale podpisy stawających i notariusza.</span>
-                </p>
-                <p><span style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"
-                         data-mce-style="font-family: arial, helvetica, sans-serif; font-size: 18pt;">Repertorium A
-                    numer {{ numerSprawy }}</span>
-                </p>
-                <p><span style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"
-                         data-mce-style="font-family: arial, helvetica, sans-serif; font-size: 18pt;">Odpis ten w dacie aktu
-                    wydano </span>
-                </p>
-                <p><span style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"
-                         data-mce-style="font-family: arial, helvetica, sans-serif; font-size: 18pt;">Pobrano:
-                    <span class="niepewne" >-----------------------------------------------------------</span></span>
-                </p>
-                <p><span style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"
-                         data-mce-style="font-family: arial, helvetica, sans-serif; font-size: 18pt;">a/ wynagrodzenie w myśl §.12 Rozporządzenia Ministra Sprawiedliwości
-                    z dnia 28 czerwca 2004 roku w sprawie maksymalnych stawek taksy notarialnej (tj. Dz. U. z 2018 r., poz. 272) w kwocie <span class="niepewne" >18,- zł</span></span>
-                </p>
-                <p><span style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"
-                         data-mce-style="font-family: arial, helvetica, sans-serif; font-size: 18pt;">b/ podatek od towarów i usług stawka 23% od kwoty podanej pod
-                    a/ zgodnie z ustawą z dnia 11 marca 2004 roku o podatku od towarów i usług (Dz.U. z 2018 r. poz. 62 ze zm.) w kwocie <span class="niepewne" >4,14 zł</span></span>
-                </p>
-                <p><span style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"
-                         data-mce-style="font-family: arial, helvetica, sans-serif; font-size: 18pt;">razem <span class="niepewne" >22,14 zł</span></span>
-                </p>
-                <p><span style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"
-                         data-mce-style="font-family: arial, helvetica, sans-serif; font-size: 18pt;">słownie: <span class="niepewne" >dwadzieścia dwa złote czternaście groszy.</span></span>
-                </p>
-                <p><br></p>
-                <p><span style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"
-                         data-mce-style="font-family: arial, helvetica, sans-serif; font-size: 18pt;">{{ user.kancelaria.nazwa }}</span>
-                </p>
-                <p><span style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"
-                         data-mce-style="font-family: arial, helvetica, sans-serif; font-size: 18pt;">notariusz</span>
-                </p>
-                <p><span style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"
-                         data-mce-style="font-family: arial, helvetica, sans-serif; font-size: 18pt;">Dnia
-                            {{ form.dataCzynnosci | dataSlownie }} ({{ form.dataCzynnosci | date('d.m.Y') }})
-                         roku o godzinie <span class="niepewne" >[...]</span>, pod numerem <span class="niepewne" >[...]</span> niniejszy akt poświadczenia dziedziczenia został zarejestrowany w systemie
-                    informatycznym do prowadzenia rejestru aktów poświadczenia dziedziczenia utworzonym przez Krajową Radę Notarialną.
+    <p>
+        <ul>
+            {% for spadkobierca in stawajacy %}
+                    <li><span style="font-family: 'times new roman', times, serif; font-size: 12pt;"
+                      data-mce-style="font-family: 'times new roman', times, serif; font-size: 12pt;">
+                     {{ spadkobierca.imie }} {{ spadkobierca.nazwisko }},
+                    {% if spadkobierca.plec == 1 %} córka {% else %} syn {% endif %}
+                    {{ spadkobierca.imieOjca | imieMeskie }} i {{ spadkobierca.imieMatki | imieZenskie }} {% if spadkobierca.plec == 1 %} zamieszkała {% else %} zamieszkały {% endif %} w mieście
+                    {#<span class="niepewne" >#}
+                        {{ spadkobierca.miastoZamieszkania }}
+                    {#</span>#}
+                    {% if spadkobierca.typObiektuZamieszkania == 0 %}{{ spadkobierca.numerDomuZamieszkania }}{% if spadkobierca.numerMieszkaniaZamieszkania is not null and spadkobierca.numerMieszkaniaZamieszkania != "" %} / {{ spadkobierca.numerMieszkaniaZamieszkania }}{% endif %}
+                    {% elseif spadkobierca.typObiektuZamieszkania == 1 %} przy ulicy {{ spadkobierca.nazwaObiektuZamieszkania }} {{ spadkobierca.numerDomuZamieszkania }} {% if spadkobierca.numerMieszkaniaZamieszkania is not null and spadkobierca.numerMieszkaniaZamieszkania == "" %} / {{ spadkobierca.numerMieszkaniaZamieszkania }}{% endif %}
+                    {% elseif spadkobierca.typObiektuZamieszkania == 2 %} os. {{ spadkobierca.nazwaObiektuZamieszkania }} {{ spadkobierca.numerDomuZamieszkania }} {% if spadkobierca.numerMieszkaniaZamieszkania is not null and spadkobierca.numerMieszkaniaZamieszkania == "" %} / {{ spadkobierca.numerMieszkaniaZamieszkania }}{% endif %}
+                    {% elseif spadkobierca.typObiektuZamieszkania == 3 %} przy alei {{ spadkobierca.nazwaObiektuZamieszkania }} {{ spadkobierca.numerDomuZamieszkania }} {% if spadkobierca.numerMieszkaniaZamieszkania is not null and spadkobierca.numerMieszkaniaZamieszkania == "" %} / {{ spadkobierca.numerMieszkaniaZamieszkania }}{% endif %}
+                    {% endif %},
+                    {% if spadkobierca.plec == 1 %} legitymującej {% else %} legitymującego {% endif %} się dowodem osobistym wydanym za numerem {{ spadkobierca.numerDowodu }} z datą ważności do dnia
+                    {{ spadkobierca.dataWaznosciDowodu | dataSlownie }} ({{ spadkobierca.dataWaznosciDowodu | date('Y-m-d') }}) roku{% if loop.revindex == 2 %} oraz{% else %}{% if not loop.last %},{% else %}.{% endif %}{% endif %}
                     </span>
-                </p>
-                <p><span style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"
-                         data-mce-style="font-family: arial, helvetica, sans-serif; font-size: 18pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                </span>
-                </p>
-                <p><span style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"
-                         data-mce-style="font-family: arial, helvetica, sans-serif; font-size: 18pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    {{ user.kancelaria.nazwa | upper }}</span>
-                </p>
-                <p><span style="font-family: arial, helvetica, sans-serif; font-size: 18pt;"
-                         data-mce-style="font-family: arial, helvetica, sans-serif; font-size: 18pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    Notariusz</span>
-                </p></li>
+                    </li>
+            {% endfor %}
+        </ul>
+    </p>
+
+<p>
+    <span style="font-family: 'times new roman', times, serif; font-size: 12pt;"
+         data-mce-style="font-family: 'times new roman', times, serif; font-size: 12pt;"><strong>Niniejszy akt poświadczenia dziedziczenia został odczytany,
+    przyjęty i podpisany.</strong><strong></strong>
+    </span>
+</p>
+{#<p><span style="font-family: 'times new roman', times, serif; font-size: 12pt;"#}
+{#         data-mce-style="font-family: 'times new roman', times, serif; font-size: 12pt;">{{ user.kancelaria.nazwa |upper }}</span>#}
+{#</p>#}
+{#<p><span style="font-family: 'times new roman', times, serif; font-size: 12pt;"#}
+{#         data-mce-style="font-family: 'times new roman', times, serif; font-size: 12pt;">NOTARIUSZ</span>#}
+{#</p>#}
+{#<p><span style="font-family: 'times new roman', times, serif; font-size: 12pt;"#}
+{#         data-mce-style="font-family: 'times new roman', times, serif; font-size: 12pt;">{{ user.kancelaria.kodPocztowy |upper }} {{ user.kancelaria.miasto |upper }}</span>#}
+{#</p>#}
+{#<p><span style="font-family: 'times new roman', times, serif; font-size: 12pt;"#}
+{#         data-mce-style="font-family: 'times new roman', times, serif; font-size: 12pt;">{{ user.kancelaria.adres |upper }}</span>#}
+{#</p>#}
+{#<p><span style="font-family: 'times new roman', times, serif; font-size: 12pt;"#}
+{#         data-mce-style="font-family: 'times new roman', times, serif; font-size: 12pt;">tel. {{ user.telefon |upper }}</span>#}
+{#</p>#}
+{#<p><br></p>#}
+{#<p><span style="font-family: 'times new roman', times, serif; font-size: 12pt;"#}
+{#         data-mce-style="font-family: 'times new roman', times, serif; font-size: 12pt;">Na oryginale podpisy stawających i notariusza.</span>#}
+{#</p>#}
+{#<p><span style="font-family: 'times new roman', times, serif; font-size: 12pt;"#}
+{#         data-mce-style="font-family: 'times new roman', times, serif; font-size: 12pt;">Repertorium A#}
+{#    numer {{ numerSprawy }}</span>#}
+{#</p>#}
+{#<p><span style="font-family: 'times new roman', times, serif; font-size: 12pt;"#}
+{#         data-mce-style="font-family: 'times new roman', times, serif; font-size: 12pt;">Odpis ten w dacie aktu#}
+{#    wydano </span>#}
+{#</p>#}
+<p><span style="font-family: 'times new roman', times, serif; font-size: 12pt;"
+         data-mce-style="font-family: 'times new roman', times, serif; font-size: 12pt;">Pobrano:
+    <span class="niepewne" >[...]</span></span>
+</p>
+<p style="padding-left: 40px; text-align: justify;" data-mce-style="padding-left: 40px; text-align: justify;">
+    <span style="font-family: 'times new roman', times, serif; font-size: 12pt;"
+         data-mce-style="font-family: 'times new roman', times, serif; font-size: 12pt;">a/ wynagrodzenie w myśl §.12 Rozporządzenia Ministra Sprawiedliwości
+    z dnia 28 czerwca 2004 roku w sprawie maksymalnych stawek taksy notarialnej (tj. Dz. U. z 2018 r., poz. 272) w kwocie <span class="niepewne" >18,- zł</span></span>
+</p>
+<p style="padding-left: 40px; text-align: justify;" data-mce-style="padding-left: 40px; text-align: justify;">
+    <span style="font-family: 'times new roman', times, serif; font-size: 12pt;"
+         data-mce-style="font-family: 'times new roman', times, serif; font-size: 12pt;">b/ podatek od towarów i usług stawka 23% od kwoty podanej pod
+    a/ zgodnie z ustawą z dnia 11 marca 2004 roku o podatku od towarów i usług (Dz.U. z 2018 r. poz. 62 ze zm.) w kwocie <span class="niepewne" >4,14 zł</span>
+    </span>
+</p>
+<p>
+    <span style="font-family: 'times new roman', times, serif; font-size: 12pt;"
+         data-mce-style="font-family: 'times new roman', times, serif; font-size: 12pt;">razem <span class="niepewne" >22,14 zł</span> słownie: <span class="niepewne" >dwadzieścia dwa złote czternaście groszy.</span>
+    </span>
+</p>
+<p><br></p>
+<p>
+    <span style="font-family: 'times new roman', times, serif; font-size: 12pt;"
+         data-mce-style="font-family: 'times new roman', times, serif; font-size: 12pt;">{{ user.kancelaria.nazwa }}</span>
+</p>
+<p>
+    <span style="font-family: 'times new roman', times, serif; font-size: 12pt;"
+         data-mce-style="font-family: 'times new roman', times, serif; font-size: 12pt;">notariusz</span>
+</p>
+<p><br></p>
+<p style="text-align: justify;" data-mce-style="text-align: justify;">
+    <span style="font-family: 'times new roman', times, serif; font-size: 12pt;"
+         data-mce-style="font-family: 'times new roman', times, serif; font-size: 12pt;">Dnia
+            {{ form.dataCzynnosci | dataSlownie }} ({{ form.dataCzynnosci | date('d.m.Y') }})
+         roku o godzinie <span class="niepewne" >[...]</span>, pod numerem <span class="niepewne" >[...]</span> niniejszy akt poświadczenia dziedziczenia został zarejestrowany w systemie
+    informatycznym do prowadzenia rejestru aktów poświadczenia dziedziczenia utworzonym przez Krajową Radę Notarialną.
+    </span>
+</p>
+<p><span style="font-family: 'times new roman', times, serif; font-size: 12pt;"
+         data-mce-style="font-family: 'times new roman', times, serif; font-size: 12pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>
+</p>
+<p><span style="font-family: 'times new roman', times, serif; font-size: 12pt;"
+         data-mce-style="font-family: 'times new roman', times, serif; font-size: 12pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    {{ user.kancelaria.nazwa | upper }}</span>
+</p>
+<p><span style="font-family: 'times new roman', times, serif; font-size: 12pt;"
+         data-mce-style="font-family: 'times new roman', times, serif; font-size: 12pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    Notariusz</span>
+</p>
         <p><br></p><p><br></p><p><br></p><p><br></p><p><br></p><p><br></p><p><br></p><p><br></p><p><br></p><p><br></p><p>
     <br></p><p><br></p><p><br></p><p><br></p><p><br></p><p><br data-mce-bogus="1"></p><p><br data-mce-bogus="1"></p><p>
     <br data-mce-bogus="1"></p><p><br data-mce-bogus="1"></p><p><br data-mce-bogus="1"></p>

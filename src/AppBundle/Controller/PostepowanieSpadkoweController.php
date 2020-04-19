@@ -10,6 +10,7 @@ use AppBundle\Entity\Sprawa;
 use AppBundle\Form\PostepowanieSpadkoweType;
 //use AppBundle\Form\DokumentType;
 use AppBundle\Form\EditorType;
+use AppBundle\HtmlToDocx\CreateDocx;
 use Doctrine\Common\Collections\ArrayCollection;
 use PhpOffice\PhpWord\IOFactory;
 use PhpOffice\PhpWord\TemplateProcessor;
@@ -101,6 +102,7 @@ class PostepowanieSpadkoweController extends Controller
                 $spadkobierca->setNazwaObiektuZamieszkania($osoba['nazwaObiektuZamieszkania']);
                 $spadkobierca->setNumerDowodu($osoba['numerDowodu']);
                 $spadkobierca->setDataWaznosciDowodu($osoba['dataWaznosciDowodu']);
+                $spadkobierca->setUdzialSpadku($osoba['udzialSpadku']);
                 $em->persist($spadkobierca);
 //                dump($spadkobierca);
 //                dump($spadkobierca->getStawajacy());
@@ -309,6 +311,24 @@ class PostepowanieSpadkoweController extends Controller
             'inneDokumenty' => $inneDokumenty,
             'dokument' => $dokument
         ]);
+    }
+
+    /**
+     * @Route("/panel/edit/{id}/{hash}/saveToDocx/", name="saveToDocx")
+     */
+    public function saveToDocx(Request $request, $id = 0, $hash = 0){
+
+        /** @var Dokument $dokument */
+        $dokument = $this->getDoctrine()->getRepository(Dokument::class)->findOneBy(['id' => $id, 'hash' => $hash]);
+
+        $html = file_get_contents("temp/".$dokument->getFilename());
+        $html_przetworzony = preg_replace("/\r|\n/", "", $html);
+
+        $docx = new CreateDocx();
+        $docx->embedHTML($html_przetworzony);
+        $docx->createDocx('test');
+        dump($docx);
+
     }
 
     public function liczUdzialSpadku($spadkobiercy){
