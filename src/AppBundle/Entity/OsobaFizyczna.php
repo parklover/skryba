@@ -31,7 +31,7 @@ class OsobaFizyczna
     protected $imie;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="string")
      */
     protected $drugieImie = "";
 
@@ -41,12 +41,12 @@ class OsobaFizyczna
     protected $nazwisko;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="string")
      */
     protected $imieOjca;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="string")
      */
     protected $imieMatki;
 
@@ -56,22 +56,22 @@ class OsobaFizyczna
     protected $pesel;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="string")
      */
     protected $miastoZamieszkania;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="string")
      */
     protected $numerDomuZamieszkania;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
     protected $numerMieszkaniaZamieszkania;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="string")
      */
     protected $typObiektuZamieszkania = 0;
 
@@ -81,7 +81,7 @@ class OsobaFizyczna
     protected $nazwaObiektuZamieszkania;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="string")
      */
     protected $numerDowodu;
 
