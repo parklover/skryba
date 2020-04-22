@@ -36,6 +36,12 @@ class AktStanuCywilnegoType extends AbstractType
             ->add('typ', HiddenType::class, [
 
             ])
+            ->add('imieUczestniczacego', TextType::class, [
+                'label'  => 'Imię: '
+            ])
+            ->add('nazwiskoUczestniczacego', TextType::class, [
+                'label'  => 'Nazwisko: '
+            ])
             ->add('dataWydania', DateType::class, [
                 'label'  => 'Data wydania: ',
                 'required'=>true,

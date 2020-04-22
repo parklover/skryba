@@ -21,7 +21,7 @@
         <td class="numerAktuUrodzenia">
             <div class="checkbox-div-custom">
                 <div class="checkbox-custom checkbox-primary">
-                    {{ form_widget(form.stawajacy,{attr:{class:'form-control form-control-sm'}}) }}
+                    {{ form_widget(form.zamezna,{attr:{class:'form-control form-control-sm sprawdzCzyZonaCheckbox', 'disabled': 'disabled'}}) }}
                     <label></label>
                 </div>
             </div></td>
@@ -52,8 +52,10 @@
 
     <tr class="collection-element-akt">
         <td class="c-lp valgin-middle" style="display: none;">1.</td>
-        <td>{{ form_widget(form.nazwa,{attr:{class:'form-control form-control-sm', 'disabled':'disabled'}}) }}</td>
-        <td>{{ form_widget(form.dataWydania,{attr:{class:'form-control form-control-sm'}}) }}</td>
+        <td>{{ form_widget(form.nazwa,{attr:{class:'form-control form-control-sm'}}) }}</td>
+        <td>{{ form_widget(form.imieUczestniczacego,{attr:{class:'form-control form-control-sm'}}) }}</td>
+        <td>{{ form_widget(form.nazwiskoUczestniczacego,{attr:{class:'form-control form-control-sm'}}) }}</td>
+        <td>{{ form_widget(form.dataWydania,{attr:{class:'form-control form-control-sm  form-date'}}) }}</td>
         <td>{{ form_widget(form.urzad,{attr:{class:'form-control form-control-sm'}}) }}</td>
         <td>{{ form_widget(form.numer,{attr:{class:'form-control form-control-sm'}}) }}</td>
         {{ form_widget(form.typ,{attr:{class:'form-control form-control-sm'}}) }}
@@ -119,20 +121,20 @@
                     <thead>
                         <tr class="collection-add text-center">
                             <th width="10" style="display:none;"></th>
-                            <th width="150">Pesel</th>
-                            <th width="150">Imię</th>
-                            <th width="150">Nazwisko</th>
-                            <th width="150">Imię ojca</th>
-                            <th width="150">Imię matki</th>
-                            <th width="200">Adres zamieszkania</th>
-                            <th width="200">Miejsce urodzenia</th>
-                            <th width="100">Numer dowodu osobistego</th>
-                            <th width="125">Data ważności dowodu osobistego</th>
+                            <th width="170">Pesel</th>
+                            <th width="130">Imię</th>
+                            <th width="160">Nazwisko</th>
+                            <th width="130">Imię ojca</th>
+                            <th width="130">Imię matki</th>
+                            <th width="150">Adres zamieszkania</th>
+                            <th width="150">Miejsce urodzenia</th>
+                            <th width="180">Numer dowodu osobistego</th>
+                            <th width="180">Data ważności dowodu osobistego</th>
                             <th	width="100" >Pokrewieństwo</th>
-                            <th	width="100" class="numerAktuUrodzeniaTd">Zamężna</th>
-                            <th	width="100" >Typ</th>
-                            <th	width="100" >Udział</th>
-                            <th	width="100" >Stawający</th>
+                            <th	width="50" class="numerAktuUrodzeniaTd">Zamężna</th>
+                            <th	width="150" >Typ</th>
+                            <th	width="80" >Udział</th>
+                            <th	width="50" >Stawający</th>
                             <th width="30">Usuń</th>
                         </tr>
                     </thead>
@@ -184,6 +186,8 @@
                     <thead>
                         <tr class="collection-add-akty text-center">
                             <th width="150">Nazwa</th>
+                            <th width="150">Imię</th>
+                            <th width="150">Nazwisko</th>
                             <th width="150">Data wydania aktu</th>
                             <th width="150">Urząd</th>
                             <th width="150">Numer aktu</th>
@@ -207,8 +211,8 @@
 
 {#                {{ form_row(form.numerSkroconegoAktuMalzenstwaPotomka) }}#}
                 {#{{ form_row(form.spadkobiercy) }}#}
-            <button id="generujDrzewo" class="btn btn-primary" type="button">Generuj drzewo</button>
-            <button class="btn btn-primary pull-right" style="float: right; margin-left: 25px;" type="submit">Generuj</button>
+{#            <button id="generujDrzewo" class="btn btn-primary" type="button">Generuj drzewo</button>#}
+            <button class="btn btn-primary pull-right generujButton" style="float: right; margin-left: 25px;" type="submit">Generuj</button>
             <button class="btn btn-primary pull-right uzupelnijTestowo" style="float: right;" type="button">Uzupełnij danymi</button>
             {{ form_end(form) }}
 

@@ -38,6 +38,16 @@ class AktStanuCywilnego
     /**
      * @ORM\Column(type="text")
      */
+    protected $imieUczestniczacego;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    protected $nazwiskoUczestniczacego;
+
+    /**
+     * @ORM\Column(type="text")
+     */
     protected $numer;
 
     /**
@@ -150,6 +160,38 @@ class AktStanuCywilnego
     public function setTyp($typ)
     {
         $this->typ = $typ;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImieUczestniczacego()
+    {
+        return $this->imieUczestniczacego;
+    }
+
+    /**
+     * @param mixed $imieUczestniczacego
+     */
+    public function setImieUczestniczacego($imieUczestniczacego)
+    {
+        $this->imieUczestniczacego = $imieUczestniczacego;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNazwiskoUczestniczacego()
+    {
+        return $this->nazwiskoUczestniczacego;
+    }
+
+    /**
+     * @param mixed $nazwiskoUczestniczacego
+     */
+    public function setNazwiskoUczestniczacego($nazwiskoUczestniczacego)
+    {
+        $this->nazwiskoUczestniczacego = $nazwiskoUczestniczacego;
     }
 
 

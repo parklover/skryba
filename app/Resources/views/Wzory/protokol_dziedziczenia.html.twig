@@ -194,19 +194,19 @@
 {#    {% endfor %}#}
 
     {% for akt in aktyStanuCywilnego %}
-        {% if akt.type == 1 %}
-            {{ spadkobiorca.imie }} {{ spadkobiorca.nazwisko }}
+        {% if akt.typ == 1 %}
+            {{ akt.imieUczestniczacego }} {{ akt.nazwiskoUczestniczacego }}
             <p><span style="font-size: 12pt; font-family: 'times new roman', times, serif; color: rgb(0, 0, 0);" data-mce-style="font-size: 12pt; font-family: 'times new roman', times, serif; color: #000000;">- odpisu skróconego aktu urodzenia <u>Imię (imiona) i Nazwisko kolejnego </u><u>spadkobiercy</u> wydanego przez Urząd Stanu Cywilnego w <u>miejsce wydania dokumentu(odmiana: gdzie?
                 Np. w Szamotułach)</u> dnia <u>dwudziestego czwartego grudnia dwa tysiące osiemnastego (24.XII.2018)(data wydania dokumentu)</u>
             roku zgodny z treścią aktu zgonu o oznaczeniu: <u>3024073/00/AZ/2018/312123 (numer dokumentu)(- ten dokument jest powoływany, jeśli dziedziczy syn/c&oacute;rka)</u>.</span></p>
-        {% elseif akt.type == 2 %}
+        {% elseif akt.typ == 2 %}
 
             <p><span style="font-size: 12pt; font-family: 'times new roman', times, serif; color: rgb(0, 0, 0);" data-mce-style="font-size: 12pt; font-family: 'times new roman', times, serif; color: #000000;">- odpisu skróconego aktu małżeństwa Imię (imiona) i nazwisko męża c&oacute;rki i Imię i Nazwisko panieńskie c&oacute;rki spadkodawcy) wydanego przez Urząd Stanu Cywilnego w
             <u>miejsce wydania dokumentu(odmiana: gdzie? Np. w Szamotułach)</u> dnia <u>dwudziestego czwartego grudnia dwa tysiące osiemnastego (24.XII.2018)(data wydania dokumentu)</u>
             roku zgodny z treścią aktu zgonu o oznaczeniu: <u>3024073/00/AZ/2018/312123 (numer dokumentu)(ten dokument jest powoływany jeśli dziedziczy c&oacute;rka,
                 kt&oacute;ra zmieniła nazwisko w wyniku ślubu) </u>.</span></p>
 
-        {% elseif akt.type == 2 %}
+        {% elseif akt.typ == 3 %}
 
 
         {% endif %}

@@ -56,44 +56,78 @@ $(document).on('focusout', '.id-validate', function(){
         swal('Uwaga!', 'Podany numer dowodu jest niepoprawny!', 'warning');
     }
 });
-
 $(document).on('change', '.sprawdzCzyZona', function(){
+    sprawdzCzyZona();
+});
+$(document).on('click', '.sprawdzCzyZonaCheckbox', function(){
+    sprawdzCzyZona();
+});
+function sprawdzCzyZona(){
     console.log("Zmiana pokrewieństwa");
     var czyMalzonek = false;
     var czyDzieci = false;
     var $spadkobiercy = $('.collection').find('.collection-element');
     var $input = $(this);
+    var idMalzonka = 0;
 
     $spadkobiercy.each(function() {
         var pokrewienstwo = $(this).find('select[name*=stopienPokrewienstwa]').val();
         var pesel = $(this).find('input[name*=pesel]').val();
-        console.log($(this));
-        console.log($(this).find('select[name*=stopienPokrewienstwa]'));
+        var id = $(this).attr('data-id');
+        // console.log($(this));
+        // console.log($(this).find('select[name*=stopienPokrewienstwa]'));
         console.log(pokrewienstwo);
         if (pokrewienstwo == 4 || pokrewienstwo == 3) {
             czyMalzonek = true;
+            idMalzonka = id;
         }
         if (pokrewienstwo == 5 || pokrewienstwo == 6) {
-            czyDzieci = true;
-            if($('.collection-element-akt[data-pesel="'+pesel+'"]').length < 1){
-                addTagFormAkty($('.collection-akty'), 1, pesel, $(this).find('input[name*=imie]').val()+" "+$(this).find('input[name*=nazwisko]').val());
+            if($('.collection-element-akt[data-id="'+id+'"]').length < 1){
+                addTagFormAkty($('.collection-akty'), 1, id, $(this).find('input[name*=imie]').val(), $(this).find('input[name*=nazwisko]').val());
             }
-            // $(this).children('td.numerAktuUrodzenia').children('input').removeAttr('disabled');
         }
         else{
-            if($('.collection-element-akt[data-pesel="'+pesel+'"]').length > 1){
-                $('.collection-element-akt[data-pesel="'+pesel+'"]').attr
+            if($('.collection-element-akt[data-id="'+id+'"]').length > 0){
+                $('.collection-element-akt[data-id="'+id+'"]').remove();
+            }
+        }
+        if (pokrewienstwo == 5) {
+            czyDzieci = true;
+            $(this).children('td.numerAktuUrodzenia').find('input').removeAttr('disabled');
+
+            if($(this).children('td.numerAktuUrodzenia').find('input').is(':checked')){
+                console.log('CZEKNIENTY');
+                if($('.collection-element-akt[data-id="'+id+'Z"]').length < 1){
+                    addTagFormAkty($('.collection-akty'), 3 , id, $(this).find('input[name*=imie]').val(), $(this).find('input[name*=nazwisko]').val());
+                }
+            }
+            else{
+                console.log('NIE CZEKNIENTY');
+                if($('.collection-element-akt[data-id="'+id+'Z"]').length > 0){
+                    $('.collection-element-akt[data-id="'+id+'Z"]').remove();
+                }
+            }
+
+        } else{
+            if(!$(this).children('td.numerAktuUrodzenia').find('input')[0].hasAttribute('disabled')){
+                $(this).children('td.numerAktuUrodzenia').find('input').attr('disabled', 'disabled');
+            }
+            if($('.collection-element-akt[data-id="'+id+'Z"]').length > 1){
+                $('.collection-element-akt[data-id="'+id+'Z"]').remove();
             }
         }
     });
 
     if(czyMalzonek){
-        if(!$('.collection-element-akt[data-malzonek="1"]').length < 1){
-            addTagFormAkty($('.collection-akty'), 2, pesel, $(this).find('input[name*=imie]').val()+" "+$(this).find('input[name*=nazwisko]').val());
+        if($('.collection-element-akt[data-malzonek="1"]').length < 1){
+            addTagFormAkty($('.collection-akty'), 2, 0,
+                $('.collection-element[data-id="'+idMalzonka+'"]').find('input[name*=imie]').val(),
+                $('.collection-element[data-id="'+idMalzonka+'"]').find('input[name*=nazwisko]').val()
+            );
         }
     }
     else{
-        if($('.collection-element-akt[data-malzonek="1"]').length < 1){
+        if($('.collection-element-akt[data-malzonek="1"]').length > 0){
             $('.collection-element-akt[data-malzonek="1"]').remove();
         }
     }
@@ -106,7 +140,7 @@ $(document).on('change', '.sprawdzCzyZona', function(){
         $('.numerAktuUrodzeniaTd').hide();
         $(document).find('.numerAktuUrodzenia').each(function(){ $(this).hide(); });
     }
-});
+}
 
 $(document).on('focusout', '.pesel-validate', function(){
     var pesel = $(this).val();
@@ -184,27 +218,45 @@ $('.uzupelnijTestowo').click(function(){
     $('.collection-element[data-id="0"]').children('.adresTd').children('.adres').html("Edytuj adres");
 
     $('.collection-element[data-id="1"]').find('input[name*=pesel]').val("86012533451").trigger('focusout');
-    $('.collection-element[data-id="1"]').find('select[name*=stopienPokrewienstwa]').val(6).trigger('change');
-    $('.collection-element[data-id="1"]').find('input[type*=checkbox]').trigger('click');
     $('.collection-element[data-id="1"]').find('input[name*=udzial]').val("1 / 4").trigger('change');
     $('.collection-element[data-id="1"]').find('input[name*=numerSkroconegoAktuUrodzeniaPotomka]').val("USZ/UC/3").trigger('change');
     $('.collection-element[data-id="1"]').children('.adresTd').children('.adres').html("Edytuj adres");
 
     $('.collection-element[data-id="2"]').find('input[name*=pesel]').val("93041343476").trigger('focusout');
-    $('.collection-element[data-id="2"]').find('select[name*=stopienPokrewienstwa]').val(5).trigger('change');
-    $('.collection-element[data-id="2"]').find('input[type*=checkbox]').trigger('click');
+
     $('.collection-element[data-id="2"]').find('input[name*=udzial]').val("1 / 4").trigger('change');
     $('.collection-element[data-id="2"]').find('input[name*=numerSkroconegoAktuUrodzeniaPotomka]').val("USZ/UC/34").trigger('change');
     $('.collection-element[data-id="2"]').children('.adresTd').children('.adres').html("Edytuj adres");
 
     $('.collection-element[data-id="3"]').find('input[name*=pesel]').val("66072289343").trigger('focusout');
-    $('.collection-element[data-id="3"]').find('select[name*=stopienPokrewienstwa]').val(4).trigger('change');
-    $('.collection-element[data-id="3"]').find('input[type*=checkbox]').trigger('click');
     $('.collection-element[data-id="3"]').find('input[name*=udzial]').val("1 / 2").trigger('change');
     $('.collection-element[data-id="3"]').children('.adresTd').children('.adres').html("Edytuj adres");
 
     $('#postepowanie_spadkowe_numerSkroconegoAktuMalzenstwaMalzonka').val(" 32/2462").trigger('change');
 
+    setTimeout(function(){
+        $('.collection-element[data-id="1"]').find('select[name*=stopienPokrewienstwa]').val(6).trigger('change');
+        $('.collection-element[data-id="2"]').find('select[name*=stopienPokrewienstwa]').val(5).trigger('change');
+        $('.collection-element[data-id="3"]').find('select[name*=stopienPokrewienstwa]').val(4).trigger('change');
+
+        $('.collection-element[data-id="3"]').find('input[type*=checkbox]').each(function(){
+            $(this).trigger('click');
+        });
+        $('.collection-element[data-id="2"]').find('input[type*=checkbox]').each(function(){
+            $(this).trigger('click');
+        });
+        $('.collection-element[data-id="1"]').find('input[type*=checkbox]').each(function(){
+            $(this).trigger('click');
+        });
+
+        $('.collection-element-akt').each(function(){
+            $(this).find('input[name*=dataWydania]').val('2030-06-15').trigger('change');
+            $(this).find('input[name*=urzad]').val('Urząd Stanu Cywilnego w Poznaniu');
+            $(this).find('input[name*=numer]').val('3024073/00/AZ/2018/312123');
+        });
+
+
+    },3200);
 });
 
 $('.zapiszAdres').click(function(){
@@ -266,6 +318,10 @@ $(document).on('click',".usun",function(e){
     if(!$obj.next().hasClass('collection-element') && !$obj.next().hasClass('collection-add')){
         $obj.next().remove();
     }
+    var idRow = $obj.attr('data-id');
+    if($('.collection-element-akt[data-id="'+idRow+'"]').length > 0){
+        $('.collection-element-akt[data-id="'+idRow+'"]').remove();
+    }
     $obj.remove();
     przeliczRow();
 });
@@ -296,7 +352,7 @@ function addTagForm($collectionHolder) {
     przeliczRow();
 }
 
-function addTagFormAkty($collectionHolder, typ, pesel, nazwa) {
+function addTagFormAkty($collectionHolder, typ, rowID, imie, nazwisko) {
     console.log("DZIALA");
     var prototype = $collectionHolder.data('prototype');
     console.log(prototype);
@@ -308,11 +364,30 @@ function addTagFormAkty($collectionHolder, typ, pesel, nazwa) {
     $collectionHolder.find('.collection-add-akty').last().before(newForm);
 
     $collectionHolder.find('.collection-element-akt').last().find('input[name*=typ]').val(typ);
-    $collectionHolder.find('.collection-element-akt').last().find('input[name*=nazwa]').val(nazwa);
-    $collectionHolder.find('.collection-element-akt').last().attr('data-pesel', pesel)
+    switch(typ){
+        case 1: $collectionHolder.find('.collection-element-akt').last().find('input[name*=nazwa]').val("Odpis skróconego aktu urodzenia"); break;
+        case 2: $collectionHolder.find('.collection-element-akt').last().find('input[name*=nazwa]').val("Odpis skróconego aktu małżeństwa"); break;
+        case 3: $collectionHolder.find('.collection-element-akt').last().find('input[name*=nazwa]').val("Odpis skróconego aktu małżeństwa"); break;
+    }
+
+    $collectionHolder.find('.collection-element-akt').last().find('input[name*=imieUczestniczacego]').val(imie);
+    $collectionHolder.find('.collection-element-akt').last().find('input[name*=nazwiskoUczestniczacego]').val(nazwisko);
+    // $collectionHolder.find('.collection-element-akt').last().attr('data-pesel', pesel);
+    if(typ === 3){
+        $collectionHolder.find('.collection-element-akt').last().attr('data-id', rowID+"Z");
+    }else{
+        $collectionHolder.find('.collection-element-akt').last().attr('data-id', rowID);
+    }
+
     if(typ === 2){
         $collectionHolder.find('.collection-element-akt').last().attr('data-malzonek', 1)
     }
+    $('.form-date').datepicker({
+        format: "yyyy-mm-dd",
+        language: "pl",
+        orientation: "bottom auto",
+        autoclose: true
+    });
 }
 
 $(document).on('click',"#generujDrzewo",function(e){

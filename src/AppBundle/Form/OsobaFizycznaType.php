@@ -49,12 +49,11 @@ class OsobaFizycznaType extends AbstractType
                 'label'  => 'Udział: ',
                 'required' => false
             ])
-            ->add('zamezna', TextType::class, [
-                'label'  => 'Zamężna: ',
+            ->add('zamezna', CheckboxType::class, [
+                'label'  => 'zamezna: ',
                 'required' => false,
-                'attr' => [
-                    'disabled' => 'disabled'
-                ]
+                'mapped' => false
+//                'value' => 1
             ])
             ->add('miastoZamieszkania', HiddenType::class, [
             ])

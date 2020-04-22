@@ -121,6 +121,8 @@ class PostepowanieSpadkoweController extends Controller
             foreach($form->get('aktyStanuCywilnego')->getData() as $akt){
                 $aktStanuCywilnego = new AktStanuCywilnego();
                 $aktStanuCywilnego->setNazwa($akt['nazwa']);
+                $aktStanuCywilnego->setImieUczestniczacego($akt['imieUczestniczacego']);
+                $aktStanuCywilnego->setNazwiskoUczestniczacego($akt['nazwiskoUczestniczacego']);
                 $aktStanuCywilnego->setDataWydania($akt['dataWydania']);
                 $aktStanuCywilnego->setPostepowanieSpadkowe($postepowanieSpadkowe);
                 $aktStanuCywilnego->setNumer($akt['numer']);
