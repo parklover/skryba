@@ -5,13 +5,13 @@
 .treeview .list-group-item:not(.node-selected):hover,
 .treeview .list-group-item:not(.node-selected):focus
 {
-    color: #3f51b5; 
+    color: #4a9bdc;
     background-color: #eee;
 }
 .treeview .list-group-item:not(.node-selected):hover > .node-icon,
 .treeview .list-group-item:not(.node-selected):focus > .node-icon
 {
-    color: #3f51b5;
+    color: #4a9bdc;
 }
 
 .treeview span.indent

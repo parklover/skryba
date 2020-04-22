@@ -171,7 +171,7 @@
     border: 0;
     border-radius: 4px;
     background: transparent;
-    background: #3f51b5;
+    background: #4a9bdc;
 }
 .plyr input[type='range']::-ms-thumb
 {
@@ -211,14 +211,14 @@
             transform: scale(1.25); 
 
     border-color: #fff;
-    background: #3f51b5;
+    background: #4a9bdc;
 }
 .plyr input[type='range']:active::-moz-range-thumb
 {
     transform: scale(1.25); 
 
     border-color: #fff;
-    background: #3f51b5;
+    background: #4a9bdc;
 }
 .plyr input[type='range']:active::-ms-thumb
 {
@@ -226,7 +226,7 @@
         transform: scale(1.25); 
 
     border-color: #fff;
-    background: #3f51b5;
+    background: #4a9bdc;
 }
 
 .plyr--video input[type='range'].tab-focus:focus
@@ -504,7 +504,7 @@
 .plyr--video .plyr__controls button:hover
 {
     color: #fff; 
-    background: #3f51b5;
+    background: #4a9bdc;
 }
 
 .plyr--audio .plyr__controls
@@ -520,7 +520,7 @@
 .plyr--audio .plyr__controls button:hover
 {
     color: #fff; 
-    background: #3f51b5;
+    background: #4a9bdc;
 }
 
 .plyr__play-large
@@ -545,7 +545,7 @@
     color: #fff;
     border: 2px solid currentColor;
     border-radius: 100%;
-    background: #3f51b5;
+    background: #4a9bdc;
     -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .15);
             box-shadow: 0 1px 1px rgba(0, 0, 0, .15);
 }
@@ -842,7 +842,7 @@
          -o-transition: none;
             transition: none; 
 
-    color: #3f51b5;
+    color: #4a9bdc;
     background: transparent;
 }
 .plyr__progress--played::-webkit-progress-value,

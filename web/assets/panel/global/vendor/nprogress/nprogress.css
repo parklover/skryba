@@ -14,7 +14,7 @@
     width: 100%;
     height: 2px;
 
-    background: #3f51b5;
+    background: #4a9bdc;
 }
 
 /* Remove these to get rid of the spinner */
@@ -41,8 +41,8 @@
             animation: nprogress-spinner 400ms linear infinite; 
 
     border: solid 2px transparent;
-    border-top-color: #3f51b5;
-    border-left-color: #3f51b5;
+    border-top-color: #4a9bdc;
+    border-left-color: #4a9bdc;
     border-radius: 50%;
 }
 
@@ -116,7 +116,7 @@
 /* NPR "barColor" Contextuals */
 #nprogress .nprogress-bar-primary
 {
-    background-color: #3f51b5;
+    background-color: #4a9bdc;
 }
 
 #nprogress .nprogress-bar-success

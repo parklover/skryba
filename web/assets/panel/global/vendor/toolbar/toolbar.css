@@ -36,7 +36,7 @@
 
 .btn-toolbar-primary
 {
-    background-color: #3f51b5;
+    background-color: #4a9bdc;
 }
 
 .btn-toolbar-primary.pressed
@@ -377,7 +377,7 @@
 .toolbar-primary .tool-item:hover
 {
     color: white; 
-    background: #3f51b5;
+    background: #4a9bdc;
 }
 
 .toolbar-danger

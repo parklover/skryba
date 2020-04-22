@@ -21,6 +21,8 @@ class AppExtension extends AbstractExtension
             new TwigFilter('dataZPeselu', [$this, 'dataZPeselu']),
             new TwigFilter('ulica', [$this, 'ulica']),
             new TwigFilter('imieMeskie', [$this, 'imieMeskie']),
+            new TwigFilter('imieMeskieDopelniacz', [$this, 'imieMeskieDopelniacz']),
+            new TwigFilter('nazwiskoMeskieDopelniacz', [$this, 'nazwiskoMeskieDopelniacz']),
             new TwigFilter('imieZenskie', [$this, 'imieZenskie']),
             new TwigFilter('miasto', [$this, 'miasto']),
         ];
@@ -42,13 +44,25 @@ class AppExtension extends AbstractExtension
 
     public function miasto($miasto){
 
-        $koncowkaLeksykalna1 = substr($miasto, -1);
-        $koncowkaLeksykalna2 = substr($miasto, -2);
+        $koncowkaLeksykalna1 = substr($miasto, -2);
+        $koncowkaLeksykalna2 = substr($miasto, -3);
+        $koncowkaLeksykalna4 = substr($miasto, -5);
+
+        dump($miasto);
+        dump($koncowkaLeksykalna1);
+        dump($koncowkaLeksykalna2);
+
         if($koncowkaLeksykalna1 == "ń"){
-            return substr($miasto, 0,-1)."niu";
+            return substr($miasto, 0,-2)."niu";
+        }
+        if($koncowkaLeksykalna2 == "no"){
+            return substr($miasto, 0,-3)."nie";
         }
         if($koncowkaLeksykalna2 == "ów"){
-            return substr($miasto, 0,-2)."owie";
+            return substr($miasto, 0,-3)."owie";
+        }
+        if($koncowkaLeksykalna4 == "wiec"){
+            return substr($miasto, 0,-5)."wcu";
         }
         return $miasto;
     }
@@ -62,12 +76,45 @@ class AppExtension extends AbstractExtension
         else{
             return substr($imieZenskie, 0 , -1)."y";
         }
-
     }
 
     public function imieMeskie($imieMeskie){
 
         return $imieMeskie."a";
+    }
+
+    public function imieMeskieDopelniacz($imieMeskieDopelniacz){
+
+        $koncowkaLeksykalna1 = substr($imieMeskieDopelniacz, -1);
+        $koncowkaLeksykalna2 = substr($imieMeskieDopelniacz, -2);
+        $koncowkaLeksykalna3 = substr($imieMeskieDopelniacz, -3);
+        if($koncowkaLeksykalna2 == "ek"){
+            return substr($imieMeskieDopelniacz, 0 , -2)."ku";
+        }
+        if($koncowkaLeksykalna2 == "el"){
+            return substr($imieMeskieDopelniacz, 0 , -2)."elu";
+        }
+        if($koncowkaLeksykalna2 == "ir"){
+            return substr($imieMeskieDopelniacz, 0 , -2)."irze";
+        }
+        if($koncowkaLeksykalna1 == "n"){
+            return substr($imieMeskieDopelniacz, 0 , -1)."nie";
+        }
+        if($koncowkaLeksykalna1 == "p"){
+            return substr($imieMeskieDopelniacz, 0 , -1)."pie";
+        }
+        return $imieMeskieDopelniacz;
+    }
+
+    public function nazwiskoMeskieDopelniacz($nazwiskoMeskieDopelniacz){
+
+        $koncowkaLeksykalna1 = substr($nazwiskoMeskieDopelniacz, -1);
+        $koncowkaLeksykalna2 = substr($nazwiskoMeskieDopelniacz, -2);
+        $koncowkaLeksykalna3 = substr($nazwiskoMeskieDopelniacz, -3);
+        if($koncowkaLeksykalna2 == "ki"){
+            return substr($nazwiskoMeskieDopelniacz, 0 , -2)."kim";
+        }
+        return $nazwiskoMeskieDopelniacz;
     }
 
     public function dataZPeselu($pesel){

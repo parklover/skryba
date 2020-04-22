@@ -15,7 +15,7 @@
 .btn-group.open .btn-select,
 .btn-select:focus
 {
-    border-color: #3f51b5 !important;
+    border-color: #4a9bdc !important;
     -webkit-box-shadow: none;
             box-shadow: none;
 }
