@@ -1,23 +1,557 @@
+{#<!DOCTYPE html>#}
+{#<html class="no-js css-menubar" lang="en">#}
+{#<head>#}
+{#    <meta charset="utf-8">#}
+{#    <meta http-equiv="X-UA-Compatible" content="IE=edge">#}
+{#    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">#}
+{#    <meta name="description" content="bootstrap admin template">#}
+{#    <meta name="author" content="">#}
+{#    <style>#}
+
+{#    </style>#}
+{#</head>#}
+{#<body>#}
+{#<div style="float: left;"><h1>TO JEST STRONA GŁÓWNA</h1></div>#}
+{#<div style="float: right;"><h6><a href="{{ path('lista_spraw') }}">PRZEJDŹ DO PANELU</a></h6></div>#}
+{#<div style="padding-top: 100px;">#}
+{#    <img class="brand-img" src="{{ asset('assets/img/skryba.jpg') }}" alt="..." style="max-width: 100%; max-height: 100%;">#}
+{#</div>#}
+
+{#</body>#}
+{#</html>#}
+
 <!DOCTYPE html>
-<html class="no-js css-menubar" lang="en">
+<html lang="en-US">
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-    <meta name="description" content="bootstrap admin template">
-    <meta name="author" content="">
-    <style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="profile" href="http://gmpg.org/xfn/11">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <title>Skryba</title>
 
+    <link rel="stylesheet" id="bootstrap-css" href="{{ asset('assets/homepage/css/bootstrap/bootstrap.min.css') }}" type="text/css" media="all">
+    <link rel="stylesheet" id="style-css" href="{{ asset('assets/homepage/css/style.css') }}" type="text/css" media="all">
+{#    <link rel="stylesheet" id="wp-block-library-css" href="https://demo.athemes.com/astrid/wp-includes/css/dist/block-library/style.min.css?ver=5.3.2" type="text/css" media="all">#}
+{#    <link rel="stylesheet" id="wc-block-style-css" href="https://demo.athemes.com/astrid/wp-content/plugins/woocommerce/packages/woocommerce-blocks/build/style.css?ver=2.4.5" type="text/css" media="all">#}
+{#    <link rel="stylesheet" id="contact-form-7-css" href="https://demo.athemes.com/astrid/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=5.1.6" type="text/css" media="all">#}
+{#    <link rel="stylesheet" id="woocommerce-layout-css" href="https://demo.athemes.com/astrid/wp-content/plugins/woocommerce/assets/css/woocommerce-layout.css?ver=3.8.1" type="text/css" media="all">#}
+{#    <link rel="stylesheet" id="woocommerce-smallscreen-css" href="https://demo.athemes.com/astrid/wp-content/plugins/woocommerce/assets/css/woocommerce-smallscreen.css?ver=3.8.1" type="text/css" media="only screen and (max-width: 768px)">#}
+{#    <link rel="stylesheet" id="woocommerce-general-css" href="https://demo.athemes.com/astrid/wp-content/plugins/woocommerce/assets/css/woocommerce.css?ver=3.8.1" type="text/css" media="all">#}
+    <style id="woocommerce-inline-inline-css" type="text/css">
+        .woocommerce form .form-row .required { visibility: visible; }
     </style>
+    <link rel="stylesheet" id="astrid-style-css" href="https://demo.athemes.com/astrid/wp-content/themes/astrid/style.css?ver=5.3.2" type="text/css" media="all">
+    <style id="astrid-style-inline-css" type="text/css">
+        .site-header {position: fixed;}
+        .site-title a,.site-title a:hover { color:#ffffff}
+        .site-description { color:#BDBDBD}
+        .site-header,.site-header.header-scrolled { background-color:rgba(32,37,41,0.9)}
+        @media only screen and (max-width: 1024px) { .site-header.has-header,.site-header.has-video,.site-header.has-single,.site-header.has-shortcode { background-color:rgba(32,37,41,0.9)} }
+        body, .widget-area .widget, .widget-area .widget a { color:#656D6D}
+        .footer-widgets, .site-footer, .footer-info { background-color:#202529}
+        body {font-family: 'Open Sans', sans-serif;}
+        h1, h2, h3, h4, h5, h6, .fact .fact-number, .fact .fact-name, .site-title {font-family: 'Josefin Sans', sans-serif;}
+        .site-title { font-size:36px; }
+        .site-description { font-size:14px; }
+        h1 { font-size:36px; }
+        h2 { font-size:30px; }
+        h3 { font-size:24px; }
+        h4 { font-size:16px; }
+        h5 { font-size:14px; }
+        h6 { font-size:12px; }
+        body { font-size:14px; }
+    </style>
+    <link rel="stylesheet" id="astrid-body-fonts-css" href="//fonts.googleapis.com/css?family=Open+Sans%3A300%2C300italic%2C600%2C600italic&amp;ver=5.3.2" type="text/css" media="all">
+    <link rel="stylesheet" id="astrid-headings-fonts-css" href="//fonts.googleapis.com/css?family=Josefin+Sans%3A300italic%2C300&amp;ver=5.3.2" type="text/css" media="all">
+    <link rel="stylesheet" id="font-awesome-css" href="https://demo.athemes.com/astrid/wp-content/plugins/elementor/assets/lib/font-awesome/css/font-awesome.min.css?ver=4.7.0" type="text/css" media="all">
+    <script type="text/javascript" src="https://demo.athemes.com/astrid/wp-includes/js/jquery/jquery.js?ver=1.12.4-wp"></script>
+    <script type="text/javascript" src="https://demo.athemes.com/astrid/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1"></script>
+    <script src="{{ asset('assets/homepage/js/scripts.js') }}"></script>
+    <script src="{{ asset('assets/homepage/js/main.js') }}"></script>
+{#    <link rel="https://api.w.org/" href="https://demo.athemes.com/astrid/wp-json/">#}
+{#    <link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://demo.athemes.com/astrid/xmlrpc.php?rsd">#}
+{#    <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://demo.athemes.com/astrid/wp-includes/wlwmanifest.xml">#}
 </head>
-<body>
-<div style="float: left;"><h1>TO JEST STRONA GŁÓWNA</h1></div>
-<div style="float: right;"><h6><a href="{{ path('lista_spraw') }}">PRZEJDŹ DO PANELU</a></h6></div>
-<div style="padding-top: 100px;">
-    <img class="brand-img" src="{{ asset('assets/img/skryba.jpg') }}" alt="..." style="max-width: 100%; max-height: 100%;">
+
+<body class="home page-template page-template-page-templates page-template-page_widgetized page-template-page-templatespage_widgetized-php page page-id-80 theme-astrid woocommerce-js elementor-default">
+
+<div class="preloader">
+    <div class="preloader-inner">
+        <ul><li></li><li></li><li></li><li></li><li></li><li></li></ul>
+    </div>
 </div>
 
+<div id="page" class="site">
+    <header id="masthead" class="site-header has-header" role="banner">
+        <div class="container">
+            <div class="site-branding col-md-4 col-sm-6 col-xs-12">
+                <p class="site-title">Skryba</p>
+                <p class="site-description"></p>
+            </div>
+            <div class="btn-menu col-md-8 col-sm-6 col-xs-12"><i class="fa fa-navicon"></i></div>
+            <nav id="mainnav" class="main-navigation col-md-8 col-sm-6 col-xs-12" role="navigation">
+                <div class="menu-menu-container">
+                    <ul id="primary-menu" class="menu">
+                        <li id="menu-item-200" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-has-children menu-item-200">
+                            <a href="#" aria-current="page">Home</a>
+                        </li>
+                        <li id="menu-item-267" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-267">
+                            <a href="#">About</a>
+                        </li>
+                        <li id="menu-item-290" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-290">
+                            <a href="{{ path('lista_spraw') }}">Login</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav><!-- #site-navigation -->
+        </div>
+    </header><!-- #masthead -->
+
+    <div class="header-image">
+        <div class="header-info" style="opacity: 1;">
+            <div class="container">
+                <h4 class="header-subtext">Welcome to</h4><br />
+                <h3 class="header-text">Skryba</h3>
+{#                <h3 class="header-text">Welcome to <br />Skryba</h3>#}
+                <a class="button header-button" href="#primary">EXPLORE</a>
+            </div>
+        </div>
+        <img class="large-header" src="https://demo.athemes.com/astrid/wp-content/themes/astrid/images/header.jpg" width="1920" alt="Skryba">
+        <img class="small-header" src="http://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/header-mobile-1.jpg" width="1920" alt="Skryba">
+    </div>
+
+    <div id="content" class="site-content">
+        <div class="home-wrapper">
+            <div id="primary" class="content-area fullwidth">
+                <main id="main" class="site-main" role="main">
+                    <section data-color="noinherit" style="padding-top:100px;padding-bottom:100px;" id="atframework_services-3" class="widget atframework_services_widget">
+                        <div class="atblock container">
+                            <h2 class="widget-title" style=""><span class="title-decoration"></span>SERVICES</h2>
+                            <div class="service-area clearfix">
+                                <div class="service astrid-3col">
+                                    <div class="service-thumb">
+                                        <img width="60" height="54" src="https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/s5.jpg" class="attachment-astrid-small-thumb size-astrid-small-thumb wp-post-image" alt="">
+                                    </div>
+                                    <div class="service-content">
+                                        <h3 class="service-title"><a href="https://demo.athemes.com/astrid/service-1/">Service 1</a></h3>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc maximus vitae sapien…
+                                    </div>
+                                </div>
+                                <div class="service astrid-3col">
+                                    <div class="service-thumb">
+                                        <img width="60" height="54" src="https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/s4.jpg" class="attachment-astrid-small-thumb size-astrid-small-thumb wp-post-image" alt="">
+                                    </div>
+                                    <div class="service-content">
+                                        <h3 class="service-title"><a href="https://demo.athemes.com/astrid/service-2/">Service 2</a></h3>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc maximus vitae sapien…
+                                    </div>
+                                </div>
+                                <div class="service astrid-3col">
+                                    <div class="service-thumb">
+                                        <img width="60" height="54" src="https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/s3.jpg" class="attachment-astrid-small-thumb size-astrid-small-thumb wp-post-image" alt="">							</div>
+                                    <div class="service-content">
+                                        <h3 class="service-title"><a href="https://demo.athemes.com/astrid/service-3/">Service 3</a></h3>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc maximus vitae sapien…
+                                    </div>
+                                </div>
+                                <div class="service astrid-3col">
+                                    <div class="service-thumb">
+                                        <img width="60" height="54" src="https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/s2.jpg" class="attachment-astrid-small-thumb size-astrid-small-thumb wp-post-image" alt="">							</div>
+                                    <div class="service-content">
+                                        <h3 class="service-title"><a href="https://demo.athemes.com/astrid/service-4/">Service 4</a></h3>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc maximus vitae sapien…
+                                    </div>
+                                </div>
+                                <div class="service astrid-3col">
+                                    <div class="service-thumb">
+                                        <img width="60" height="54" src="https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/s6.jpg" class="attachment-astrid-small-thumb size-astrid-small-thumb wp-post-image" alt="">							</div>
+                                    <div class="service-content">
+                                        <h3 class="service-title"><a href="https://demo.athemes.com/astrid/service-5/">Service 5</a></h3>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc maximus vitae sapien…
+                                    </div>
+                                </div>
+                                <div class="service astrid-3col">
+                                    <div class="service-thumb">
+                                        <img width="60" height="54" src="https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/s1.jpg" class="attachment-astrid-small-thumb size-astrid-small-thumb wp-post-image" alt="">							</div>
+                                    <div class="service-content">
+                                        <h3 class="service-title"><a href="https://demo.athemes.com/astrid/service-6/">Service 6</a></h3>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc maximus vitae sapien…
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="multicolumn-row clearfix">
+                        <section data-color="noinherit" style="background-color:#202529;padding-top:100px;padding-bottom:100px;" id="text-3" class="widget clearfix at-2-col widget_text">
+                            <div class="atblock container"><h2 class="widget-title" style="color:#ffffff;">
+                                <span class="title-decoration"></span>ABOUT US</h2>
+                                <div class="textwidget">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis euismod
+                                    vitae erat eget consequat. Integer id suscipit lacus, a aliquet ipsum.
+                                    Integer interdum auctorlorem eu imperdiet. Vivamus et sem eros. Pellent
+                                    esque sed turpis eu nisi suscipit rutrum non quis erat. Sed risus massa.
+                                </div>
+                            </div>
+                        </section>
+                        <section data-color="inherit" style="color:#a0a0a0;background-color:#242a30;padding-top:100px;padding-bottom:100px;" id="atframework_skills-3"
+                                 class="widget clearfix at-2-col atframework_skills_widget">
+                            <div class="atblock container" style="color: inherit;">
+                                <div class="skill" style="color: inherit;">
+                                    <div class="name" style="color: inherit;">DESIGN</div>
+                                    <div class="progress-bar" style="color: inherit;">
+                                        <div class="progress-animate" style="width: 90%; color: inherit;"></div>
+                                    </div>
+                                </div>
+                                <div class="skill" style="color: inherit;">
+                                    <div class="name" style="color: inherit;">DRAWING</div>
+                                    <div class="progress-bar" style="color: inherit;">
+                                        <div class="progress-animate" style="width: 72%; color: inherit;"></div>
+                                    </div>
+                                </div>
+                                <div class="skill" style="color: inherit;">
+                                    <div class="name" style="color: inherit;">BUSINESS</div>
+                                    <div class="progress-bar" style="color: inherit;">
+                                        <div class="progress-animate" style="width: 84%; color: inherit;"></div>
+                                    </div>
+                                </div>
+                                <div class="skill" style="color: inherit;">
+                                    <div class="name" style="color: inherit;">ACCOUNTING</div>
+                                    <div class="progress-bar" style="color: inherit;">
+                                        <div class="progress-animate" style="width: 92%; color: inherit;"></div>
+                                    </div>
+                                </div>
+                                <div class="skill" style="color: inherit;">
+                                    <div class="name" style="color: inherit;">PLANNING</div>
+                                    <div class="progress-bar" style="color: inherit;">
+                                        <div class="progress-animate" style="width: 80%; color: inherit;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <section id="facts" data-color="noinherit" style="background-color:#202529;padding-top:100px;padding-bottom:100px;" class="widget atframework_facts_widget">
+                        <div class="atblock container">
+                            <h2 class="widget-title" style="color:#ffffff;"><span class="title-decoration"></span>FACTS</h2>
+                            <div class="fact-area">
+                                <div class="fact">
+                                    <i class="fa fa-envelope-o"></i>
+                                    <div class="fact-number" data-to="124">124</div>
+                                    <div class="fact-name">Emails</div>
+                                </div>
+                                <div class="fact">
+                                    <i class="fa fa-leaf"></i>
+                                    <div class="fact-number" data-to="991">991</div>
+                                    <div class="fact-name">Leaves</div>
+                                </div>
+                                <div class="fact">
+                                    <i class="fa fa-coffee"></i>
+                                    <div class="fact-number" data-to="224">224</div>
+                                    <div class="fact-name">Coffees</div>
+                                </div>
+                                <div class="fact">
+                                    <i class="fa fa-camera-retro"></i>
+                                    <div class="fact-number" data-to="33">33</div>
+                                    <div class="fact-name">Cameras</div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="team" data-color="noinherit" style="padding-top:100px;padding-bottom:100px;" class="widget atframework_employees_widget">
+                        <div class="atblock container">
+                            <h2 class="widget-title" style=""><span class="title-decoration"></span>TEAM</h2>
+                            <div class="employees-area clearfix">
+                                <div class="employee astrid-3col">
+                                    <div class="employee-thumb">
+                                        <img width="360" height="505" src="https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/a1-360x505.jpg"
+                                             class="attachment-astrid-small-thumb size-astrid-small-thumb wp-post-image" alt=""
+                                             srcset="https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/a1-360x505.jpg 360w, https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/a1-214x300.jpg 214w, https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/a1-250x351.jpg 250w, https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/a1-100x140.jpg 100w, https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/a1.jpg 390w" sizes="(max-width: 360px) 100vw, 360px">							</div>
+                                    <div class="employee-content">
+                                        <h3 class="employee-title"><a href="https://demo.athemes.com/astrid/steve-doe/">Steve Doe</a></h3>
+                                        Designer &nbsp;							</div>
+                                </div>
+                                <div class="employee astrid-3col">
+                                    <div class="employee-thumb">
+                                        <img width="360" height="505" src="https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/a2-360x505.jpg" class="attachment-astrid-small-thumb size-astrid-small-thumb wp-post-image" alt="" srcset="https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/a2-360x505.jpg 360w, https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/a2-214x300.jpg 214w, https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/a2-250x351.jpg 250w, https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/a2-100x140.jpg 100w, https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/a2.jpg 390w" sizes="(max-width: 360px) 100vw, 360px">							</div>
+                                    <div class="employee-content">
+                                        <h3 class="employee-title"><a href="https://demo.athemes.com/astrid/janet-doe/">Janet Doe</a></h3>
+                                        Developer							</div>
+                                </div>
+                                <div class="employee astrid-3col">
+                                    <div class="employee-thumb">
+                                        <img width="360" height="505" src="https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/a3-360x505.jpg" class="attachment-astrid-small-thumb size-astrid-small-thumb wp-post-image" alt="" srcset="https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/a3-360x505.jpg 360w, https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/a3-214x300.jpg 214w, https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/a3-250x351.jpg 250w, https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/a3-100x140.jpg 100w, https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/a3.jpg 390w" sizes="(max-width: 360px) 100vw, 360px">							</div>
+                                    <div class="employee-content">
+                                        <h3 class="employee-title"><a href="https://demo.athemes.com/astrid/john-doe-2/">John Doe</a></h3>
+                                        Designer							</div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="multicolumn-row clearfix">
+                        <section data-color="noinherit" style="background-color:#202529;padding-top:100px;padding-bottom:100px;" id="text-5" class="widget clearfix at-2-col widget_text">
+                            <div class="atblock container">
+                                <h2 class="widget-title" style="color:#ffffff;"><span class="title-decoration"></span>WORKFLOW</h2>
+                                <div class="textwidget">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis euismod vitae erat eget consequat. Integer id suscipit lacus, a aliquet ipsum.
+                                    Integer interdum auctorlorem eu imperdiet. Vivamus et sem eros. Pellentesque sed turpis eu nisi suscipit rutrum non quis erat. Sed risus massa. Vivamus et sem eros.
+                                    Pellentesque sed turpis eu nisi suscipit rutrum non quis erat. Sed risus massa.
+                                </div>
+                            </div>
+                        </section>
+                        <section data-color="noinherit" style="background-color:#fcd088;padding-top:100px;padding-bottom:100px;" id="text-7" class="widget clearfix at-2-col widget_text">
+                            <div class="atblock container">
+                                <div class="textwidget">
+                                    <img src="http://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/w1.png">
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="multicolumn-row clearfix">
+                        <section data-color="noinherit" style="background-color:#ddae76;padding-top:100px;padding-bottom:100px;" id="text-8" class="widget clearfix at-2-col widget_text">
+                            <div class="atblock container">
+                                <div class="textwidget">
+                                    <img src="http://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/w2.png">
+                                </div>
+                            </div>
+                        </section>
+                        <section data-color="noinherit" style="background-color:#cd9e6a;padding-top:100px;padding-bottom:100px;" id="text-9" class="widget clearfix at-2-col widget_text">
+                            <div class="atblock container">
+                                <div class="textwidget">
+                                    <img src="http://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/w3.png">
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <section data-color="noinherit" style="background-color:#202529;padding-top:50px;padding-bottom:50px;" id="text-11" class="widget widget_text">
+                        <div class="atblock container">
+                            <h2 class="widget-title" style="color:#ffffff;"><span class="title-decoration"></span>PROJECTS</h2>
+                            <div class="textwidget"><div style="text-align:center;">Check out some of our latest projects</div></div>
+                        </div>
+                    </section>
+                    <section data-color="noinherit" style="padding-top:0px;padding-bottom:0px;" id="atframework_projects-3" class="widget atframework_projects_widget">
+                        <div class="atblock no-container">
+                            <div class="projects-area clearfix">
+                                <div class="project">
+                                    <div class="project-thumb">
+                                        <img width="500" height="310" src="https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/p7-500x310.jpg"
+                                             class="attachment-astrid-project-thumb size-astrid-project-thumb wp-post-image" alt=""
+                                             srcset="https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/p7-500x310.jpg 500w, https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/p7-100x63.jpg 100w" sizes="(max-width: 500px) 100vw, 500px">								<div class="project-content">
+                                            <h3 class="project-title"><a href="https://demo.athemes.com/astrid/project-2/">Project 2</a></h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="project">
+                                    <div class="project-thumb">
+                                        <img width="500" height="310" src="https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/p5-500x310.jpg"
+                                             class="attachment-astrid-project-thumb size-astrid-project-thumb wp-post-image" alt=""
+                                             srcset="https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/p5-500x310.jpg 500w, https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/p5-100x63.jpg 100w" sizes="(max-width: 500px) 100vw, 500px">								<div class="project-content">
+                                            <h3 class="project-title"><a href="https://demo.athemes.com/astrid/project-3/">Project 3</a></h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="project">
+                                    <div class="project-thumb">
+                                        <img width="500" height="310" src="https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/p6-500x310.jpg"
+                                             class="attachment-astrid-project-thumb size-astrid-project-thumb wp-post-image" alt=""
+                                             srcset="https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/p6-500x310.jpg 500w, https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/p6-100x63.jpg 100w" sizes="(max-width: 500px) 100vw, 500px">								<div class="project-content">
+                                            <h3 class="project-title"><a href="https://demo.athemes.com/astrid/project-4/">Project 4</a></h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="project">
+                                    <div class="project-thumb">
+                                        <img width="500" height="310" src="https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/p4-500x310.jpg"
+                                             class="attachment-astrid-project-thumb size-astrid-project-thumb wp-post-image" alt=""
+                                             srcset="https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/p4-500x310.jpg 500w, https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/p4-100x63.jpg 100w" sizes="(max-width: 500px) 100vw, 500px">								<div class="project-content">
+                                            <h3 class="project-title"><a href="https://demo.athemes.com/astrid/project-5/">Project 5</a></h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="project">
+                                    <div class="project-thumb">
+                                        <img width="500" height="310" src="https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/p3-500x310.jpg"
+                                             class="attachment-astrid-project-thumb size-astrid-project-thumb wp-post-image" alt=""
+                                             srcset="https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/p3-500x310.jpg 500w, https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/p3-100x63.jpg 100w" sizes="(max-width: 500px) 100vw, 500px">								<div class="project-content">
+                                            <h3 class="project-title"><a href="https://demo.athemes.com/astrid/project-6/">Project 6</a></h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="project">
+                                    <div class="project-thumb">
+                                        <img width="500" height="310" src="https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/p1-500x310.jpg"
+                                             class="attachment-astrid-project-thumb size-astrid-project-thumb wp-post-image" alt=""
+                                             srcset="https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/p1-500x310.jpg 500w, https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/p1-100x63.jpg 100w" sizes="(max-width: 500px) 100vw, 500px">								<div class="project-content">
+                                            <h3 class="project-title"><a href="https://demo.athemes.com/astrid/project-7/">Project 7</a></h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="project">
+                                    <div class="project-thumb">
+                                        <img width="500" height="310" src="https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/p2-500x310.jpg"
+                                             class="attachment-astrid-project-thumb size-astrid-project-thumb wp-post-image" alt=""
+                                             srcset="https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/p2-500x310.jpg 500w, https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/p2-100x63.jpg 100w" sizes="(max-width: 500px) 100vw, 500px">								<div class="project-content">
+                                            <h3 class="project-title"><a href="https://demo.athemes.com/astrid/project-8/">Project 8</a></h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="project">
+                                    <div class="project-thumb">
+                                        <img width="500" height="310" src="https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/p8-500x310.jpg"
+                                             class="attachment-astrid-project-thumb size-astrid-project-thumb wp-post-image" alt=""
+                                             srcset="https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/p8-500x310.jpg 500w, https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/p8-100x63.jpg 100w" sizes="(max-width: 500px) 100vw, 500px">								<div class="project-content">
+                                            <h3 class="project-title"><a href="https://demo.athemes.com/astrid/project-1-2/">Project 1</a></h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section data-color="noinherit" style="padding-top:100px;padding-bottom:100px;" id="atframework_testimonials-3" class="widget atframework_testimonials_widget">
+                        <div class="atblock container">
+                            <h2 class="widget-title"><span class="title-decoration"></span>Testimonials</h2>
+                            <div class="testimonial-area clearfix">
+                                <div class="testimonial astrid-3col">
+                                    <div class="testimonial-content">
+                                        <p>Lorem ipsum dolor sit amet, consectet elit. Vivamus ornare vitae lacus sed tinm dolor sit amet, consectetur adipiscin nare vitae lacus sed tincidunt.</p>
+                                    </div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="40" height="20">
+                                        <g transform="translate(0,-1032.3622)">
+                                            <path d="M 0,0 20,20 40,0" transform="translate(0,1032.3622)"></path>
+                                        </g>
+                                    </svg>
+                                    <div class="testimonial-thumb">
+                                        <img width="100" height="140" src="https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/a1-100x140.jpg"
+                                             class="attachment-astrid-testimonial-thumb size-astrid-testimonial-thumb wp-post-image" alt=""
+                                             srcset="https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/a1-100x140.jpg 100w, https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/a1-214x300.jpg 214w, https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/a1-360x505.jpg 360w, https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/a1-250x351.jpg 250w, https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/a1.jpg 390w" sizes="(max-width: 100px) 100vw, 100px">							</div>
+                                    <h3 class="testimonial-title"><a href="https://demo.athemes.com/astrid/john-doe-3/">John Doe</a></h3>
+                                </div>
+                                <div class="testimonial astrid-3col">
+                                    <div class="testimonial-content">
+                                        <p>Lorem ipsum dolor sit amet, consectet elit. Vivamus ornare vitae lacus sed tinm dolor sit amet, consectetur adipiscin nare vitae lacus sed tincidunt.</p>
+                                    </div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="40" height="20">
+                                        <g transform="translate(0,-1032.3622)">
+                                            <path d="M 0,0 20,20 40,0" transform="translate(0,1032.3622)"></path>
+                                        </g>
+                                    </svg>
+                                    <div class="testimonial-thumb">
+                                        <img width="100" height="140" src="https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/a2-100x140.jpg"
+                                             class="attachment-astrid-testimonial-thumb size-astrid-testimonial-thumb wp-post-image" alt=""
+                                             srcset="https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/a2-100x140.jpg 100w, https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/a2-214x300.jpg 214w, https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/a2-360x505.jpg 360w, https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/a2-250x351.jpg 250w, https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/a2.jpg 390w" sizes="(max-width: 100px) 100vw, 100px">							</div>
+                                    <h3 class="testimonial-title"><a href="https://demo.athemes.com/astrid/janet-doe-2/">Janet Doe</a></h3>
+                                </div>
+                                <div class="testimonial astrid-3col">
+                                    <div class="testimonial-content">
+                                        <p>Lorem ipsum dolor sit amet, consectet elit. Vivamus ornare vitae lacus sed tinm dolor sit amet, consectetur adipiscin nare vitae lacus sed tincidunt.</p>
+                                    </div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="40" height="20">
+                                        <g transform="translate(0,-1032.3622)">
+                                            <path d="M 0,0 20,20 40,0" transform="translate(0,1032.3622)"></path>
+                                        </g>
+                                    </svg>
+                                    <div class="testimonial-thumb">
+                                        <img width="100" height="140" src="https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/a3-100x140.jpg"
+                                             class="attachment-astrid-testimonial-thumb size-astrid-testimonial-thumb wp-post-image" alt=""
+                                             srcset="https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/a3-100x140.jpg 100w, https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/a3-214x300.jpg 214w, https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/a3-360x505.jpg 360w, https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/a3-250x351.jpg 250w, https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/a3.jpg 390w" sizes="(max-width: 100px) 100vw, 100px">							</div>
+                                    <h3 class="testimonial-title"><a href="https://demo.athemes.com/astrid/steve-doe-2/">Steve Doe</a></h3>
+                                </div>
+                            </div>
+
+
+                        </div></section><section data-color="noinherit" style="padding-top:100px;padding-bottom:100px;background-image:url(http://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/skyscraper-1149541_1920.jpg);" id="atframework_clients-3" class="widget atframework_clients_widget"><div class="row-overlay"></div><div class="atblock container">			<h2 class="widget-title" style="color:#ffffff;"><span class="title-decoration"></span>CLIENTS</h2>
+                            <div class="client-area clearfix">
+                                <div class="client">
+                                    <div class="client-thumb">
+                                        <img width="250" height="223" src="https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/c2-250x223.png"
+                                             class="attachment-astrid-client-thumb size-astrid-client-thumb wp-post-image" alt=""
+                                             srcset="https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/c2-250x223.png 250w, https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/c2-300x268.png 300w, https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/c2-360x322.png 360w, https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/c2-100x89.png 100w, https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/c2.png 449w" sizes="(max-width: 250px) 100vw, 250px">							</div>
+                                </div>
+                                <div class="client">
+                                    <div class="client-thumb">
+                                        <img width="250" height="223" src="https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/c3-250x223.png"
+                                             class="attachment-astrid-client-thumb size-astrid-client-thumb wp-post-image" alt=""
+                                             srcset="https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/c3-250x223.png 250w, https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/c3-300x268.png 300w, https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/c3-360x322.png 360w, https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/c3-100x89.png 100w, https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/c3.png 449w" sizes="(max-width: 250px) 100vw, 250px">							</div>
+                                </div>
+                                <div class="client">
+                                    <div class="client-thumb">
+                                        <img width="250" height="223" src="https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/c1-250x223.png"
+                                             class="attachment-astrid-client-thumb size-astrid-client-thumb wp-post-image" alt=""
+                                             srcset="https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/c1-250x223.png 250w, https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/c1-300x268.png 300w, https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/c1-360x322.png 360w, https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/c1-100x89.png 100w, https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/c1.png 449w" sizes="(max-width: 250px) 100vw, 250px">							</div>
+                                </div>
+                                <div class="client">
+                                    <div class="client-thumb">
+                                        <img width="250" height="223" src="https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/c4-250x223.png"
+                                             class="attachment-astrid-client-thumb size-astrid-client-thumb wp-post-image" alt=""
+                                             srcset="https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/c4-250x223.png 250w, https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/c4-300x268.png 300w, https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/c4-360x322.png 360w, https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/c4-100x89.png 100w, https://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/c4.png 449w" sizes="(max-width: 250px) 100vw, 250px">							</div>
+                                </div>
+                            </div>
+
+
+                        </div></section>
+                </main>
+            </div>
+        </div>
+    </div><!-- #content -->
+
+    <div class="footer-wraper">
+        <div id="sidebar-footer" class="footer-widgets" role="complementary">
+            <div class="container">
+                <div class="sidebar-column col-md-4">
+                    <aside id="text-12" class="widget widget_text">
+                        <h3 class="widget-title">About us</h3>
+                        <div class="textwidget">
+                            Astrid can help you to quickly create an awesome business website. All the features you need are waiting for you in this business theme: color options, fonts,
+                            full width header image, custom widgets, blog options and many other interesting and useful options.
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </div>
+        <div class="footer-info">
+            <div class="container">
+                <div class="footer-branding">
+                    <a href="https://demo.athemes.com/astrid/" title="Astrid">
+                        <img class="footer-logo" src="http://demo.athemes.com/astrid/wp-content/uploads/sites/50/2016/02/logo.png" alt="Astrid">
+                    </a>
+                </div>
+                <div class="footer-contact">
+                    <div class="footer-contact-block">
+                        <i class="fa fa-home"></i>
+                        <span>21st Street, New York</span>
+                    </div>
+                    <div class="footer-contact-block">
+                        <i class="fa fa-envelope"></i>
+                        <span><a href="mailto:office@yoursite.com">office@yoursite.com</a></span>
+                    </div>
+                    <div class="footer-contact-block">
+                        <i class="fa fa-phone"></i><span>+001.999.999</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer id="colophon" class="site-footer" role="contentinfo">
+            <div class="site-info container">
+                <nav id="footernav" class="footer-navigation" role="navigation">
+                    <div class="menu-menu-container">
+                        <ul id="footer-menu" class="menu">
+                            <li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-has-children menu-item-200">
+                                <a href="http://demo.athemes.com/astrid" aria-current="page">Home</a>
+                            </li>
+                            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-267">
+                                <a href="https://demo.athemes.com/astrid/blog/">Blog</a>
+                            </li>
+                            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-290">
+                                <a href="https://demo.athemes.com/astrid/shop/">Shop</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav><!-- #site-navigation -->
+                <div class="site-copyright">
+                    <a href="https://wordpress.org/">Powered by WordPress</a>
+                    <span class="sep"> | </span>
+                    Theme: <a href="http://athemes.com/theme/astrid" rel="nofollow">Astrid</a> by aThemes.
+                </div>
+            </div><!-- .site-info -->
+        </footer>
+    </div>
+</div><!-- #page -->
 </body>
 </html>
-
-

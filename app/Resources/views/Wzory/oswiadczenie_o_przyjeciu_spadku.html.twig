@@ -11,35 +11,35 @@
             data-mce-style="font-family: arial, helvetica, sans-serif; font-size: 24pt;"><strong><span
                     class="lineheight32px">AKT&nbsp;NOTARIALNY</span></strong></span></h4><p><br>
 <p>&nbsp;</p>
-<p style="text-align: justify;" data-mce-style="text-align: justify;"><span style="font-size: 12pt; font-family: 'times new roman', times, serif; color: rgb(0, 0, 0);" data-mce-style="font-size: 12pt; font-family: 'times new roman', times, serif; color: #000000;">
+<p style="text-align: justify;" data-mce-style="text-align: justify;"><span style="padding-left: 30px; font-family: 'times new roman', times, serif; font-size: 12pt;"
+                                                                            data-mce-style="font-family: 'times new roman', times, serif; font-size: 12pt; padding-left: 30px;">
     Dnia
     <u>{{ form.dataCzynnosci | dataSlownie }} ({{ form.dataCzynnosci | date('d.m.Y') }})</u>
-    roku w Kancelarii Notarialnej w <span class="niepewne" >mieście {{ user.kancelaria.miasto }}</span> przy ulicy <span class="niepewne" >{{ user.kancelaria.adres | ulica }}</span>
+    roku w Kancelarii Notarialnej w <span class="niepewne" >mieście {{ user.kancelaria.miasto | miasto }}</span> przy ulicy <span class="niepewne" >{{ user.kancelaria.adres | ulica }}</span>
     przed notariusz {{  user.kancelaria.nazwa }} {% if spadkobierca.plec == 1 %}stawiła{% else %}stawił{% endif %} się:
 </span></p>
-<p style="text-align: justify;" data-mce-style="text-align: justify;"><span style="font-size: 12pt; font-family: 'times new roman', times, serif; color: rgb(0, 0, 0);" data-mce-style="font-size: 12pt; font-family: 'times new roman', times, serif; color: #000000;">
+<p style="padding-left: 120px; font-family: 'times new roman', times, serif; font-size: 12pt;"
+   data-mce-style="font-family: 'times new roman', times, serif; font-size: 12pt; padding-left: 120px;">
+    <span style="font-size: 12pt; font-family: 'times new roman', times, serif; color: rgb(0, 0, 0);" data-mce-style="font-size: 12pt; font-family: 'times new roman', times, serif; color: #000000;">
     {{ spadkobierca.imie }} {{ spadkobierca.nazwisko }}
     {% if spadkobierca.plec == 1 %} córka {% else %} syn {% endif %}
     {{ spadkobierca.imieOjca | imieMeskie }} i {{ spadkobierca.imieMatki | imieZenskie}}, o numerze pesel {{ spadkobierca.pesel }},
-    urodzony w  <span class="niepewne" >{{ spadkobierca.miejsceUrodzenia }}</span>
+    urodzony w  <span class="niepewne" >{{ spadkobierca.miejsceUrodzenia | miasto }}</span>
     {% if spadkobierca.plec == 1 %} zamieszkała {% else %} zamieszkały {% endif %} według oświadczenia w mieście
-    {{ spadkobierca.miastoZamieszkania }}
+    {{ spadkobierca.miastoZamieszkania | miasto }}
     {% if spadkobierca.typObiektuZamieszkania == 0 %}{{ spadkobierca.numerDomuZamieszkania }}{% if spadkobierca.numerMieszkaniaZamieszkania is not null and spadkobierca.numerMieszkaniaZamieszkania != "" %} / {{ spadkobierca.numerMieszkaniaZamieszkania }}{% endif %}
 {% elseif spadkobierca.typObiektuZamieszkania == 1 %} przy ulicy {{ spadkobierca.nazwaObiektuZamieszkania }} {{ spadkobierca.numerDomuZamieszkania }} {% if spadkobierca.numerMieszkaniaZamieszkania is not null and spadkobierca.numerMieszkaniaZamieszkania == "" %} / {{ spadkobierca.numerMieszkaniaZamieszkania }}{% endif %}
 {% elseif spadkobierca.typObiektuZamieszkania == 2 %} os. {{ spadkobierca.nazwaObiektuZamieszkania }} {{ spadkobierca.numerDomuZamieszkania }} {% if spadkobierca.numerMieszkaniaZamieszkania is not null and spadkobierca.numerMieszkaniaZamieszkania == "" %} / {{ spadkobierca.numerMieszkaniaZamieszkania }}{% endif %}
 {% elseif spadkobierca.typObiektuZamieszkania == 3 %} przy alei {{ spadkobierca.nazwaObiektuZamieszkania }} {{ spadkobierca.numerDomuZamieszkania }} {% if spadkobierca.numerMieszkaniaZamieszkania is not null and spadkobierca.numerMieszkaniaZamieszkania == "" %} / {{ spadkobierca.numerMieszkaniaZamieszkania }}{% endif %}
-    {% endif %},
-    {% if spadkobierca.plec == 1 %} legitymującej {% else %} legitymującego {% endif %} się dowodem osobistym wydanym za numerem {{ spadkobierca.numerDowodu }} z datą ważności do dnia
-    {{ spadkobierca.dataWaznosciDowodu | dataSlownie }} ({{ spadkobierca.dataWaznosciDowodu | date('Y-m-d') }}) roku
-<p style="text-align: justify;" data-mce-style="text-align: justify;">
-    <span style="font-size: 12pt; font-family: 'times new roman', times, serif; color: rgb(0, 0, 0);" data-mce-style="font-size: 12pt; font-family: 'times new roman', times, serif; color: #000000;">
-
-</span></p>
-<p align="center">
-    <strong></strong>
+    {% endif %}.
+    </span>
+</p>
+<p style="padding-left: 30px; font-family: 'times new roman', times, serif; font-size: 12pt;"
+   data-mce-style="font-family: 'times new roman', times, serif; font-size: 12pt; padding-left: 30px;">
+        Tożsamość {% if spadkobierca.plec == 1 %} stawającej {% else %} stawającego {% endif %} ustaliła notariusz na podstawie okazanego dowodu osobistego wydanego za numerem
+        {{ spadkobierca.numerDowodu }} z datą ważności do dnia {{ spadkobierca.dataWaznosciDowodu | dataSlownie }} ({{ spadkobierca.dataWaznosciDowodu | date('Y-m-d') }}) roku.
 </p>
 <p align="center">
-    <strong></strong>
     <span style="font-family: arial, helvetica, sans-serif; font-size: 18pt;" data-mce-style="font-family: arial, helvetica, sans-serif; font-size: 18pt;">
         <strong>
             <span class="lineheight32px">
@@ -55,7 +55,7 @@
         <span class="niepewne" >{{ zgoniarz.imie }} {{ zgoniarz.nazwisko }}</span> , {% if zgoniarz.plec == 1 %}córce{% else %}synu{% endif %}
         {{ zgoniarz.imieOjca | imieMeskie }} i {{ zgoniarz.imieMatki | imieZenskie }}, {% if zgoniarz.plec == 1 %}zmarłej{% else %}zmarłym{% endif %} dnia
         {{ form.dataSmierci | dataSlownie }} ({{ form.dataSmierci | date('d.m.Y') }}) roku w mieście <span class="niepewne" >{{ form.miejsceZgonu }}</span>,
-        ostatnio stale {% if zgoniarz.plec == 1 %}zamieszkałej{% else %}zamieszkałym{% endif %} w mieście <span class="niepewne" >{{ zgoniarz.miastoZamieszkania }}</span>
+        ostatnio stale {% if zgoniarz.plec == 1 %}zamieszkałej{% else %}zamieszkałym{% endif %} w mieście <span class="niepewne" >{{ zgoniarz.miastoZamieszkania | miasto }}</span>
         {% if zgoniarz.typObiektuZamieszkania == 0 %}{{ zgoniarz.numerDomuZamieszkania }}{% if zgoniarz.numerMieszkaniaZamieszkania is not null and zgoniarz.numerMieszkaniaZamieszkania != "" %} / {{ zgoniarz.numerMieszkaniaZamieszkania }}{% endif %}
         {% elseif zgoniarz.typObiektuZamieszkania == 1 %} przy ulicy {{ zgoniarz.nazwaObiektuZamieszkania }} {{ zgoniarz.numerDomuZamieszkania }} {% if zgoniarz.numerMieszkaniaZamieszkania is not null and zgoniarz.numerMieszkaniaZamieszkania != "" %} / {{ zgoniarz.numerDomuZamieszkania }}{% endif %}
         {% elseif zgoniarz.typObiektuZamieszkania == 2 %} os. {{ zgoniarz.nazwaObiektuZamieszkania }} {{ zgoniarz.numerDomuZamieszkania }} {% if zgoniarz.numerMieszkaniaZamieszkania is not null and zgoniarz.numerMieszkaniaZamieszkania != "" %} / {{ zgoniarz.numerDomuZamieszkania }}{% endif %}
@@ -67,21 +67,19 @@
     <span style="font-size: 12pt; font-family: 'times new roman', times, serif; color: rgb(0, 0, 0);" data-mce-style="font-size: 12pt; font-family: 'times new roman', times, serif; color: #000000;">
         §.2 {% if spadkobierca.plec == 1 %}Stawająca{% else %}Stawający{% endif %} <u>{{ spadkobierca.imie }} {{ spadkobierca.nazwisko }}</u> oświadcza, że jest spadkobiercą ustawowym, a
         poza tym do kręgu spadkobierców ustawowych {% if spadkobiorcy|length == 1 %}należy{% else %}należą{% endif %}:
-        {% for spadkobierca in spadkobiorcy %}
-            <li>
-            {% if spadkobierca.plec == 1 %}jej{% else %}jego{% endif %}<span class="niepewne">syn/córka/mąż/żona/brat/kuzyn/babcia/dziadek</span>
+        {% for spadkobiercaFor in spadkobiorcy %}
+            <span class="niepewne">{{ spadkobierca.stopienPokrewienstwa | pokrewienstwoSlownie }}</span> {% if zgoniarz.plec == 1 %}zmarłej{% else %}zmarłego{% endif %}
                 <span style="font-family: 'times new roman', times, serif; font-size: 12pt;" data-mce-style="font-family: 'times new roman', times, serif; font-size: 12pt;">{{ spadkobierca.imie }} {{ spadkobierca.nazwisko }},
                 {% if spadkobierca.plec == 1 %} córka {% else %} syn {% endif %}
-                    {{ spadkobierca.imieOjca | imieMeskie }} i {{ spadkobierca.imieMatki | imieZenskie}} {% if spadkobierca.plec == 1 %} zamieszkała {% else %} zamieszkały {% endif %} w mieście
-                    {{ spadkobierca.miastoZamieszkania }}
-                    {% if spadkobierca.typObiektuZamieszkania == 0 %}{{ spadkobierca.numerDomuZamieszkania }}{% if spadkobierca.numerMieszkaniaZamieszkania is not null and spadkobierca.numerMieszkaniaZamieszkania != "" %} / {{ spadkobierca.numerMieszkaniaZamieszkania }}{% endif %}
-                    {% elseif spadkobierca.typObiektuZamieszkania == 1 %} przy ulicy {{ spadkobierca.nazwaObiektuZamieszkania }} {{ spadkobierca.numerDomuZamieszkania }} {% if spadkobierca.numerMieszkaniaZamieszkania is not null and spadkobierca.numerMieszkaniaZamieszkania == "" %} / {{ spadkobierca.numerMieszkaniaZamieszkania }}{% endif %}
-                    {% elseif spadkobierca.typObiektuZamieszkania == 2 %} os. {{ spadkobierca.nazwaObiektuZamieszkania }} {{ spadkobierca.numerDomuZamieszkania }} {% if spadkobierca.numerMieszkaniaZamieszkania is not null and spadkobierca.numerMieszkaniaZamieszkania == "" %} / {{ spadkobierca.numerMieszkaniaZamieszkania }}{% endif %}
-                    {% elseif spadkobierca.typObiektuZamieszkania == 3 %} przy alei {{ spadkobierca.nazwaObiektuZamieszkania }} {{ spadkobierca.numerDomuZamieszkania }} {% if spadkobierca.numerMieszkaniaZamieszkania is not null and spadkobierca.numerMieszkaniaZamieszkania == "" %} / {{ spadkobierca.numerMieszkaniaZamieszkania }}{% endif %}
+                    {{ spadkobiercaFor.imieOjca | imieMeskie }} i {{ spadkobiercaFor.imieMatki | imieZenskie}} {% if spadkobiercaFor.plec == 1 %} zamieszkała {% else %} zamieszkały {% endif %} w mieście
+                    {{ spadkobiercaFor.miastoZamieszkania | miasto }}
+                    {% if spadkobiercaFor.typObiektuZamieszkania == 0 %}{{ spadkobiercaFor.numerDomuZamieszkania }}{% if spadkobiercaFor.numerMieszkaniaZamieszkania is not null and spadkobiercaFor.numerMieszkaniaZamieszkania != "" %} / {{ spadkobiercaFor.numerMieszkaniaZamieszkania }}{% endif %}
+                    {% elseif spadkobiercaFor.typObiektuZamieszkania == 1 %} przy ulicy {{ spadkobiercaFor.nazwaObiektuZamieszkania }} {{ spadkobiercaFor.numerDomuZamieszkania }} {% if spadkobiercaFor.numerMieszkaniaZamieszkania is not null and spadkobiercaFor.numerMieszkaniaZamieszkania == "" %} / {{ spadkobiercaFor.numerMieszkaniaZamieszkania }}{% endif %}
+                    {% elseif spadkobiercaFor.typObiektuZamieszkania == 2 %} os. {{ spadkobiercaFor.nazwaObiektuZamieszkania }} {{ spadkobiercaFor.numerDomuZamieszkania }} {% if spadkobiercaFor.numerMieszkaniaZamieszkania is not null and spadkobiercaFor.numerMieszkaniaZamieszkania == "" %} / {{ spadkobiercaFor.numerMieszkaniaZamieszkania }}{% endif %}
+                    {% elseif spadkobiercaFor.typObiektuZamieszkania == 3 %} przy alei {{ spadkobiercaFor.nazwaObiektuZamieszkania }} {{ spadkobiercaFor.numerDomuZamieszkania }} {% if spadkobiercaFor.numerMieszkaniaZamieszkania is not null and spadkobiercaFor.numerMieszkaniaZamieszkania == "" %} / {{ spadkobiercaFor.numerMieszkaniaZamieszkania }}{% endif %}
                     {% endif %}
                 {% if loop.revindex == 2 %} oraz{% else %}{% if not loop.last %},{% endif %}{% endif %}
                 </span>
-            </li>
         {% endfor %}
         , a nadto że nie wie o istnieniu jakichkolwiek testamentów pozostawionych
         przez {% if zgoniarz.plec == 1 %}zmarłą{% else %}zmarłego{% endif %} <span class="niepewne">{{ zgoniarz.imie }} {{ zgoniarz.nazwisko }}</span>
@@ -156,20 +154,20 @@
         podpisano:
     </strong>
 </span></p>
-<p style="text-align: justify;" data-mce-style="text-align: justify;"><span style="font-size: 12pt; font-family: 'times new roman', times, serif; color: rgb(0, 0, 0);" data-mce-style="font-size: 12pt; font-family: 'times new roman', times, serif; color: #000000;">
-    {{ user.kancelaria.nazwa }}
-</span></p>
-<p style="text-align: justify;" data-mce-style="text-align: justify;"><span style="font-size: 12pt; font-family: 'times new roman', times, serif; color: rgb(0, 0, 0);" data-mce-style="font-size: 12pt; font-family: 'times new roman', times, serif; color: #000000;">
-    NOTARIUSZ
-</span></p>
-<p style="text-align: justify;" data-mce-style="text-align: justify;"><span style="font-size: 12pt; font-family: 'times new roman', times, serif; color: rgb(0, 0, 0);" data-mce-style="font-size: 12pt; font-family: 'times new roman', times, serif; color: #000000;">
-    {{ user.kancelaria.adres }}
-</span></p>
-<p style="text-align: justify;" data-mce-style="text-align: justify;"><span style="font-size: 12pt; font-family: 'times new roman', times, serif; color: rgb(0, 0, 0);" data-mce-style="font-size: 12pt; font-family: 'times new roman', times, serif; color: #000000;">
-    {{ user.kancelaria.kodPocztowy }} {{ user.kancelaria.miasto }}
-</span></p>
-<p style="text-align: justify;" data-mce-style="text-align: justify;"><span style="font-size: 12pt; font-family: 'times new roman', times, serif; color: rgb(0, 0, 0);" data-mce-style="font-size: 12pt; font-family: 'times new roman', times, serif; color: #000000;">
-    tel. {{ user.telefon |upper }}
+{#<p style="text-align: justify;" data-mce-style="text-align: justify;"><span style="font-size: 12pt; font-family: 'times new roman', times, serif; color: rgb(0, 0, 0);" data-mce-style="font-size: 12pt; font-family: 'times new roman', times, serif; color: #000000;">#}
+{#    {{ user.kancelaria.nazwa }}#}
+{#</span></p>#}
+{#<p style="text-align: justify;" data-mce-style="text-align: justify;"><span style="font-size: 12pt; font-family: 'times new roman', times, serif; color: rgb(0, 0, 0);" data-mce-style="font-size: 12pt; font-family: 'times new roman', times, serif; color: #000000;">#}
+{#    NOTARIUSZ#}
+{#</span></p>#}
+{#<p style="text-align: justify;" data-mce-style="text-align: justify;"><span style="font-size: 12pt; font-family: 'times new roman', times, serif; color: rgb(0, 0, 0);" data-mce-style="font-size: 12pt; font-family: 'times new roman', times, serif; color: #000000;">#}
+{#    {{ user.kancelaria.adres }}#}
+{#</span></p>#}
+{#<p style="text-align: justify;" data-mce-style="text-align: justify;"><span style="font-size: 12pt; font-family: 'times new roman', times, serif; color: rgb(0, 0, 0);" data-mce-style="font-size: 12pt; font-family: 'times new roman', times, serif; color: #000000;">#}
+{#    {{ user.kancelaria.kodPocztowy }} {{ user.kancelaria.miasto }}#}
+{#</span></p>#}
+{#<p style="text-align: justify;" data-mce-style="text-align: justify;"><span style="font-size: 12pt; font-family: 'times new roman', times, serif; color: rgb(0, 0, 0);" data-mce-style="font-size: 12pt; font-family: 'times new roman', times, serif; color: #000000;">#}
+{#    tel. {{ user.telefon |upper }}#}
 </span></p>
 <p style="text-align: justify;" data-mce-style="text-align: justify;"><span style="font-size: 12pt; font-family: 'times new roman', times, serif; color: rgb(0, 0, 0);" data-mce-style="font-size: 12pt; font-family: 'times new roman', times, serif; color: #000000;">
     Na oryginale podpisy stawającej i notariusza.
@@ -177,30 +175,26 @@
 <p style="text-align: justify;" data-mce-style="text-align: justify;"><span style="font-size: 12pt; font-family: 'times new roman', times, serif; color: rgb(0, 0, 0);" data-mce-style="font-size: 12pt; font-family: 'times new roman', times, serif; color: #000000;">
     Repertorium A numer {{ numerSprawy }}.
 </span></p>
-<p style="text-align: justify;" data-mce-style="text-align: justify;"><span style="font-size: 12pt; font-family: 'times new roman', times, serif; color: rgb(0, 0, 0);" data-mce-style="font-size: 12pt; font-family: 'times new roman', times, serif; color: #000000;">
-    Wypis ten w dacie aktu wydano
-</span></p>
+{#<p style="text-align: justify;" data-mce-style="text-align: justify;"><span style="font-size: 12pt; font-family: 'times new roman', times, serif; color: rgb(0, 0, 0);" data-mce-style="font-size: 12pt; font-family: 'times new roman', times, serif; color: #000000;">#}
+{#    Wypis ten w dacie aktu wydano#}
+{#</span></p>#}
 <p style="text-align: justify;" data-mce-style="text-align: justify;"><span style="font-size: 12pt; font-family: 'times new roman', times, serif; color: rgb(0, 0, 0);" data-mce-style="font-size: 12pt; font-family: 'times new roman', times, serif; color: #000000;">
     Pobrano: <span class="niepewne" >[...]</span>
 </span></p>
-<p style="text-align: justify;" data-mce-style="text-align: justify;"><span style="font-size: 12pt; font-family: 'times new roman', times, serif; color: rgb(0, 0, 0);" data-mce-style="font-size: 12pt; font-family: 'times new roman', times, serif; color: #000000;">
+<p style="padding-left: 40px; text-align: justify;" data-mce-style="padding-left: 40px; text-align: justify;">
+    <span style="font-size: 12pt; font-family: 'times new roman', times, serif; color: rgb(0, 0, 0);" data-mce-style="font-size: 12pt; font-family: 'times new roman', times, serif; color: #000000;">
     a/ wynagrodzenie notariusza w myśl §.12 Rozporządzenia Ministra
     Sprawiedliwości z dnia 28 czerwca 2004 roku w sprawie maksymalnych stawek
-    taksy notarialnej (tj. Dz. U. z 2018 r., poz. 272)
+    taksy notarialnej (tj. Dz. U. z 2018 r., poz. 272) w kwocie ... <span class="niepewne" >18,-</span> zł
 </span></p>
-<p style="text-align: justify;" data-mce-style="text-align: justify;"><span style="font-size: 12pt; font-family: 'times new roman', times, serif; color: rgb(0, 0, 0);" data-mce-style="font-size: 12pt; font-family: 'times new roman', times, serif; color: #000000;">
-    w kwocie ... <span class="niepewne" >18,-</span> zł
-</span></p>
-<p style="text-align: justify;" data-mce-style="text-align: justify;"><span style="font-size: 12pt; font-family: 'times new roman', times, serif; color: rgb(0, 0, 0);" data-mce-style="font-size: 12pt; font-family: 'times new roman', times, serif; color: #000000;">
+<p style="padding-left: 40px; text-align: justify;" data-mce-style="padding-left: 40px; text-align: justify;">
+    <span style="font-size: 12pt; font-family: 'times new roman', times, serif; color: rgb(0, 0, 0);" data-mce-style="font-size: 12pt; font-family: 'times new roman', times, serif; color: #000000;">
     b/ podatek od towarów i usług stawka 23% od kwoty podanej pod a/ zgodnie z
     ustawą z dnia 11 marca 2004 roku o podatku od towarów i usług (tj. Dz.U. z
-    2019r., poz.675 ze zm.) w kwocie.……................<span class="niepewne" >4,14</span> zł
+    2019r., poz.675 ze zm.) w kwocie <span class="niepewne" >4,14</span> zł
 </span></p>
 <p style="text-align: justify;" data-mce-style="text-align: justify;"><span style="font-size: 12pt; font-family: 'times new roman', times, serif; color: rgb(0, 0, 0);" data-mce-style="font-size: 12pt; font-family: 'times new roman', times, serif; color: #000000;">
-    razem ... <span class="niepewne" >22,14</span> zł
-</span></p>
-<p style="text-align: justify;" data-mce-style="text-align: justify;"><span style="font-size: 12pt; font-family: 'times new roman', times, serif; color: rgb(0, 0, 0);" data-mce-style="font-size: 12pt; font-family: 'times new roman', times, serif; color: #000000;">
-    słownie: <span class="niepewne" >dwadzieścia dwa złote czternaście groszy</span>.
+    razem ... <span class="niepewne" >22,14</span> zł słownie: <span class="niepewne" >dwadzieścia dwa złote czternaście groszy</span>.
 </span></p>
 <p style="text-align: justify;" data-mce-style="text-align: justify;"><span style="font-size: 12pt; font-family: 'times new roman', times, serif; color: rgb(0, 0, 0);" data-mce-style="font-size: 12pt; font-family: 'times new roman', times, serif; color: #000000;">
     {{ user.kancelaria.nazwa |upper }}

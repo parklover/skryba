@@ -78,11 +78,68 @@
 
         tinymce.init({
             selector: 'textarea.full-featured-non-premium',
-            plugins: 'print preview fullpage paste importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars emoticons yourPlugin',
+            plugins: 'spellchecker print preview fullpage paste importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars emoticons yourPlugin',
             imagetools_cors_hosts: ['picsum.photos'],
             extended_valid_elements: "script[src|async|defer|type|charset]",
             menubar: 'file edit view insert format tools table help',
-            toolbar: 'undo redo | bold italic underline strikethrough | fontselect fontsizeselect styleselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor backcolor removeformat | pagebreak | charmap emoticons | fullscreen  preview save print | insertfile image media template link anchor codesample | ltr rtl',
+            toolbar: 'spellchecker undo redo | bold italic underline strikethrough | fontselect fontsizeselect styleselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor backcolor removeformat | pagebreak | charmap emoticons | fullscreen  preview save print | insertfile image media template link anchor codesample | ltr rtl',
+            spellchecker_language: 'pl',
+            spellchecker_rpc_url: 'http://inzynierka.os{{ path('spellchecker_server') }}',
+            // spellchecker_callback: function (method, text, success, failure) {
+            //     console.log('dupa');
+            //     var words = text.match(this.getWordCharPattern());
+            //     console.log(words);
+            //     if (method === "spellcheck") {
+            //         var suggestions = {};
+            //         for (var i = 0; i < words.length; i++) {
+            //             suggestions[words[i]] = ["First", "Second"];
+            //         }
+            //         success({ words: suggestions, dictionary: [ ] });
+            //     } else if (method === "addToDictionary") {
+            //         // Add word to dictionary here
+            //         success();
+            //     }
+            // },
+            spellchecker_callback: function (method, text, success, failure) {
+                if (method === "spellcheck") {
+                    $.ajax({
+                        type: "POST",
+                        dataType: 'json',
+                        data: {
+                            lang: 'pl_PL',
+                            method: "spellcheck",
+                            text: text
+                        },
+                        url: "http://inzynierka.os{{ path('spellchecker_server') }}",
+                    }).done(function (response) {
+                        console.log(response);
+                        var words = $.parseJSON(response);
+                        var dupa = {
+                            "words": {
+                                "Repertorium": ["Repertorium123", "Repertorium321"],
+                                "DZIEDZICZENIA": ["dupa", "cycki"]
+                            }
+                        };
+                        success(words);
+                    });
+                    {#tinymce.util.JSONRequest.sendRPC({#}
+                    {#    url: "http://inzynierka.os{{ path('spellchecker_server') }}",#}
+                    {#    method: "spellcheck",#}
+                    {#    params: {#}
+                    {#        lang: this.getLanguage(),#}
+                    {#        words: text.match(this.getWordCharPattern())#}
+                    {#    },#}
+                    {#    success: function (result) {#}
+                    {#        success(result);#}
+                    {#    },#}
+                    {#    error: function (error, xhr) {#}
+                    {#        failure("Spellcheck error:" + xhr.status);#}
+                    {#    }#}
+                    {#});#}
+                } else {
+                    failure('Unsupported spellcheck method');
+                }
+            },
             content_style: '' +
                 '.lineheight2px { line-height: 2px; }' +
                 '.lineheight4px { line-height: 4px; }' +

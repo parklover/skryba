@@ -55,6 +55,21 @@ class PostepowanieSpadkoweType extends AbstractType
                 'prototype_name' => '__name__',
                 'mapped' => false
             ])
+            ->add('aktyStanuCywilnego', CollectionType::class, [
+                'label'=>false,
+                'entry_type'   => AktStanuCywilnegoType::class,
+                'allow_add' => true,
+                'allow_delete' => true,
+                'entry_options'=>[
+                    'by_reference'  => false,
+                    'label'=>false,
+                ],
+//                'prototype' => true,
+                'required'=>true,
+                'prototype' => true,
+                'prototype_name' => '__name__',
+                'mapped' => false
+            ])
             ->add('dataSmierci', DateType::class, [
                 'label' => 'Data śmierci: ',
                 'required'=>true,

@@ -85,6 +85,12 @@ class PostepowanieSpadkowe extends Sprawa
     protected $dokumenty;
 
     /**
+     * One Product has Many Features.
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\AktStanuCywilnego", mappedBy="postepowanieSpadkowe",cascade={"persist"})
+     */
+    protected $aktyStanuCywilnego;
+
+    /**
      * @ORM\Column(type="boolean")
      */
     protected $zmianaWlascicielaNieruchomosci=false;
@@ -393,6 +399,20 @@ class PostepowanieSpadkowe extends Sprawa
         $this->dokumenty = $dokumenty;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getAktyStanuCywilnego()
+    {
+        return $this->aktyStanuCywilnego;
+    }
 
+    /**
+     * @param mixed $aktyStanuCywilnego
+     */
+    public function setAktyStanuCywilnego($aktyStanuCywilnego)
+    {
+        $this->aktyStanuCywilnego = $aktyStanuCywilnego;
+    }
 
 }

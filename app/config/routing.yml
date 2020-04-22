@@ -1,32 +1,8 @@
 app:
     resource: '@AppBundle/Controller/'
     type: annotation
-
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
     prefix:   /panel
-
 fos_js_routing:
     resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
-
-### Logowania
-#app_switch_user:
-#    path: /switch/user
-#    defaults: { _controller: AppBundle:Security:switchUser }
-#app_login:
-#    path: /logowanie/
-#    defaults: { _controller: AppBundle:Security:login }
-#app_login_check:
-#    path: /logowanie/check/
-#    defaults: { _controller: AppBundle:Security:loginCheck }
-#app_login_logout:
-#    path: /wyloguj
-#    defaults: { _controller: AppBundle:Security:logout }
-#app_register:
-#    path: /zarejestruj/
-#    defaults: { _controller: AppBundle:Security:register }
-#app_profil:
-#    path: /profil/
-#    defaults: { _controller: AppBundle:Klient:profil }
-
-

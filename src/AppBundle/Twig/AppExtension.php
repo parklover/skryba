@@ -22,6 +22,7 @@ class AppExtension extends AbstractExtension
             new TwigFilter('ulica', [$this, 'ulica']),
             new TwigFilter('imieMeskie', [$this, 'imieMeskie']),
             new TwigFilter('imieZenskie', [$this, 'imieZenskie']),
+            new TwigFilter('miasto', [$this, 'miasto']),
         ];
     }
 
@@ -37,6 +38,19 @@ class AppExtension extends AbstractExtension
             return substr($nazwaUlicy, 0,-1)."ej ".$ulicaTablica[1];
         }
         return $ulica;
+    }
+
+    public function miasto($miasto){
+
+        $koncowkaLeksykalna1 = substr($miasto, -1);
+        $koncowkaLeksykalna2 = substr($miasto, -2);
+        if($koncowkaLeksykalna1 == "ń"){
+            return substr($miasto, 0,-1)."niu";
+        }
+        if($koncowkaLeksykalna2 == "ów"){
+            return substr($miasto, 0,-2)."owie";
+        }
+        return $miasto;
     }
 
     public function imieZenskie($imieZenskie){

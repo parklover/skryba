@@ -66,6 +66,7 @@ $(document).on('change', '.sprawdzCzyZona', function(){
 
     $spadkobiercy.each(function() {
         var pokrewienstwo = $(this).find('select[name*=stopienPokrewienstwa]').val();
+        var pesel = $(this).find('input[name*=pesel]').val();
         console.log($(this));
         console.log($(this).find('select[name*=stopienPokrewienstwa]'));
         console.log(pokrewienstwo);
@@ -74,15 +75,27 @@ $(document).on('change', '.sprawdzCzyZona', function(){
         }
         if (pokrewienstwo == 5 || pokrewienstwo == 6) {
             czyDzieci = true;
-            $(this).children('td.numerAktuUrodzenia').children('input').removeAttr('disabled');
+            if($('.collection-element-akt[data-pesel="'+pesel+'"]').length < 1){
+                addTagFormAkty($('.collection-akty'), 1, pesel, $(this).find('input[name*=imie]').val()+" "+$(this).find('input[name*=nazwisko]').val());
+            }
+            // $(this).children('td.numerAktuUrodzenia').children('input').removeAttr('disabled');
+        }
+        else{
+            if($('.collection-element-akt[data-pesel="'+pesel+'"]').length > 1){
+                $('.collection-element-akt[data-pesel="'+pesel+'"]').attr
+            }
         }
     });
 
     if(czyMalzonek){
-        $('.akt_malzenstwa').show();
+        if(!$('.collection-element-akt[data-malzonek="1"]').length < 1){
+            addTagFormAkty($('.collection-akty'), 2, pesel, $(this).find('input[name*=imie]').val()+" "+$(this).find('input[name*=nazwisko]').val());
+        }
     }
     else{
-        $('.akt_malzenstwa').hide();
+        if($('.collection-element-akt[data-malzonek="1"]').length < 1){
+            $('.collection-element-akt[data-malzonek="1"]').remove();
+        }
     }
 
     if (czyDzieci) {
@@ -99,7 +112,7 @@ $(document).on('focusout', '.pesel-validate', function(){
     var pesel = $(this).val();
     // var wiersz = $(this).parents('tr').attr('data-id');
     var $tr= $(this).parents('tr');
-    if(pesel !== "") {
+    if(pesel !== "" && pesel.length === 11) {
         console.log(pesel);
         $.ajax({
             type: "POST",
@@ -131,6 +144,9 @@ $(document).on('focusout', '.pesel-validate', function(){
                 $tr.children('.pesel').children('input[name*=pesel]').val('');
             }
         });
+    }else {
+        swal('Uwaga!', 'Podany pesel jest niepoprawny!', 'warning');
+        $tr.children('.pesel').children('input[name*=pesel]').val('');
     }
 });
 
@@ -278,6 +294,25 @@ function addTagForm($collectionHolder) {
         autoclose: true
     });
     przeliczRow();
+}
+
+function addTagFormAkty($collectionHolder, typ, pesel, nazwa) {
+    console.log("DZIALA");
+    var prototype = $collectionHolder.data('prototype');
+    console.log(prototype);
+    var index =($collectionHolder.data('index'))?$collectionHolder.data('index'):$collectionHolder.children('.collection-element-akt').length;
+    console.log(index);
+    var newForm = prototype.split($collectionHolder.attr('data-prototype-name')).join(index);
+    console.log(newForm);
+    $collectionHolder.data('index', index + 1);
+    $collectionHolder.find('.collection-add-akty').last().before(newForm);
+
+    $collectionHolder.find('.collection-element-akt').last().find('input[name*=typ]').val(typ);
+    $collectionHolder.find('.collection-element-akt').last().find('input[name*=nazwa]').val(nazwa);
+    $collectionHolder.find('.collection-element-akt').last().attr('data-pesel', pesel)
+    if(typ === 2){
+        $collectionHolder.find('.collection-element-akt').last().attr('data-malzonek', 1)
+    }
 }
 
 $(document).on('click',"#generujDrzewo",function(e){

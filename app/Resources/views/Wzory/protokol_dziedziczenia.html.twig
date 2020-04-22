@@ -189,31 +189,28 @@
 {#                wydanego przez Urząd Stanu Cywilnego w <u>miejsce wydania dokumentu(odmiana: gdzie? Np. w Szamotułach)</u> dnia#}
 {#                <u>dwudziestego czwartego grudnia dwa tysiące osiemnastego (24.XII.2018)(data wydania dokumentu)</u> roku zgodny z treścią aktu zgonu o oznaczeniu:#}
 {#                <u>3024073/00/AZ/2018/312123 (numer dokumentu)(-ten dokument jest powoływany, jeśli dziedziczy żona)</u>.</span></p>#}
-
 {#            {% endif %}#}
 {#        {% endif %}#}
 {#    {% endfor %}#}
 
-{#    {% for spadkobiorca in spadkobiorcy %}#}
-{#        {% if spadkobiorca.stopienPokrewienstwa == 5 or spadkobiorca.stopienPokrewienstwa == 6 %}#}
-{#            {{ spadkobiorca.imie }} {{ spadkobiorca.nazwisko }}#}
-{#            <p><span style="font-size: 12pt; font-family: 'times new roman', times, serif; color: rgb(0, 0, 0);" data-mce-style="font-size: 12pt; font-family: 'times new roman', times, serif; color: #000000;">- odpisu skróconego aktu urodzenia <u>Imię (imiona) i Nazwisko kolejnego </u><u>spadkobiercy</u> wydanego przez Urząd Stanu Cywilnego w <u>miejsce wydania dokumentu(odmiana: gdzie?#}
-{#                Np. w Szamotułach)</u> dnia <u>dwudziestego czwartego grudnia dwa tysiące osiemnastego (24.XII.2018)(data wydania dokumentu)</u>#}
-{#            roku zgodny z treścią aktu zgonu o oznaczeniu: <u>3024073/00/AZ/2018/312123 (numer dokumentu)(- ten dokument jest powoływany, jeśli dziedziczy syn/c&oacute;rka)</u>.</span></p>#}
+    {% for akt in aktyStanuCywilnego %}
+        {% if akt.type == 1 %}
+            {{ spadkobiorca.imie }} {{ spadkobiorca.nazwisko }}
+            <p><span style="font-size: 12pt; font-family: 'times new roman', times, serif; color: rgb(0, 0, 0);" data-mce-style="font-size: 12pt; font-family: 'times new roman', times, serif; color: #000000;">- odpisu skróconego aktu urodzenia <u>Imię (imiona) i Nazwisko kolejnego </u><u>spadkobiercy</u> wydanego przez Urząd Stanu Cywilnego w <u>miejsce wydania dokumentu(odmiana: gdzie?
+                Np. w Szamotułach)</u> dnia <u>dwudziestego czwartego grudnia dwa tysiące osiemnastego (24.XII.2018)(data wydania dokumentu)</u>
+            roku zgodny z treścią aktu zgonu o oznaczeniu: <u>3024073/00/AZ/2018/312123 (numer dokumentu)(- ten dokument jest powoływany, jeśli dziedziczy syn/c&oacute;rka)</u>.</span></p>
+        {% elseif akt.type == 2 %}
 
-{#        {% else %}#}
-{#    {% endfor %}#}
+            <p><span style="font-size: 12pt; font-family: 'times new roman', times, serif; color: rgb(0, 0, 0);" data-mce-style="font-size: 12pt; font-family: 'times new roman', times, serif; color: #000000;">- odpisu skróconego aktu małżeństwa Imię (imiona) i nazwisko męża c&oacute;rki i Imię i Nazwisko panieńskie c&oacute;rki spadkodawcy) wydanego przez Urząd Stanu Cywilnego w
+            <u>miejsce wydania dokumentu(odmiana: gdzie? Np. w Szamotułach)</u> dnia <u>dwudziestego czwartego grudnia dwa tysiące osiemnastego (24.XII.2018)(data wydania dokumentu)</u>
+            roku zgodny z treścią aktu zgonu o oznaczeniu: <u>3024073/00/AZ/2018/312123 (numer dokumentu)(ten dokument jest powoływany jeśli dziedziczy c&oacute;rka,
+                kt&oacute;ra zmieniła nazwisko w wyniku ślubu) </u>.</span></p>
 
-{#    {% for spadkobiorca in spadkobiorcy %}#}
-{#        {% if spadkobiorca.stopienPokrewienstwa == 5 %}#}
+        {% elseif akt.type == 2 %}
 
-{#            <p><span style="font-size: 12pt; font-family: 'times new roman', times, serif; color: rgb(0, 0, 0);" data-mce-style="font-size: 12pt; font-family: 'times new roman', times, serif; color: #000000;">- odpisu skr&oacute;conego aktu małżeństwa Imię (imiona) i nazwisko męża c&oacute;rki i Imię i Nazwisko panieńskie c&oacute;rki spadkodawcy) wydanego przez Urząd Stanu Cywilnego w#}
-{#            <u>miejsce wydania dokumentu(odmiana: gdzie? Np. w Szamotułach)</u> dnia <u>dwudziestego czwartego grudnia dwa tysiące osiemnastego (24.XII.2018)(data wydania dokumentu)</u>#}
-{#            roku zgodny z treścią aktu zgonu o oznaczeniu: <u>3024073/00/AZ/2018/312123 (numer dokumentu)(ten dokument jest powoływany jeśli dziedziczy c&oacute;rka,#}
-{#                kt&oacute;ra zmieniła nazwisko w wyniku ślubu) </u>.</span></p>#}
 
-{#        {% else %}#}
-{#    {% endfor %}#}
+        {% endif %}
+    {% endfor %}
 
 <p style="text-align: justify;" data-mce-style="text-align: justify;">
         4. {% if stawajacy | length > 1 %}Stawający{% else %}{% if stawajacy[0].plec == 1 %}Stawająca{% else %}Stawający{% endif %}{% endif %}

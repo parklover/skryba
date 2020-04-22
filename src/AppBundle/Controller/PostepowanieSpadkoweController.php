@@ -2,11 +2,13 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\AktStanuCywilnego;
 use AppBundle\Entity\Dokument;
 use AppBundle\Entity\Kancelaria;
 use AppBundle\Entity\PostepowanieSpadkowe;
 use AppBundle\Entity\OsobaFizyczna;
 use AppBundle\Entity\Sprawa;
+use AppBundle\Form\AktStanuCywilnegoType;
 use AppBundle\Form\PostepowanieSpadkoweType;
 //use AppBundle\Form\DokumentType;
 use AppBundle\Form\EditorType;
@@ -114,6 +116,19 @@ class PostepowanieSpadkoweController extends Controller
             }
 
             $this->liczUdzialSpadku($spadkobiercy);
+
+            $aktyStanuCywilnego = new ArrayCollection();
+            foreach($form->get('aktyStanuCywilnego')->getData() as $akt){
+                $aktStanuCywilnego = new AktStanuCywilnego();
+                $aktStanuCywilnego->setNazwa($akt['nazwa']);
+                $aktStanuCywilnego->setDataWydania($akt['dataWydania']);
+                $aktStanuCywilnego->setPostepowanieSpadkowe($postepowanieSpadkowe);
+                $aktStanuCywilnego->setNumer($akt['numer']);
+                $aktStanuCywilnego->setUrzad($akt['urzad']);
+                $aktStanuCywilnego->setTyp($akt['typ']);
+                $em->persist($aktStanuCywilnego);
+                $aktyStanuCywilnego->add($aktStanuCywilnego);
+            }
 //
 //            dump($stawajacy);
 //            dump($stawajacy);
@@ -158,7 +173,8 @@ class PostepowanieSpadkoweController extends Controller
                 'user' => $user,
                 'spadkobiorcy' => $spadkobiercy,
                 'zgoniarz' => $zgoniarz,
-                'stawajacy' => $stawajacy
+                'stawajacy' => $stawajacy,
+                'aktyStanuCywilnego' => $aktyStanuCywilnego
             ]);
 
             foreach($stawajacy as $spadkobierca){
