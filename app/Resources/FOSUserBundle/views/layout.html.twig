@@ -54,13 +54,14 @@
         <div class="panel">
             <div class="panel-body">
                 <div class="brand">
-                    <img class="brand-img" src="{{ asset('assets/img/skryba.jpg') }}" alt="..." style="width: 100%;">
+{#                    <img class="brand-img" src="{{ asset('assets/img/skryba.jpg') }}" alt="..." style="width: 100%;">#}
+                    <span class="navbar-brand-text hidden-xs-down" style="font-family: 'Josefin Sans', sans-serif; letter-spacing: 1px; line-height: 1.1; font-size: 36px; color: black;"> Skryba</span>
                 </div>
                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                     <br/>
                     {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}
                     <br/>
-                    <b><a href="{{ path('panel') }}">
+                    <b><a href="{{ path('lista_spraw') }}">
                         Przejdź do panelu
                     </a></b> lub
                     <a href="{{ path('fos_user_security_logout') }}">

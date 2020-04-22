@@ -48,9 +48,9 @@ class AppExtension extends AbstractExtension
         $koncowkaLeksykalna2 = substr($miasto, -3);
         $koncowkaLeksykalna4 = substr($miasto, -5);
 
-        dump($miasto);
-        dump($koncowkaLeksykalna1);
-        dump($koncowkaLeksykalna2);
+//        dump($miasto);
+//        dump($koncowkaLeksykalna1);
+//        dump($koncowkaLeksykalna2);
 
         if($koncowkaLeksykalna1 == "ń"){
             return substr($miasto, 0,-2)."niu";

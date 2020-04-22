@@ -1,25 +1,3 @@
-{#<!DOCTYPE html>#}
-{#<html class="no-js css-menubar" lang="en">#}
-{#<head>#}
-{#    <meta charset="utf-8">#}
-{#    <meta http-equiv="X-UA-Compatible" content="IE=edge">#}
-{#    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">#}
-{#    <meta name="description" content="bootstrap admin template">#}
-{#    <meta name="author" content="">#}
-{#    <style>#}
-
-{#    </style>#}
-{#</head>#}
-{#<body>#}
-{#<div style="float: left;"><h1>TO JEST STRONA GŁÓWNA</h1></div>#}
-{#<div style="float: right;"><h6><a href="{{ path('lista_spraw') }}">PRZEJDŹ DO PANELU</a></h6></div>#}
-{#<div style="padding-top: 100px;">#}
-{#    <img class="brand-img" src="{{ asset('assets/img/skryba.jpg') }}" alt="..." style="max-width: 100%; max-height: 100%;">#}
-{#</div>#}
-
-{#</body>#}
-{#</html>#}
-
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
@@ -31,12 +9,6 @@
 
     <link rel="stylesheet" id="bootstrap-css" href="{{ asset('assets/homepage/css/bootstrap/bootstrap.min.css') }}" type="text/css" media="all">
     <link rel="stylesheet" id="style-css" href="{{ asset('assets/homepage/css/style.css') }}" type="text/css" media="all">
-{#    <link rel="stylesheet" id="wp-block-library-css" href="https://demo.athemes.com/astrid/wp-includes/css/dist/block-library/style.min.css?ver=5.3.2" type="text/css" media="all">#}
-{#    <link rel="stylesheet" id="wc-block-style-css" href="https://demo.athemes.com/astrid/wp-content/plugins/woocommerce/packages/woocommerce-blocks/build/style.css?ver=2.4.5" type="text/css" media="all">#}
-{#    <link rel="stylesheet" id="contact-form-7-css" href="https://demo.athemes.com/astrid/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=5.1.6" type="text/css" media="all">#}
-{#    <link rel="stylesheet" id="woocommerce-layout-css" href="https://demo.athemes.com/astrid/wp-content/plugins/woocommerce/assets/css/woocommerce-layout.css?ver=3.8.1" type="text/css" media="all">#}
-{#    <link rel="stylesheet" id="woocommerce-smallscreen-css" href="https://demo.athemes.com/astrid/wp-content/plugins/woocommerce/assets/css/woocommerce-smallscreen.css?ver=3.8.1" type="text/css" media="only screen and (max-width: 768px)">#}
-{#    <link rel="stylesheet" id="woocommerce-general-css" href="https://demo.athemes.com/astrid/wp-content/plugins/woocommerce/assets/css/woocommerce.css?ver=3.8.1" type="text/css" media="all">#}
     <style id="woocommerce-inline-inline-css" type="text/css">
         .woocommerce form .form-row .required { visibility: visible; }
     </style>
@@ -68,9 +40,6 @@
     <script type="text/javascript" src="https://demo.athemes.com/astrid/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1"></script>
     <script src="{{ asset('assets/homepage/js/scripts.js') }}"></script>
     <script src="{{ asset('assets/homepage/js/main.js') }}"></script>
-{#    <link rel="https://api.w.org/" href="https://demo.athemes.com/astrid/wp-json/">#}
-{#    <link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://demo.athemes.com/astrid/xmlrpc.php?rsd">#}
-{#    <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://demo.athemes.com/astrid/wp-includes/wlwmanifest.xml">#}
 </head>
 
 <body class="home page-template page-template-page-templates page-template-page_widgetized page-template-page-templatespage_widgetized-php page page-id-80 theme-astrid woocommerce-js elementor-default">
@@ -93,13 +62,13 @@
                 <div class="menu-menu-container">
                     <ul id="primary-menu" class="menu">
                         <li id="menu-item-200" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-has-children menu-item-200">
-                            <a href="#" aria-current="page">Home</a>
+                            <a href="#" aria-current="page">Strona główna</a>
                         </li>
                         <li id="menu-item-267" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-267">
-                            <a href="#">About</a>
+                            <a href="#">O nas</a>
                         </li>
                         <li id="menu-item-290" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-290">
-                            <a href="{{ path('lista_spraw') }}">Login</a>
+                            <a href="{{ path('lista_spraw') }}">Zaloguj</a>
                         </li>
                     </ul>
                 </div>
@@ -110,10 +79,10 @@
     <div class="header-image">
         <div class="header-info" style="opacity: 1;">
             <div class="container">
-                <h4 class="header-subtext">Welcome to</h4><br />
+                <h4 class="header-subtext">Witaj w</h4><br />
                 <h3 class="header-text">Skryba</h3>
 {#                <h3 class="header-text">Welcome to <br />Skryba</h3>#}
-                <a class="button header-button" href="#primary">EXPLORE</a>
+                <a class="button header-button" href="#primary">Zobacz więcej</a>
             </div>
         </div>
         <img class="large-header" src="https://demo.athemes.com/astrid/wp-content/themes/astrid/images/header.jpg" width="1920" alt="Skryba">
@@ -126,7 +95,7 @@
                 <main id="main" class="site-main" role="main">
                     <section data-color="noinherit" style="padding-top:100px;padding-bottom:100px;" id="atframework_services-3" class="widget atframework_services_widget">
                         <div class="atblock container">
-                            <h2 class="widget-title" style=""><span class="title-decoration"></span>SERVICES</h2>
+                            <h2 class="widget-title" style=""><span class="title-decoration"></span>USŁUGI</h2>
                             <div class="service-area clearfix">
                                 <div class="service astrid-3col">
                                     <div class="service-thumb">

@@ -26,7 +26,7 @@ security:
 
             logout:
                 path:   /panel/logout
-                target: panel
+                target: /
                 invalidate_session: false
             remember_me:
                 secret:      "%secret%"
