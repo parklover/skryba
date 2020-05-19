@@ -74,6 +74,7 @@
                 {{ form_row(form.miejsceWydaniaAktuZgonu) }}
                 {{ form_row(form.dataWydaniaAktuZgonu) }}
                 {{ form_row(form.numerAktuZgonu) }}
+{#                {{ form_widget(form.zgoniarz.zmianaWlascicielaNieruchomosci) }}#}
             <div class="form-group row">
                 <label class="col-xs-12 col-md-4 form-control-label form-control-sm col-sm-2 control-label" style="text-align: left;">Spadkodawca: </label>
                 <table class="table table-bordered">
@@ -296,6 +297,7 @@
     <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
     <script>
         $(document).ready(function() {
+            $('#postepowanie_spadkowe_zmianaWlascicielaNieruchomosci').parent().parent().parent().hide();
             addTagForm($('.collection'));
             // addTagFormAkty($('.collection-akty'), 1, "TWOJA STARA ROBI SALTO");
             // addTagFormAkty($('.collection-akty'), 1, "TWOJA STARA ROBI SALTO 2");

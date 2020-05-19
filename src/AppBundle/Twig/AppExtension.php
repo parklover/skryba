@@ -267,7 +267,7 @@ class AppExtension extends AbstractExtension
 //        dump($i);
 
         if( $i > 1 && $digits[1] > 1 )
-            $string .= $dziesiatki[$digits[1]] . ' ';
+            $string .= $dziesiatki[$digits[1]] . ' ' . $jednosci[$digits[0]];
         elseif( $i > 1 && $digits[1] == 1 )
             $string .= $nastki[$digits[0]] . ' ';
         else

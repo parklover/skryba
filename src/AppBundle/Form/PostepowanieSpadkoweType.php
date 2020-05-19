@@ -112,7 +112,8 @@ class PostepowanieSpadkoweType extends AbstractType
 //            ])
             ->add('zmianaWlascicielaNieruchomosci',CheckboxType::class, [
                 'label'=>'Czy zachodzi zmiana właściciela nieruchomości? ',
-                'required'=>false
+                'required'=>false,
+                'mapped' => false
             ])
             ->add('miastoNieruchomosci', TextType::class, [
                 'label'  => 'Miasto nieruchomości: ',
