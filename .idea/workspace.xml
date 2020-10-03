@@ -1,60 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d8c30d81-9337-42c1-a53c-06f93256b68c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Resources/FOSUserBundle/config/routing/all.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Resources/FOSUserBundle/config/routing/change_password.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Resources/FOSUserBundle/config/routing/group.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Resources/FOSUserBundle/config/routing/profile.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Resources/FOSUserBundle/config/routing/registration.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Resources/FOSUserBundle/config/routing/resetting.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Resources/FOSUserBundle/config/routing/security.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/ChangePassword/changePassword.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/ChangePassword/changePassword_content.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Group/edit.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Group/edit_content.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Group/list.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Group/list_content.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Group/new.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Group/new_content.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Group/show.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Group/show_content.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Profile/edit.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Profile/edit_content.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Profile/show.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Profile/show_content.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Registration/checkEmail.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Registration/confirmed.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Registration/email.txt.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Registration/register.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Registration/register_content.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Resetting/checkEmail.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Resetting/email.txt.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Resetting/passwordAlreadyRequested.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Resetting/request.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Resetting/request_content.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Resetting/reset.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Resetting/reset_content.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/Security/login.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Resources/FOSUserBundle/views/layout.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/AppBundle/Controller/AppController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/AppBundle/Controller/CommonController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/AppBundle/Controller/SecurityController.php" afterDir="false" />
+    <list default="true" id="d8c30d81-9337-42c1-a53c-06f93256b68c" name="Default Changelist" comment="XD">
       <change beforePath="$PROJECT_DIR$/.idea/inzynierka.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inzynierka.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/AppKernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/AppKernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Resources/views/default/editor.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/default/editor.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Resources/views/default/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/default/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Resources/views/layout.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/layout.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/config/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/config.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/config/routing.yml" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/routing.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/config/security.yml" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/security.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/views/Wzory/protokol_dziedziczenia.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/Wzory/protokol_dziedziczenia.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppBundle/Twig/AppExtension.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Twig/AppExtension.php" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -70,6 +23,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -117,45 +71,53 @@
       <path value="$PROJECT_DIR$/vendor/phpoffice/common" />
       <path value="$PROJECT_DIR$/vendor/sensiolabs/security-checker" />
       <path value="$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle" />
+      <path value="$PROJECT_DIR$/vendor/willdurand/jsonp-callback-validator" />
+      <path value="$PROJECT_DIR$/vendor/friendsofsymfony/jsrouting-bundle" />
     </include_path>
   </component>
   <component name="ProjectId" id="1WhnX55MfIPBG11W02IWQYBhIDK" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Resources/FOSUserBundle" />
+    <property name="last_opened_file_path" value="C:/xampp/htdocs/asom-2.0" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\wamp64\www\inzynierka\inzynierka\app\Resources\FOSUserBundle" />
-      <recent name="C:\wamp64\www\inzynierka\inzynierka\app\Resources\FOSUserBundle\views" />
-      <recent name="C:\wamp64\www\inzynierka\inzynierka\app\Resources" />
-      <recent name="C:\wamp64\www\inzynierka\inzynierka\src\AppBundle\Controller" />
-      <recent name="C:\wamp64\www\inzynierka\inzynierka\web\assets\panel" />
+      <recent name="C:\wamp64\www\inzynierka\skryba\src\AppBundle\Form" />
+      <recent name="C:\wamp64\www\inzynierka\skryba\src\AppBundle\Entity" />
+      <recent name="C:\wamp64\www\inzynierka\skryba\src\AppBundle\Dicts" />
+      <recent name="C:\wamp64\www\inzynierka\skryba\src\AppBundle\Controller\plugins" />
+      <recent name="C:\wamp64\www\inzynierka\skryba\web\assets\homepage\css" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\wamp64\www\inzynierka\inzynierka\app\Resources\FOSUserBundle\views" />
-      <recent name="C:\wamp64\www\inzynierka\inzynierka\app\Resources" />
-      <recent name="C:\wamp64\www\inzynierka\inzynierka\app\Resources\views" />
-      <recent name="C:\wamp64\www\inzynierka\inzynierka\web\assets\panel" />
-      <recent name="C:\wamp64\www\inzynierka\inzynierka\web\assets\css" />
+      <recent name="C:\wamp64\www\inzynierka\skryba\src\AppBundle\Plugin" />
+      <recent name="C:\wamp64\www\inzynierka\skryba\src\AppBundle\Controller" />
+      <recent name="C:\wamp64\www\inzynierka\skryba\web\plugins" />
+      <recent name="C:\wamp64\www\inzynierka\skryba\src\AppBundle" />
+      <recent name="C:\wamp64\www\inzynierka\skryba\web\assets\htmlToDocx" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
+  <component name="ServiceViewManager">
+    <option name="showServicesTree" value="false" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -188,6 +150,46 @@
       <workItem from="1579610732454" duration="1977000" />
       <workItem from="1580729417498" duration="6147000" />
       <workItem from="1580739675137" duration="7514000" />
+      <workItem from="1581095297280" duration="31203000" />
+      <workItem from="1581243927104" duration="20688000" />
+      <workItem from="1581423846994" duration="597000" />
+      <workItem from="1583430356956" duration="2457000" />
+      <workItem from="1583433382547" duration="31007000" />
+      <workItem from="1583781123654" duration="10039000" />
+      <workItem from="1584099283630" duration="382000" />
+      <workItem from="1584099683602" duration="843000" />
+      <workItem from="1584103876034" duration="106000" />
+      <workItem from="1584104392809" duration="1976000" />
+      <workItem from="1584117273068" duration="634000" />
+      <workItem from="1584175057463" duration="939000" />
+      <workItem from="1584177741089" duration="11551000" />
+      <workItem from="1584302890991" duration="3483000" />
+      <workItem from="1584354620027" duration="31531000" />
+      <workItem from="1584558229040" duration="4547000" />
+      <workItem from="1584997932967" duration="1292000" />
+      <workItem from="1586179166278" duration="7206000" />
+      <workItem from="1586349441187" duration="3153000" />
+      <workItem from="1586419816580" duration="599000" />
+      <workItem from="1586854532996" duration="1797000" />
+      <workItem from="1587021942778" duration="5994000" />
+      <workItem from="1587114916203" duration="3015000" />
+      <workItem from="1587220199547" duration="24444000" />
+      <workItem from="1587381616401" duration="810000" />
+      <workItem from="1587411591469" duration="4143000" />
+      <workItem from="1587460047288" duration="15265000" />
+      <workItem from="1587488299941" duration="31222000" />
+      <workItem from="1587634817578" duration="1274000" />
+      <workItem from="1587724372774" duration="672000" />
+      <workItem from="1588266980795" duration="2169000" />
+      <workItem from="1588678867178" duration="2765000" />
+      <workItem from="1588752548279" duration="1660000" />
+      <workItem from="1588842297754" duration="623000" />
+      <workItem from="1588932313035" duration="2602000" />
+      <workItem from="1589202100270" duration="822000" />
+      <workItem from="1589275108475" duration="680000" />
+      <workItem from="1589446922686" duration="627000" />
+      <workItem from="1589531385428" duration="1235000" />
+      <workItem from="1589822414766" duration="18189000" />
     </task>
     <task id="LOCAL-00001" summary="XD">
       <created>1580731794459</created>
@@ -203,7 +205,154 @@
       <option name="project" value="LOCAL" />
       <updated>1580731869407</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="XD">
+      <created>1581169043851</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1581169043851</updated>
+    </task>
+    <task id="LOCAL-00004" summary="XD">
+      <created>1581169251962</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1581169251962</updated>
+    </task>
+    <task id="LOCAL-00005" summary="XD">
+      <created>1581185787498</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1581185787498</updated>
+    </task>
+    <task id="LOCAL-00006" summary="XD">
+      <created>1581186020717</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1581186020717</updated>
+    </task>
+    <task id="LOCAL-00007" summary="XD">
+      <created>1581244643061</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1581244643061</updated>
+    </task>
+    <task id="LOCAL-00008" summary="XD">
+      <created>1583448417642</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1583448417642</updated>
+    </task>
+    <task id="LOCAL-00009" summary="XD">
+      <created>1583786514740</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1583786514740</updated>
+    </task>
+    <task id="LOCAL-00010" summary="XD">
+      <created>1583786951981</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1583786951981</updated>
+    </task>
+    <task id="LOCAL-00011" summary="XD">
+      <created>1583789084660</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1583789084660</updated>
+    </task>
+    <task id="LOCAL-00012" summary="XD">
+      <created>1583789172367</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1583789172367</updated>
+    </task>
+    <task id="LOCAL-00013" summary="XD">
+      <created>1583791415940</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1583791415940</updated>
+    </task>
+    <task id="LOCAL-00014" summary="XD">
+      <created>1586188750490</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1586188750490</updated>
+    </task>
+    <task id="LOCAL-00015" summary="XD">
+      <created>1586189430303</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1586189430303</updated>
+    </task>
+    <task id="LOCAL-00016" summary="XD">
+      <created>1587309540543</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1587309540543</updated>
+    </task>
+    <task id="LOCAL-00017" summary="XD">
+      <created>1587310199523</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1587310199523</updated>
+    </task>
+    <task id="LOCAL-00018" summary="XD">
+      <created>1587547241989</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1587547241989</updated>
+    </task>
+    <task id="LOCAL-00019" summary="XD">
+      <created>1587547596062</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1587547596062</updated>
+    </task>
+    <task id="LOCAL-00020" summary="XD">
+      <created>1587564712371</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1587564712371</updated>
+    </task>
+    <task id="LOCAL-00021" summary="XD">
+      <created>1587574968357</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1587574968357</updated>
+    </task>
+    <task id="LOCAL-00022" summary="XD">
+      <created>1587579364127</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1587579364127</updated>
+    </task>
+    <task id="LOCAL-00023" summary="XD">
+      <created>1589904660964</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1589904660964</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -221,10 +370,96 @@
         </entry>
       </map>
     </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <MESSAGE value="XD" />
     <option name="LAST_COMMIT_MESSAGE" value="XD" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="-1202" y="323" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1587474095872">
+      <screen x="-1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-1202" y="323" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1587474095872" />
+    <state x="-1167" y="236" key="#com.intellij.ide.util.MemberChooser" timestamp="1587563460223">
+      <screen x="-1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-1167" y="236" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1587563460223" />
+    <state x="-1920" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1584189513841">
+      <screen x="-1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-1920" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1584189513841" />
+    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1587471068033">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-1230" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1587469352945" />
+    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1587471068033" />
+    <state x="-1427" y="114" key="CommitChangelistDialog2" timestamp="1589904659735">
+      <screen x="-1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-1427" y="114" key="CommitChangelistDialog2/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1589904659735" />
+    <state x="-1180" y="275" key="FileChooserDialogImpl" timestamp="1589826237637">
+      <screen x="-1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-1180" y="275" key="FileChooserDialogImpl/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1589826237637" />
+    <state x="-1229" y="230" key="RollbackChangesDialog" timestamp="1587579356395">
+      <screen x="-1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-1229" y="230" key="RollbackChangesDialog/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1587579356395" />
+    <state x="-1427" y="92" key="SettingsEditor" timestamp="1584105151435">
+      <screen x="-1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-1427" y="92" key="SettingsEditor/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1584105151435" />
+    <state x="-1368" y="253" key="Vcs.Push.Dialog.v2" timestamp="1589904666097">
+      <screen x="-1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-1368" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1589904666097" />
+    <state x="-1264" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1589822414389">
+      <screen x="-1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-1264" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1589822414389" />
+    <state x="656" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1589532472260" />
+    <state x="-1315" y="135" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1587467062565">
+      <screen x="-1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-1315" y="135" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1587467062565" />
+    <state x="-1151" y="436" width="382" height="167" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1584560362357">
+      <screen x="-1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-1151" y="436" width="382" height="167" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1584560362357" />
+    <state x="-1938" y="184" width="1487" height="796" maximized="true" key="dock-window-1" timestamp="1584432010082">
+      <screen x="-1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-1938" y="184" width="1487" height="796" maximized="true" key="dock-window-1/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1584432010082" />
+    <state x="0" y="0" width="1582" height="796" maximized="true" key="dock-window-2" timestamp="1584471320461">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="0" y="0" width="1582" height="796" maximized="true" key="dock-window-2/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1584471320461" />
+    <state x="-1095" y="159" width="898" height="606" key="find.popup" timestamp="1589827047382">
+      <screen x="-1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-1095" y="159" width="898" height="606" key="find.popup/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1589827047382" />
+    <state x="-1304" y="240" key="run.anything.popup" timestamp="1587232611294">
+      <screen x="-1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-1304" y="240" key="run.anything.popup/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1587232611294" />
+    <state x="-1297" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1587503272222">
+      <screen x="-1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-1297" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1587503272222" />
   </component>
 </project>

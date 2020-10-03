@@ -25,7 +25,13 @@ class AppExtension extends AbstractExtension
             new TwigFilter('nazwiskoMeskieDopelniacz', [$this, 'nazwiskoMeskieDopelniacz']),
             new TwigFilter('imieZenskie', [$this, 'imieZenskie']),
             new TwigFilter('miasto', [$this, 'miasto']),
+            new TwigFilter('indexLiterka', [$this, 'indexLiterka']),
         ];
+    }
+
+    public function indexLiterka($indexLiterka){
+        $literka = ord('a') + $indexLiterka;
+        return chr($literka);
     }
 
     public function ulica($ulica){

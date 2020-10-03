@@ -378,25 +378,20 @@
                 <p style="text-align: justify;" data-mce-style="text-align: justify;" class="lineheight28px">
                     <span style="font-size: 14pt; font-family: 'times new roman', times, serif; color: rgb(0, 0, 0);"
                           data-mce-style="font-size: 14pt; font-family: 'times new roman', times, serif; color: #000000;">
-                        c/ odpis skr&oacute;cony aktu małżeństwa {{ zgoniarz.imie }} {{ zgoniarz.nazwisko }} oraz {{ spadkobiorca.imie }} {{ spadkobiorca.nazwisko }}
-{#                        <u>Imię i nazwisko spadkodawcy oraz imię i nazwisko jego żony &ndash; jeśli dziedziczy żona</u>.#}
+                        {{ loop.index + 1 | indexLiterka }}/ odpis skr&oacute;cony aktu małżeństwa {{ zgoniarz.imie }} {{ zgoniarz.nazwisko }}
+                        oraz {{ spadkobiorca.imie }} {{ spadkobiorca.nazwisko }}
                     </span>
+                </p>
+            {% endif %}
+            {% if spadkobiorca.stopienPokrewienstwa == 5 or spadkobiorca.stopienPokrewienstwa == 6 %}
+                <p style="text-align: justify;" data-mce-style="text-align: justify;" class="lineheight28px">
+                <span style="font-size: 14pt; font-family: 'times new roman', times, serif; color: rgb(0, 0, 0);" data-mce-style="font-size: 14pt; font-family: 'times new roman', times, serif; color: #000000;">
+                    {{ loop.index + 1 | indexLiterka }}/ odpis skr&oacute;cony aktu urodzenia {{ spadkobiorca.imie }} {{ spadkobiorca.nazwisko }}
+                </span>
                 </p>
             {% endif %}
         {% endfor %}
     {% endif %}
-
-    {% for spadkobiorca in spadkobiorcy %}
-        {% if spadkobiorca.stopienPokrewienstwa == 5 or spadkobiorca.stopienPokrewienstwa == 6 %}
-            <p style="text-align: justify;" data-mce-style="text-align: justify;" class="lineheight28px">
-                <span style="font-size: 14pt; font-family: 'times new roman', times, serif; color: rgb(0, 0, 0);" data-mce-style="font-size: 14pt; font-family: 'times new roman', times, serif; color: #000000;">
-                    c/ odpis skr&oacute;cony aktu urodzenia {{ spadkobiorca.imie }} {{ spadkobiorca.nazwisko }}
-{#                    <u>Imię i nazwisko kolejnego syna albo c&oacute;rki, kt&oacute;ra ma takie samo nazwisko#}
-{#                    jak spadkodawca spadkobiercy jeśli dziedziczy</u>.#}
-                </span>
-            </p>
-        {% endif %}
-    {% endfor %}
 
     {#<p><span style="font-size: 14pt; font-family: 'times new roman', times, serif; color: rgb(0, 0, 0);" data-mce-style="font-size: 14pt; font-family: 'times new roman', times, serif; color: #000000;">d/ odpis skr&oacute;cony aktu małżeństwa <u>Imię i nazwisko męża c&oacute;rki spadkodawcy &ndash; imię i aktualne nazwisko c&oacute;rki spadkodawcy &ndash; jeśli dziedziczy</u>.</span></p>#}
 
