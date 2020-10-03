@@ -65,7 +65,7 @@ class PostepowanieSpadkoweController extends Controller
             $zgoniarz = $this->getDoctrine()->getRepository(OsobaFizyczna::class)->findOneBy(['pesel' => $zgoniarzForm->getPesel()]);
             if(!$zgoniarz){
                 $zgoniarz = $zgoniarzForm;
-                $zgoniarz->setPlec($zgoniarz->getPesel()[10]%2==0?2:1);
+                $zgoniarz->setPlec($zgoniarz->getPesel()[10]%2==0?OsobaFizyczna::PLEC_ZENSKA:OsobaFizyczna::PLEC_MESKA);
                 $em->persist($zgoniarzForm);
             }
             else{
