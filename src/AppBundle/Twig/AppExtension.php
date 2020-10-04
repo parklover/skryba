@@ -21,8 +21,8 @@ class AppExtension extends AbstractExtension
             new TwigFilter('dataZPeselu', [$this, 'dataZPeselu']),
             new TwigFilter('ulica', [$this, 'ulica']),
             new TwigFilter('imieMeskie', [$this, 'imieMeskie']),
-            new TwigFilter('imieMeskieDopelniacz', [$this, 'imieMeskieDopelniacz']),
-            new TwigFilter('nazwiskoMeskieDopelniacz', [$this, 'nazwiskoMeskieDopelniacz']),
+            new TwigFilter('imieMeskieMiejscownik', [$this, 'imieMeskieMiejscownik']),
+            new TwigFilter('nazwiskoMeskieMiejscownik', [$this, 'nazwiskoMeskieMiejscownik']),
             new TwigFilter('imieZenskie', [$this, 'imieZenskie']),
             new TwigFilter('miasto', [$this, 'miasto']),
             new TwigFilter('indexLiterka', [$this, 'indexLiterka']),
@@ -89,38 +89,38 @@ class AppExtension extends AbstractExtension
         return $imieMeskie."a";
     }
 
-    public function imieMeskieDopelniacz($imieMeskieDopelniacz){
+    public function imieMeskieMiejscownik($imieMeskieMiejscownik){
 
-        $koncowkaLeksykalna1 = substr($imieMeskieDopelniacz, -1);
-        $koncowkaLeksykalna2 = substr($imieMeskieDopelniacz, -2);
-        $koncowkaLeksykalna3 = substr($imieMeskieDopelniacz, -3);
+        $koncowkaLeksykalna1 = substr($imieMeskieMiejscownik, -1);
+        $koncowkaLeksykalna2 = substr($imieMeskieMiejscownik, -2);
+        $koncowkaLeksykalna3 = substr($imieMeskieMiejscownik, -3);
         if($koncowkaLeksykalna2 == "ek"){
-            return substr($imieMeskieDopelniacz, 0 , -2)."ku";
+            return substr($imieMeskieMiejscownik, 0 , -2)."ku";
         }
         if($koncowkaLeksykalna2 == "el"){
-            return substr($imieMeskieDopelniacz, 0 , -2)."elu";
+            return substr($imieMeskieMiejscownik, 0 , -2)."elu";
         }
         if($koncowkaLeksykalna2 == "ir"){
-            return substr($imieMeskieDopelniacz, 0 , -2)."irze";
+            return substr($imieMeskieMiejscownik, 0 , -2)."irze";
         }
         if($koncowkaLeksykalna1 == "n"){
-            return substr($imieMeskieDopelniacz, 0 , -1)."nie";
+            return substr($imieMeskieMiejscownik, 0 , -1)."nie";
         }
         if($koncowkaLeksykalna1 == "p"){
-            return substr($imieMeskieDopelniacz, 0 , -1)."pie";
+            return substr($imieMeskieMiejscownik, 0 , -1)."pie";
         }
-        return $imieMeskieDopelniacz;
+        return $imieMeskieMiejscownik;
     }
 
-    public function nazwiskoMeskieDopelniacz($nazwiskoMeskieDopelniacz){
+    public function nazwiskoMeskieMiejscownik($nazwiskoMeskieMiejscownik){
 
-        $koncowkaLeksykalna1 = substr($nazwiskoMeskieDopelniacz, -1);
-        $koncowkaLeksykalna2 = substr($nazwiskoMeskieDopelniacz, -2);
-        $koncowkaLeksykalna3 = substr($nazwiskoMeskieDopelniacz, -3);
+        $koncowkaLeksykalna1 = substr($nazwiskoMeskieMiejscownik, -1);
+        $koncowkaLeksykalna2 = substr($nazwiskoMeskieMiejscownik, -2);
+        $koncowkaLeksykalna3 = substr($nazwiskoMeskieMiejscownik, -3);
         if($koncowkaLeksykalna2 == "ki"){
-            return substr($nazwiskoMeskieDopelniacz, 0 , -2)."kim";
+            return substr($nazwiskoMeskieMiejscownik, 0 , -2)."kim";
         }
-        return $nazwiskoMeskieDopelniacz;
+        return $nazwiskoMeskieMiejscownik;
     }
 
     public function dataZPeselu($pesel){
@@ -162,22 +162,22 @@ class AppExtension extends AbstractExtension
 
     public function pokrewienstwoSlownie($stopienPokrewienstwa){
         switch($stopienPokrewienstwa){
-            case 1:  return 'Matka'; break;
-            case 2:  return 'Ojciec'; break;
-            case 3:  return 'Mąż'; break;
-            case 4:  return 'Żona'; break;
-            case 5:  return 'Córka'; break;
-            case 6:  return 'Syn'; break;
-            case 7:  return 'Dziadek'; break;
-            case 8:  return 'Babcia'; break;
-            case 9:  return 'Wnuk'; break;
-            case 10:  return 'Wnuczka'; break;
-            case 11:  return 'Pasierb'; break;
-            case 12:  return 'Pasierbica'; break;
-            case 13:  return 'Siostrzeniec'; break;
-            case 14:  return 'Siostrzenica'; break;
-            case 15:  return 'Bratanek'; break;
-            case 16:  return 'Bratanica'; break;
+            case 1:  return 'matka'; break;
+            case 2:  return 'ojciec'; break;
+            case 3:  return 'mąż'; break;
+            case 4:  return 'żona'; break;
+            case 5:  return 'córka'; break;
+            case 6:  return 'syn'; break;
+            case 7:  return 'dziadek'; break;
+            case 8:  return 'babcia'; break;
+            case 9:  return 'wnuk'; break;
+            case 10:  return 'wnuczka'; break;
+            case 11:  return 'pasierb'; break;
+            case 12:  return 'pasierbica'; break;
+            case 13:  return 'siostrzeniec'; break;
+            case 14:  return 'siostrzenica'; break;
+            case 15:  return 'bratanek'; break;
+            case 16:  return 'bratanica'; break;
             default: return ""; break;
         }
     }

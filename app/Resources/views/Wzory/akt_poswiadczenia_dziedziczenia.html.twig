@@ -35,7 +35,10 @@
     </p>
     <p style="text-align: justify;" data-mce-style="text-align: justify;" class="lineheight28px">
         <span style="font-family: 'times new roman', times, serif;  font-size: 14pt;"
-                 data-mce-style="font-family: 'times new roman', times, serif;  font-size: 14pt;">spadek po <span class="niepewne" >{{ zgoniarz.imie | imieMeskieDopelniacz }} {{ zgoniarz.nazwisko | nazwiskoMeskieDopelniacz}}</span>,
+                 data-mce-style="font-family: 'times new roman', times, serif;  font-size: 14pt;">spadek po
+            <span class="niepewne">
+                {{ zgoniarz.imie | imieMeskieMiejscownik }} {{ zgoniarz.nazwisko | nazwiskoMeskieMiejscownik }}
+            </span>,
             {% if zgoniarz.plec == 1 %}córce{% else %}synu{% endif %} {{ zgoniarz.imieOjca | imieMeskie }} i {{ zgoniarz.imieMatki | imieZenskie }},
             {% if zgoniarz.plec == 1 %}zmarłej{% else %}zmarłym{% endif %} dnia
            {{ form.dataSmierci | dataSlownie }} ({{ form.dataSmierci | date('d.m.Y') }}) roku,
