@@ -30,7 +30,7 @@
                     <li class="lineheight28px" style="font-size: 14pt; font-family: 'times new roman', times, serif; color: rgb(0, 0, 0);"
                         data-mce-style="font-size: 14pt; font-family: 'times new roman', times, serif; color: #000000;">
                         {{ spadkobierca.imie }} {{ spadkobierca.nazwisko }}, {% if spadkobierca.plec == 1 %} córka {% else %} syn {% endif %}
-                        {{ spadkobierca.imieOjca | imieMeskie }} i {{ spadkobierca.imieMatki | imieZenskie}} o numerze pesel {{ spadkobierca.pesel }},
+                        {{ spadkobierca.imieOjca | imieMeskieDopelniacz }} i {{ spadkobierca.imieMatki | imieZenskie}} o numerze pesel {{ spadkobierca.pesel }},
                         urodzony w  <span class="niepewne" >{{ spadkobierca.miejsceUrodzenia | miasto }}</span>
                         {% if spadkobierca.plec == 1 %} zamieszkała {% else %} zamieszkały {% endif %}
                         według oświadczenia w {{ spadkobierca.miastoZamieszkania | miasto }}
@@ -101,7 +101,7 @@
             <span class="niepewne" >{{ form.miejsceZgonu | miasto }}</span>
 
             <span class="niepewne" >{{ zgoniarz.imie | imieMeskieMiejscownik }} {{ zgoniarz.nazwisko | nazwiskoMeskieMiejscownik }}</span>
-            o numerze pesel {{ zgoniarz.pesel }}, {% if zgoniarz.plec == 1 %}córce{% else %}synu{% endif %} {{ zgoniarz.imieOjca | imieMeskie }} i {{ zgoniarz.imieMatki | imieZenskie }},
+            o numerze pesel {{ zgoniarz.pesel }}, {% if zgoniarz.plec == 1 %}córce{% else %}synu{% endif %} {{ zgoniarz.imieOjca | imieMeskieDopelniacz }} i {{ zgoniarz.imieMatki | imieZenskie }},
             {% if zgoniarz.plec == 1 %}zamieszkałej{% else %}zamieszkałym{% endif %} w <span class="niepewne" >{{ zgoniarz.miastoZamieszkania | miasto }}</span>
             {% if zgoniarz.typObiektuZamieszkania == 0 %}{{ zgoniarz.numerDomuZamieszkania }}{% if zgoniarz.numerMieszkaniaZamieszkania is not null and zgoniarz.numerMieszkaniaZamieszkania != "" %} / {{ zgoniarz.numerMieszkaniaZamieszkania }}{% endif %}
             {% elseif zgoniarz.typObiektuZamieszkania == 1 %} przy ulicy {{ zgoniarz.nazwaObiektuZamieszkania }} {{ zgoniarz.numerDomuZamieszkania }} {% if zgoniarz.numerMieszkaniaZamieszkania is not null and zgoniarz.numerMieszkaniaZamieszkania != "" %} / {{ zgoniarz.numerDomuZamieszkania }}{% endif %}
@@ -115,7 +115,7 @@
                         <span style="font-family: 'times new roman', times, serif; font-size: 14pt;" data-mce-style="font-family: 'times new roman', times, serif; font-size: 14pt;">
                                 jego {{ spadkobierca.stopienPokrewienstwa | pokrewienstwoSlownie }} {{ spadkobierca.imie }} {{ spadkobierca.nazwisko }},
                                 {% if spadkobierca.plec == 1 %} córka {% else %} syn {% endif %}
-                            {{ spadkobierca.imieOjca | imieMeskie }} i {{ spadkobierca.imieMatki | imieZenskie}} {% if spadkobierca.plec == 1 %} urodzona {% else %} urodzony {% endif %} {{ spadkobierca.pesel | dataZPeselu | dataSlownie }}
+                            {{ spadkobierca.imieOjca | imieMeskieDopelniacz }} i {{ spadkobierca.imieMatki | imieZenskie}} {% if spadkobierca.plec == 1 %} urodzona {% else %} urodzony {% endif %} {{ spadkobierca.pesel | dataZPeselu | dataSlownie }}
                         ({{ spadkobierca.pesel | dataZPeselu | date('Y-m-d') }}) roku
                         w <span class="niepewne" >{{ spadkobierca.miejsceUrodzenia | miasto }}</span>
                         {% if spadkobiorcy|length > 1 %}
@@ -132,7 +132,7 @@
               data-mce-style="font-family: 'times new roman', times, serif;  font-size: 14pt; padding-left: 30px; color: #000000;">
         Nadto {% if stawajacy | length > 1 %}Stawający oświadczają{% else %}{% if stawajacy[0].plec == 1 %}Stawająca oświadcza{% else %}Stawający oświadcza{% endif %}{% endif %},
         że nie ma żadnych przeszkod do sporządzenia poświadczenia dziedziczenia oraz {% if stawajacy | length > 1 %}przedkładają{% else %}przedkłada{% endif %} odpis skr&oacute;cony aktu zgonu
-        <span class="niepewne" >{{ zgoniarz.imie | imieMeskie }} {{ zgoniarz.nazwisko }}</span> wydany przez Urząd Stanu Cywilnego w
+        <span class="niepewne" >{{ zgoniarz.imie | imieMeskieDopelniacz }} {{ zgoniarz.nazwisko | nazwiskoMeskieDopelniacz }}</span> wydany przez Urząd Stanu Cywilnego w
         <span class="niepewne" >{{ form.miejsceWydaniaAktuZgonu | miasto }}</span> dnia {{ form.dataWydaniaAktuZgonu | dataSlownie }} ({{ form.dataWydaniaAktuZgonu | date('Y-m-d') }})
         roku zgodny z treścią aktu zgonu o oznaczeniu: {{ form.numerAktuZgonu }}.
         </span>
@@ -191,7 +191,7 @@
         <span class="niepewne" >{{ zgoniarz.imie | imieMeskieMiejscownik }} {{ zgoniarz.nazwisko | nazwiskoMeskieMiejscownik }}</span> {% if spadkobiorcy | length > 1 %}należą{% else %}należy{% endif %}:
         {% for spadkobierca in spadkobiorcy %}
             {% if zgoniarz.plec == 1 %}jej{% else %}jego{% endif %} {{ spadkobierca.stopienPokrewienstwa | pokrewienstwoSlownie }} {{ spadkobierca.imie }} {{ spadkobierca.nazwisko }},
-            {% if spadkobierca.plec == 1 %} córka {% else %} syn {% endif %}{{ spadkobierca.imieOjca | imieMeskie }} i {{ spadkobierca.imieMatki | imieZenskie}}
+            {% if spadkobierca.plec == 1 %} córka {% else %} syn {% endif %}{{ spadkobierca.imieOjca | imieMeskieDopelniacz }} i {{ spadkobierca.imieMatki | imieZenskie}}
             {% if loop.revindex == 2 %} oraz{% else %}{% if not loop.last %},{% else %}{% endif %}{% endif %}
         {% endfor %}
     {#    <u>jej/jego</u> <u>syn/c&oacute;rka/mąż/żona/brat/kuzyn/babcia/dziadek</u> <u>Imię (imiona) nazwisko kolejnego spadkobiercy</u>, syn imię <u>ojca i matki kolejnego spadkodawcy</u>, &nbsp;#}

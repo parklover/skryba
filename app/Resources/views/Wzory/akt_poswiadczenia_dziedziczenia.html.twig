@@ -39,7 +39,7 @@
             <span class="niepewne">
                 {{ zgoniarz.imie | imieMeskieMiejscownik }} {{ zgoniarz.nazwisko | nazwiskoMeskieMiejscownik }}
             </span>,
-            {% if zgoniarz.plec == 1 %}córce{% else %}synu{% endif %} {{ zgoniarz.imieOjca | imieMeskie }} i {{ zgoniarz.imieMatki | imieZenskie }},
+            {% if zgoniarz.plec == 1 %}córce{% else %}synu{% endif %} {{ zgoniarz.imieOjca | imieMeskieDopelniacz }} i {{ zgoniarz.imieMatki | imieZenskie }},
             {% if zgoniarz.plec == 1 %}zmarłej{% else %}zmarłym{% endif %} dnia
            {{ form.dataSmierci | dataSlownie }} ({{ form.dataSmierci | date('d.m.Y') }}) roku,
             {% if zgoniarz.plec == 1 %}zamieszkałej{% else %}zamieszkałym{% endif %} w <span class="niepewne" >{{ zgoniarz.miastoZamieszkania | miasto }}</span>
@@ -56,7 +56,7 @@
                     <span style="font-family: 'times new roman', times, serif;  font-size: 14pt;" data-mce-style="font-family: 'times new roman', times, serif;  font-size: 14pt;">
                             {% if zgoniarz.plec == 1 %}jej{% else %}jego{% endif %} {{ spadkobierca.stopienPokrewienstwa | pokrewienstwoSlownie }} {{ spadkobierca.imie }} {{ spadkobierca.nazwisko }},
                             {% if spadkobierca.plec == 1 %} córka {% else %} syn {% endif %}
-                    {{ spadkobierca.imieOjca | imieMeskie }} i {{ spadkobierca.imieMatki | imieZenskie}} {% if spadkobierca.plec == 1 %} urodzona {% else %} urodzony {% endif %} {{ spadkobierca.pesel | dataZPeselu | dataSlownie }}
+                    {{ spadkobierca.imieOjca | imieMeskieDopelniacz }} i {{ spadkobierca.imieMatki | imieZenskie}} {% if spadkobierca.plec == 1 %} urodzona {% else %} urodzony {% endif %} {{ spadkobierca.pesel | dataZPeselu | dataSlownie }}
                     ({{ spadkobierca.pesel | dataZPeselu | date('d.m.Y') }}) roku
                     w <span class="niepewne" >{{ spadkobierca.miejsceUrodzenia | miasto }}</span>
                     {% if spadkobiorcy|length > 1 %}
@@ -191,7 +191,7 @@
                           data-mce-style="font-family: 'times new roman', times, serif;  font-size: 14pt;">
                          {{ spadkobierca.imie }} {{ spadkobierca.nazwisko }},
                         {% if spadkobierca.plec == 1 %} córka {% else %} syn {% endif %}
-                        {{ spadkobierca.imieOjca | imieMeskie }} i {{ spadkobierca.imieMatki | imieZenskie }} {% if spadkobierca.plec == 1 %} zamieszkała {% else %} zamieszkały {% endif %} w
+                        {{ spadkobierca.imieOjca | imieMeskieDopelniacz }} i {{ spadkobierca.imieMatki | imieZenskie }} {% if spadkobierca.plec == 1 %} zamieszkała {% else %} zamieszkały {% endif %} w
                         {#<span class="niepewne" >#}
                                 <span class="niepewne" >{{ spadkobierca.miastoZamieszkania  | miasto}}</span>
                         {#</span>#}

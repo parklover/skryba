@@ -18,8 +18,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class OsobaFizyczna
 {
-    const PLEC_MESKA = 1;
-    const PLEC_ZENSKA = 2;
+    const PLEC_MESKA = 2;
+    const PLEC_ZENSKA = 1;
 
     /**
      * @ORM\Id

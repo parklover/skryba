@@ -6,7 +6,7 @@
       <change beforePath="$PROJECT_DIR$/app/Resources/views/Wzory/akt_poswiadczenia_dziedziczenia.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/Wzory/akt_poswiadczenia_dziedziczenia.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Resources/views/Wzory/oswiadczenie_o_przyjeciu_spadku.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/Wzory/oswiadczenie_o_przyjeciu_spadku.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Resources/views/Wzory/protokol_dziedziczenia.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/Wzory/protokol_dziedziczenia.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Resources/views/layout.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/layout.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppBundle/Entity/OsobaFizyczna.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/OsobaFizyczna.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AppBundle/Twig/AppExtension.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppBundle/Twig/AppExtension.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -168,7 +168,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580731869407</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="do testow">
+      <created>1601822323195</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1601822323195</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1957,17 +1964,26 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <MESSAGE value="XD" />
-    <option name="LAST_COMMIT_MESSAGE" value="XD" />
+    <MESSAGE value="do testow" />
+    <option name="LAST_COMMIT_MESSAGE" value="do testow" />
   </component>
   <component name="WindowStateProjectService">
     <state x="304" y="198" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1601742718846">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="304" y="198" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1601742718846" />
-    <state x="-1253" y="253" width="585" height="592" key="find.popup" timestamp="1601820889763">
+    <state x="-1335" y="107" key="CommitChangelistDialog2" timestamp="1601822322372">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="-1253" y="253" width="585" height="592" key="find.popup/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1601820889763" />
+    <state x="-1335" y="107" key="CommitChangelistDialog2/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1601822322372" />
+    <state x="-1368" y="253" key="Vcs.Push.Dialog.v2" timestamp="1601822324882">
+      <screen x="-1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-1368" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1601822324882" />
+    <state x="-1439" y="113" width="1244" height="592" key="find.popup" timestamp="1601824082414">
+      <screen x="-1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-1439" y="113" width="1244" height="592" key="find.popup/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1601824082414" />
     <state x="544" y="332" key="git4idea.merge.GitPullDialog" timestamp="1601742114273">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>

@@ -20,7 +20,8 @@ class AppExtension extends AbstractExtension
             new TwigFilter('pokrewienstwoSlownie', [$this, 'pokrewienstwoSlownie']),
             new TwigFilter('dataZPeselu', [$this, 'dataZPeselu']),
             new TwigFilter('ulica', [$this, 'ulica']),
-            new TwigFilter('imieMeskie', [$this, 'imieMeskie']),
+            new TwigFilter('imieMeskieDopelniacz', [$this, 'imieMeskieDopelniacz']),
+            new TwigFilter('nazwiskoMeskieDopelniacz', [$this, 'nazwiskoMeskieDopelniacz']),
             new TwigFilter('imieMeskieMiejscownik', [$this, 'imieMeskieMiejscownik']),
             new TwigFilter('nazwiskoMeskieMiejscownik', [$this, 'nazwiskoMeskieMiejscownik']),
             new TwigFilter('imieZenskie', [$this, 'imieZenskie']),
@@ -84,9 +85,19 @@ class AppExtension extends AbstractExtension
         }
     }
 
-    public function imieMeskie($imieMeskie){
+    public function imieMeskieDopelniacz ($imieMeskieDopelniacz ){
 
-        return $imieMeskie."a";
+        return $imieMeskieDopelniacz ."a";
+    }
+
+    public function nazwiskoMeskieDopelniacz($nazwiskoMeskieDopelniacz){
+        $koncowkaLeksykalna1 = substr($nazwiskoMeskieDopelniacz, -1);
+        $koncowkaLeksykalna2 = substr($nazwiskoMeskieDopelniacz, -2);
+        $koncowkaLeksykalna3 = substr($nazwiskoMeskieDopelniacz, -3);
+        if($koncowkaLeksykalna2 == "ki"){
+            return $nazwiskoMeskieDopelniacz."ego";
+        }
+        return $nazwiskoMeskieDopelniacz."a";
     }
 
     public function imieMeskieMiejscownik($imieMeskieMiejscownik){
